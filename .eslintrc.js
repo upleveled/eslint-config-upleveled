@@ -1,6 +1,8 @@
 module.exports = {
   extends: 'react-app',
   rules: {
+    // Warn about variable shadowing
+    'no-shadow': 'warn',
     // Remove `href` warnings on anchor tags for Next.js
     // Issue in Next.js: https://github.com/zeit/next.js/issues/5533
     // Fix: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402#issuecomment-368305051
