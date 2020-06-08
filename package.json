@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "eslint-plugin-cypress": "2.11.1",
     "react-scripts": "3.4.1"
   }
 }

@@ -1,5 +1,9 @@
 module.exports = {
   extends: 'react-app',
+  plugins: ['cypress'],
+  env: {
+    'cypress/globals': true,
+  },
   rules: {
     // Warn about variable shadowing
     'no-shadow': 'warn',
