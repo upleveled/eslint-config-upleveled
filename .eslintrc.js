@@ -18,5 +18,10 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
+    // Disable rule because the new JSX transform in React 17,
+    // Next.js and Gatsby no longer requires the import.
+    //
+    // https://github.com/yannickcr/eslint-plugin-react/issues/2440#issuecomment-683433266
+    'react/react-in-jsx-scope': 'off',
   },
 };
