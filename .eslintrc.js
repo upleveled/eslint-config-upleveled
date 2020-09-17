@@ -5,6 +5,10 @@ module.exports = {
     'cypress/globals': true,
   },
   rules: {
+    // Error out on imports that don't match
+    // the underlying file system
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
+    'import/no-unresolved': 'error',
     // Warn about constant conditions
     // https://eslint.org/docs/rules/no-constant-condition
     'no-constant-condition': 'warn',
