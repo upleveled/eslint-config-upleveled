@@ -5,7 +5,11 @@ module.exports = {
     'cypress/globals': true,
   },
   rules: {
+    // Warn about constant conditions
+    // https://eslint.org/docs/rules/no-constant-condition
+    'no-constant-condition': 'warn',
     // Warn about variable shadowing
+    // https://eslint.org/docs/rules/no-shadow
     'no-shadow': 'warn',
     // Remove `href` warnings on anchor tags for Next.js
     // Issue in Next.js: https://github.com/zeit/next.js/issues/5533
