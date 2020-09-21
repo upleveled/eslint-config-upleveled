@@ -28,4 +28,4 @@ npx install-peerdeps --dev --yarn eslint-config-react-app
 
 ### Verify Setup
 
-To verify that the configuration is working properly, you can try pasting the contents of [`__tests__/index.js`](./__tests__index.js) into a new file and seeing whether you get the same warning messages.
+To verify that the configuration is working properly, you can try pasting the contents of [`__tests__/index.js`](./__tests__index.js) into a new file and seeing whether you get the same warning messages as in the screenshot at the beginning of the readme (you may need to hover over the words underlined with orange / red squiggly lines).
