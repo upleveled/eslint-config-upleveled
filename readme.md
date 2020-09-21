@@ -1,6 +1,6 @@
 # UpLeveled VS Code ESLint Base Config
 
-**Warning:** Can potentially cause problems: https://github.com/microsoft/vscode-eslint/issues/1073#issuecomment-694732656
+**Warning:** Can potentially cause problems, since ESLint assumes local installation in a project: https://github.com/microsoft/vscode-eslint/issues/1073#issuecomment-694732656
 
 If you would like to use the UpLeveled VS Code ESLint base configuration:
 
