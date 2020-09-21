@@ -1,4 +1,4 @@
-# UpLeveled VS Code ESLint Base Config
+# UpLeveled VS Code ESLint Base Config - Package version
 
 **Warning:** Can potentially cause problems, since ESLint assumes local installation in a project: https://github.com/microsoft/vscode-eslint/issues/1073#issuecomment-694732656
 
