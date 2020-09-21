@@ -25,3 +25,7 @@ If your application does not use `create-react-app` (eg. Node.js or Next.js), th
 ```sh
 npx install-peerdeps --dev --yarn eslint-config-react-app
 ```
+
+### Verify Setup
+
+To verify that the configuration is working properly, you can try pasting the contents of [`__tests__/index.js`](./__tests__index.js) into a new file and seeing whether you get the same warning messages.
