@@ -22,8 +22,16 @@ If the project doesn't use `create-react-app`, read on:
 
 With projects that don't use `create-react-app` (eg. Node.js or Next.js), then you will need to also run the following command:
 
+<!--
+  TODO: Fix this installation command when new CRA version comes out
+  eg. npx install-peerdeps --dev --yarn eslint-config-react-app
+  Ref: https://github.com/facebook/create-react-app/pull/9434#issuecomment-696566848
+-->
+
 ```sh
-npx install-peerdeps --dev --yarn eslint-config-react-app
+yarn add upleveled/eslint-config-upleveled
+npx install-peerdeps --dev --yarn -o eslint-config-upleveled
+yarn remove eslint-config-upleveled
 ```
 
 ### Verify Setup
