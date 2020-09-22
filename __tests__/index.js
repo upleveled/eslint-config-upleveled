@@ -1,5 +1,7 @@
 import string from './CaseSensitive.js';
 const num = 1;
+let a = 'str';
+console.log(a);
 
 function b(num) {
   if (true) {
@@ -12,6 +14,8 @@ function b(num) {
     console.log(jsx);
   }
 }
+
+import str2 from './caseSensitive.js';
 
 b();
 
