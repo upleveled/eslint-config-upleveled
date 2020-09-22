@@ -1,6 +1,6 @@
 module.exports = {
-  extends: 'react-app',
-  plugins: ['cypress'],
+  extends: ['react-app', 'plugin:jsx-a11y/recommended'],
+  plugins: ['jsx-a11y', 'cypress'],
   env: {
     'cypress/globals': true,
   },
