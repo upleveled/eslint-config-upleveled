@@ -26,6 +26,8 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
+    // Warn about non-changing variables not being constants
+    'prefer-const': 'warn',
     // Disable rule because the new JSX transform in React 17,
     // Next.js and Gatsby no longer requires the import.
     //
