@@ -1,4 +1,4 @@
-# UpLeveled VS Code ESLint Shared Config
+# UpLeveled ESLint Config
 
 UpLeveled ESLint defaults for programming in JavaScript, React and Node.js.
 
