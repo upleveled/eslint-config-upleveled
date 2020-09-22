@@ -1,8 +1,8 @@
 {
-  "name": "upleveled-vscode-eslint-base-config",
+  "name": "eslint-config-upleveled",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:upleveled/upleveled-vscode-eslint-base-config.git",
+  "repository": "git@github.com:upleveled/eslint-config-upleveled.git",
   "author": "Karl Horky <karl.horky@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
