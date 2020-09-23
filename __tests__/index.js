@@ -24,7 +24,7 @@ c();
 function Component() {}
 Component();
 
-const OtherComponent = (a, b) => {};
+const OtherComponent = (x, y) => {};
 
 const PascalCaseVar = 1;
 const snake_case_var = 1;
