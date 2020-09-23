@@ -9,11 +9,9 @@ UpLeveled ESLint defaults for programming in JavaScript, React and Node.js.
 To add ESLint configuration to a project, the first steps are to install the dependencies and add the config files:
 
 ```sh
-yarn add upleveled/eslint-config-upleveled
-cp node_modules/eslint-config-upleveled/.eslintrc.json ./
-cp node_modules/eslint-config-upleveled/tsconfig.json ./
-npx install-peerdeps --dev --yarn -o eslint-config-upleveled
-yarn remove eslint-config-upleveled
+npx install-peerdeps --yarn --dev -o eslint-config-upleveled
+cp node_modules/eslint-config-upleveled/templates/.eslintrc.json ./
+cp node_modules/eslint-config-upleveled/templates/tsconfig.json ./
 ```
 
 <!--

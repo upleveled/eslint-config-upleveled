@@ -2,6 +2,10 @@
   "name": "eslint-config-upleveled",
   "version": "1.0.0",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "templates"
+  ],
   "repository": "git@github.com:upleveled/eslint-config-upleveled.git",
   "author": "Karl Horky <karl.horky@gmail.com>",
   "license": "MIT",
