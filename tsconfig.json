@@ -19,5 +19,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "isolatedModules": true
-  }
+  },
+  "include": ["."],
+  "exclude": ["node_modules"]
 }
