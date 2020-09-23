@@ -1,5 +1,0 @@
-{
-  "extends": [
-    "github>karlhorky/renovate-config"
-  ]
-}
