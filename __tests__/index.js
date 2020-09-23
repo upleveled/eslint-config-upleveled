@@ -20,3 +20,13 @@ import str2 from './caseSensitive.js';
 b();
 
 c();
+
+function Component() {}
+Component();
+
+const OtherComponent = (a, b) => {};
+
+const PascalCaseVar = 1;
+const snake_case_var = 1;
+
+OtherComponent(PascalCaseVar, snake_case_var);

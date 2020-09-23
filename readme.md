@@ -6,13 +6,41 @@ UpLeveled ESLint defaults for programming in JavaScript, React and Node.js.
 
 ## Setup
 
+To add ESLint configuration to a project, the first steps are to install the dependencies and add the config files:
+
+```sh
+yarn add upleveled/eslint-config-upleveled
+cp node_modules/eslint-config-upleveled/.eslintrc.json ./
+cp node_modules/eslint-config-upleveled/tsconfig.json ./
+npx install-peerdeps --dev --yarn -o eslint-config-upleveled
+yarn remove eslint-config-upleveled
+```
+
+<!--
+
+This has now been automated (probably can be removed):
+
+Create a file in the root of your project called `.eslintrc.json` and add the content of [the `.eslintrc.json` file](https://github.com/upleveled/upleveled-vscode-eslint-base-config/blob/main/.eslintrc.json).
+
+Lastly, create a file in the root of your project called `tsconfig.json` and add the content of [the `tsconfig.json` file](https://github.com/upleveled/upleveled-vscode-eslint-base-config/blob/main/tsconfig.json).
+
+-->
+
+<!--
+
+Old instructions
+
+FIXME: Remove? Or restore once create-react-app v4 is out (with ESLint 7)?
+
+## Setup
+
 To add ESLint configuration to a project, the first steps are to install the dependencies and add the file:
 
 ```sh
-yarn add --dev eslint-plugin-cypress
+yarn add --dev eslint-plugin-cypress eslint-config-react-app @typescript-eslint/parser
 ```
 
-Then create a file in the root of your project called `.eslintrc.js` and add the content of [the `.eslintrc.js` file](https://github.com/upleveled/upleveled-vscode-eslint-base-config/blob/main/.eslintrc.js).
+Then create a file in the root of your project called `.eslintrc.json` and add the content of [the `.eslintrc.json` file](https://github.com/upleveled/upleveled-vscode-eslint-base-config/blob/main/.eslintrc.json).
 
 If you are using `create-react-app` in this project, this is enough! You're ready to go.
 
@@ -26,13 +54,15 @@ With projects that don't use `create-react-app` (eg. Node.js or Next.js), then y
   TODO: Fix this installation command when new CRA version comes out
   eg. npx install-peerdeps --dev --yarn eslint-config-react-app
   Ref: https://github.com/facebook/create-react-app/pull/9434#issuecomment-696566848
--->
+->
 
 ```sh
 yarn add upleveled/eslint-config-upleveled
 npx install-peerdeps --dev --yarn -o eslint-config-upleveled
 yarn remove eslint-config-upleveled
 ```
+
+-->
 
 ### Verify Setup
 
@@ -55,7 +85,7 @@ If you would like to use the UpLeveled VS Code ESLint base configuration:
 ```json
   "eslint.nodePath": "C:/Users/karl/projects/upleveled-vscode-eslint-base-config/node_modules",
   "eslint.options": {
-    "configFile": "C:/Users/karl/projects/upleveled-vscode-eslint-base-config/.eslintrc.js",
+    "configFile": "C:/Users/karl/projects/upleveled-vscode-eslint-base-config/.eslintrc.json",
     "resolvePluginsRelativeTo": "C:/Users/karl/projects/upleveled-vscode-eslint-base-config/node_modules"
   }
 ```
@@ -65,7 +95,7 @@ If you would like to use the UpLeveled VS Code ESLint base configuration:
 ```json
   "eslint.nodePath": "/Users/karl/projects/upleveled-vscode-eslint-base-config/node_modules",
   "eslint.options": {
-    "configFile": "/Users/karl/projects/upleveled-vscode-eslint-base-config/.eslintrc.js",
+    "configFile": "/Users/karl/projects/upleveled-vscode-eslint-base-config/.eslintrc.json",
     "resolvePluginsRelativeTo": "/Users/karl/projects/upleveled-vscode-eslint-base-config/node_modules"
   }
 ```

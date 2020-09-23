@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es2019",
+      "DOM",
+      "es2020.promise",
+      "es2020.bigint",
+      "es2020.string"
+    ],
+    "strict": true,
+    "noEmit": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "isolatedModules": true
+  }
+}
