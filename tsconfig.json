@@ -7,6 +7,7 @@
       "es2020.bigint",
       "es2020.string"
     ],
+    "allowJs": true,
     "strict": true,
     "noEmit": true,
     "jsx": "react",
@@ -19,7 +20,5 @@
     "module": "esnext",
     "moduleResolution": "node",
     "isolatedModules": true
-  },
-  "include": ["."],
-  "exclude": ["node_modules"]
+  }
 }
