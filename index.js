@@ -73,6 +73,14 @@ module.exports = {
         format: ['camelCase', 'PascalCase'],
         leadingUnderscore: 'allow',
       },
+      {
+        selector: 'property',
+        format: ['camelCase', 'snake_case', 'PascalCase'],
+      },
+      {
+        selector: 'parameter',
+        format: ['camelCase', 'snake_case', 'PascalCase'],
+      },
     ],
     // Disable built-in ESLint no-use-before-define
     // in order to enable the rule from the
