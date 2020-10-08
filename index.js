@@ -39,6 +39,10 @@ module.exports = {
     //
     // https://github.com/yannickcr/eslint-plugin-react/issues/2440#issuecomment-683433266
     'react/react-in-jsx-scope': 'off',
+    // Warn about components that have a closing
+    // tag but no children
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
+    'react/self-closing-comp': 'warn',
     // Naming conventions for variables
     '@typescript-eslint/naming-convention': [
       'warn',
