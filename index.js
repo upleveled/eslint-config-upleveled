@@ -8,6 +8,12 @@ module.exports = {
   env: {
     'cypress/globals': true,
   },
+  settings: {
+    'import/resolver': {
+      // Load <rootdir>/tsconfig.json
+      typescript: {},
+    },
+  },
   rules: {
     // Error out on imports that don't match
     // the underlying file system
