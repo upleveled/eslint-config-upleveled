@@ -11,7 +11,7 @@ To add ESLint configuration to a project, install the dependencies and add the c
 ```sh
 yarn add --dev @upleveled/eslint-config-upleveled
 npx install-peerdeps --yarn --dev -o @upleveled/eslint-config-upleveled
-cp node_modules/@upleveled/eslint-config-upleveled/templates/.eslintrc.json ./
+cp node_modules/@upleveled/eslint-config-upleveled/templates/.eslintrc.js ./
 cp node_modules/@upleveled/eslint-config-upleveled/templates/tsconfig.json ./
 ```
 
