@@ -85,7 +85,7 @@ module.exports = {
       },
       {
         selector: 'property',
-        format: ['camelCase', 'snake_case', 'PascalCase'],
+        format: null,
       },
       {
         selector: 'parameter',
