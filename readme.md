@@ -15,15 +15,12 @@ cp node_modules/@upleveled/eslint-config-upleveled/templates/.eslintrc.js ./
 cp node_modules/@upleveled/eslint-config-upleveled/templates/tsconfig.json ./
 ```
 
-<!--
+If you have a monorepo using Yarn Workspaces and would like to install the config in the root, change the first two lines to these:
 
-This has now been automated (probably can be removed):
-
-Create a file in the root of your project called `.eslintrc.json` and add the content of [the `.eslintrc.json` file](https://github.com/upleveled/upleveled-vscode-eslint-base-config/blob/main/.eslintrc.json).
-
-Lastly, create a file in the root of your project called `tsconfig.json` and add the content of [the `tsconfig.json` file](https://github.com/upleveled/upleveled-vscode-eslint-base-config/blob/main/tsconfig.json).
-
--->
+```sh
+yarn add -W --dev @upleveled/eslint-config-upleveled
+npx install-peerdeps --yarn --dev -o @upleveled/eslint-config-upleveled --extra-args "-W"
+```
 
 <!--
 
