@@ -97,5 +97,8 @@ module.exports = {
     // @typescript-eslint plugin
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'error',
+    // Disable obsolete rule
+    // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
+    'jsx-a11y/no-onchange': 'off',
   },
 };
