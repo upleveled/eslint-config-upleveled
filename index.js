@@ -19,9 +19,6 @@ module.exports = {
     // the underlying file system
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
     'import/no-unresolved': 'error',
-    // Warn about constant conditions
-    // https://eslint.org/docs/rules/no-constant-condition
-    'no-constant-condition': 'warn',
     // Warn about variable shadowing
     // https://eslint.org/docs/rules/no-shadow
     'no-shadow': 'warn',
@@ -97,6 +94,11 @@ module.exports = {
     // @typescript-eslint plugin
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'error',
+    // Disable built-in ESLint no-constant-condition
+    // to use the more powerful no-unnecessary-condition
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-condition.md
+    'no-constant-condition': 'off',
+    '@typescript-eslint/no-unnecessary-condition': 'warn',
     // Disable obsolete rule
     // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
     'jsx-a11y/no-onchange': 'off',
