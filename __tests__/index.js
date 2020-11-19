@@ -21,6 +21,10 @@ b();
 
 c();
 
+const d = { e: { f: 1 } };
+
+console.log(d?.e?.f);
+
 function Component() {}
 Component();
 
