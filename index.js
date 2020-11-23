@@ -102,5 +102,14 @@ module.exports = {
     // Disable obsolete rule
     // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
     'jsx-a11y/no-onchange': 'off',
+    // Prevent unnecessary type assertions
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-assertion.md
+    '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+    // Prevent unnecessary type arguments
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-arguments.md
+    '@typescript-eslint/no-unnecessary-type-arguments': 'error',
+    // Prevent unused React prop types
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
+    'react/no-unused-prop-types': 'error',
   },
 };
