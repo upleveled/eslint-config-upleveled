@@ -111,5 +111,8 @@ module.exports = {
     // Prevent unused React prop types
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
     'react/no-unused-prop-types': 'error',
+    // Warn on comments without a space between the `//` and the comment
+    // https://github.com/eslint/eslint/blob/master/docs/rules/spaced-comment.md
+    'spaced-comment': 'warn',
   },
 };
