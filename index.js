@@ -95,7 +95,7 @@ module.exports = {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'error',
     // Disable built-in ESLint no-constant-condition
-    // to use the more powerful no-unnecessary-condition
+    // to use the more powerful @typescript-eslint/no-unnecessary-condition
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-condition.md
     'no-constant-condition': 'off',
     '@typescript-eslint/no-unnecessary-condition': 'warn',
@@ -114,5 +114,17 @@ module.exports = {
     // Warn on comments without a space between the `//` and the comment
     // https://github.com/eslint/eslint/blob/master/docs/rules/spaced-comment.md
     'spaced-comment': 'warn',
+    // Disable built-in ESLint no-unused-vars
+    // to use the more powerful @typescript-eslint/no-unused-vars
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
+    // https://eslint.org/docs/rules/no-unused-vars
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        args: 'after-used',
+        ignoreRestSiblings: true,
+      },
+    ],
   },
 };
