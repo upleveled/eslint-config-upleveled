@@ -126,5 +126,8 @@ module.exports = {
         ignoreRestSiblings: true,
       },
     ],
+    // Allow leaving out curlies only with single-line condition blocks
+    // https://github.com/eslint/eslint/blob/master/docs/rules/curly.md#multi-line
+    curly: ['error', 'multi-line'],
   },
 };
