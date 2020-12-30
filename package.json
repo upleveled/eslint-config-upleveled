@@ -9,6 +9,9 @@
   "repository": "git@github.com:upleveled/eslint-config-upleveled.git",
   "author": "Karl Horky <karl.horky@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "postpublish": "cd __tests__ && yarn update-config-version"
+  },
   "peerDependencies": {
     "eslint-config-react-app": "6.0.0",
     "eslint-import-resolver-typescript": "2.3.0",
