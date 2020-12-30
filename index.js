@@ -4,7 +4,7 @@ module.exports = {
     project: './tsconfig.json',
   },
   extends: ['react-app', 'plugin:jsx-a11y/recommended'],
-  plugins: ['jsx-a11y', 'cypress', '@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'cflint', 'cypress', 'jsx-a11y'],
   env: {
     'cypress/globals': true,
   },
@@ -135,5 +135,7 @@ module.exports = {
     // Warn about unnecessary curly braces around props and string literal children
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
     'react/jsx-curly-brace-presence': 'warn',
+    // Warn about usage of confusing substr method
+    'cflint/no-substr': 'error',
   },
 };

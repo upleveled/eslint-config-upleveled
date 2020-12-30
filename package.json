@@ -12,6 +12,7 @@
   "peerDependencies": {
     "eslint-config-react-app": "6.0.0",
     "eslint-import-resolver-typescript": "2.3.0",
+    "eslint-plugin-cflint": "1.0.0",
     "eslint-plugin-cypress": "2.11.2",
     "typescript": "4.1.3"
   }
