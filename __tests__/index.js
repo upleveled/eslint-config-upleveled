@@ -1,7 +1,6 @@
 const num = 1;
 let a = 'str';
-console.log(a);
-
+console.log(a.substr(0));
 
 function b(num) {
   if (true) {
@@ -14,9 +13,6 @@ function b(num) {
     console.log(jsx);
   }
 }
-
-const aaaa = 'asdf';
-aaaa.substr();
 
 b();
 
