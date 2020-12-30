@@ -4,7 +4,7 @@ module.exports = {
     project: './tsconfig.json',
   },
   extends: ['react-app', 'plugin:jsx-a11y/recommended'],
-  plugins: ['@typescript-eslint', 'cflint', 'cypress', 'jsx-a11y'],
+  plugins: ['@typescript-eslint', 'cypress', 'jsx-a11y', 'unicorn'],
   env: {
     'cypress/globals': true,
   },
