@@ -11,8 +11,7 @@ To add ESLint configuration to a project, install the dependencies and add the c
 ```sh
 npx install-peerdeps --yarn --dev @upleveled/eslint-config-upleveled
 npx install-peerdeps --yarn --dev --only-peers eslint-config-react-app
-cp node_modules/@upleveled/eslint-config-upleveled/templates/.eslintrc.js ./
-cp node_modules/@upleveled/eslint-config-upleveled/templates/tsconfig.json ./
+cp node_modules/@upleveled/eslint-config-upleveled/templates/{*,.*} .
 ```
 
 If you have a monorepo using Yarn Workspaces and would like to install the config in the root, change the first two lines to these:
