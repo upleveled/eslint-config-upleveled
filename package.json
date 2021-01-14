@@ -16,7 +16,7 @@
     "eslint-config-react-app": "6.0.0",
     "eslint-import-resolver-typescript": "2.3.0",
     "eslint-plugin-cypress": "2.11.2",
-    "eslint-plugin-unicorn": "25.0.1",
+    "eslint-plugin-unicorn": "26.0.1",
     "typescript": "4.1.3"
   }
 }
