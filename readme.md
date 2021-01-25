@@ -17,7 +17,7 @@ cp node_modules/@upleveled/eslint-config-upleveled/templates/{*,.eslint*} .
 If the `npx install-peerdeps` commands fail with an error like `ERR spawn yarn ENOENT`, you can manually do the first two lines as such:
 
 ```
-yarn add --dev @upleveled/eslint-config-eslint eslint-config-react-app@6.0.0 eslint-import-resolver-typescript@2.3.0 eslint-plugin-cypress@2.11.2 eslint-plugin-unicorn@26.0.1 typescript@4.1.3 @typescript-eslint/eslint-plugin@^4.0.0 @typescript-eslint/parser@^4.0.0 babel-eslint@^10.1.0 eslint@^7.5.0 eslint-plugin-flowtype@^5.2.0 eslint-plugin-import@^2.22.0 eslint-plugin-jest@^24.0.0 eslint-plugin-jsx-a11y@^6.3.1 eslint-plugin-react@^7.20.3 eslint-plugin-react-hooks@^4.0.8 eslint-plugin-testing-library@^3.9.0
+yarn add --dev @upleveled/eslint-config-upleveled eslint-config-react-app@6.0.0 eslint-import-resolver-typescript@2.3.0 eslint-plugin-cypress@2.11.2 eslint-plugin-unicorn@26.0.1 typescript@4.1.3 @typescript-eslint/eslint-plugin@^4.0.0 @typescript-eslint/parser@^4.0.0 babel-eslint@^10.1.0 eslint@^7.5.0 eslint-plugin-flowtype@^5.2.0 eslint-plugin-import@^2.22.0 eslint-plugin-jest@^24.0.0 eslint-plugin-jsx-a11y@^6.3.1 eslint-plugin-react@^7.20.3 eslint-plugin-react-hooks@^4.0.8 eslint-plugin-testing-library@^3.9.0
 ```
 
 If you have a monorepo using Yarn Workspaces and would like to install the config in the root, change the first two lines to these:
