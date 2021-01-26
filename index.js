@@ -113,7 +113,7 @@ module.exports = {
     'react/no-unused-prop-types': 'error',
     // Warn on comments without a space between the `//` and the comment
     // https://github.com/eslint/eslint/blob/master/docs/rules/spaced-comment.md
-    'spaced-comment': 'warn',
+    'spaced-comment': ['warn', 'always', { markers: ['/'] }],
     // Disable built-in ESLint no-unused-vars
     // to use the more powerful @typescript-eslint/no-unused-vars
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
