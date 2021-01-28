@@ -13,6 +13,7 @@
     "postpublish": "cd __tests__ && yarn update-config-version"
   },
   "peerDependencies": {
+    "@types/react": "17.0.0",
     "eslint-config-react-app": "6.0.0",
     "eslint-import-resolver-typescript": "2.3.0",
     "eslint-plugin-cypress": "2.11.2",
