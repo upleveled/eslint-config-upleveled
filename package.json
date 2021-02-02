@@ -1,6 +1,6 @@
 {
   "name": "@upleveled/eslint-config-upleveled",
-  "version": "1.5.9",
+  "version": "1.5.10",
   "main": "index.js",
   "files": [
     "index.js",
