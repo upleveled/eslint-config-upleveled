@@ -4,7 +4,15 @@ module.exports = {
     project: './tsconfig.json',
   },
   extends: ['react-app', 'plugin:jsx-a11y/recommended'],
-  plugins: ['@typescript-eslint', 'cypress', 'jsx-a11y', 'unicorn'],
+  plugins: [
+    '@typescript-eslint',
+    'cypress',
+    'import',
+    'jsx-a11y',
+    'react',
+    'react-hooks',
+    'unicorn',
+  ],
   env: {
     'cypress/globals': true,
   },
