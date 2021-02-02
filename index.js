@@ -127,7 +127,8 @@ module.exports = {
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
     // https://eslint.org/docs/rules/no-unused-vars
     'no-unused-vars': 'off',
-    // Currently a bug in eslint-plugin-react: https://github.com/yannickcr/eslint-plugin-react/pull/2916
+    // No need for this, @typescript-eslint/parser fully understands JSX semantics
+    // https://github.com/typescript-eslint/typescript-eslint/issues/2985#issuecomment-771771967
     'react/jsx-uses-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
       'warn',
