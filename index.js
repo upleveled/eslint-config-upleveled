@@ -138,7 +138,7 @@ module.exports = {
     ],
     // Allow leaving out curlies only with single-line condition blocks
     // https://github.com/eslint/eslint/blob/master/docs/rules/curly.md#multi-line
-    curly: ['error', 'multi-line'],
+    curly: ['error', 'multi-line', 'consistent'],
     // Detect missing `key` props in maps in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-key.md
     'react/jsx-key': ['error', { checkFragmentShorthand: true }],
