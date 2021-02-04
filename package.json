@@ -6,7 +6,7 @@
     "index.js",
     "templates"
   ],
-  "repository": "git@github.com:upleveled/eslint-config-upleveled.git",
+  "repository": "upleveled/eslint-config-upleveled",
   "author": "Karl Horky <karl.horky@gmail.com>",
   "license": "MIT",
   "scripts": {
