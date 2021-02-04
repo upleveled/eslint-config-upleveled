@@ -9,8 +9,8 @@ UpLeveled ESLint defaults for programming in JavaScript, TypeScript, React and N
 To add ESLint configuration to a project, install the dependencies and add the config files:
 
 ```sh
-CI=true npx install-peerdeps --yarn --dev @upleveled/eslint-config-upleveled
-CI=true npx install-peerdeps --yarn --dev --only-peers eslint-config-react-app
+CI=true npx install-peerdeps@latest --yarn --dev @upleveled/eslint-config-upleveled
+CI=true npx install-peerdeps@latest --yarn --dev --only-peers eslint-config-react-app
 cp node_modules/@upleveled/eslint-config-upleveled/templates/{*,.eslint*} .
 touch .gitignore && grep -Fxq ".eslintcache" .gitignore || echo ".eslintcache" >> .gitignore
 ```
@@ -18,8 +18,8 @@ touch .gitignore && grep -Fxq ".eslintcache" .gitignore || echo ".eslintcache" >
 If you have a monorepo using Yarn Workspaces and would like to install the config in the root, change the first two lines to these:
 
 ```sh
-CI=true npx install-peerdeps --yarn --dev @upleveled/eslint-config-upleveled --extra-args "-W"
-CI=true npx install-peerdeps --yarn --dev --only-peers eslint-config-react-app --extra-args "-W"
+CI=true npx install-peerdeps@latest --yarn --dev @upleveled/eslint-config-upleveled --extra-args "-W"
+CI=true npx install-peerdeps@latest --yarn --dev --only-peers eslint-config-react-app --extra-args "-W"
 ```
 
 <!--
