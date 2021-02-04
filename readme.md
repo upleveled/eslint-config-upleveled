@@ -10,7 +10,6 @@ To add ESLint configuration to a project, install the dependencies and add the c
 
 ```sh
 CI=true npx install-peerdeps@latest --yarn --dev @upleveled/eslint-config-upleveled
-CI=true npx install-peerdeps@latest --yarn --dev --only-peers eslint-config-react-app
 cp node_modules/@upleveled/eslint-config-upleveled/templates/{*,.eslint*} .
 touch .gitignore && grep -Fxq ".eslintcache" .gitignore || echo ".eslintcache" >> .gitignore
 ```
