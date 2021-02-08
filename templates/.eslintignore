@@ -1,3 +1,9 @@
 .eslintrc.js
 *.config.js
 build
+
+# Next.js app ignore paths
+.next
+next-env.d.ts
+pages/_app.js
+pages/api/hello.js
