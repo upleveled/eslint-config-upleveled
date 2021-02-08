@@ -155,6 +155,11 @@
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
+"@types/node@14.14.25":
+  version "14.14.25"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.25.tgz#15967a7b577ff81383f9b888aa6705d43fbbae93"
+  integrity sha512-EPpXLOVqDvisVxtlbvzfyqSsFeQxltFbluZNRndIb8tr9KiBnYNLzrc1N3pyKUCww2RNrfHDViqDWWE1LCJQtQ==
+
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
   resolved "https://registry.npmjs.org/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
@@ -335,10 +340,10 @@
     "@typescript-eslint/types" "4.14.2"
     eslint-visitor-keys "^2.0.0"
 
-"@upleveled/eslint-config-upleveled@1.5.16":
-  version "1.5.16"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-1.5.16.tgz#941bb0057c9642ca6e5610ee88a0243a4d9c49fa"
-  integrity sha512-anE+XA3f7IGtJZIKcJxUDu9mL8zZeNwqrOmK6QRShQMeb2DdMdi5Qp7Op/a1I8Z9UW7fza/qYz0ZyWvj/a77GA==
+"@upleveled/eslint-config-upleveled@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-1.6.0.tgz#5f473850282b1225beff57aa317df2e007c271d5"
+  integrity sha512-/DIfsUUbU7SOPT0dnMsTFs3sIs4lYn1icPrgGC1h16seYUp7Dy+7GcLG2J96xjov3bVM1T691buvE/97jg1VoQ==
 
 acorn-jsx@^5.3.1:
   version "5.3.1"
