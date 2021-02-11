@@ -13,7 +13,7 @@
     "postpublish": "cd __tests__ && yarn update-config-version"
   },
   "peerDependencies": {
-    "@types/node": "14.14.25",
+    "@types/node": "14.14.26",
     "@types/react": "17.0.1",
     "@types/react-dom": "17.0.0",
     "@typescript-eslint/eslint-plugin": "4.15.0",
