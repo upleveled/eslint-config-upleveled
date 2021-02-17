@@ -14,6 +14,7 @@ module.exports = {
     'unicorn',
   ],
   env: {
+    es2020: true,
     'cypress/globals': true,
   },
   settings: {
