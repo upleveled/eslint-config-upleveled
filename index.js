@@ -43,7 +43,11 @@ module.exports = {
       },
     ],
     // Warn about non-changing variables not being constants
+    // https://eslint.org/docs/rules/prefer-const
     'prefer-const': 'warn',
+    // Warn on usage of var (which doesn't follow block scope rules)
+    // https://eslint.org/docs/rules/no-var
+    'no-var': 'warn',
     // Error on useless React fragments
     'react/jsx-no-useless-fragment': 'error',
     // Disable rule because the new JSX transform in React 17,
