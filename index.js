@@ -148,6 +148,9 @@ module.exports = {
     // Detect missing `key` props in maps in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-key.md
     'react/jsx-key': ['error', { checkFragmentShorthand: true }],
+    // Warn if a `key` is set to an `index`
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
+    'react/no-array-index-key': ['error'],
     // Warn about unnecessary curly braces around props and string literal children
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
     'react/jsx-curly-brace-presence': 'warn',
