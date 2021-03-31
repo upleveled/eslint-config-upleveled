@@ -156,5 +156,8 @@ module.exports = {
     'react/jsx-curly-brace-presence': 'warn',
     // Warn about usage of substring or substr instead of slice
     'unicorn/prefer-string-slice': 'warn',
+    // Error about creating components within components
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
+    'react/no-unstable-nested-components': 'error',
   },
 };
