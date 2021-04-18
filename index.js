@@ -20,7 +20,10 @@ module.exports = {
   settings: {
     'import/resolver': {
       // Load <rootdir>/tsconfig.json
-      typescript: {},
+      typescript: {
+        // Always try resolving any corresponding @types/* folders
+        alwaysTryTypes: true,
+      },
     },
   },
   rules: {
