@@ -511,10 +511,10 @@
     "@typescript-eslint/types" "4.22.0"
     eslint-visitor-keys "^2.0.0"
 
-"@upleveled/eslint-config-upleveled@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-1.11.0.tgz#f14743c91d2539409bb1a2c0cd10e50f6c36e158"
-  integrity sha512-FtXj7CcmoeGzImluqvvVfCBnjJbax4i/an0W7b89eM+KZ77go7rsqfGl2LD09uucJagWOSQZLSfZE8PwpaLgtQ==
+"@upleveled/eslint-config-upleveled@1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-1.11.1.tgz#d3918feba42f5e4fee23febed101c9ace2fbe299"
+  integrity sha512-hdSWPh7qgrtDR1wx008clnPnoyalGXyaX1Bw1azb0wQ78FHSZ14+yFgDEi+SnYp1fOGj9AiIPi73mVXIjoCqPw==
 
 acorn-jsx@^5.3.1:
   version "5.3.1"
