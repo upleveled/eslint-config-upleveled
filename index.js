@@ -2,6 +2,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
+    extraFileExtensions: ['.cjs'],
   },
   extends: ['react-app', 'plugin:jsx-a11y/recommended'],
   plugins: [
