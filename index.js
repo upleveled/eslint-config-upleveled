@@ -163,5 +163,8 @@ module.exports = {
     // Error about creating components within components
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
     'react/no-unstable-nested-components': 'error',
+    // Warn about importing or requiring builtin modules without node: prefix
+    // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md
+    'unicorn/prefer-node-protocol': ['warn', { checkRequire: true }],
   },
 };
