@@ -1,6 +1,8 @@
+const fs = require('fs');
+
 const num = 1;
 let a = 'str';
-console.log(a.substr(0));
+console.log(fs, a.substr(0));
 
 function b(num) {
   if (true) {
