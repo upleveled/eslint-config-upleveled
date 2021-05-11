@@ -6,6 +6,7 @@ module.exports = {
   },
   extends: ['react-app', 'plugin:jsx-a11y/recommended'],
   plugins: [
+    '@next/next',
     '@typescript-eslint',
     'cypress',
     'import',
@@ -166,5 +167,23 @@ module.exports = {
     // Warn about importing or requiring builtin modules without node: prefix
     // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md
     'unicorn/prefer-node-protocol': ['warn', { checkRequire: true }],
+    // Error about importing next/document in a page other than pages/_document.js
+    // https://github.com/vercel/next.js/blob/canary/errors/no-document-import-in-page.md
+    '@next/next/no-document-import-in-page': 'error',
+    // Error about importing next/head in pages/_document.js
+    // https://github.com/vercel/next.js/blob/canary/errors/no-head-import-in-document.md
+    '@next/next/no-head-import-in-document': 'error',
+    // Error about using <a> element to navigate to a page route instead of Next.js <Link /> component
+    // https://github.com/vercel/next.js/blob/canary/errors/no-html-link-for-pages.md
+    '@next/next/no-html-link-for-pages': 'error',
+    // Warn about using a custom font in a single page instead of in pages/_document.js
+    // https://github.com/vercel/next.js/blob/canary/errors/no-page-custom-font.md
+    '@next/next/no-page-custom-font': 'warn',
+    // Warn about setting a title for all pages in a single page by importing <Head /> from next/document
+    // https://github.com/vercel/next.js/blob/canary/errors/no-title-in-document-head.md
+    '@next/next/no-title-in-document-head': 'warn',
+    // Error about not using passHref on a Next.js <Link /> component which wraps a custom component
+    // https://github.com/vercel/next.js/blob/canary/errors/link-passhref.md
+    '@next/next/link-passhref': 'error',
   },
 };
