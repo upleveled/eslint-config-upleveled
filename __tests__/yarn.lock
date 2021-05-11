@@ -319,6 +319,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@next/eslint-plugin-next@^10.2.1-canary.5":
+  version "10.2.1-canary.5"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-10.2.1-canary.5.tgz#887873a588edc935f7cd956407df527b152e3869"
+  integrity sha512-PHptbjBWpK+zC3ozWVsCKc7RMzm5sZUOIWodB+8zhBO/NOM8yWfRVlJO+rkP7h/27mDQYRvZ1K3uRZksBj/FgQ==
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"
@@ -511,10 +516,10 @@
     "@typescript-eslint/types" "4.22.0"
     eslint-visitor-keys "^2.0.0"
 
-"@upleveled/eslint-config-upleveled@1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-1.12.0.tgz#b1134af15535bb18e7ff27af4780af788a9b0735"
-  integrity sha512-k8yyu/yzm2m1+d3NE3X2ImGzawVKPeljNWBgjlYA/grHSK6Far/bSSjoAVkncCDEiM6/TK/iQRI7nNuQefC8ZA==
+"@upleveled/eslint-config-upleveled@1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-1.13.0.tgz#45f243e90b768157d37e7e07940bd1eb3db9225b"
+  integrity sha512-i12+42jBG4TLadLzuTXH8cAjYIRp7UJqlUwW5z2O9VOrzqv3UvQnl40/qj1WVigvk6tThrQwyyuesnpnLypjXw==
 
 acorn-jsx@^5.3.1:
   version "5.3.1"
