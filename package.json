@@ -2,9 +2,9 @@
   "name": "@upleveled/eslint-config-upleveled",
   "version": "1.13.3",
   "type": "module",
-  "main": "index.js",
+  "main": "index.cjs",
   "files": [
-    "index.js",
+    "index.cjs",
     "scripts",
     "templates"
   ],
