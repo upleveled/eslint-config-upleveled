@@ -5,6 +5,7 @@
   "main": "index.js",
   "files": [
     "index.js",
+    "scripts",
     "templates"
   ],
   "repository": "upleveled/eslint-config-upleveled",
