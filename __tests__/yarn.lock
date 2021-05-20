@@ -319,10 +319,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@next/eslint-plugin-next@^10.2.1-canary.5":
-  version "10.2.1-canary.5"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-10.2.1-canary.5.tgz#887873a588edc935f7cd956407df527b152e3869"
-  integrity sha512-PHptbjBWpK+zC3ozWVsCKc7RMzm5sZUOIWodB+8zhBO/NOM8yWfRVlJO+rkP7h/27mDQYRvZ1K3uRZksBj/FgQ==
+"@next/eslint-plugin-next@^10.2.2":
+  version "10.2.2"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-10.2.2.tgz#e6835ed2687078976369b5b5819f8a3b9cbe22fd"
+  integrity sha512-VuESoMro0DrwChhTH1BiML1cyFaIMpxOlLHZpk8kXO4/+hQ2CPJCfmyKLkY9TaV1j4ZeLrTL1LSOj9zr5KMc9Q==
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
@@ -355,10 +355,10 @@
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
-"@types/node@^14.14.37":
-  version "14.14.41"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.41.tgz#d0b939d94c1d7bd53d04824af45f1139b8c45615"
-  integrity sha512-dueRKfaJL4RTtSa7bWeTK1M+VH+Gns73oCgzvYfHZywRCoPSd8EkXBL0mZ9unPTveBn+D9phZBaxuzpwjWkW0g==
+"@types/node@^15.0.1":
+  version "15.3.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.3.1.tgz#23a06b87eedb524016616e886b116b8fdcb180af"
+  integrity sha512-weaeiP4UF4XgF++3rpQhpIJWsCTS4QJw5gvBhQu6cFIxTwyxWIe3xbnrY/o2lTCQ0lsdb8YIUDUvLR4Vuz5rbw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -370,10 +370,10 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/react-dom@^17.0.3":
-  version "17.0.3"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.3.tgz#7fdf37b8af9d6d40127137865bb3fff8871d7ee1"
-  integrity sha512-4NnJbCeWE+8YBzupn/YrJxZ8VnjcJq5iR1laqQ1vkpQgBiA7bwk0Rp24fxsdNinzJY2U+HHS4dJJDPdoMjdJ7w==
+"@types/react-dom@^17.0.5":
+  version "17.0.5"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.5.tgz#df44eed5b8d9e0b13bb0cd38e0ea6572a1231227"
+  integrity sha512-ikqukEhH4H9gr4iJCmQVNzTB307kROe3XFfHAOTxOXPOw7lAoEXnM5KWTkzeANGL5Ce6ABfiMl/zJBYNi7ObmQ==
   dependencies:
     "@types/react" "*"
 
@@ -385,10 +385,10 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
-"@types/react@^17.0.3":
-  version "17.0.3"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.3.tgz#ba6e215368501ac3826951eef2904574c262cc79"
-  integrity sha512-wYOUxIgs2HZZ0ACNiIayItyluADNbONl7kt8lkLjVK8IitMH5QMyAh75Fwhmo37r1m7L2JaFj03sIfxBVDvRAg==
+"@types/react@^17.0.6":
+  version "17.0.6"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.6.tgz#0ec564566302c562bf497d73219797a5e0297013"
+  integrity sha512-u/TtPoF/hrvb63LdukET6ncaplYsvCvmkceasx8oG84/ZCsoLxz9Z/raPBP4lTAiWW1Jb889Y9svHmv8R26dWw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -516,10 +516,10 @@
     "@typescript-eslint/types" "4.22.0"
     eslint-visitor-keys "^2.0.0"
 
-"@upleveled/eslint-config-upleveled@1.13.4":
-  version "1.13.4"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-1.13.4.tgz#e71a59ca11a8c060e15380b964055a66c094f8d1"
-  integrity sha512-ZLqSaJAabm2as+7aTA4bikWPzkA4RGc5ExAEmQ7ADOaDZ5LC9K+gujjA6xjiNHkscnEEApW8yR2ajkMGgVc/Gw==
+"@upleveled/eslint-config-upleveled@1.13.5":
+  version "1.13.5"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-1.13.5.tgz#b08cc013f057ed4cc8b684863a9c45d4e1b244f1"
+  integrity sha512-VS9fC4oL30ArdJrmES95pr8qoFsJUErIiMKL72zkNzZLg09T9JKdfaVq4ai+MpRBSpUbQvc3WUCMLyDOzWVdmA==
 
 acorn-jsx@^5.3.1:
   version "5.3.1"
