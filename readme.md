@@ -12,6 +12,7 @@ To add ESLint configuration to a project, install the dependencies and add the c
 CI=true npx install-peerdeps@latest --yarn --dev @upleveled/eslint-config-upleveled
 cp node_modules/@upleveled/eslint-config-upleveled/templates/{*,.eslint*} .
 touch .gitignore && grep -Fxq ".eslintcache" .gitignore || echo ".eslintcache" >> .gitignore
+node node_modules/@upleveled/eslint-config-upleveled/scripts/start-script.js
 ```
 
 If you have a monorepo using Yarn Workspaces and would like to install the config in the root, change the first two lines to these:
