@@ -8,7 +8,7 @@ object.resolutions = { ...object.resolutions, 'eslint-plugin-react': '7.23.2' };
 
 fs.writeFileSync(
   `${process.cwd()}/package.json`,
-  JSON.stringify(object, null, 2),
+  JSON.stringify(object, null, 2) + '\n',
 );
 
 console.log('resolutions added to package.json');
