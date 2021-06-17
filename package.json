@@ -15,7 +15,7 @@
     "postpublish": "cd __tests__ && yarn update-config-version"
   },
   "peerDependencies": {
-    "@next/eslint-plugin-next": "^10.2.2",
+    "@next/eslint-plugin-next": "^10.2.2 || ^11.0.0",
     "@types/node": "^15.0.1",
     "@types/react": "^17.0.6",
     "@types/react-dom": "^17.0.5",
