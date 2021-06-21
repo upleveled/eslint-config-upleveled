@@ -5,7 +5,7 @@ const packageJsonObj = JSON.parse(fs.readFileSync(packageJsonPath));
 
 packageJsonObj.resolutions = {
   ...packageJsonObj.resolutions,
-  'eslint-plugin-react': '7.23.2',
+  'eslint-plugin-react': '7.24.0',
 };
 
 fs.writeFileSync(
