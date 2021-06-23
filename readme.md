@@ -15,11 +15,10 @@ touch .gitignore && grep -Fxq ".eslintcache" .gitignore || echo ".eslintcache" >
 node node_modules/@upleveled/eslint-config-upleveled/scripts/install.js
 ```
 
-If you have a monorepo using Yarn Workspaces and would like to install the config in the root, change the first two lines to these:
+If you have a monorepo using Yarn Workspaces and would like to install the config in the workspace root, change the first line to this:
 
 ```sh
 CI=true npx install-peerdeps@latest --yarn --dev @upleveled/eslint-config-upleveled --extra-args "-W"
-CI=true npx install-peerdeps@latest --yarn --dev --only-peers eslint-config-react-app --extra-args "-W"
 ```
 
 <!--
