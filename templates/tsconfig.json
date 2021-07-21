@@ -23,11 +23,13 @@
     "strict": true
   },
   "include": [
-    ".eslintrc.js",
+    ".eslintrc.cjs",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js"
+    "**/*.js",
+    "**/*.cjs",
+    "**/*.mjs"
   ],
   "exclude": ["node_modules", "build"]
 }
