@@ -9,14 +9,15 @@
     "update-config-version": "npx install-peerdeps --yarn --dev @upleveled/eslint-config-upleveled && cp node_modules/@upleveled/eslint-config-upleveled/templates/* ./"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.15.4",
     "@next/eslint-plugin-next": "^11.0.0",
     "@types/node": "^16.0.0",
     "@types/react": "^17.0.6",
     "@types/react-dom": "^17.0.5",
     "@typescript-eslint/eslint-plugin": "^4.21.0",
     "@typescript-eslint/parser": "^4.21.0",
-    "@upleveled/eslint-config-upleveled": "1.15.3",
-    "babel-eslint": "^10.1.0",
+    "@upleveled/eslint-config-upleveled": "1.15.5",
+    "@upleveled/eslint-plugin-upleveled": "^1.0.0",
     "eslint": "^7.23.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-import-resolver-typescript": "^2.4.0",
