@@ -15,6 +15,7 @@
     "postpublish": "cd __tests__ && yarn update-config-version"
   },
   "peerDependencies": {
+    "@babel/eslint-parser": "^7.15.4",
     "@next/eslint-plugin-next": "^11.0.0",
     "@types/node": "^16.0.0",
     "@types/react": "^17.0.6",
@@ -22,7 +23,6 @@
     "@typescript-eslint/eslint-plugin": "^4.21.0",
     "@typescript-eslint/parser": "^4.21.0",
     "@upleveled/eslint-plugin-upleveled": "^1.0.0",
-    "babel-eslint": "^10.1.0",
     "eslint": "^7.23.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-import-resolver-typescript": "^2.4.0",
