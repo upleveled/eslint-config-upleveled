@@ -8,6 +8,7 @@ module.exports = {
   plugins: [
     '@next/next',
     '@typescript-eslint',
+    '@upleveled/upleveled',
     'cypress',
     'import',
     'jsx-a11y',
@@ -185,5 +186,8 @@ module.exports = {
     // Error about not using passHref on a Next.js <Link /> component which wraps a custom component
     // https://github.com/vercel/next.js/blob/canary/errors/link-passhref.md
     '@next/next/link-passhref': 'error',
+    // Warn about unnecessary HTML attributes
+    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-html-attributes.md
+    '@upleveled/upleveled/no-unnecessary-html-attributes': 'warn',
   },
 };
