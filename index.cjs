@@ -189,5 +189,11 @@ module.exports = {
     // Warn about unnecessary HTML attributes
     // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-html-attributes.md
     '@upleveled/upleveled/no-unnecessary-html-attributes': 'warn',
+    // Warn about unnecessary for and id attributes with inputs nested inside of labels
+    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-for-and-id.md
+    '@upleveled/upleveled/no-unnecessary-for-and-id': 'warn',
+    // Warn about unnecessary interpolations in template strings
+    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-interpolations.md
+    '@upleveled/upleveled/no-unnecessary-interpolations': 'warn',
   },
 };
