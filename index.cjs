@@ -195,5 +195,7 @@ module.exports = {
     // Warn about unnecessary interpolations in template strings
     // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-interpolations.md
     '@upleveled/upleveled/no-unnecessary-interpolations': 'warn',
+    // Warn on missing `await` within async functions
+    'require-await': 'warn',
   },
 };
