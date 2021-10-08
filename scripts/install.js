@@ -13,10 +13,10 @@ packageJsonObj.resolutions = {
   // the same as using this resolution (and then
   // we don't need to keep maintaining this version
   // number)
-  'eslint-plugin-react': '7.24.0',
+  'eslint-plugin-react': '7.26.1',
   // Should be resolved by this PR:
   // https://github.com/facebook/create-react-app/pull/10817
-  'eslint-plugin-testing-library': '4.6.0',
+  'eslint-plugin-testing-library': '4.12.4',
 };
 
 fs.writeFileSync(
