@@ -2,7 +2,12 @@
   "extends": [
     "github>karlhorky/renovate-config"
   ],
-  "ignorePresets": [
-    ":widenPeerDependencies"
+  "packageRules": [
+    {
+      "matchDepTypes": [
+        "peerDependencies"
+      ],
+      "rangeStrategy": "bump"
+    }
   ]
 }
