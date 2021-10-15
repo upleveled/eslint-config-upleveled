@@ -1,5 +1,8 @@
 {
   "extends": [
     "github>karlhorky/renovate-config"
+  ],
+  "ignorePresets": [
+    ":widenPeerDependencies"
   ]
 }
