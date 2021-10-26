@@ -16,7 +16,7 @@ packageJsonObj.resolutions = {
   'eslint-plugin-react': '7.26.1',
   // Should be resolved by this PR:
   // https://github.com/facebook/create-react-app/pull/10817
-  'eslint-plugin-testing-library': '4.12.4',
+  'eslint-plugin-testing-library': '5.0.0',
 };
 
 fs.writeFileSync(
