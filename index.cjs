@@ -197,5 +197,7 @@ module.exports = {
     '@upleveled/upleveled/no-unnecessary-interpolations': 'warn',
     // Warn on missing `await` within async functions
     'require-await': 'warn',
+    // Warn on dangling promises without await
+    '@typescript-eslint/no-floating-promises': 'warn',
   },
 };
