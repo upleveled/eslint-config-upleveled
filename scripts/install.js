@@ -6,17 +6,11 @@ const packageJsonObj = JSON.parse(fs.readFileSync(packageJsonPath));
 
 packageJsonObj.resolutions = {
   ...packageJsonObj.resolutions,
-  // There is not yet a PR to upgrade this, but
-  // after facebook/create-react-app#10817 below
-  // is merged, it's possible that we can instead
-  // run `yarn upgrade react-scripts`, which acts
-  // the same as using this resolution (and then
-  // we don't need to keep maintaining this version
-  // number)
-  'eslint-plugin-react': '7.26.1',
-  // Should be resolved by this PR:
-  // https://github.com/facebook/create-react-app/pull/10817
-  'eslint-plugin-testing-library': '5.0.0',
+  '@typescript-eslint/eslint-plugin':
+    packageJsonObj.devDependencies['@typescript-eslint/eslint-plugin'],
+  '@typescript-eslint/parser':
+    packageJsonObj.devDependencies['@typescript-eslint/parser'],
+  'eslint-plugin-react': packageJsonObj.devDependencies['eslint-plugin-react'],
 };
 
 fs.writeFileSync(
