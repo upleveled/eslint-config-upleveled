@@ -1,3 +1,6 @@
+// This is not currently needed, as of Dec 2021
+//
+// Probably because of the update to react-scripts@5
 import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 
