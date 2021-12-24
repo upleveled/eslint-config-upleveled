@@ -6,11 +6,15 @@ const packageJsonObj = JSON.parse(fs.readFileSync(packageJsonPath));
 
 packageJsonObj.resolutions = {
   ...packageJsonObj.resolutions,
-  '@typescript-eslint/eslint-plugin':
-    packageJsonObj.devDependencies['@typescript-eslint/eslint-plugin'],
-  '@typescript-eslint/parser':
-    packageJsonObj.devDependencies['@typescript-eslint/parser'],
-  'eslint-plugin-react': packageJsonObj.devDependencies['eslint-plugin-react'],
+  '@typescript-eslint/eslint-plugin': packageJsonObj.devDependencies[
+    '@typescript-eslint/eslint-plugin'
+  ].replace('^', ''),
+  '@typescript-eslint/parser': packageJsonObj.devDependencies[
+    '@typescript-eslint/parser'
+  ].replace('^', ''),
+  'eslint-plugin-react': packageJsonObj.devDependencies[
+    'eslint-plugin-react'
+  ].replace('^', ''),
 };
 
 fs.writeFileSync(
