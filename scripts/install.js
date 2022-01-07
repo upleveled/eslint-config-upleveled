@@ -1,6 +1,3 @@
-// This is not currently needed, as of Dec 2021
-//
-// Probably because of the update to react-scripts@5
 import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 
@@ -9,15 +6,34 @@ const packageJsonObj = JSON.parse(fs.readFileSync(packageJsonPath));
 
 packageJsonObj.resolutions = {
   ...packageJsonObj.resolutions,
-  '@typescript-eslint/eslint-plugin': packageJsonObj.devDependencies[
-    '@typescript-eslint/eslint-plugin'
-  ].replace('^', ''),
-  '@typescript-eslint/parser': packageJsonObj.devDependencies[
-    '@typescript-eslint/parser'
-  ].replace('^', ''),
-  'eslint-plugin-react': packageJsonObj.devDependencies[
-    'eslint-plugin-react'
-  ].replace('^', ''),
+  // Force installation of the "dependencies" version of these
+  // ESLint dependencies to avoid conflicting version numbers
+  // between `eslint-config-react-app` and
+  // `@upleveled/eslint-config-upleveled` (they use the same
+  // ESLint dependencies, but may have slightly different
+  // versions).
+  //
+  // These conflicts can result in ESLint errors like:
+  //
+  // ESLint couldn't determine the plugin "import" uniquely.
+  //
+  // - /home/runner/work/preflight/preflight/node_modules/eslint-plugin-import/lib/index.js (loaded in ".eslintrc.cjs » @upleveled/eslint-config-upleveled")
+  // - /home/runner/work/preflight/preflight/node_modules/eslint-config-react-app/node_modules/eslint-plugin-import/lib/index.js (loaded in ".eslintrc.cjs » @upleveled/eslint-config-upleveled » eslint-config-react-app")
+  ...[
+    '@typescript-eslint/eslint-plugin',
+    '@typescript-eslint/parser',
+    'eslint-plugin-import',
+    'eslint-plugin-react',
+  ].reduce(
+    (resolutions, packageName) => ({
+      ...resolutions,
+      [packageName]: packageJsonObj.devDependencies[packageName].replace(
+        '^',
+        '',
+      ),
+    }),
+    {},
+  ),
 };
 
 fs.writeFileSync(
