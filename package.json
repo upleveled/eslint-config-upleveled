@@ -17,24 +17,24 @@
   "peerDependencies": {
     "@babel/eslint-parser": "^7.16.5",
     "@next/eslint-plugin-next": "^12.0.8",
-    "@types/node": "^17.0.8",
+    "@types/node": "^17.0.10",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.9.1",
-    "@typescript-eslint/parser": "^5.9.1",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
     "@upleveled/eslint-plugin-upleveled": "^2.0.1",
-    "eslint": "^8.6.0",
+    "eslint": "^8.7.0",
     "eslint-config-react-app": "^7.0.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^25.3.4",
+    "eslint-plugin-jest": "^25.7.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-testing-library": "^5.0.3",
-    "eslint-plugin-unicorn": "^40.0.0",
-    "typescript": "^4.5.4"
+    "eslint-plugin-unicorn": "^40.1.0",
+    "typescript": "^4.5.5"
   }
 }
