@@ -187,9 +187,6 @@ module.exports = {
     // Error on running eval with a variable
     // https://github.com/nodesecurity/eslint-plugin-security#detect-eval-with-expression
     'security/detect-eval-with-expression': 'error',
-    // Warn on regular expressions using a variable
-    // https://github.com/nodesecurity/eslint-plugin-security#detect-non-literal-regexp
-    'security/detect-non-literal-regexp': 'warn',
     // Warn on comments without a space between the `//` and the comment
     // https://github.com/eslint/eslint/blob/master/docs/rules/spaced-comment.md
     'spaced-comment': ['warn', 'always', { markers: ['/'] }],
@@ -211,15 +208,9 @@ module.exports = {
     // Warn on identical conditions for if / else if chains
     // https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/no-identical-conditions.md
     'sonarjs/no-identical-conditions': 'warn',
-    // Warn on identical function implementations
-    // https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/no-identical-functions.md
-    'sonarjs/no-identical-functions': 'warn',
     // Warn on return of boolean literals inside if / else
     // https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/prefer-single-boolean-return.md
     'sonarjs/prefer-single-boolean-return': 'warn',
-    // Warn on potentially catastrophic exponential-time regular expressions
-    // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unsafe-regex.md
-    'unicorn/no-unsafe-regex': 'warn',
     // Warn on usage of .map(...).flat() and recommend .flatMap()
     // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-array-flat-map.md
     'unicorn/prefer-array-flat-map': 'warn',
