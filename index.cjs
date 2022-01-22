@@ -14,6 +14,7 @@ module.exports = {
     'jsx-a11y',
     'react',
     'react-hooks',
+    'security',
     'unicorn',
   ],
   env: {
@@ -173,12 +174,21 @@ module.exports = {
     // Disable obsolete rule
     // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
     'jsx-a11y/no-onchange': 'off',
-    // Error about creating components within components
+    // Error on creating components within components
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
     'react/no-unstable-nested-components': 'error',
-    // Prevent unused React prop types
+    // Error on unused React prop types
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
     'react/no-unused-prop-types': 'error',
+    // Error on child_process.exec usage with variables
+    // https://github.com/nodesecurity/eslint-plugin-security#detect-child-process
+    'security/detect-child-process': 'error',
+    // Error on running eval with a variable
+    // https://github.com/nodesecurity/eslint-plugin-security#detect-eval-with-expression
+    'security/detect-eval-with-expression': 'error',
+    // Warn on regular expressions using a variable
+    // https://github.com/nodesecurity/eslint-plugin-security#detect-non-literal-regexp
+    'security/detect-non-literal-regexp': 'warn',
     // Warn on comments without a space between the `//` and the comment
     // https://github.com/eslint/eslint/blob/master/docs/rules/spaced-comment.md
     'spaced-comment': ['warn', 'always', { markers: ['/'] }],
@@ -192,7 +202,29 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
     'react/no-array-index-key': ['error'],
     // Warn on missing `await` within async functions
+    // https://eslint.org/docs/rules/require-await
     'require-await': 'warn',
+    // Warn on duplicate code in if / else if branches
+    // https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/no-duplicated-branches.md
+    'sonarjs/no-duplicated-branches': 'warn',
+    // Warn on identical conditions for if / else if chains
+    // https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/no-identical-conditions.md
+    'sonarjs/no-identical-conditions': 'warn',
+    // Warn on identical function implementations
+    // https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/no-identical-functions.md
+    'sonarjs/no-identical-functions': 'warn',
+    // Warn on return of boolean literals inside if / else
+    // https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/prefer-single-boolean-return.md
+    'sonarjs/prefer-single-boolean-return': 'warn',
+    // Warn on potentially catastrophic exponential-time regular expressions
+    // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unsafe-regex.md
+    'unicorn/no-unsafe-regex': 'warn',
+    // Warn on usage of .map(...).flat() and recommend .flatMap()
+    // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-array-flat-map.md
+    'unicorn/prefer-array-flat-map': 'warn',
+    // Warn on legacy techniques to flatten and recommend .flat()
+    // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-array-flat.md
+    'unicorn/prefer-array-flat': 'warn',
     // Warn about importing or requiring builtin modules without node: prefix
     // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md
     'unicorn/prefer-node-protocol': ['warn', { checkRequire: true }],

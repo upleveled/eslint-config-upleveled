@@ -33,6 +33,8 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-sonarjs": "^0.11.0",
     "eslint-plugin-testing-library": "^5.0.3",
     "eslint-plugin-unicorn": "^40.1.0",
     "typescript": "^4.5.5"
