@@ -15,6 +15,7 @@ module.exports = {
     'react',
     'react-hooks',
     'security',
+    'sonarjs',
     'unicorn',
   ],
   env: {
