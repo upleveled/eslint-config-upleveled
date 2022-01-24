@@ -126,6 +126,9 @@ module.exports = {
     // @typescript-eslint plugin
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'error',
+    // Warn about submit handler without event.preventDefault()
+    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-submit-handler-without-preventDefault.md
+    '@upleveled/upleveled/no-submit-handler-without-preventDefault': 'error',
     // Warn about unnecessary HTML attributes
     // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-html-attributes.md
     '@upleveled/upleveled/no-unnecessary-html-attributes': 'warn',
