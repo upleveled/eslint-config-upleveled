@@ -156,10 +156,9 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
-    // Warn about variable shadowing
-    // note you must disable the base rule as it can report incorrect errors
-    "no-shadow": "off",
-    "@typescript-eslint/no-shadow": ["error"]
+    // Warn about variable shadowing 
+    // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-shadow.md
+    '@typescript-eslint/no-shadow': 'error',
     // Warn on usage of var (which doesn't follow block scope rules)
     // https://eslint.org/docs/rules/no-var
     'no-var': 'warn',
