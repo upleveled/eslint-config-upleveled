@@ -162,6 +162,22 @@ module.exports = {
     // Disable obsolete rule
     // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
     'jsx-a11y/no-onchange': 'off',
+    // Warn on restricted syntax
+    'no-restricted-syntax': [
+      'warn',
+      {
+        selector:
+          "ExpressionStatement CallExpression[callee.object.name='location'][callee.property.name='reload']",
+        message:
+          'Update content and elements with React instead of using location.reload()',
+      },
+      {
+        selector:
+          "ExpressionStatement CallExpression[callee.object.object.name='window'][callee.object.property.name='location'][callee.property.name='reload']",
+        message:
+          'Update content and elements with React instead of using location.reload()',
+      },
+    ],
     // Warn on usage of var (which doesn't follow block scope rules)
     // https://eslint.org/docs/rules/no-var
     'no-var': 'warn',
