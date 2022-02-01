@@ -95,6 +95,9 @@ module.exports = {
     ],
     // Warn on dangling promises without await
     '@typescript-eslint/no-floating-promises': 'warn',
+    // Warn about variable shadowing
+    // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-shadow.md
+    '@typescript-eslint/no-shadow': 'warn',
     // Disable built-in ESLint no-constant-condition
     // to use the more powerful @typescript-eslint/no-unnecessary-condition
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-condition.md
@@ -156,9 +159,9 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
-    // Warn about variable shadowing
-    // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-shadow.md
-    '@typescript-eslint/no-shadow': 'warn',
+    // Disable obsolete rule
+    // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
+    'jsx-a11y/no-onchange': 'off',
     // Warn on usage of var (which doesn't follow block scope rules)
     // https://eslint.org/docs/rules/no-var
     'no-var': 'warn',
@@ -171,28 +174,16 @@ module.exports = {
     // Next.js and Gatsby no longer requires the import.
     // https://github.com/yannickcr/eslint-plugin-react/issues/2440#issuecomment-683433266
     'react/react-in-jsx-scope': 'off',
-    // Warn about components that have a closing
-    // tag but no children
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
-    'react/self-closing-comp': 'warn',
-    // Disable obsolete rule
-    // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
-    'jsx-a11y/no-onchange': 'off',
     // Error on creating components within components
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
     'react/no-unstable-nested-components': 'error',
     // Error on unused React prop types
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
     'react/no-unused-prop-types': 'error',
-    // Error on child_process.exec usage with variables
-    // https://github.com/nodesecurity/eslint-plugin-security#detect-child-process
-    'security/detect-child-process': 'error',
-    // Error on running eval with a variable
-    // https://github.com/nodesecurity/eslint-plugin-security#detect-eval-with-expression
-    'security/detect-eval-with-expression': 'error',
-    // Warn on comments without a space between the `//` and the comment
-    // https://github.com/eslint/eslint/blob/master/docs/rules/spaced-comment.md
-    'spaced-comment': ['warn', 'always', { markers: ['/'] }],
+    // Warn about components that have a closing
+    // tag but no children
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
+    'react/self-closing-comp': 'warn',
     // Warn about unnecessary curly braces around props and string literal children
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
     'react/jsx-curly-brace-presence': 'warn',
@@ -205,6 +196,15 @@ module.exports = {
     // Warn on missing `await` within async functions
     // https://eslint.org/docs/rules/require-await
     'require-await': 'warn',
+    // Error on child_process.exec usage with variables
+    // https://github.com/nodesecurity/eslint-plugin-security#detect-child-process
+    'security/detect-child-process': 'error',
+    // Error on running eval with a variable
+    // https://github.com/nodesecurity/eslint-plugin-security#detect-eval-with-expression
+    'security/detect-eval-with-expression': 'error',
+    // Warn on comments without a space between the `//` and the comment
+    // https://github.com/eslint/eslint/blob/master/docs/rules/spaced-comment.md
+    'spaced-comment': ['warn', 'always', { markers: ['/'] }],
     // Warn on duplicate code in if / else if branches
     // https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/no-duplicated-branches.md
     'sonarjs/no-duplicated-branches': 'warn',
