@@ -23,6 +23,7 @@ packageJsonObj.resolutions = {
     '@typescript-eslint/eslint-plugin',
     '@typescript-eslint/parser',
     'eslint-plugin-import',
+    'eslint-plugin-jest',
     'eslint-plugin-react',
   ].reduce(
     (resolutions, packageName) => ({
