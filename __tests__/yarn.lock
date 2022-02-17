@@ -1425,10 +1425,10 @@
     "@typescript-eslint/types" "5.7.0"
     eslint-visitor-keys "^3.0.0"
 
-"@upleveled/eslint-config-upleveled@2.4.4":
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-2.4.4.tgz#320321510f392d30c4ad7f2c5dd678a83de5759f"
-  integrity sha512-VSSYWYcdrW1u7142TnOkLWKUckPRl76XjgvEscx+D44aMEEMe9WKammSGkZaMey9IE0y4PXNV0eVg76waCZSPA==
+"@upleveled/eslint-config-upleveled@2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-2.4.5.tgz#4b5c0fbb57f8be67f9dfadaa9a61668f25008518"
+  integrity sha512-ABawL/fjiP8MRQ/CBWumyWobOu2+FsdXDaIuXC7qT9hK8KlcrDsUCMB3q5yy5PLiplfx+2oTc2vOGHG8EHLYFQ==
 
 "@upleveled/eslint-plugin-upleveled@^2.1.1":
   version "2.1.1"
