@@ -32,6 +32,8 @@ packageJsonObj.resolutions = {
         '^',
         '',
       ),
+      [`eslint-config-react-app/${packageName}`]:
+        packageJsonObj.devDependencies[packageName].replace('^', ''),
     }),
     {},
   ),
