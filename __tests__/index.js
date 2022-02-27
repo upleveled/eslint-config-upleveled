@@ -20,8 +20,8 @@ const d = { e: { f: 1 } };
 console.log(d?.e?.f);
 
 export function Component() {
-  const [user, setUser] = useState(null);
-  console.log(user, setUser);
+  const [user, updateUser] = useState(null);
+  console.log(user, updateUser);
   // New JSX transform: JSX does not throw an error when React not in scope
   // https://github.com/yannickcr/eslint-plugin-react/issues/2440#issuecomment-683433266
   return (
