@@ -208,6 +208,9 @@ module.exports = {
     // Warn if a `key` is set to an `index`
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
     'react/no-array-index-key': ['error'],
+    // Warn on usage of `class` prop instead of `className`
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
+    'react/no-unknown-property': 'warn',
     // Error on creating components within components
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
     'react/no-unstable-nested-components': 'error',
