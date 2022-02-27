@@ -184,22 +184,6 @@ module.exports = {
     // Warn about non-changing variables not being constants
     // https://eslint.org/docs/rules/prefer-const
     'prefer-const': 'warn',
-    // Error on useless React fragments
-    'react/jsx-no-useless-fragment': 'error',
-    // Disable rule because the new JSX transform in React 17,
-    // Next.js and Gatsby no longer requires the import.
-    // https://github.com/yannickcr/eslint-plugin-react/issues/2440#issuecomment-683433266
-    'react/react-in-jsx-scope': 'off',
-    // Error on creating components within components
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
-    'react/no-unstable-nested-components': 'error',
-    // Error on unused React prop types
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
-    'react/no-unused-prop-types': 'error',
-    // Warn about components that have a closing
-    // tag but no children
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
-    'react/self-closing-comp': 'warn',
     // Warn about unnecessary curly braces around props and string literal children
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
     'react/jsx-curly-brace-presence': 'warn',
@@ -213,9 +197,25 @@ module.exports = {
         warnOnDuplicates: true,
       },
     ],
+    // Error on useless React fragments
+    'react/jsx-no-useless-fragment': 'error',
     // Warn if a `key` is set to an `index`
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
     'react/no-array-index-key': ['error'],
+    // Error on creating components within components
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
+    'react/no-unstable-nested-components': 'error',
+    // Error on unused React prop types
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
+    'react/no-unused-prop-types': 'error',
+    // Disable rule because the new JSX transform in React 17,
+    // Next.js and Gatsby no longer requires the import.
+    // https://github.com/yannickcr/eslint-plugin-react/issues/2440#issuecomment-683433266
+    'react/react-in-jsx-scope': 'off',
+    // Warn about components that have a closing
+    // tag but no children
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
+    'react/self-closing-comp': 'warn',
     // Warn on missing `await` within async functions
     // https://eslint.org/docs/rules/require-await
     'require-await': 'warn',
