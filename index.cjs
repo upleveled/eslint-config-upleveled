@@ -187,6 +187,9 @@ module.exports = {
     // Warn about state variable and setter names which are not symmetrically named
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md
     'react/hook-use-state': 'warn',
+    // Error on missing sandbox attribute on iframes (good security practice)
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/iframe-missing-sandbox.md
+    'react/iframe-missing-sandbox': 'error',
     // Warn about unnecessary curly braces around props and string literal children
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
     'react/jsx-curly-brace-presence': 'warn',
