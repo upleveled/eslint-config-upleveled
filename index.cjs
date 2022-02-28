@@ -231,6 +231,9 @@ module.exports = {
     // tag but no children
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
     'react/self-closing-comp': 'warn',
+    // Error on passing children to void elements
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
+    'react/void-dom-elements-no-children': 'error',
     // Warn on missing `await` within async functions
     // https://eslint.org/docs/rules/require-await
     'require-await': 'warn',
