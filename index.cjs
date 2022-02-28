@@ -192,7 +192,10 @@ module.exports = {
     'react/iframe-missing-sandbox': 'error',
     // Warn about unnecessary curly braces around props and string literal children
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
-    'react/jsx-curly-brace-presence': 'warn',
+    'react/jsx-curly-brace-presence': [
+      'warn',
+      { props: 'always', children: 'always', propElementValues: 'always' },
+    ],
     // Error on missing or incorrect `key` props in maps in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-key.md
     'react/jsx-key': [
