@@ -211,6 +211,9 @@ module.exports = {
     // Warn if a `key` is set to an `index`
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
     'react/no-array-index-key': ['error'],
+    // Error on invalid HTML attributes (only `rel` as of March 2022)
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-invalid-html-attribute.md
+    'react/no-invalid-html-attribute': 'error',
     // Warn on usage of `class` prop instead of `className`
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
     'react/no-unknown-property': 'warn',
