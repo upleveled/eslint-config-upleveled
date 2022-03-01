@@ -194,7 +194,7 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
     'react/jsx-curly-brace-presence': [
       'warn',
-      { props: 'always', children: 'always', propElementValues: 'always' },
+      { props: 'never', children: 'never', propElementValues: 'always' },
     ],
     // Error on missing or incorrect `key` props in maps in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-key.md
