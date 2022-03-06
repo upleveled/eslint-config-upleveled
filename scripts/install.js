@@ -28,13 +28,12 @@ packageJsonObj.resolutions = {
   ].reduce(
     (resolutions, packageName) => ({
       ...resolutions,
-      [packageName]: packageJsonObj.devDependencies[packageName].replace(
-        '^',
-        '',
-      ),
+      [packageName]: packageJsonObj.devDependencies[packageName],
     }),
     {},
   ),
+  '@typescript-eslint/utils':
+    packageJsonObj.devDependencies['@typescript-eslint/parser'],
 };
 
 fs.writeFileSync(
