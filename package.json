@@ -37,6 +37,6 @@
     "eslint-plugin-sonarjs": "0.12.0",
     "eslint-plugin-testing-library": "5.0.6",
     "eslint-plugin-unicorn": "41.0.0",
-    "typescript": "4.6.2"
+    "typescript": "4.5.5"
   }
 }
