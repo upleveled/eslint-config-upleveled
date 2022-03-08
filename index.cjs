@@ -173,6 +173,18 @@ module.exports = {
       },
       {
         selector:
+          "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelector']",
+        message:
+          'Use Controlled components instead of document.querySelector()',
+      },
+      {
+        selector:
+          "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll']",
+        message:
+          'Use Controlled components instead of document.querySelectorAll()',
+      },
+      {
+        selector:
           "ExpressionStatement CallExpression[callee.object.object.name='window'][callee.object.property.name='location'][callee.property.name='reload']",
         message:
           'Update content and elements with React instead of using location.reload()',
