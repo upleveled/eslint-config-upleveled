@@ -50,7 +50,14 @@ module.exports = {
     // Error about not using passHref on a Next.js <Link /> component which wraps a custom component
     // https://github.com/vercel/next.js/blob/canary/errors/link-passhref.md
     '@next/next/link-passhref': 'error',
-    // Naming conventions for variables
+    // Error on dangerous types like:
+    // - uppercase primitive types
+    // - Function
+    // - Object and {}
+    // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/ban-types.md
+    '@typescript-eslint/ban-types': ['error'],
+    // Warn on variables not following naming convention
+    // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/naming-convention.md
     '@typescript-eslint/naming-convention': [
       'warn',
       // Defaults from @typescript-eslint/eslint-plugin
