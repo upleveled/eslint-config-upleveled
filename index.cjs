@@ -101,7 +101,7 @@ module.exports = {
       },
     ],
     // Warn on dangling promises without await
-    '@typescript-eslint/no-floating-promises': 'warn',
+    '@typescript-eslint/no-floating-promises': ['warn', { ignoreVoid: false }],
     // Warn about variable shadowing
     // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-shadow.md
     '@typescript-eslint/no-shadow': 'warn',
