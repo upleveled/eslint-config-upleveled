@@ -22,7 +22,7 @@
     "@types/react-dom": "18.0.0",
     "@typescript-eslint/eslint-plugin": "5.18.0",
     "@typescript-eslint/parser": "5.18.0",
-    "@upleveled/eslint-plugin-upleveled": "2.1.3",
+    "@upleveled/eslint-plugin-upleveled": "2.1.4",
     "eslint": "8.13.0",
     "eslint-config-react-app": "7.0.0",
     "eslint-import-resolver-typescript": "2.7.1",
