@@ -17,9 +17,9 @@
   "peerDependencies": {
     "@babel/eslint-parser": "7.17.0",
     "@next/eslint-plugin-next": "12.1.5",
-    "@types/node": "17.0.29",
+    "@types/node": "17.0.30",
     "@types/react": "18.0.8",
-    "@types/react-dom": "18.0.0",
+    "@types/react-dom": "18.0.3",
     "@typescript-eslint/eslint-plugin": "5.21.0",
     "@typescript-eslint/parser": "5.21.0",
     "@upleveled/eslint-plugin-upleveled": "2.1.4",
@@ -37,6 +37,6 @@
     "eslint-plugin-sonarjs": "0.13.0",
     "eslint-plugin-testing-library": "5.3.1",
     "eslint-plugin-unicorn": "42.0.0",
-    "typescript": "4.6.3"
+    "typescript": "4.6.4"
   }
 }
