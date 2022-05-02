@@ -47,9 +47,6 @@ module.exports = {
     // Warn about setting a title for all pages in a single page by importing <Head /> from next/document
     // https://github.com/vercel/next.js/blob/canary/errors/no-title-in-document-head.md
     '@next/next/no-title-in-document-head': 'warn',
-    // Error about not using passHref on a Next.js <Link /> component which wraps a custom component
-    // https://github.com/vercel/next.js/blob/canary/errors/link-passhref.md
-    '@next/next/link-passhref': 'error',
     // Error on dangerous types like:
     // - uppercase primitive types
     // - Function
