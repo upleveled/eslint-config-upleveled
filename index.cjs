@@ -167,21 +167,27 @@ module.exports = {
       'warn',
       {
         selector:
-          "ExpressionStatement CallExpression[callee.object.name='location'][callee.property.name='reload']",
-        message:
-          'Update content and elements with React instead of using location.reload()',
-      },
-      {
-        selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelector']",
         message:
-          'Use Controlled components instead of document.querySelector()',
+          'Using querySelector or something similar DOM manipulation methods can give unexpected results if there are multiple elements that match the query, especially if there is one outside the element that matches it.',
       },
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll']",
         message:
-          'Use Controlled components instead of document.querySelectorAll()',
+          'Using querySelectorAll or something similar DOM manipulation methods can give unexpected results if there are multiple elements that match the query, especially if there is one outside the element that matches it.',
+      },
+      {
+        selector:
+          "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='getElementById']",
+        message:
+          'Using getElementById or something similar DOM manipulation methods can give unexpected results if there are multiple elements that match the query, especially if there is one outside the element that matches it.',
+      },
+      {
+        selector:
+          "ExpressionStatement CallExpression[callee.object.name='location'][callee.property.name='reload']",
+        message:
+          'Update content and elements with React instead of using location.reload()',
       },
       {
         selector:
