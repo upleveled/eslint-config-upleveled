@@ -169,19 +169,19 @@ module.exports = {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelector']",
         message:
-          'Using querySelector or something similar DOM manipulation methods can give unexpected results if there are multiple elements that match the query, especially if there is one outside the element that matches it.',
+          'Using `document.querySelector()` can give unexpected results if there are multiple elements that match the query (for example, when the component is used more than once)',
       },
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll']",
         message:
-          'Using querySelectorAll or something similar DOM manipulation methods can give unexpected results if there are multiple elements that match the query, especially if there is one outside the element that matches it.',
+          'Using `document.querySelectorAll()` can give unexpected results if there are multiple elements that match the query (for example, when the component is used more than once)',
       },
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='getElementById']",
         message:
-          'Using getElementById or something similar DOM manipulation methods can give unexpected results if there are multiple elements that match the query, especially if there is one outside the element that matches it.',
+          'Using `document.getElementById()` can give unexpected results if there are multiple elements that match the query (for example, when the component is used more than once)',
       },
       {
         selector:
