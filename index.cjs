@@ -165,16 +165,10 @@ module.exports = {
     // Warn on restricted syntax
     'no-restricted-syntax': [
       'warn',
-      /**
-       * Currently it is not possible to use markdown links inside of the eslint warn/error message.
-       * related links:
-       * - https://github.com/microsoft/vscode/issues/54272
-       * - https://github.com/microsoft/vscode-eslint/issues/418
-       * - https://github.com/microsoft/vscode/issues/11847
-       *
-       * UpLeveled issue with an alternative solution to the problem:
-       * - https://github.com/upleveled/eslint-config-upleveled/issues/123
-       */
+       // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
+       //
+       // FIXME: Switch to a custom rule
+       // https://github.com/upleveled/eslint-config-upleveled/issues/123
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelector']",
