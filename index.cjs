@@ -167,8 +167,9 @@ module.exports = {
       'warn',
       /** Currently it is not possible to use markdown links inside of the eslint warn/error message.
        * related links:
-       *   https://github.com/microsoft/vscode/issues/54272
-       *   https://github.com/microsoft/vscode/issues/11847
+       * - https://github.com/microsoft/vscode/issues/54272
+       * - https://github.com/microsoft/vscode-eslint/issues/418
+       * - https://github.com/microsoft/vscode/issues/11847
        */
       {
         selector:
