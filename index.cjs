@@ -165,24 +165,30 @@ module.exports = {
     // Warn on restricted syntax
     'no-restricted-syntax': [
       'warn',
+      /** Currently it is not possible to use markdown links inside of the eslint warn/error message.
+       * related links:
+       * - https://github.com/microsoft/vscode/issues/54272
+       * - https://github.com/microsoft/vscode/issues/11847
+       */
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelector']",
         message: `Using document.querySelector() can give unexpected results, especially if multiple elements match the query (for example, when the component is used more than once); as a piece of advice, use State or Refs instead
-        https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll']",
         message: `Using document.querySelectorAll() can give unexpected results, especially if multiple elements match the query (for example, when the component is used more than once); as a piece of advice, use State or Refs instead
-        https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='getElementById']",
         message: `Using document.getElementById() can give unexpected results, especially if multiple elements match the query (for example, when the component is used more than once); as a piece of advice, use State or Refs instead
-        https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
+
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='location'][callee.property.name='reload']",
