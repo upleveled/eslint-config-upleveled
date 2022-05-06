@@ -169,6 +169,29 @@ module.exports = {
     // Warn on restricted syntax
     'no-restricted-syntax': [
       'warn',
+      // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
+      //
+      // FIXME: Switch to a custom rule
+      // https://github.com/upleveled/eslint-config-upleveled/issues/123
+      {
+        selector:
+          "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelector']",
+        message: `Using document.querySelector() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+      },
+      {
+        selector:
+          "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll']",
+        message: `Using document.querySelectorAll() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+      },
+      {
+        selector:
+          "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='getElementById']",
+        message: `Using document.getElementById() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+      },
+
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='location'][callee.property.name='reload']",
