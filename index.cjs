@@ -168,20 +168,20 @@ module.exports = {
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelector']",
-        message:
-          'Using `document.querySelector()` can give unexpected results in between renders or if there are multiple elements that match the query (for example, when the component is used more than once), [learn more](https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930)',
+        message: `Using document.querySelectorAll() can give unexpected results specially if there are multiple elements that match the query (for example, when the component is used more than once), as an advise use State or Refs instead
+        https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll']",
-        message:
-          'Using `document.querySelectorAll()` can give unexpected results in between renders or if there are multiple elements that match the query (for example, when the component is used more than once), [learn more](https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930)',
+        message: `Using document.querySelectorAll() can give unexpected results specially if there are multiple elements that match the query (for example, when the component is used more than once), as an advise use State or Refs instead
+        https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='getElementById']",
-        message:
-          'Using `document.getElementById()` can give unexpected results in between renders or if there are multiple elements that match the query (for example, when the component is used more than once), [learn more](https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930)',
+        message: `Using document.querySelectorAll() can give unexpected results specially if there are multiple elements that match the query (for example, when the component is used more than once), as an advise use State or Refs instead
+        https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
       {
         selector:
