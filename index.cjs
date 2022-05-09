@@ -181,13 +181,31 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
       {
         selector:
+          "VariableDeclaration VariableDeclarator CallExpression[callee.object.name='document'][callee.property.name='querySelector']",
+        message: `Using document.querySelector() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+      },
+      {
+        selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll']",
         message: `Using document.querySelectorAll() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
 https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
       {
         selector:
+          "VariableDeclaration VariableDeclarator CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll']",
+        message: `Using document.querySelectorAll() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+      },
+      {
+        selector:
           "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='getElementById']",
+        message: `Using document.getElementById() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+      },
+      {
+        selector:
+          "VariableDeclaration VariableDeclarator CallExpression[callee.object.name='document'][callee.property.name='getElementById']",
         message: `Using document.getElementById() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
 https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
