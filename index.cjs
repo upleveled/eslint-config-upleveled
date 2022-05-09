@@ -187,7 +187,7 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
       {
         selector:
-          "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='getElementById'], VariableDeclaration VariableDeclarator CallExpression[callee.object.name='document'][callee.property.name='getElementById']",
+          "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='getElementById'], VariableDeclaration VariableDeclarator[init.callee.object.name!='ReactDOM'][init.callee.property.name!='createRoot'] CallExpression[callee.object.name='document'][callee.property.name='getElementById']",
         message: `Using document.getElementById() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
 https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
