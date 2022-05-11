@@ -192,6 +192,17 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
 https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
 
+      // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
+      //
+      // FIXME: Switch to a custom rule
+      // https://github.com/upleveled/eslint-config-upleveled/issues/126
+      {
+        selector:
+          'FunctionDeclaration VariableDeclaration:has(VariableDeclarator > TaggedTemplateExpression > MemberExpression[object.name="styled"][property]), FunctionDeclaration VariableDeclaration:has(VariableDeclarator > TaggedTemplateExpression[tag.name="css"])',
+        message:
+          'Declaring Emotion styles or a styled component within a React component will cause the element to get recreated, causing loss of state and other problems - see the react/no-unstable-nested-components docs for more info https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md',
+      },
+
       {
         selector:
           "ExpressionStatement CallExpression[callee.object.name='location'][callee.property.name='reload']",
