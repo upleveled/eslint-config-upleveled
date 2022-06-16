@@ -215,6 +215,13 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
         message:
           'Update content and elements with React instead of using location.reload()',
       },
+
+      {
+        selector:
+          "JSXAttribute[name.name='href'] > Literal[value=/^\\./], JSXAttribute[name.name='href'] > JSXExpressionContainer > TemplateLiteral TemplateElement:first-child[value.cooked=/^\\./]",
+        message:
+          'Always start href relative URLs with a forward slash (aka use root relative URLs) - read more at https://www.webdevbydoing.com/absolute-relative-and-root-relative-file-paths/',
+      },
     ],
     // Warn on usage of var (which doesn't follow block scope rules)
     // https://eslint.org/docs/rules/no-var
