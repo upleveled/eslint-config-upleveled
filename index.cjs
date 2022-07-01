@@ -308,7 +308,7 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
     'unicorn/prefer-array-flat': 'warn',
     // Warn about importing or requiring builtin modules without node: prefix
     // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md
-    'unicorn/prefer-node-protocol': ['warn', { checkRequire: true }],
+    'unicorn/prefer-node-protocol': ['warn'],
     // Warn about usage of substring or substr instead of slice
     'unicorn/prefer-string-slice': 'warn',
   },
