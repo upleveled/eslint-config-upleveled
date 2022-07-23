@@ -109,10 +109,10 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-condition': 'warn',
     // Prevent unnecessary type arguments
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-arguments.md
-    '@typescript-eslint/no-unnecessary-type-arguments': 'error',
+    '@typescript-eslint/no-unnecessary-type-arguments': 'warn',
     // Prevent unnecessary type assertions
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-assertion.md
-    '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+    '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
     // Disable built-in ESLint no-unused-vars
     // to use the more powerful @typescript-eslint/no-unused-vars
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
@@ -252,7 +252,7 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       },
     ],
     // Error on useless React fragments
-    'react/jsx-no-useless-fragment': 'error',
+    'react/jsx-no-useless-fragment': 'warn',
     // Warn if a `key` is set to an `index`
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
     'react/no-array-index-key': ['error'],
