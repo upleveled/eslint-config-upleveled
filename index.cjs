@@ -267,7 +267,7 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
     'react/no-unstable-nested-components': 'error',
     // Error on unused React prop types
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
-    'react/no-unused-prop-types': 'error',
+    'react/no-unused-prop-types': 'warn',
     // Disable rule because the new JSX transform in React 17,
     // Next.js and Gatsby no longer requires the import.
     // https://github.com/yannickcr/eslint-plugin-react/issues/2440#issuecomment-683433266
