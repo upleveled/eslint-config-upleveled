@@ -16,7 +16,7 @@
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "5.30.7",
     "@typescript-eslint/parser": "5.30.7",
-    "@upleveled/eslint-config-upleveled": "2.12.3",
+    "@upleveled/eslint-config-upleveled": "2.12.4",
     "@upleveled/eslint-plugin-upleveled": "2.1.5",
     "eslint": "8.20.0",
     "eslint-config-react-app": "7.0.1",
