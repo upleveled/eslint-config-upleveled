@@ -261,7 +261,7 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
     'react/no-invalid-html-attribute': 'error',
     // Warn on usage of `class` prop instead of `className`
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
-    'react/no-unknown-property': 'warn',
+    'react/no-unknown-property': ['warn', { ignore: ['css'] }],
     // Error on creating components within components
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
     'react/no-unstable-nested-components': 'error',
