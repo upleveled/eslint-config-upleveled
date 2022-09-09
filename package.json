@@ -1,6 +1,6 @@
 {
   "name": "@upleveled/eslint-config-upleveled",
-  "version": "2.12.6",
+  "version": "2.12.7",
   "type": "module",
   "main": "index.cjs",
   "files": [
