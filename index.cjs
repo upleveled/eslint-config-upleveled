@@ -166,6 +166,12 @@ module.exports = {
     // Disable obsolete rule
     // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
     'jsx-a11y/no-onchange': 'off',
+    // Warn on async promise executor function
+    // https://github.com/eslint/eslint/blob/main/docs/src/rules/no-async-promise-executor.md
+    'no-async-promise-executor': 'warn',
+    // Warn on return in promise executor function
+    // https://github.com/eslint/eslint/blob/main/docs/src/rules/no-promise-executor-return.md
+    'no-promise-executor-return': 'warn',
     // Warn on restricted syntax
     'no-restricted-syntax': [
       'warn',
@@ -229,6 +235,9 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
     // Warn about non-changing variables not being constants
     // https://eslint.org/docs/rules/prefer-const
     'prefer-const': 'warn',
+    // Warn on promise rejection without Error object
+    // https://github.com/eslint/eslint/blob/main/docs/src/rules/prefer-promise-reject-errors.md
+    'prefer-promise-reject-errors': 'warn',
     // Warn about state variable and setter names which are not symmetrically named
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md
     'react/hook-use-state': 'warn',
