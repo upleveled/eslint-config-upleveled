@@ -17,8 +17,7 @@
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
-    "strict": true,
-    "noUncheckedIndexedAccess": true
+    "strict": true
   },
   "include": [
     "**/.eslintrc.cjs",
