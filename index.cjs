@@ -12,6 +12,7 @@ module.exports = {
     'cypress',
     'import',
     'jsx-a11y',
+    'jsx-expressions',
     'react',
     'react-hooks',
     'security',
@@ -166,6 +167,9 @@ module.exports = {
     // Disable obsolete rule
     // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
     'jsx-a11y/no-onchange': 'off',
+    // Disallow potentially falsey string and number values in logical && expressions
+    // https://github.com/hpersson/eslint-plugin-jsx-expressions/blob/master/docs/rules/strict-logical-expressions.md
+    'jsx-expressions/strict-logical-expressions': 'error',
     // Warn on async promise executor function
     // https://github.com/eslint/eslint/blob/main/docs/src/rules/no-async-promise-executor.md
     'no-async-promise-executor': 'warn',
