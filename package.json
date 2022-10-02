@@ -17,7 +17,7 @@
   "peerDependencies": {
     "@babel/eslint-parser": "7.19.1",
     "@next/eslint-plugin-next": "12.3.1",
-    "@ts-safeql/eslint-plugin": "0.0.14",
+    "@ts-safeql/eslint-plugin": "0.0.15",
     "@types/node": "18.7.23",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
@@ -37,7 +37,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-security": "1.5.0",
     "eslint-plugin-sonarjs": "0.15.0",
-    "eslint-plugin-testing-library": "5.7.0",
+    "eslint-plugin-testing-library": "5.7.1",
     "eslint-plugin-unicorn": "44.0.0",
     "libpg-query": "13.2.5",
     "typescript": "4.8.4"
