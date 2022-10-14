@@ -18,6 +18,7 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "strict": true,
+    "incremental": true,
     "noUncheckedIndexedAccess": true
   },
   "include": [
