@@ -2,7 +2,7 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 
 const packageJsonPath = `${process.cwd()}/package.json`;
-const packageJsonObj = JSON.parse(fs.readFileSync(packageJsonPath));
+const packageJsonObj = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
 packageJsonObj.resolutions = {
   ...packageJsonObj.resolutions,
