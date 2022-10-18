@@ -52,3 +52,17 @@ console.log('Installing new packages from resolutions...');
 execSync('yarn install');
 
 console.log('Done');
+
+try {
+  if (
+    fs.readFileSync('./.eslintrc.json', 'utf-8').trim() ===
+    `{
+  "extends": "next/core-web-vitals"
+}`
+  ) {
+    fs.rmSync('./.eslintrc.json');
+    console.log('Removed default Next.js ESLint config');
+  }
+} catch (err) {
+  // Swallow error if .eslintrc.json file does not exist
+}
