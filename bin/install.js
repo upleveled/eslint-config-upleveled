@@ -28,13 +28,6 @@ if (process.platform === 'win32') {
 const packageJsonPath = join(process.cwd(), 'package.json');
 const packageJsonObj = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
 
-if (packageJsonObj.name === '@upleveled/eslint-config-upleveled') {
-  console.log(
-    'Skipping postinstall script for @upleveled/eslint-config-upleveled',
-  );
-  process.exit(0);
-}
-
 // Add all config peerDependencies to devDependencies of
 // project, upgrading existing package versions and
 // sorting alphabetically
