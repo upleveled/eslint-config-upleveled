@@ -9,7 +9,6 @@ module.exports = {
     '@next/next',
     '@typescript-eslint',
     '@upleveled/upleveled',
-    'cypress',
     'import',
     'jsx-a11y',
     'jsx-expressions',
@@ -21,7 +20,6 @@ module.exports = {
   ],
   env: {
     es2020: true,
-    'cypress/globals': true,
   },
   settings: {
     'import/resolver': {
