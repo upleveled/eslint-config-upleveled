@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('eslint').ESLint.ConfigData} */
+const config = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
@@ -324,3 +325,5 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
     'unicorn/prefer-string-slice': 'warn',
   },
 };
+
+module.exports = config;
