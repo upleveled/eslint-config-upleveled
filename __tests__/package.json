@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "update-config-version": "npx install-peerdeps --yarn --dev @upleveled/eslint-config-upleveled && cp node_modules/@upleveled/eslint-config-upleveled/templates/* ./"
+    "update-config-version": "yarn add --dev @upleveled/eslint-config-upleveled && yarn upleveled-eslint-install"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
