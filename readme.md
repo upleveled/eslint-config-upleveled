@@ -9,17 +9,7 @@ UpLeveled ESLint defaults for programming in JavaScript, TypeScript, React and N
 To add ESLint configuration to a project, install the dependencies and add the config files:
 
 ```sh
-CI=true npx install-peerdeps@latest --yarn --dev @upleveled/eslint-config-upleveled
-cp node_modules/@upleveled/eslint-config-upleveled/templates/{*,.eslint*} .
-grep -Fxq ".eslintcache" .gitignore || printf "\n.eslintcache" >> .gitignore
-grep -Fxq ".tsbuildinfo" .gitignore || printf "\n*.tsbuildinfo" >> .gitignore
-node node_modules/@upleveled/eslint-config-upleveled/scripts/install.js
-```
-
-If you have a monorepo using Yarn Workspaces and would like to install the config in the workspace root, change the first line to this:
-
-```sh
-CI=true npx install-peerdeps@latest --yarn --dev @upleveled/eslint-config-upleveled --extra-args "-W"
+yarn add --dev @upleveled/eslint-config-upleveled
 ```
 
 <!--

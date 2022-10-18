@@ -13,6 +13,7 @@
   "author": "Karl Horky <karl.horky@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "postinstall": "scripts/postinstall.js",
     "postpublish": "cd __tests__ && yarn update-config-version"
   },
   "devDependencies": {
