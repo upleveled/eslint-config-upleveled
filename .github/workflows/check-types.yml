@@ -1,0 +1,15 @@
+name: Check Types
+on: push
+
+jobs:
+  check-types:
+    name: Check Types
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+      - run: yarn tsc
