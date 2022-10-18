@@ -5,15 +5,17 @@
   "main": "index.cjs",
   "files": [
     "index.cjs",
-    "scripts",
+    "bin",
     "templates",
     "tsconfig.base.json"
   ],
   "repository": "upleveled/eslint-config-upleveled",
   "author": "Karl Horky <karl.horky@gmail.com>",
   "license": "MIT",
+  "bin": {
+    "upleveled-eslint-install": "bin/install.js"
+  },
   "scripts": {
-    "postinstall": "scripts/postinstall.js",
     "postpublish": "cd __tests__ && yarn update-config-version"
   },
   "devDependencies": {

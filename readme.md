@@ -10,6 +10,7 @@ To add ESLint configuration to a project, install the dependencies and add the c
 
 ```sh
 yarn add --dev @upleveled/eslint-config-upleveled
+yarn upleveled-eslint-install
 ```
 
 <!--
