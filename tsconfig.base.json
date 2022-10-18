@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "UpLeveled Node + React TSConfig",
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "target": "es2015",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "incremental": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "include": [
+    "../../../**/.eslintrc.cjs",
+    "../../../next-env.d.ts",
+    "../../../**/*.ts",
+    "../../../**/*.tsx",
+    "../../../**/*.js",
+    "../../../**/*.jsx",
+    "../../../**/*.cjs",
+    "../../../**/*.mjs"
+  ],
+  "exclude": ["../../../node_modules", "../../../build"]
+}

@@ -6,7 +6,8 @@
   "files": [
     "index.cjs",
     "scripts",
-    "templates"
+    "templates",
+    "tsconfig.base.json"
   ],
   "repository": "upleveled/eslint-config-upleveled",
   "author": "Karl Horky <karl.horky@gmail.com>",
