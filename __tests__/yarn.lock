@@ -1254,6 +1254,24 @@
     pg-connection-string "^2.5.0"
     postgres "^3.3.0"
 
+"@types/eslint@8.4.6":
+  version "8.4.6"
+  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.4.6.tgz#7976f054c1bccfcf514bff0564c0c41df5c08207"
+  integrity sha512-/fqTbjxyFUaYNO7VcW5g+4npmqVACz1bB7RTHYuLj+PRjw9hrCwrUXVQFpChUS0JsyEFvMZ7U/PfmvWgxJhI9g==
+  dependencies:
+    "@types/estree" "*"
+    "@types/json-schema" "*"
+
+"@types/estree@*":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.0.tgz#5fb2e536c1ae9bf35366eed879e827fa59ca41c2"
+  integrity sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==
+
+"@types/json-schema@*":
+  version "7.0.11"
+  resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
+  integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
+
 "@types/json-schema@^7.0.9":
   version "7.0.9"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
@@ -1441,10 +1459,10 @@
     "@typescript-eslint/types" "5.7.0"
     eslint-visitor-keys "^3.0.0"
 
-"@upleveled/eslint-config-upleveled@2.17.0":
-  version "2.17.0"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-2.17.0.tgz#0a6d4fab5428e6787197b99774f2743a749e687c"
-  integrity sha512-7FAZDuLAWaiKxvQlrrCJiQE6zDLzEXpUZOwZpUwSmlSTLlrHrePbcevSOXngHKK2bnjGPQzXdM75NIiVdoiEBA==
+"@upleveled/eslint-config-upleveled@2.19.0":
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-2.19.0.tgz#ff548c9d65dc5391fbe8187ff828f3e6b8dc8129"
+  integrity sha512-PuQwync5uEMLzm/nSoRD1rlKQgmqMAE76VtUhnjetvgEci3N4x1MUl6u+z07fMeW0HlmdpUudjm08KAhd5mGAg==
 
 "@upleveled/eslint-plugin-upleveled@2.1.6":
   version "2.1.6"
