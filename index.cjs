@@ -349,25 +349,22 @@ try {
     throw new Error('Environment variables are not set');
   }
 
-  config = {
-    ...config,
-    plugins: ['@ts-safeql/eslint-plugin'],
-    rules: {
-      '@ts-safeql/check-sql': [
-        'error',
+  /** @type {string[]} */
+  (config.plugins).push('@ts-safeql/eslint-plugin');
+  /** @type {Partial<import('eslint').Linter.RulesRecord>} */
+  (config.rules)['@ts-safeql/check-sql'] = [
+    'error',
+    {
+      connections: [
         {
-          connections: [
-            {
-              databaseUrl: `postgres://${process.env.PGUSERNAME}:${process.env.PGPASSWORD}@${process.env.PGHOST}:5432/${process.env.PGDATABASE}`,
-              tagName: 'sql',
-              fieldTransform: 'camel',
-              transform: '{type}[]',
-            },
-          ],
+          databaseUrl: `postgres://${process.env.PGUSERNAME}:${process.env.PGPASSWORD}@${process.env.PGHOST}:5432/${process.env.PGDATABASE}`,
+          tagName: 'sql',
+          fieldTransform: 'camel',
+          transform: '{type}[]',
         },
       ],
     },
-  };
+  ];
 } catch (err) {
   // Swallow errors to avoid noisy ESLint logs in non-database projects
 }
