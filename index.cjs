@@ -366,7 +366,10 @@ try {
     },
   ];
 } catch (err) {
-  // Swallow errors to avoid noisy ESLint logs in non-database projects
+  // Swallow errors in non-CI environments to avoid noisy ESLint logs in non-database projects
+  if (process.env.CI) {
+    throw err;
+  }
 }
 
 module.exports = config;
