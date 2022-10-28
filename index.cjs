@@ -326,11 +326,17 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
   },
 };
 
-try {
-  if (process.platform === 'win32') {
-    throw new Error(
-      'SafeQL currently disabled on Windows https://github.com/ts-safeql/safeql/issues/80',
-    );
+safeql: try {
+  if (
+    // SafeQL currently disabled on Windows
+    // https://github.com/ts-safeql/safeql/issues/80
+    process.platform === 'win32' ||
+    // Allow setting environment variable to skip SafeQL check
+    process.env.SKIP_SAFEQL
+  ) {
+    // Stop execution of try block using break <label> syntax
+    // https://stackoverflow.com/a/31988856/1268612
+    break safeql;
   }
 
   // Abort early if either of these modules are not installed
