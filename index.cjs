@@ -327,12 +327,21 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
 };
 
 safeql: try {
+  let postgresInstalled = false;
+
+  try {
+    require.resolve('postgres');
+    postgresInstalled = true;
+  } catch (err) {
+    // Swallow error if Postgres.js is not installed
+  }
+
   if (
     // SafeQL currently disabled on Windows
     // https://github.com/ts-safeql/safeql/issues/80
     process.platform === 'win32' ||
-    // Allow setting environment variable to skip SafeQL check
-    process.env.SKIP_SAFEQL
+    // Don't configure SafeQL if Postgres.js is not installed
+    !postgresInstalled
   ) {
     // Stop execution of try block using break <label> syntax
     // https://stackoverflow.com/a/31988856/1268612
