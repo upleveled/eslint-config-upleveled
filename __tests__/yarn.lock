@@ -1465,9 +1465,9 @@
     eslint-visitor-keys "^3.0.0"
 
 "@upleveled/eslint-config-upleveled@^3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-3.3.4.tgz#e2a201ac2be32e9b757d92891639d5ae27253ef4"
-  integrity sha512-jvK3tmC9GVPq0hvjBbgp4iFUsujn5A6QTL7i1AKCgi/ShDm4WxsnbVY47Y8LyuX+WBZbAeAinNVPcE9gVUKWiQ==
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-3.3.5.tgz#df8af463515e5228f56adad48da602db19cca857"
+  integrity sha512-HUR+vMxMFe89u2ow/wnhSielVtjRSOiLAcQ2kA+IMe2qvjuVwZdd0cz77YYMQzVWrCl6v3bX3ZWJAmSN1OoPwQ==
 
 "@upleveled/eslint-plugin-upleveled@2.1.6":
   version "2.1.6"
@@ -2393,7 +2393,7 @@ eslint-module-utils@^2.7.3:
 eslint-plugin-cflint@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-cflint/-/eslint-plugin-cflint-1.0.0.tgz#84eb9b3c5a707793f83ea2c98f74b8684c0d76be"
-  integrity sha1-hOubPFpwd5P4PqLJj3S4aEwNdr4=
+  integrity sha512-vxSgrucRN7Cs8Qb1iGn1POpoTPlQ7HHhyPuQpe4jCL0jTPTrSePPMe3e+54XGWWA3/jsbUDjrhmol737ZkMWJg==
 
 eslint-plugin-cypress@2.12.1:
   version "2.12.1"
