@@ -18,7 +18,9 @@ const eslintConfigPeerDependencies =
   );
 
 const packageJsonPath = join(process.cwd(), 'package.json');
-const packageJson = await import(packageJsonPath, { assert: { type: 'json' } });
+const packageJson = {
+  ...(await import(packageJsonPath, { assert: { type: 'json' } })).default,
+};
 
 // SafeQL currently not supported on Windows
 // https://github.com/ts-safeql/safeql/issues/80
