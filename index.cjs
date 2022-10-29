@@ -6,7 +6,6 @@ let config = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
-    extraFileExtensions: ['.cjs', '.mjs'],
   },
   extends: ['react-app', 'plugin:jsx-a11y/recommended'],
   plugins: [
