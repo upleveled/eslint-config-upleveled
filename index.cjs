@@ -337,8 +337,7 @@ safeql: try {
     // Don't configure SafeQL if Postgres.js is not installed
     !(
       'postgres' in
-      (JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf8'))
-        .dependencies || {})
+      (require(`${process.cwd()}/package.json`).dependencies || {})
     )
   ) {
     // Stop execution of try block using break <label> syntax
