@@ -331,7 +331,7 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
 
 safeql: try {
   if (
-    // SafeQL currently disabled on Windows
+    // SafeQL currently not supported on Windows
     // https://github.com/ts-safeql/safeql/issues/80
     process.platform === 'win32' ||
     // Don't configure SafeQL if Postgres.js is not installed

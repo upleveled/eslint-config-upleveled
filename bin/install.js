@@ -10,36 +10,35 @@ import {
 } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import eslintConfigPackageJson from '../package.json' assert { type: 'json' };
 
-const { peerDependencies } = JSON.parse(
-  readFileSync(
-    resolve(dirname(fileURLToPath(import.meta.url)), '..', 'package.json'),
-    'utf-8',
-  ),
-);
-
-// Remove SafeQL dependencies for now on Windows
-// https://github.com/ts-safeql/safeql/issues/80
-if (process.platform === 'win32') {
-  delete peerDependencies['@ts-safeql/eslint-plugin'];
-  delete peerDependencies['libpg-query'];
-}
+const eslintConfigPeerDependencies =
+  /** @type {Partial<typeof packageJson.peerDependencies>} */ (
+    eslintConfigPackageJson.peerDependencies
+  );
 
 const packageJsonPath = join(process.cwd(), 'package.json');
-const packageJsonObj = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
+const packageJson = await import(packageJsonPath, { assert: { type: 'json' } });
+
+// SafeQL currently not supported on Windows
+// https://github.com/ts-safeql/safeql/issues/80
+if (process.platform === 'win32') {
+  delete eslintConfigPeerDependencies['@ts-safeql/eslint-plugin'];
+  delete eslintConfigPeerDependencies['libpg-query'];
+}
 
 // Add all config peerDependencies to devDependencies of
 // project, upgrading existing package versions and
 // sorting alphabetically
-packageJsonObj.devDependencies = Object.fromEntries(
+packageJson.devDependencies = Object.fromEntries(
   Object.entries({
-    ...packageJsonObj.devDependencies,
-    ...peerDependencies,
+    ...packageJson.devDependencies,
+    ...eslintConfigPeerDependencies,
   }).sort(),
 );
 
-packageJsonObj.resolutions = {
-  ...packageJsonObj.resolutions,
+packageJson.resolutions = {
+  ...packageJson.resolutions,
   // Force installation of the "dependencies" version of these
   // ESLint dependencies to avoid conflicting version numbers
   // between `eslint-config-react-app` and
@@ -64,15 +63,15 @@ packageJsonObj.resolutions = {
   ].reduce(
     (resolutions, packageName) => ({
       ...resolutions,
-      [packageName]: packageJsonObj.devDependencies[packageName],
+      [packageName]: packageJson.devDependencies[packageName],
     }),
     {},
   ),
   '@typescript-eslint/utils':
-    packageJsonObj.devDependencies['@typescript-eslint/parser'],
+    packageJson.devDependencies['@typescript-eslint/parser'],
 };
 
-writeFileSync(packageJsonPath, JSON.stringify(packageJsonObj, null, 2) + '\n');
+writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + '\n');
 
 console.log('Installing ESLint config dependencies...');
 
