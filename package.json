@@ -26,8 +26,8 @@
     "@types/prettier": "2.7.1",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
-    "@typescript-eslint/eslint-plugin": "5.42.1",
-    "@typescript-eslint/parser": "5.42.1",
+    "@typescript-eslint/eslint-plugin": "5.43.0",
+    "@typescript-eslint/parser": "5.43.0",
     "@typescript-eslint/utils": "5.43.0",
     "@upleveled/eslint-config-upleveled": "3.3.9",
     "@upleveled/eslint-plugin-upleveled": "2.1.6",
@@ -76,13 +76,13 @@
     "typescript": "4.9.3"
   },
   "resolutions": {
-    "@typescript-eslint/eslint-plugin": "5.42.1",
-    "@typescript-eslint/parser": "5.42.1",
+    "@typescript-eslint/eslint-plugin": "5.43.0",
+    "@typescript-eslint/parser": "5.43.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jest": "27.1.5",
     "eslint-plugin-jsx-a11y": "6.6.1",
     "eslint-plugin-react": "7.31.10",
     "eslint-plugin-react-hooks": "4.6.0",
-    "@typescript-eslint/utils": "5.42.1"
+    "@typescript-eslint/utils": "5.43.0"
   }
 }
