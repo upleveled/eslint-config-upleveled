@@ -10,7 +10,14 @@ const config = {
   },
   overrides: [
     {
-      files: ['**/*.cjs', '**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+      files: [
+        '**/*.js',
+        '**/*.cjs',
+        '**/*.mjs',
+        '**/*.jsx',
+        '**/*.ts',
+        '**/*.tsx',
+      ],
       processors: ['stylelint-processor-styled-components'],
       customSyntax: 'postcss-scss',
     },
