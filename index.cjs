@@ -1,8 +1,5 @@
-const { readFileSync } = require('node:fs');
-const { join } = require('node:path');
-
-/** @type {import('eslint').ESLint.ConfigData} */
-let config = {
+/** @type {import('@typescript-eslint/utils').TSESLint.Linter.Config} */
+const config = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
@@ -328,6 +325,7 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
   },
 };
 
+// eslint-disable-next-line no-labels -- Allow label here to keep file simpler
 safeql: try {
   if (
     // SafeQL currently not supported on Windows
@@ -341,6 +339,7 @@ safeql: try {
   ) {
     // Stop execution of try block using break <label> syntax
     // https://stackoverflow.com/a/31988856/1268612
+    // eslint-disable-next-line no-labels -- Allow label here to keep file simpler
     break safeql;
   }
 

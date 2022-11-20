@@ -1,9 +1,9 @@
-name: Check Types
+name: Lint, Check Types
 on: push
 
 jobs:
   check-types:
-    name: Check Types
+    name: Lint, Check Types
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -12,4 +12,5 @@ jobs:
           node-version: '18'
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
+      - run: yarn eslint . --max-warnings 0
       - run: yarn tsc
