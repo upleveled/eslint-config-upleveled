@@ -73,6 +73,13 @@
     "eslint-plugin-testing-library": "5.9.1",
     "eslint-plugin-unicorn": "44.0.2",
     "libpg-query": "13.3.0",
+    "postcss": "8.4.19",
+    "postcss-scss": "4.0.5",
+    "stylelint": "14.15.0",
+    "stylelint-config-prettier": "9.0.4",
+    "stylelint-config-recommended": "9.0.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-processor-styled-components": "1.10.0",
     "typescript": "4.9.3"
   },
   "resolutions": {
