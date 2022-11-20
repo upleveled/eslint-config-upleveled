@@ -1,7 +1,5 @@
 /** @type { import('stylelint').Config } */
 const config = {
-  processors: ['stylelint-processor-styled-components'],
-  customSyntax: 'postcss-scss',
   extends: [
     'stylelint-config-recommended',
     'stylelint-config-styled-components',
@@ -10,6 +8,13 @@ const config = {
   rules: {
     'no-descending-specificity': null,
   },
+  overrides: [
+    {
+      files: ['**/*.cjs', '**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+      processors: ['stylelint-processor-styled-components'],
+      customSyntax: 'postcss-scss',
+    },
+  ],
 };
 
 module.exports = config;
