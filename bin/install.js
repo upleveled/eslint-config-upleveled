@@ -8,9 +8,11 @@ import {
   rmSync,
   writeFileSync,
 } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
+import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import eslintConfigPackageJson from '../package.json' assert { type: 'json' };
+
+const eslintConfigDirectory = dirname(fileURLToPath(import.meta.url));
 
 const eslintConfigPeerDependencies =
   /** @type {Partial<typeof packageJson.peerDependencies>} */ (
@@ -19,7 +21,12 @@ const eslintConfigPeerDependencies =
 
 const packageJsonPath = join(process.cwd(), 'package.json');
 const packageJson = {
-  ...(await import(packageJsonPath, { assert: { type: 'json' } })).default,
+  ...(
+    await import(
+      relative(eslintConfigDirectory, packageJsonPath).replaceAll('\\', '/'),
+      { assert: { type: 'json' } }
+    )
+  ).default,
 };
 
 // SafeQL currently not supported on Windows
@@ -83,11 +90,7 @@ console.log('✅ Done installing dependencies');
 
 console.log('Writing config files...');
 
-const templatePath = resolve(
-  dirname(fileURLToPath(import.meta.url)),
-  '..',
-  'templates',
-);
+const templatePath = resolve(eslintConfigDirectory, '..', 'templates');
 
 const templateFileNamesAndPaths = /** @type {[string, string][]} */ (
   readdirSync(templatePath).map((name) => [name, join(templatePath, name)])
