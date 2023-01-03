@@ -21,15 +21,5 @@
     "incremental": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": [
-    "../../../**/.eslintrc.cjs",
-    "../../../next-env.d.ts",
-    "../../../**/*.ts",
-    "../../../**/*.tsx",
-    "../../../**/*.js",
-    "../../../**/*.jsx",
-    "../../../**/*.cjs",
-    "../../../**/*.mjs"
-  ],
   "exclude": ["../../../node_modules", "../../../build"]
 }
