@@ -3,13 +3,13 @@
   "extends": "@upleveled/eslint-config-upleveled/tsconfig.base.json",
   "include": [
     "**/.eslintrc.cjs",
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
     "**/*.cjs",
     "**/*.mjs",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "next-env.d.ts"
   ]
 }
