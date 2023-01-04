@@ -3,10 +3,14 @@ const config = {
   extends: [
     'stylelint-config-recommended',
     'stylelint-config-styled-components',
+    'stylelint-config-recommended-scss',
+    'stylelint-config-css-modules',
     'stylelint-config-prettier',
   ],
   rules: {
     'no-descending-specificity': null,
+    // Allow files without any styles in them
+    'no-empty-source': null,
   },
   overrides: [
     {
