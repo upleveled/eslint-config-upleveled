@@ -9,6 +9,8 @@ const config = {
   ],
   rules: {
     'no-descending-specificity': null,
+    // Allow files without any styles in them
+    'no-empty-source': null,
   },
   overrides: [
     {
