@@ -3,6 +3,8 @@ const config = {
   extends: [
     'stylelint-config-recommended',
     'stylelint-config-styled-components',
+    'stylelint-config-recommended-scss',
+    'stylelint-config-css-modules',
     'stylelint-config-prettier',
   ],
   rules: {
