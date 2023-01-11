@@ -55,6 +55,8 @@ yarn remove eslint-config-upleveled
 
 To verify that the configuration is working properly, you can try pasting the contents of [`__tests__/index.js`](./__tests__/index.js) into a new file and seeing whether you get the same warning messages as in the screenshot at the beginning of the readme (you may need to hover over the words underlined with orange / red squiggly lines).
 
+<!--
+
 ## Alternative Global Installation (☢️ ☢️ ALPHA - may be unstable ☢️ ☢️)
 
 ‼️ **Warning:** Can potentially cause problems, since ESLint assumes local installation in a project: https://github.com/microsoft/vscode-eslint/issues/1073#issuecomment-694732656
@@ -86,3 +88,5 @@ If you would like to use the UpLeveled VS Code ESLint base configuration:
     "resolvePluginsRelativeTo": "/Users/karl/projects/upleveled-vscode-eslint-base-config/node_modules"
   }
 ```
+
+-->
