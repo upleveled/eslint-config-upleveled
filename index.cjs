@@ -294,10 +294,10 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
     // https://eslint.org/docs/rules/require-await
     'require-await': 'warn',
     // Error on child_process.exec usage with variables
-    // https://github.com/nodesecurity/eslint-plugin-security#detect-child-process
+    // https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-child-process.md
     'security/detect-child-process': 'error',
     // Error on running eval with a variable
-    // https://github.com/nodesecurity/eslint-plugin-security#detect-eval-with-expression
+    // https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-eval-with-expression.md
     'security/detect-eval-with-expression': 'error',
     // Warn on comments without a space between the `//` and the comment
     // https://github.com/eslint/eslint/blob/master/docs/rules/spaced-comment.md
