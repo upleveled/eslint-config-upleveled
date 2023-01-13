@@ -293,6 +293,9 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
     // Warn on missing `await` within async functions
     // https://eslint.org/docs/rules/require-await
     'require-await': 'warn',
+    // Error on trojan source code attacks using bidirectional characters
+    // https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-bidi-characters.md
+    'security/detect-bidi-characters': 'error',
     // Error on child_process.exec usage with variables
     // https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-child-process.md
     'security/detect-child-process': 'error',
