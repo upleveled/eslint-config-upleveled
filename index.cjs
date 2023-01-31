@@ -1,3 +1,61 @@
+/** @type {['warn', ...({selector: string, message: string})[]]} */
+const noRestrictedSyntaxOptions = [
+  'warn',
+  // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
+  //
+  // FIXME: Switch to a custom rule
+  // https://github.com/upleveled/eslint-config-upleveled/issues/123
+  {
+    selector:
+      "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelector'], VariableDeclaration VariableDeclarator CallExpression[callee.object.name='document'][callee.property.name='querySelector']",
+    message: `Using document.querySelector() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+  },
+  {
+    selector:
+      "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll'], VariableDeclaration VariableDeclarator CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll']",
+    message: `Using document.querySelectorAll() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+  },
+  {
+    selector:
+      "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='getElementById'], VariableDeclaration VariableDeclarator[init.callee.object.name!='ReactDOM'][init.callee.property.name!='createRoot'] CallExpression[callee.object.name='document'][callee.property.name='getElementById']",
+    message: `Using document.getElementById() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
+https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
+  },
+
+  // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
+  //
+  // FIXME: Switch to a custom rule
+  // https://github.com/upleveled/eslint-config-upleveled/issues/126
+  {
+    selector:
+      'FunctionDeclaration VariableDeclaration:has(VariableDeclarator > TaggedTemplateExpression > MemberExpression[object.name="styled"][property]), FunctionDeclaration VariableDeclaration:has(VariableDeclarator > TaggedTemplateExpression[tag.name="css"])',
+    message:
+      'Declaring Emotion styles or a styled component within a React component will cause the element to get recreated, causing loss of state and other problems - see the react/no-unstable-nested-components docs for more info https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md',
+  },
+
+  {
+    selector:
+      "ExpressionStatement CallExpression[callee.object.name='location'][callee.property.name='reload']",
+    message:
+      'Update content and elements with React instead of using location.reload()',
+  },
+  {
+    selector:
+      "ExpressionStatement CallExpression[callee.object.object.name='window'][callee.object.property.name='location'][callee.property.name='reload']",
+    message:
+      'Update content and elements with React instead of using location.reload()',
+  },
+
+  {
+    selector:
+      "JSXAttribute[name.name='href'] > Literal[value=/^\\./], JSXAttribute[name.name='href'] > JSXExpressionContainer > TemplateLiteral TemplateElement:first-child[value.cooked=/^\\./]",
+    message:
+      'Always start href relative URLs with a forward slash (aka use root relative URLs) - read more at https://www.webdevbydoing.com/absolute-relative-and-root-relative-file-paths/',
+  },
+];
+
 /** @type {import('@typescript-eslint/utils').TSESLint.Linter.Config} */
 const config = {
   parser: '@typescript-eslint/parser',
@@ -175,62 +233,7 @@ const config = {
     // https://github.com/eslint/eslint/blob/main/docs/src/rules/no-promise-executor-return.md
     'no-promise-executor-return': 'warn',
     // Warn on restricted syntax
-    'no-restricted-syntax': [
-      'warn',
-      // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
-      //
-      // FIXME: Switch to a custom rule
-      // https://github.com/upleveled/eslint-config-upleveled/issues/123
-      {
-        selector:
-          "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelector'], VariableDeclaration VariableDeclarator CallExpression[callee.object.name='document'][callee.property.name='querySelector']",
-        message: `Using document.querySelector() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
-https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
-      },
-      {
-        selector:
-          "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll'], VariableDeclaration VariableDeclarator CallExpression[callee.object.name='document'][callee.property.name='querySelectorAll']",
-        message: `Using document.querySelectorAll() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
-https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
-      },
-      {
-        selector:
-          "ExpressionStatement CallExpression[callee.object.name='document'][callee.property.name='getElementById'], VariableDeclaration VariableDeclarator[init.callee.object.name!='ReactDOM'][init.callee.property.name!='createRoot'] CallExpression[callee.object.name='document'][callee.property.name='getElementById']",
-        message: `Using document.getElementById() can lead to problems, and is not commonly used in React code - prefer instead usage of basic React patterns such as state and controlled components
-https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
-      },
-
-      // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
-      //
-      // FIXME: Switch to a custom rule
-      // https://github.com/upleveled/eslint-config-upleveled/issues/126
-      {
-        selector:
-          'FunctionDeclaration VariableDeclaration:has(VariableDeclarator > TaggedTemplateExpression > MemberExpression[object.name="styled"][property]), FunctionDeclaration VariableDeclaration:has(VariableDeclarator > TaggedTemplateExpression[tag.name="css"])',
-        message:
-          'Declaring Emotion styles or a styled component within a React component will cause the element to get recreated, causing loss of state and other problems - see the react/no-unstable-nested-components docs for more info https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md',
-      },
-
-      {
-        selector:
-          "ExpressionStatement CallExpression[callee.object.name='location'][callee.property.name='reload']",
-        message:
-          'Update content and elements with React instead of using location.reload()',
-      },
-      {
-        selector:
-          "ExpressionStatement CallExpression[callee.object.object.name='window'][callee.object.property.name='location'][callee.property.name='reload']",
-        message:
-          'Update content and elements with React instead of using location.reload()',
-      },
-
-      {
-        selector:
-          "JSXAttribute[name.name='href'] > Literal[value=/^\\./], JSXAttribute[name.name='href'] > JSXExpressionContainer > TemplateLiteral TemplateElement:first-child[value.cooked=/^\\./]",
-        message:
-          'Always start href relative URLs with a forward slash (aka use root relative URLs) - read more at https://www.webdevbydoing.com/absolute-relative-and-root-relative-file-paths/',
-      },
-    ],
+    'no-restricted-syntax': noRestrictedSyntaxOptions,
     // Warn on usage of var (which doesn't follow block scope rules)
     // https://eslint.org/docs/rules/no-var
     'no-var': 'warn',
@@ -326,6 +329,27 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
     // Warn about usage of substring or substr instead of slice
     'unicorn/prefer-string-slice': 'warn',
   },
+  overrides: [
+    {
+      files: [
+        'app/**/layout.js',
+        'app/**/layout.tsx',
+        'app/**/page.js',
+        'app/**/page.tsx',
+      ],
+      rules: {
+        // Warn on restricted syntax
+        'no-restricted-syntax': [
+          ...noRestrictedSyntaxOptions,
+          {
+            selector: "ExpressionStatement > Literal[value='use client']",
+            message:
+              'Performance: avoid making pages or layouts into Client Components - instead create a new Client Component and use it in your page / layout',
+          },
+        ],
+      },
+    },
+  ],
 };
 
 // eslint-disable-next-line no-labels -- Allow label here to keep file simpler
