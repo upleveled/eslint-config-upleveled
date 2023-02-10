@@ -4,7 +4,6 @@ const config = {
     'stylelint-config-recommended',
     'stylelint-config-recommended-scss',
     'stylelint-config-css-modules',
-    'stylelint-config-prettier',
   ],
   rules: {
     'no-descending-specificity': null,
