@@ -2,7 +2,6 @@
 const config = {
   extends: [
     'stylelint-config-recommended',
-    'stylelint-config-styled-components',
     'stylelint-config-recommended-scss',
     'stylelint-config-css-modules',
     'stylelint-config-prettier',
@@ -22,8 +21,7 @@ const config = {
         '**/*.ts',
         '**/*.tsx',
       ],
-      processors: ['stylelint-processor-styled-components'],
-      customSyntax: 'postcss-scss',
+      customSyntax: 'postcss-styled-syntax',
     },
   ],
 };
