@@ -22,7 +22,7 @@ const config = {
         '**/*.ts',
         '**/*.tsx',
       ],
-      processors: ['stylelint-processor-styled-components'],
+      // processors: ['stylelint-processor-styled-components'],
       customSyntax: 'postcss-scss',
     },
   ],
