@@ -13,4 +13,5 @@ jobs:
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
       - run: yarn eslint . --max-warnings 0
+      - run: yarn stylelint '**/*.{css,js,tsx}'
       - run: yarn tsc
