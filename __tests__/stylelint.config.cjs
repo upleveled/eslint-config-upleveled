@@ -9,6 +9,7 @@ const config = {
     'no-descending-specificity': null,
     // Allow files without any styles
     'no-empty-source': null,
+    'no-extra-semicolons': null,
   },
   overrides: [
     {
