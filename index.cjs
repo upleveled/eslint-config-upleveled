@@ -54,6 +54,14 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
     message:
       'Always start href relative URLs with a forward slash (aka use root relative URLs) - read more at https://www.webdevbydoing.com/absolute-relative-and-root-relative-file-paths/',
   },
+
+  {
+    selector:
+      "JSXAttribute[name.name='key'] > JSXExpressionContainer > :not(TemplateLiteral)",
+    message:
+      // eslint-disable-next-line no-template-curly-in-string -- Allow for the code example including template strings and interpolation
+      'Use template literals including a prefixes for the values of key props (eg. <div key={`user-${user.id}`}> instead of <div key={user.id}>)',
+  },
 ];
 
 /** @type {import('@typescript-eslint/utils').TSESLint.Linter.Config} */
