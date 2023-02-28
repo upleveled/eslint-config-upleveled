@@ -355,6 +355,15 @@ const config = {
             message:
               'Performance: avoid making pages or layouts into Client Components - instead create a new Client Component and use it in your page / layout',
           },
+          // Warn on root layout without <head> as first child of <html> tag
+          // TODO: Apply this only to `app/layout.(js|tsx)`? (rule will only
+          // apply when <html> tag is present, so not a huge deal...)
+          {
+            selector:
+              "JSXElement[openingElement.name.name='html']:not([children.1.openingElement.name.name='head'])",
+            message:
+              'The <html> element in the root layout must contain a <head> element',
+          },
         ],
       },
     },
