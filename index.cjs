@@ -349,6 +349,7 @@ const config = {
         // Warn on restricted syntax
         'no-restricted-syntax': [
           ...noRestrictedSyntaxOptions,
+          // Warn on 'use client' usage in pages and layouts
           {
             selector: "ExpressionStatement > Literal[value='use client']",
             message:
