@@ -1509,10 +1509,10 @@
     "@typescript-eslint/types" "5.7.0"
     eslint-visitor-keys "^3.0.0"
 
-"@upleveled/eslint-config-upleveled@^3.10.1":
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-3.10.1.tgz#85811888cd2f96bc1e3555a0b8c29ecbf838ea01"
-  integrity sha512-RWUgOHiUYFF0uySLsL1N6ynWLdRQ+VvcIZE5tArL7rYA//ejJ6hh9aq3T0PhTvXnhBfPOZ6c2UG0c4u2EVF2qQ==
+"@upleveled/eslint-config-upleveled@^3.11.0":
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-3.11.0.tgz#a6e319996324e0ff05eef263559b37b820410c56"
+  integrity sha512-q/A3kXtRk515OSXUWbT06XpWY2dgXVdOai9Hji3nTvs6W1wHz3ksqZnON7Wl/2+G6Tj/Op1O3cTjoczdA2A2VA==
 
 "@upleveled/eslint-plugin-upleveled@2.1.6":
   version "2.1.6"
