@@ -367,6 +367,22 @@ const config = {
         ],
       },
     },
+    {
+      files: ['app/**/route.js', 'app/**/route.ts'],
+      rules: {
+        // Warn on restricted syntax
+        'no-restricted-syntax': [
+          ...noRestrictedSyntaxOptions,
+          // Warn on Route Handler function without NextResponse return type annotation
+          {
+            selector:
+              "FunctionDeclaration[id.name=/^GET|POST|PUT|DELETE$/]:not([returnType.typeAnnotation.typeName.name='Promise'][returnType.typeAnnotation.typeParameters.params.0.typeName.name='NextResponse'][returnType.typeAnnotation.typeParameters.params.0.typeParameters.params.0]):not([returnType.typeAnnotation.typeName.name='NextResponse'][returnType.typeAnnotation.typeParameters.params.0])",
+            message:
+              'Route Handler function missing return type annotation (eg. `async function PUT(request: NextRequest): Promise<NextResponse<PutResponseBody>>`)',
+          },
+        ],
+      },
+    },
   ],
 };
 
