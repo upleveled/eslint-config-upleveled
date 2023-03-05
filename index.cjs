@@ -378,7 +378,7 @@ const config = {
             selector:
               "FunctionDeclaration[id.name=/^GET|POST|PUT|DELETE$/]:not([returnType.typeAnnotation.typeName.name='Promise'][returnType.typeAnnotation.typeParameters.params.0.typeName.name='NextResponse'][returnType.typeAnnotation.typeParameters.params.0.typeParameters.params.0]):not([returnType.typeAnnotation.typeName.name='NextResponse'][returnType.typeAnnotation.typeParameters.params.0])",
             message:
-              'Route Handler function missing return type annotation (eg. `async function PUT(request: NextRequest): Promise<NextResponse<PutResponseBody>>`)',
+              'Route Handler function missing return type annotation (eg. `async function PUT(request: NextRequest): Promise<NextResponse<AnimalResponseBodyPut>>`)',
           },
         ],
       },
