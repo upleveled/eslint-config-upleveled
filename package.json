@@ -16,7 +16,7 @@
     "upleveled-eslint-install": "bin/install.js"
   },
   "scripts": {
-    "postpublish": "cd __tests__ && yarn update-config-version"
+    "postpublish": "cd __tests__ && pnpm update-config-version"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
