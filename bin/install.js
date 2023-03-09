@@ -37,45 +37,49 @@ packageJson.devDependencies = Object.fromEntries(
   }).sort(),
 );
 
-packageJson.resolutions = {
-  ...packageJson.resolutions,
-  // Force installation of the "dependencies" version of these
-  // ESLint dependencies to avoid conflicting version numbers
-  // between `eslint-config-react-app` and
-  // `@upleveled/eslint-config-upleveled` (they use the same
-  // ESLint dependencies, but may have slightly different
-  // versions).
-  //
-  // These conflicts can result in ESLint errors like:
-  //
-  // ESLint couldn't determine the plugin "import" uniquely.
-  //
-  // - /home/runner/work/preflight/preflight/node_modules/eslint-plugin-import/lib/index.js (loaded in ".eslintrc.cjs » @upleveled/eslint-config-upleveled")
-  // - /home/runner/work/preflight/preflight/node_modules/eslint-config-react-app/node_modules/eslint-plugin-import/lib/index.js (loaded in ".eslintrc.cjs » @upleveled/eslint-config-upleveled » eslint-config-react-app")
-  ...[
-    '@typescript-eslint/eslint-plugin',
-    '@typescript-eslint/parser',
-    'eslint-plugin-import',
-    'eslint-plugin-jest',
-    'eslint-plugin-jsx-a11y',
-    'eslint-plugin-react',
-    'eslint-plugin-react-hooks',
-  ].reduce(
-    (resolutions, packageName) => ({
-      ...resolutions,
-      [packageName]: packageJson.devDependencies[packageName],
-    }),
-    {},
-  ),
-  '@typescript-eslint/utils':
-    packageJson.devDependencies['@typescript-eslint/parser'],
-};
+const projectUsesYarn = !existsSync(join(process.cwd(), 'pnpm-lock.yaml'));
+
+if (projectUsesYarn) {
+  packageJson.resolutions = {
+    ...packageJson.resolutions,
+    // Force installation of the "dependencies" version of these
+    // ESLint dependencies to avoid conflicting version numbers
+    // between `eslint-config-react-app` and
+    // `@upleveled/eslint-config-upleveled` (they use the same
+    // ESLint dependencies, but may have slightly different
+    // versions).
+    //
+    // These conflicts can result in ESLint errors like:
+    //
+    // ESLint couldn't determine the plugin "import" uniquely.
+    //
+    // - /home/runner/work/preflight/preflight/node_modules/eslint-plugin-import/lib/index.js (loaded in ".eslintrc.cjs » @upleveled/eslint-config-upleveled")
+    // - /home/runner/work/preflight/preflight/node_modules/eslint-config-react-app/node_modules/eslint-plugin-import/lib/index.js (loaded in ".eslintrc.cjs » @upleveled/eslint-config-upleveled » eslint-config-react-app")
+    ...[
+      '@typescript-eslint/eslint-plugin',
+      '@typescript-eslint/parser',
+      'eslint-plugin-import',
+      'eslint-plugin-jest',
+      'eslint-plugin-jsx-a11y',
+      'eslint-plugin-react',
+      'eslint-plugin-react-hooks',
+    ].reduce(
+      (resolutions, packageName) => ({
+        ...resolutions,
+        [packageName]: packageJson.devDependencies[packageName],
+      }),
+      {},
+    ),
+    '@typescript-eslint/utils':
+      packageJson.devDependencies['@typescript-eslint/parser'],
+  };
+}
 
 writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + '\n');
 
 console.log('Installing ESLint config dependencies...');
 
-execSync('yarn install', { stdio: 'inherit' });
+execSync(`${!projectUsesYarn ? 'pnpm' : 'yarn'} install`, { stdio: 'inherit' });
 
 console.log('✅ Done installing dependencies');
 

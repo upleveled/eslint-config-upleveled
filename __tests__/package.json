@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "update-config-version": "yarn add --dev @upleveled/eslint-config-upleveled && yarn upleveled-eslint-install"
+    "update-config-version": "pnpm add --dev @upleveled/eslint-config-upleveled && pnpm upleveled-eslint-install"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
