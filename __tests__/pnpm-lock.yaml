@@ -20,7 +20,7 @@ specifiers:
   '@types/react-dom': 18.0.11
   '@typescript-eslint/eslint-plugin': 5.54.0
   '@typescript-eslint/parser': 5.54.0
-  '@upleveled/eslint-config-upleveled': ^3.14.0
+  '@upleveled/eslint-config-upleveled': ^3.14.1
   '@upleveled/eslint-plugin-upleveled': 2.1.6
   eslint: 8.35.0
   eslint-config-react-app: 7.0.1
@@ -56,7 +56,7 @@ devDependencies:
   '@types/react-dom': 18.0.11
   '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
   '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
-  '@upleveled/eslint-config-upleveled': 3.14.0_fsusypkgye4ozacnmxnq5d4354
+  '@upleveled/eslint-config-upleveled': 3.14.1_fsusypkgye4ozacnmxnq5d4354
   '@upleveled/eslint-plugin-upleveled': 2.1.6_eslint@8.35.0
   eslint: 8.35.0
   eslint-config-react-app: 7.0.1_vuh65dzf3m2qcnzxovjo4xlmuy
@@ -1953,8 +1953,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@upleveled/eslint-config-upleveled/3.14.0_fsusypkgye4ozacnmxnq5d4354:
-    resolution: {integrity: sha512-u0VzFF87Jg4nAXqHxETNaX9U1pp2HM6R6+PWMlNqlgNyECFYNtkUSoLbMIx1beZvPBfyB9FWBantZfANZAEeWw==}
+  /@upleveled/eslint-config-upleveled/3.14.1_fsusypkgye4ozacnmxnq5d4354:
+    resolution: {integrity: sha512-ia1lEGYt/ev8apMf7B0CbEqhoKT7fm7tZ0V+6MDDV6McQaWPaILbzNVPGzOy92CekDTCh93t2vrg91Dhgbwh7w==}
     hasBin: true
     peerDependencies:
       '@babel/eslint-parser': 7.19.1
