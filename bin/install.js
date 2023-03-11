@@ -140,6 +140,24 @@ for (const [templateFileName, templateFilePath] of templateFileNamesAndPaths) {
 
 console.log('✅ Done updating config files');
 
+try {
+  if (
+    readFileSync(join(process.cwd(), 'jsconfig.json'), 'utf-8').trim() ===
+    `{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}`
+  ) {
+    rmSync(join(process.cwd(), 'jsconfig.json'));
+    console.log('✅ Done removing default Next.js jsconfig.json config');
+  }
+} catch (err) {
+  // Swallow error if jsconfig.json file does not exist
+}
+
 console.log('Updating .gitignore...');
 
 const gitignorePath = join(process.cwd(), '.gitignore');
@@ -169,17 +187,3 @@ writeFileSync(
 );
 
 console.log('✅ Done updating .gitignore');
-
-try {
-  if (
-    readFileSync(join(process.cwd(), '.eslintrc.json'), 'utf-8').trim() ===
-    `{
-  "extends": "next/core-web-vitals"
-}`
-  ) {
-    rmSync(join(process.cwd(), '.eslintrc.json'));
-    console.log('Removed default Next.js ESLint config');
-  }
-} catch (err) {
-  // Swallow error if .eslintrc.json file does not exist
-}
