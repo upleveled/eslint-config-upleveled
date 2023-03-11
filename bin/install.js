@@ -236,9 +236,44 @@ if ('next' in projectDependencies && !projectUsesYarn) {
   );
 
   /**
+   * @typedef {{
+   *   lineNumber: number;
+   *   patternName: string;
+   *   pattern: RegExp;
+   *   replacement: string;
+   * }} Replacement
+   */
+
+  function replaceAll(
+    /** @type {string} */
+    filePath,
+    /** @type {string} */
+    content,
+    /** @type {Replacement[]} */
+    replacements,
+  ) {
+    for (const {
+      lineNumber,
+      patternName,
+      pattern,
+      replacement,
+    } of replacements) {
+      const match = content.match(pattern);
+      if (!match) {
+        throw new Error(`Pattern "${patternName}" not matched
+
+Regex: /${pattern.source}/m
+Source link: https://www.runpkg.com/?next@${nextVersion}/${filePath}#${lineNumber}`);
+      }
+      content = content.replace(pattern, replacement);
+    }
+    return content;
+  }
+
+  /**
    * @type {{
    *   filePath: string;
-   *   transform: (content: string) => string;
+   *   transform: (filePath: string, content: string) => string;
    * }[]}
    */
   const transforms = [
@@ -282,20 +317,24 @@ if ('next' in projectDependencies && !projectUsesYarn) {
         'plugins',
         'next-types-plugin.js',
       ),
-      transform: (content) => {
+      transform: (filePath, content) => {
+        /** @type {Replacement[]} */
         const replacements = [
           {
+            lineNumber: 295,
             patternName: 'Filter out non-page files in app dir',
             pattern:
               /^( +\/\/ Filter out non-page files in app dir\n +if \(isApp && !\/\[\/\\\\\])page(\\\.\[\^\.\]\+\$\/\.test\(filePath\)\) \{)/m,
             replacement: '$1(?:page|route)$2',
           },
           {
+            lineNumber: 328,
             patternName: 'if (!this.dev), if (IS_PAGE)',
             pattern: /^( +if \(!this\.dev\) \{\n +if \(IS_PAGE)(\) \{)/m,
             replacement: '$1 || /[/\\\\]route\\.[^.]+$/.test(mod.resource)$2',
           },
           {
+            lineNumber: 365,
             patternName: 'Here we only track page chunks',
             pattern:
               /^( +\/\/ Here we only track page chunks\.\n +if \(!chunk\.name\.startsWith\("pages\/"\) && !\(chunk\.name\.startsWith\("app\/"\) && )(chunk\.name\.endsWith\("\/page"\))(\)\) \{)/m,
@@ -303,13 +342,7 @@ if ('next' in projectDependencies && !projectUsesYarn) {
           },
         ];
 
-        for (const { patternName, pattern, replacement } of replacements) {
-          const match = content.match(pattern);
-          if (!match) throw new Error(`Pattern "${patternName}" not matched`);
-          content = content.replace(pattern, replacement);
-        }
-
-        return content;
+        return replaceAll(filePath, content, replacements);
       },
     },
 
@@ -328,9 +361,11 @@ if ('next' in projectDependencies && !projectUsesYarn) {
     //          router
     {
       filePath: join('dist', 'client', 'components', 'layout-router.js'),
-      transform: (content) => {
+      transform: (filePath, content) => {
+        /** @type {Replacement[]} */
         const replacements = [
           {
+            lineNumber: 318,
             patternName: 'useEffect, router.replace()',
             pattern:
               /^( +\(0, _react\)\.useEffect\(\(\)=>\{\n)( +)(router\.replace\(redirect, \{\}\);\n)( +\}, \[)/m,
@@ -338,13 +373,7 @@ if ('next' in projectDependencies && !projectUsesYarn) {
           },
         ];
 
-        for (const { patternName, pattern, replacement } of replacements) {
-          const match = content.match(pattern);
-          if (!match) throw new Error(`Pattern "${patternName}" not matched`);
-          content = content.replace(pattern, replacement);
-        }
-
-        return content;
+        return replaceAll(filePath, content, replacements);
       },
     },
 
@@ -363,9 +392,11 @@ if ('next' in projectDependencies && !projectUsesYarn) {
     //      }
     {
       filePath: join('dist', 'client', 'link.js'),
-      transform: (content) => {
+      transform: (filePath, content) => {
+        /** @type {Replacement[]} */
         const replacements = [
           {
+            lineNumber: 85,
             patternName: 'isAppRouter, _react.default.startTransition()',
             pattern:
               /^( +)(_react\.default\.startTransition\(navigate\);\n)( +\} else \{)/m,
@@ -373,13 +404,7 @@ if ('next' in projectDependencies && !projectUsesYarn) {
           },
         ];
 
-        for (const { patternName, pattern, replacement } of replacements) {
-          const match = content.match(pattern);
-          if (!match) throw new Error(`Pattern "${patternName}" not matched`);
-          content = content.replace(pattern, replacement);
-        }
-
-        return content;
+        return replaceAll(filePath, content, replacements);
       },
     },
 
@@ -414,21 +439,25 @@ if ('next' in projectDependencies && !projectUsesYarn) {
         'spec-extension',
         'response.d.ts',
       ),
-      transform: (content) => {
+      transform: (filePath, content) => {
+        /** @type {Replacement[]} */
         const replacements = [
           {
+            lineNumber: 5,
             patternName: 'export declare class NextResponse',
             pattern:
               /^(export declare class NextResponse)( extends Response \{\n)/m,
             replacement: `$1<B = void>$2`,
           },
           {
+            lineNumber: 6,
             patternName: 'NextResponse[INTERNALS]',
             pattern:
               /^( +\[INTERNALS\]: \{\n)( +)(cookies: ResponseCookies;\n)( +url\?: NextURL;\n)( +\};\n)/m,
             replacement: `$1$2$3$4$2B: B;\n$5`,
           },
           {
+            lineNumber: 12,
             patternName: 'NextResponse.json()',
             pattern:
               /^( +static json)(\(body: )any(, init\?: ResponseInit\): NextResponse)(;)/m,
@@ -436,13 +465,7 @@ if ('next' in projectDependencies && !projectUsesYarn) {
           },
         ];
 
-        for (const { patternName, pattern, replacement } of replacements) {
-          const match = content.match(pattern);
-          if (!match) throw new Error(`Pattern "${patternName}" not matched`);
-          content = content.replace(pattern, replacement);
-        }
-
-        return content;
+        return replaceAll(filePath, content, replacements);
       },
     },
   ];
@@ -450,7 +473,10 @@ if ('next' in projectDependencies && !projectUsesYarn) {
   for (const { filePath: relativeFilePath, transform } of transforms) {
     const filePath = join(pnpmPatchNextEditDir, relativeFilePath);
     console.log(`Patching node_modules/next/${relativeFilePath}...`);
-    writeFileSync(filePath, transform(readFileSync(filePath, 'utf8')));
+    writeFileSync(
+      filePath,
+      transform(relativeFilePath, readFileSync(filePath, 'utf8')),
+    );
   }
 
   execSync(`pnpm patch-commit ${pnpmPatchNextEditDir}`, {
