@@ -12,7 +12,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import eslintConfigPackageJson from '../package.json' assert { type: 'json' };
 
-const eslintConfigPeerDependencies =
+const newDevDependenciesToInstall =
   /** @type {Partial<typeof packageJson.peerDependencies>} */ (
     eslintConfigPackageJson.peerDependencies
   );
@@ -20,11 +20,27 @@ const eslintConfigPeerDependencies =
 const packageJsonPath = join(process.cwd(), 'package.json');
 const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
 
-// SafeQL currently not supported on Windows
-// https://github.com/ts-safeql/safeql/issues/80
-if (process.platform === 'win32') {
-  delete eslintConfigPeerDependencies['@ts-safeql/eslint-plugin'];
-  delete eslintConfigPeerDependencies['libpg-query'];
+if (
+  // Install SafeQL dependencies in Next.js and Postgres.js projects
+  ('next' in packageJson.dependencies ||
+    'postgres' in packageJson.dependencies) &&
+  // SafeQL currently not supported on Windows
+  // https://github.com/ts-safeql/safeql/issues/80
+  process.platform !== 'win32'
+) {
+  newDevDependenciesToInstall['@ts-safeql/eslint-plugin'] = 'latest';
+  newDevDependenciesToInstall['libpg-query'] = 'latest';
+}
+
+if (
+  'react-scripts' in packageJson.dependencies ||
+  'next' in packageJson.dependencies
+) {
+  newDevDependenciesToInstall['postcss-styled-syntax'] = 'latest';
+  newDevDependenciesToInstall['stylelint'] = 'latest';
+  newDevDependenciesToInstall['stylelint-config-css-modules'] = 'latest';
+  newDevDependenciesToInstall['stylelint-config-recommended'] = 'latest';
+  newDevDependenciesToInstall['stylelint-config-recommended-scss'] = 'latest';
 }
 
 // Add all config peerDependencies to devDependencies of
@@ -33,7 +49,7 @@ if (process.platform === 'win32') {
 packageJson.devDependencies = Object.fromEntries(
   Object.entries({
     ...packageJson.devDependencies,
-    ...eslintConfigPeerDependencies,
+    ...newDevDependenciesToInstall,
   }).sort(),
 );
 
@@ -96,6 +112,17 @@ const templateFileNamesAndPaths = /** @type {[string, string][]} */ (
 );
 
 for (const [templateFileName, templateFilePath] of templateFileNamesAndPaths) {
+  // Don't copy Stylelint config for non-React / non-Next.js projects
+  if (
+    templateFileName === 'stylelint.config.cjs' &&
+    !(
+      'react-scripts' in packageJson.dependencies ||
+      'next' in packageJson.dependencies
+    )
+  ) {
+    continue;
+  }
+
   const destinationFilePath = join(process.cwd(), templateFileName);
 
   if (existsSync(destinationFilePath)) {
