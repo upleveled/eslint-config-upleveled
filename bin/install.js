@@ -91,6 +91,17 @@ if (projectUsesYarn) {
   };
 }
 
+if ('next' in projectDependencies && !projectUsesYarn) {
+  // Remove previous patches in package.json
+  if (projectPackageJson?.pnpm?.patchedDependencies) {
+    projectPackageJson.pnpm.patchedDependencies = Object.fromEntries(
+      Object.entries(projectPackageJson.pnpm.patchedDependencies).filter(
+        ([packageName]) => !packageName.startsWith('next@'),
+      ),
+    );
+  }
+}
+
 writeFileSync(
   projectPackageJsonPath,
   JSON.stringify(projectPackageJson, null, 2) + '\n',
@@ -187,3 +198,266 @@ writeFileSync(
 );
 
 console.log('✅ Done updating .gitignore');
+
+if ('next' in projectDependencies && !projectUsesYarn) {
+  const patchesPath = join(process.cwd(), 'patches');
+
+  // Remove previous patch files
+  if (existsSync(patchesPath)) {
+    const patchFiles = readdirSync(patchesPath);
+
+    for (const patchFile of patchFiles) {
+      if (patchFile.startsWith('next@')) {
+        rmSync(join(patchesPath, patchFile));
+      }
+    }
+  }
+
+  const nextVersion = JSON.parse(
+    execSync('pnpm list next --json', { encoding: 'utf-8' }),
+  )[0].dependencies.next.version;
+
+  const pnpmPatchNextEditDir = join(
+    process.cwd(),
+    'node_modules',
+    '.upleveled-next-patch',
+  );
+
+  if (existsSync(pnpmPatchNextEditDir)) {
+    rmSync(pnpmPatchNextEditDir, { recursive: true });
+  }
+
+  execSync(
+    `pnpm patch next@${nextVersion} --edit-dir ${pnpmPatchNextEditDir}`,
+    {
+      // Discard stdout, show stderr
+      stdio: ['ignore', 'ignore', 'inherit'],
+    },
+  );
+
+  /**
+   * @type {{
+   *   filePath: string;
+   *   transform: (content: string) => string;
+   * }[]}
+   */
+  const transforms = [
+    // Apply diff:
+    // diff --git a/node_modules/next/dist/build/webpack/plugins/next-types-plugin.js b/node_modules/next/dist/build/webpack/plugins/next-types-plugin.js
+    // index 9b161b5..f4914f4 100644
+    // --- a/node_modules/next/dist/build/webpack/plugins/next-types-plugin.js
+    // +++ b/node_modules/next/dist/build/webpack/plugins/next-types-plugin.js
+    // @@ -293,7 +293,7 @@ class NextTypesPlugin {
+    //          if (!this.typedRoutes) return;
+    //          const isApp = filePath.startsWith(this.appDir + _path.default.sep);
+    //          // Filter out non-page files in app dir
+    // -        if (isApp && !/[/\\]page\.[^.]+$/.test(filePath)) {
+    // +        if (isApp && !/[/\\](?:page|route)\.[^.]+$/.test(filePath)) {
+    //              return;
+    //          }
+    //          // Filter out non-page files in pages dir
+    // @@ -326,7 +326,7 @@ class NextTypesPlugin {
+    //              const relativePathToApp = _path.default.relative(this.appDir, mod.resource);
+    //              const relativePathToRoot = _path.default.relative(this.dir, mod.resource);
+    //              if (!this.dev) {
+    // -                if (IS_PAGE) {
+    // +                if (IS_PAGE || /[/\\]route\.[^.]+$/.test(mod.resource)) {
+    //                      this.collectPage(mod.resource);
+    //                  }
+    //              }
+    // @@ -363,7 +363,7 @@ class NextTypesPlugin {
+    //                      chunkGroup.chunks.forEach((chunk)=>{
+    //                          if (!chunk.name) return;
+    //                          // Here we only track page chunks.
+    // -                        if (!chunk.name.startsWith("pages/") && !(chunk.name.startsWith("app/") && chunk.name.endsWith("/page"))) {
+    // +                        if (!chunk.name.startsWith("pages/") && !(chunk.name.startsWith("app/") && (chunk.name.endsWith("/page") || chunk.name.endsWith("/route")))) {
+    //                              return;
+    //                          }
+    //                          const chunkModules = compilation.chunkGraph.getChunkModulesIterable(chunk);
+    {
+      filePath: join(
+        'dist',
+        'build',
+        'webpack',
+        'plugins',
+        'next-types-plugin.js',
+      ),
+      transform: (content) => {
+        const replacements = [
+          {
+            patternName: 'Filter out non-page files in app dir',
+            pattern:
+              /^( +\/\/ Filter out non-page files in app dir\n +if \(isApp && !\/\[\/\\\\\])page(\\\.\[\^\.\]\+\$\/\.test\(filePath\)\) \{)/m,
+            replacement: '$1(?:page|route)$2',
+          },
+          {
+            patternName: 'if (!this.dev), if (IS_PAGE)',
+            pattern: /^( +if \(!this\.dev\) \{\n +if \(IS_PAGE)(\) \{)/m,
+            replacement: '$1 || /[/\\\\]route\\.[^.]+$/.test(mod.resource)$2',
+          },
+          {
+            patternName: 'Here we only track page chunks',
+            pattern:
+              /^( +\/\/ Here we only track page chunks\.\n +if \(!chunk\.name\.startsWith\("pages\/"\) && !\(chunk\.name\.startsWith\("app\/"\) && )(chunk\.name\.endsWith\("\/page"\))(\)\) \{)/m,
+            replacement: '$1($2 || chunk.name.endsWith("/route"))$3',
+          },
+        ];
+
+        for (const { patternName, pattern, replacement } of replacements) {
+          const match = content.match(pattern);
+          if (!match) throw new Error(`Pattern "${patternName}" not matched`);
+          content = content.replace(pattern, replacement);
+        }
+
+        return content;
+      },
+    },
+
+    // Apply diff:
+    // diff --git a/node_modules/next/dist/client/components/layout-router.js b/node_modules/next/dist/client/components/layout-router.js
+    // index 9b60a45..dd0639d 100644
+    // --- a/node_modules/next/dist/client/components/layout-router.js
+    // +++ b/node_modules/next/dist/client/components/layout-router.js
+    // @@ -317,6 +317,7 @@ function HandleRedirect({ redirect  }) {
+    //      const router = (0, _navigation).useRouter();
+    //      (0, _react).useEffect(()=>{
+    //          router.replace(redirect, {});
+    // +        router.refresh()
+    //      }, [
+    //          redirect,
+    //          router
+    {
+      filePath: join('dist', 'client', 'components', 'layout-router.js'),
+      transform: (content) => {
+        const replacements = [
+          {
+            patternName: 'useEffect, router.replace()',
+            pattern:
+              /^( +\(0, _react\)\.useEffect\(\(\)=>\{\n)( +)(router\.replace\(redirect, \{\}\);\n)( +\}, \[)/m,
+            replacement: '$1$2$3$2router.refresh();\n$4',
+          },
+        ];
+
+        for (const { patternName, pattern, replacement } of replacements) {
+          const match = content.match(pattern);
+          if (!match) throw new Error(`Pattern "${patternName}" not matched`);
+          content = content.replace(pattern, replacement);
+        }
+
+        return content;
+      },
+    },
+
+    // Apply diff:
+    // diff --git a/node_modules/next/dist/client/link.js b/node_modules/next/dist/client/link.js
+    // index d15ce7f..369e036 100644
+    // --- a/node_modules/next/dist/client/link.js
+    // +++ b/node_modules/next/dist/client/link.js
+    // @@ -83,6 +83,7 @@ function linkClicked(e, router, href, as, replace, shallow, scroll, locale, isAp
+    //      if (isAppRouter) {
+    //          // @ts-expect-error startTransition exists.
+    //          _react.default.startTransition(navigate);
+    // +        router.refresh()
+    //      } else {
+    //          navigate();
+    //      }
+    {
+      filePath: join('dist', 'client', 'link.js'),
+      transform: (content) => {
+        const replacements = [
+          {
+            patternName: 'isAppRouter, _react.default.startTransition()',
+            pattern:
+              /^( +)(_react\.default\.startTransition\(navigate\);\n)( +\} else \{)/m,
+            replacement: `$1$2$1router.refresh();\n$3`,
+          },
+        ];
+
+        for (const { patternName, pattern, replacement } of replacements) {
+          const match = content.match(pattern);
+          if (!match) throw new Error(`Pattern "${patternName}" not matched`);
+          content = content.replace(pattern, replacement);
+        }
+
+        return content;
+      },
+    },
+
+    // Apply diff:
+    // diff --git a/node_modules/next/dist/server/web/spec-extension/response.d.ts b/node_modules/next/dist/server/web/spec-extension/response.d.ts
+    // index 268f52b..6ef065b 100644
+    // --- a/node_modules/next/dist/server/web/spec-extension/response.d.ts
+    // +++ b/node_modules/next/dist/server/web/spec-extension/response.d.ts
+    // @@ -2,14 +2,15 @@ import type { I18NConfig } from '../../config-shared';
+    //  import { NextURL } from '../next-url';
+    //  import { ResponseCookies } from './cookies';
+    //  declare const INTERNALS: unique symbol;
+    // -export declare class NextResponse extends Response {
+    // +export declare class NextResponse<B = void> extends Response {
+    //      [INTERNALS]: {
+    //          cookies: ResponseCookies;
+    //          url?: NextURL;
+    // +        B: B
+    //      };
+    //      constructor(body?: BodyInit | null, init?: ResponseInit);
+    //      get cookies(): ResponseCookies;
+    // -    static json(body: any, init?: ResponseInit): NextResponse;
+    // +    static json<T>(body: T, init?: ResponseInit): NextResponse<T>;
+    //      static redirect(url: string | NextURL | URL, init?: number | ResponseInit): NextResponse;
+    //      static rewrite(destination: string | NextURL | URL, init?: MiddlewareResponseInit): NextResponse;
+    //      static next(init?: MiddlewareResponseInit): NextResponse;
+    {
+      filePath: join(
+        'dist',
+        'server',
+        'web',
+        'spec-extension',
+        'response.d.ts',
+      ),
+      transform: (content) => {
+        const replacements = [
+          {
+            patternName: 'export declare class NextResponse',
+            pattern:
+              /^(export declare class NextResponse)( extends Response \{\n)/m,
+            replacement: `$1<B = void>$2`,
+          },
+          {
+            patternName: 'NextResponse[INTERNALS]',
+            pattern:
+              /^( +\[INTERNALS\]: \{\n)( +)(cookies: ResponseCookies;\n)( +url\?: NextURL;\n)( +\};\n)/m,
+            replacement: `$1$2$3$4$2B: B;\n$5`,
+          },
+          {
+            patternName: 'NextResponse.json()',
+            pattern:
+              /^( +static json)(\(body: )any(, init\?: ResponseInit\): NextResponse)(;)/m,
+            replacement: `$1<T>$2T$3<T>$4`,
+          },
+        ];
+
+        for (const { patternName, pattern, replacement } of replacements) {
+          const match = content.match(pattern);
+          if (!match) throw new Error(`Pattern "${patternName}" not matched`);
+          content = content.replace(pattern, replacement);
+        }
+
+        return content;
+      },
+    },
+  ];
+
+  for (const { filePath: relativeFilePath, transform } of transforms) {
+    const filePath = join(pnpmPatchNextEditDir, relativeFilePath);
+    console.log(`Patching node_modules/next/${relativeFilePath}...`);
+    writeFileSync(filePath, transform(readFileSync(filePath, 'utf8')));
+  }
+
+  execSync(`pnpm patch-commit ${pnpmPatchNextEditDir}`, {
+    // Discard stdout, show stderr
+    stdio: ['ignore', 'ignore', 'inherit'],
+  });
+
+  rmSync(pnpmPatchNextEditDir, { recursive: true });
+  console.log('✅ Done patching Next.js');
+}
