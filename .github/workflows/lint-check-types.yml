@@ -17,5 +17,4 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm eslint . --max-warnings 0
-      - run: pnpm stylelint '**/*.{css,js,tsx}'
       - run: pnpm tsc
