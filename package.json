@@ -1,20 +1,21 @@
 {
   "name": "@upleveled/eslint-config-upleveled",
   "version": "3.18.0",
+  "description": "UpLeveled ESLint defaults for programming in JavaScript, TypeScript, React, Next.js and Node.js",
+  "repository": "upleveled/eslint-config-upleveled",
+  "license": "MIT",
+  "author": "Karl Horky <karl.horky@gmail.com>",
   "type": "module",
   "main": "index.cjs",
+  "bin": {
+    "upleveled-eslint-install": "bin/install.js"
+  },
   "files": [
     "index.cjs",
     "bin",
     "templates",
     "tsconfig.base.json"
   ],
-  "repository": "upleveled/eslint-config-upleveled",
-  "author": "Karl Horky <karl.horky@gmail.com>",
-  "license": "MIT",
-  "bin": {
-    "upleveled-eslint-install": "bin/install.js"
-  },
   "scripts": {
     "postpublish": "cd __tests__ && pnpm update-config-version"
   },
