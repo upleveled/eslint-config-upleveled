@@ -13,17 +13,20 @@ import { fileURLToPath } from 'node:url';
 import eslintConfigPackageJson from '../package.json' assert { type: 'json' };
 
 const newDevDependenciesToInstall =
-  /** @type {Partial<typeof packageJson.peerDependencies>} */ (
+  /** @type {Partial<typeof projectPackageJson.peerDependencies>} */ (
     eslintConfigPackageJson.peerDependencies
   );
 
-const packageJsonPath = join(process.cwd(), 'package.json');
-const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
+const projectPackageJsonPath = join(process.cwd(), 'package.json');
+const projectPackageJson = JSON.parse(
+  readFileSync(projectPackageJsonPath, 'utf-8'),
+);
+
+const projectDependencies = projectPackageJson.dependencies || {};
 
 if (
   // Install SafeQL dependencies in Next.js and Postgres.js projects
-  ('next' in packageJson.dependencies ||
-    'postgres' in packageJson.dependencies) &&
+  ('next' in projectDependencies || 'postgres' in projectDependencies) &&
   // SafeQL currently not supported on Windows
   // https://github.com/ts-safeql/safeql/issues/80
   process.platform !== 'win32'
@@ -32,10 +35,7 @@ if (
   newDevDependenciesToInstall['libpg-query'] = 'latest';
 }
 
-if (
-  'react-scripts' in packageJson.dependencies ||
-  'next' in packageJson.dependencies
-) {
+if ('react-scripts' in projectDependencies || 'next' in projectDependencies) {
   newDevDependenciesToInstall['postcss-styled-syntax'] = 'latest';
   newDevDependenciesToInstall['stylelint'] = 'latest';
   newDevDependenciesToInstall['stylelint-config-css-modules'] = 'latest';
@@ -46,9 +46,9 @@ if (
 // Add all config peerDependencies to devDependencies of
 // project, upgrading existing package versions and
 // sorting alphabetically
-packageJson.devDependencies = Object.fromEntries(
+projectPackageJson.devDependencies = Object.fromEntries(
   Object.entries({
-    ...packageJson.devDependencies,
+    ...projectPackageJson.devDependencies,
     ...newDevDependenciesToInstall,
   }).sort(),
 );
@@ -56,8 +56,8 @@ packageJson.devDependencies = Object.fromEntries(
 const projectUsesYarn = !existsSync(join(process.cwd(), 'pnpm-lock.yaml'));
 
 if (projectUsesYarn) {
-  packageJson.resolutions = {
-    ...packageJson.resolutions,
+  projectPackageJson.resolutions = {
+    ...projectPackageJson.resolutions,
     // Force installation of the "dependencies" version of these
     // ESLint dependencies to avoid conflicting version numbers
     // between `eslint-config-react-app` and
@@ -82,16 +82,19 @@ if (projectUsesYarn) {
     ].reduce(
       (resolutions, packageName) => ({
         ...resolutions,
-        [packageName]: packageJson.devDependencies[packageName],
+        [packageName]: projectPackageJson.devDependencies[packageName],
       }),
       {},
     ),
     '@typescript-eslint/utils':
-      packageJson.devDependencies['@typescript-eslint/parser'],
+      projectPackageJson.devDependencies['@typescript-eslint/parser'],
   };
 }
 
-writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + '\n');
+writeFileSync(
+  projectPackageJsonPath,
+  JSON.stringify(projectPackageJson, null, 2) + '\n',
+);
 
 console.log('Installing ESLint config dependencies...');
 
@@ -115,10 +118,7 @@ for (const [templateFileName, templateFilePath] of templateFileNamesAndPaths) {
   // Don't copy Stylelint config for non-React / non-Next.js projects
   if (
     templateFileName === 'stylelint.config.cjs' &&
-    !(
-      'react-scripts' in packageJson.dependencies ||
-      'next' in packageJson.dependencies
-    )
+    !('react-scripts' in projectDependencies || 'next' in projectDependencies)
   ) {
     continue;
   }
