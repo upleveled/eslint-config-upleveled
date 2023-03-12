@@ -122,6 +122,19 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
     message:
       'Invalid DOM Nesting: tr elements cannot have elements which are not th or td elements as children',
   },
+
+  // Warn on sql tagged template literal without generic type argument
+  {
+    selector:
+      "VariableDeclarator > AwaitExpression > TaggedTemplateExpression[tag.name='sql']:not([typeParameters.params.0])",
+    message: `sql tagged template literal missing generic type argument, eg.
+
+  const animals = await sql<Animal[]>\`
+    SELECT * FROM animals
+  \`;
+
+`,
+  },
 ];
 
 /** @type {import('@typescript-eslint/utils').TSESLint.Linter.Config} */
