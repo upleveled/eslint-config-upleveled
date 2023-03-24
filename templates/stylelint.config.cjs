@@ -10,6 +10,14 @@ const config = {
     {
       files: ['**/*.css', '**/*.scss', '**/*.sass', '**/*.less'],
       extends: ['stylelint-config-recommended-scss'],
+      rules: {
+        'scss/at-rule-no-unknown': [
+          true,
+          {
+            ignoreAtRules: ['tailwind'],
+          },
+        ],
+      },
     },
     {
       files: ['**/*.module.css', '**/*.module.scss', '**/*.module.sass'],

@@ -3,6 +3,7 @@
 import { execSync } from 'node:child_process';
 import {
   existsSync,
+  mkdirSync,
   readdirSync,
   readFileSync,
   rmSync,
@@ -121,11 +122,43 @@ const templatePath = resolve(
   'templates',
 );
 
-const templateFileNamesAndPaths = /** @type {[string, string][]} */ (
-  readdirSync(templatePath).map((name) => [name, join(templatePath, name)])
-);
+const templateFileNamesAndPaths =
+  /** @type {{name: string, path: string}[]} */ (
+    readdirSync(templatePath, { withFileTypes: true }).flatMap(
+      (templateFileOrDirectory) => {
+        // TODO: Add support for multiple level of nesting in directories
+        if (templateFileOrDirectory.isDirectory()) {
+          const directoryPathInProject = join(
+            process.cwd(),
+            templateFileOrDirectory.name,
+          );
 
-for (const [templateFileName, templateFilePath] of templateFileNamesAndPaths) {
+          if (!existsSync(directoryPathInProject)) {
+            mkdirSync(directoryPathInProject);
+          }
+
+          const directoryPath = join(
+            templatePath,
+            templateFileOrDirectory.name,
+          );
+          return readdirSync(directoryPath).map((nameInDirectory) => ({
+            name: join(templateFileOrDirectory.name, nameInDirectory),
+            path: join(directoryPath, nameInDirectory),
+          }));
+        }
+
+        return {
+          name: templateFileOrDirectory.name,
+          path: join(templatePath, templateFileOrDirectory.name),
+        };
+      },
+    )
+  );
+
+for (const {
+  name: templateFileName,
+  path: templateFilePath,
+} of templateFileNamesAndPaths) {
   // Don't copy Stylelint config for non-React / non-Next.js projects
   if (
     templateFileName === 'stylelint.config.cjs' &&
@@ -134,15 +167,15 @@ for (const [templateFileName, templateFilePath] of templateFileNamesAndPaths) {
     continue;
   }
 
-  const destinationFilePath = join(process.cwd(), templateFileName);
+  const filePathInProject = join(process.cwd(), templateFileName);
 
-  if (existsSync(destinationFilePath)) {
+  if (existsSync(filePathInProject)) {
     console.log(`Skipping update to ${templateFileName} (already exists)`);
     continue;
   }
 
   try {
-    writeFileSync(destinationFilePath, readFileSync(templateFilePath, 'utf-8'));
+    writeFileSync(filePathInProject, readFileSync(templateFilePath, 'utf-8'));
     console.log(`Wrote ${templateFileName}`);
   } catch (err) {
     console.error('err', err);
