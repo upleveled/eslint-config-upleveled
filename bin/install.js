@@ -11,12 +11,8 @@ import {
 } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import eslintConfigPackageJson from '../package.json' assert { type: 'json' };
 
-const newDevDependenciesToInstall =
-  /** @type {Partial<typeof projectPackageJson.peerDependencies>} */ (
-    eslintConfigPackageJson.peerDependencies
-  );
+const newDevDependenciesToInstall = {};
 
 const projectPackageJsonPath = join(process.cwd(), 'package.json');
 const projectPackageJson = JSON.parse(
@@ -47,52 +43,16 @@ if ('react-scripts' in projectDependencies || 'next' in projectDependencies) {
 // Add all config peerDependencies to devDependencies of
 // project, upgrading existing package versions and
 // sorting alphabetically
-projectPackageJson.devDependencies = Object.fromEntries(
-  Object.entries({
-    ...projectPackageJson.devDependencies,
-    ...newDevDependenciesToInstall,
-  }).sort(),
-);
-
-const projectUsesYarn = !existsSync(join(process.cwd(), 'pnpm-lock.yaml'));
-
-if (projectUsesYarn) {
-  projectPackageJson.resolutions = {
-    ...projectPackageJson.resolutions,
-    // Force installation of the "dependencies" version of these
-    // ESLint dependencies to avoid conflicting version numbers
-    // between `eslint-config-react-app` and
-    // `@upleveled/eslint-config-upleveled` (they use the same
-    // ESLint dependencies, but may have slightly different
-    // versions).
-    //
-    // These conflicts can result in ESLint errors like:
-    //
-    // ESLint couldn't determine the plugin "import" uniquely.
-    //
-    // - /home/runner/work/preflight/preflight/node_modules/eslint-plugin-import/lib/index.js (loaded in ".eslintrc.cjs » @upleveled/eslint-config-upleveled")
-    // - /home/runner/work/preflight/preflight/node_modules/eslint-config-react-app/node_modules/eslint-plugin-import/lib/index.js (loaded in ".eslintrc.cjs » @upleveled/eslint-config-upleveled » eslint-config-react-app")
-    ...[
-      '@typescript-eslint/eslint-plugin',
-      '@typescript-eslint/parser',
-      'eslint-plugin-import',
-      'eslint-plugin-jest',
-      'eslint-plugin-jsx-a11y',
-      'eslint-plugin-react',
-      'eslint-plugin-react-hooks',
-    ].reduce(
-      (resolutions, packageName) => ({
-        ...resolutions,
-        [packageName]: projectPackageJson.devDependencies[packageName],
-      }),
-      {},
-    ),
-    '@typescript-eslint/utils':
-      projectPackageJson.devDependencies['@typescript-eslint/parser'],
-  };
+if (Object.keys(newDevDependenciesToInstall).length > 0) {
+  projectPackageJson.devDependencies = Object.fromEntries(
+    Object.entries({
+      ...projectPackageJson.devDependencies,
+      ...newDevDependenciesToInstall,
+    }).sort(),
+  );
 }
 
-if ('next' in projectDependencies && !projectUsesYarn) {
+if ('next' in projectDependencies) {
   // Remove previous patches in package.json
   if (projectPackageJson?.pnpm?.patchedDependencies) {
     projectPackageJson.pnpm.patchedDependencies = Object.fromEntries(
@@ -110,7 +70,7 @@ writeFileSync(
 
 console.log('Installing ESLint config dependencies...');
 
-execSync(`${!projectUsesYarn ? 'pnpm' : 'yarn'} install`, { stdio: 'inherit' });
+execSync('pnpm install', { stdio: 'inherit' });
 
 console.log('✅ Done installing dependencies');
 
@@ -232,7 +192,7 @@ writeFileSync(
 
 console.log('✅ Done updating .gitignore');
 
-if ('next' in projectDependencies && !projectUsesYarn) {
+if ('next' in projectDependencies) {
   const patchesPath = join(process.cwd(), 'patches');
 
   // Remove previous patch files
