@@ -13,13 +13,6 @@ pnpm add --save-dev @upleveled/eslint-config-upleveled@latest
 pnpm upleveled-eslint-install
 ```
 
-Or, with Yarn:
-
-```sh
-yarn add --dev @upleveled/eslint-config-upleveled
-yarn upleveled-eslint-install
-```
-
 <!--
 
 Old instructions
