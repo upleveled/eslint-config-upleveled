@@ -409,9 +409,11 @@ Source link: https://www.runpkg.com/?next@${nextVersion}/${filePath}#${lineNumbe
     );
   }
 
+  console.log('Generating patch...');
+
   execSync(`pnpm patch-commit ${pnpmPatchNextEditDir}`, {
-    // Discard stdout, show stderr
-    stdio: ['ignore', 'ignore', 'inherit'],
+    // Show stdout stderr
+    stdio: ['ignore', 'inherit', 'inherit'],
   });
 
   rmSync(pnpmPatchNextEditDir, { recursive: true });
