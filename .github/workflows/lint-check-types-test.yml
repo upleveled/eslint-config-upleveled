@@ -19,3 +19,8 @@ jobs:
       - run: pnpm eslint . --max-warnings 0
       - run: pnpm tsc
       - run: pnpm postpublish
+        # Run as if not in CI to avoid pnpm errors like:
+        # ERR_PNPM_FROZEN_LOCKFILE_WITH_OUTDATED_LOCKFILE Cannot perform a frozen installation because the lockfile needs updates
+        # Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+        env:
+          CI: false
