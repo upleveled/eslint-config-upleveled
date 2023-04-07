@@ -277,68 +277,6 @@ Source link: https://www.runpkg.com/?next@${nextVersion}/${filePath}#${lineNumbe
    */
   const transforms = [
     // Apply diff:
-    // diff --git a/node_modules/next/dist/client/components/layout-router.js b/node_modules/next/dist/client/components/layout-router.js
-    // index 9b60a45..dd0639d 100644
-    // --- a/node_modules/next/dist/client/components/layout-router.js
-    // +++ b/node_modules/next/dist/client/components/layout-router.js
-    // @@ -317,6 +317,7 @@ function HandleRedirect({ redirect  }) {
-    //      const router = (0, _navigation).useRouter();
-    //      (0, _react).useEffect(()=>{
-    //          router.replace(redirect, {});
-    // +        router.refresh()
-    //      }, [
-    //          redirect,
-    //          router
-    {
-      filePath: join('dist', 'client', 'components', 'layout-router.js'),
-      transform: (filePath, content) => {
-        /** @type {Replacement[]} */
-        const replacements = [
-          {
-            lineNumber: 318,
-            patternName: 'useEffect, router.replace()',
-            pattern:
-              /^( +\(0, _react\)\.useEffect\(\(\)=>\{\n)( +)(router\.replace\(redirect, \{\}\);\n)( +\}, \[)/m,
-            replacement: '$1$2$3$2router.refresh();\n$4',
-          },
-        ];
-
-        return replaceAll(filePath, content, replacements);
-      },
-    },
-
-    // Apply diff:
-    // diff --git a/node_modules/next/dist/client/link.js b/node_modules/next/dist/client/link.js
-    // index d15ce7f..369e036 100644
-    // --- a/node_modules/next/dist/client/link.js
-    // +++ b/node_modules/next/dist/client/link.js
-    // @@ -83,6 +83,7 @@ function linkClicked(e, router, href, as, replace, shallow, scroll, locale, isAp
-    //      if (isAppRouter) {
-    //          // @ts-expect-error startTransition exists.
-    //          _react.default.startTransition(navigate);
-    // +        router.refresh()
-    //      } else {
-    //          navigate();
-    //      }
-    {
-      filePath: join('dist', 'client', 'link.js'),
-      transform: (filePath, content) => {
-        /** @type {Replacement[]} */
-        const replacements = [
-          {
-            lineNumber: 85,
-            patternName: 'isAppRouter, _react.default.startTransition()',
-            pattern:
-              /^( +)(_react\.default\.startTransition\(navigate\);\n)( +\} else \{)/m,
-            replacement: `$1$2$1router.refresh();\n$3`,
-          },
-        ];
-
-        return replaceAll(filePath, content, replacements);
-      },
-    },
-
-    // Apply diff:
     // diff --git a/node_modules/next/dist/server/web/spec-extension/response.d.ts b/node_modules/next/dist/server/web/spec-extension/response.d.ts
     // index 268f52b..6ef065b 100644
     // --- a/node_modules/next/dist/server/web/spec-extension/response.d.ts
