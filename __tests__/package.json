@@ -9,7 +9,7 @@
     "update-config-version": "pnpm add --save-dev @upleveled/eslint-config-upleveled@latest && pnpm upleveled-eslint-install"
   },
   "dependencies": {
-    "next": "13.2.4"
+    "next": "13.3.0"
   },
   "devDependencies": {
     "@ts-safeql/eslint-plugin": "^0.0.25",
