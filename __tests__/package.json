@@ -8,9 +8,23 @@
   "scripts": {
     "update-config-version": "pnpm add --save-dev @upleveled/eslint-config-upleveled@latest && pnpm upleveled-eslint-install"
   },
+  "dependencies": {
+    "next": "13.2.4"
+  },
   "devDependencies": {
+    "@ts-safeql/eslint-plugin": "^0.0.25",
     "@upleveled/eslint-config-upleveled": "^4.0.3",
-    "next": "13.3.0",
+    "libpg-query": "^15.0.2",
+    "postcss-styled-syntax": "^0.4.0",
+    "stylelint": "^15.4.0",
+    "stylelint-config-css-modules": "^4.2.0",
+    "stylelint-config-recommended": "^11.0.0",
+    "stylelint-config-recommended-scss": "^9.0.1",
     "typescript": "5.0.3"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "next@13.2.4": "patches/next@13.2.4.patch"
+    }
   }
 }
