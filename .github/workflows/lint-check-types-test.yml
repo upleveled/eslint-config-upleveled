@@ -1,9 +1,9 @@
-name: Lint, Check Types
+name: Lint, Check Types, Test
 on: push
 
 jobs:
   check-types:
-    name: Lint, Check Types
+    name: Lint, Check Types, Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,3 +18,4 @@ jobs:
       - run: pnpm install
       - run: pnpm eslint . --max-warnings 0
       - run: pnpm tsc
+      - run: pnpm postpublish

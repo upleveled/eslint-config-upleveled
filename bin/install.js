@@ -74,7 +74,7 @@ console.log(
 execSync(
   newDevDependenciesToInstall.length > 0
     ? `pnpm add --save-dev ${newDevDependenciesToInstall.join(' ')}`
-    : 'pnpm install',
+    : 'pnpm install --no-frozen-lockfile',
   { stdio: 'inherit' },
 );
 
