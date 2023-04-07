@@ -12,45 +12,13 @@ import {
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const newDevDependenciesToInstall = {};
-
 const projectPackageJsonPath = join(process.cwd(), 'package.json');
 const projectPackageJson = JSON.parse(
   readFileSync(projectPackageJsonPath, 'utf-8'),
 );
 
 const projectDependencies = projectPackageJson.dependencies || {};
-
-if (
-  // Install SafeQL dependencies in Next.js and Postgres.js projects
-  ('next' in projectDependencies || 'postgres' in projectDependencies) &&
-  // SafeQL currently not supported on Windows
-  // https://github.com/ts-safeql/safeql/issues/80
-  process.platform !== 'win32'
-) {
-  newDevDependenciesToInstall['@ts-safeql/eslint-plugin'] = 'latest';
-  newDevDependenciesToInstall['libpg-query'] = 'latest';
-}
-
-if ('react-scripts' in projectDependencies || 'next' in projectDependencies) {
-  newDevDependenciesToInstall['postcss-styled-syntax'] = 'latest';
-  newDevDependenciesToInstall['stylelint'] = 'latest';
-  newDevDependenciesToInstall['stylelint-config-css-modules'] = 'latest';
-  newDevDependenciesToInstall['stylelint-config-recommended'] = 'latest';
-  newDevDependenciesToInstall['stylelint-config-recommended-scss'] = 'latest';
-}
-
-// Add all config peerDependencies to devDependencies of
-// project, upgrading existing package versions and
-// sorting alphabetically
-if (Object.keys(newDevDependenciesToInstall).length > 0) {
-  projectPackageJson.devDependencies = Object.fromEntries(
-    Object.entries({
-      ...projectPackageJson.devDependencies,
-      ...newDevDependenciesToInstall,
-    }).sort(),
-  );
-}
+const projectDevDependencies = projectPackageJson.devDependencies || {};
 
 if ('next' in projectDependencies) {
   // Remove previous patches in package.json
@@ -68,9 +36,47 @@ writeFileSync(
   JSON.stringify(projectPackageJson, null, 2) + '\n',
 );
 
-console.log('Installing ESLint config dependencies...');
+const newDevDependenciesToInstall = [];
 
-execSync('pnpm install', { stdio: 'inherit' });
+if (
+  // Install SafeQL dependencies in Next.js and Postgres.js projects
+  ('next' in projectDependencies || 'postgres' in projectDependencies) &&
+  // SafeQL currently not supported on Windows
+  // https://github.com/ts-safeql/safeql/issues/80
+  process.platform !== 'win32'
+) {
+  newDevDependenciesToInstall.push('@ts-safeql/eslint-plugin', 'libpg-query');
+}
+
+if ('react-scripts' in projectDependencies || 'next' in projectDependencies) {
+  newDevDependenciesToInstall.push(
+    'postcss-styled-syntax',
+    'stylelint',
+    'stylelint-config-css-modules',
+    'stylelint-config-recommended',
+    'stylelint-config-recommended-scss',
+  );
+}
+
+for (const projectDevDependency of Object.keys(projectDevDependencies)) {
+  if (newDevDependenciesToInstall.includes(projectDevDependency)) {
+    newDevDependenciesToInstall.splice(
+      newDevDependenciesToInstall.indexOf(projectDevDependency),
+      1,
+    );
+  }
+}
+
+console.log(
+  `Installing ${newDevDependenciesToInstall.length} ESLint config dependencies...`,
+);
+
+execSync(
+  newDevDependenciesToInstall.length > 0
+    ? `pnpm add --save-dev ${newDevDependenciesToInstall.join(' ')}`
+    : 'pnpm install',
+  { stdio: 'inherit' },
+);
 
 console.log('✅ Done installing dependencies');
 
