@@ -40,7 +40,7 @@
     "@typescript-eslint/eslint-plugin": "5.57.1",
     "@typescript-eslint/parser": "5.57.1",
     "@typescript-eslint/utils": "5.57.1",
-    "@upleveled/eslint-config-upleveled": "4.0.3",
+    "@upleveled/eslint-config-upleveled": "4.0.6",
     "@upleveled/eslint-plugin-upleveled": "2.1.6",
     "eslint": "8.37.0",
     "eslint-config-react-app": "7.0.1",
