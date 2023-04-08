@@ -10,7 +10,6 @@
     "**/*.cjs",
     "**/*.mjs",
     ".next/types/**/*.ts",
-    "next-env.d.ts",
     "next.d.ts"
   ]
 }
