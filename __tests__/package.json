@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@ts-safeql/eslint-plugin": "^0.0.25",
-    "@upleveled/eslint-config-upleveled": "^4.0.7",
+    "@upleveled/eslint-config-upleveled": "^4.0.8",
     "libpg-query": "^15.0.2",
     "postcss-styled-syntax": "^0.4.0",
     "stylelint": "^15.4.0",
@@ -23,8 +23,6 @@
     "typescript": "5.0.3"
   },
   "pnpm": {
-    "patchedDependencies": {
-      "next@13.3.0": "patches/next@13.3.0.patch"
-    }
+    "patchedDependencies": {}
   }
 }
