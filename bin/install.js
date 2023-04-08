@@ -291,59 +291,60 @@ console.log('✅ Done updating .gitignore');
 //    */
 //   const transforms = [
 //     // Apply diff:
-//     // diff --git a/node_modules/next/dist/server/web/spec-extension/response.d.ts b/node_modules/next/dist/server/web/spec-extension/response.d.ts
-//     // index 268f52b..6ef065b 100644
-//     // --- a/node_modules/next/dist/server/web/spec-extension/response.d.ts
-//     // +++ b/node_modules/next/dist/server/web/spec-extension/response.d.ts
-//     // @@ -2,14 +2,15 @@ import type { I18NConfig } from '../../config-shared';
-//     //  import { NextURL } from '../next-url';
-//     //  import { ResponseCookies } from './cookies';
-//     //  declare const INTERNALS: unique symbol;
-//     // -export declare class NextResponse extends Response {
-//     // +export declare class NextResponse<B = void> extends Response {
-//     //      [INTERNALS]: {
-//     //          cookies: ResponseCookies;
-//     //          url?: NextURL;
-//     // +        B: B
-//     //      };
-//     //      constructor(body?: BodyInit | null, init?: ResponseInit);
-//     //      get cookies(): ResponseCookies;
-//     // -    static json(body: any, init?: ResponseInit): NextResponse;
-//     // +    static json<T>(body: T, init?: ResponseInit): NextResponse<T>;
-//     //      static redirect(url: string | NextURL | URL, init?: number | ResponseInit): NextResponse;
-//     //      static rewrite(destination: string | NextURL | URL, init?: MiddlewareResponseInit): NextResponse;
-//     //      static next(init?: MiddlewareResponseInit): NextResponse;
+//     // diff --git a/node_modules/next/dist/client/components/layout-router.js b/node_modules/next/dist/client/components/layout-router.js
+//     // index 9b60a45..dd0639d 100644
+//     // --- a/node_modules/next/dist/client/components/layout-router.js
+//     // +++ b/node_modules/next/dist/client/components/layout-router.js
+//     // @@ -317,6 +317,7 @@ function HandleRedirect({ redirect  }) {
+//     //      const router = (0, _navigation).useRouter();
+//     //      (0, _react).useEffect(()=>{
+//     //          router.replace(redirect, {});
+//     // +        router.refresh()
+//     //      }, [
+//     //          redirect,
+//     //          router
 //     {
-//       filePath: join(
-//         'dist',
-//         'server',
-//         'web',
-//         'spec-extension',
-//         'response.d.ts',
-//       ),
+//       filePath: join('dist', 'client', 'components', 'layout-router.js'),
 //       transform: (filePath, content) => {
 //         /** @type {Replacement[]} */
 //         const replacements = [
 //           {
-//             lineNumber: 5,
-//             patternName: 'export declare class NextResponse',
+//             lineNumber: 318,
+//             patternName: 'useEffect, router.replace()',
 //             pattern:
-//               /^(export declare class NextResponse)( extends Response \{\n)/m,
-//             replacement: `$1<B = void>$2`,
+//               /^( +\(0, _react\)\.useEffect\(\(\)=>\{\n)( +)(router\.replace\(redirect, \{\}\);\n)( +\}, \[)/m,
+//             replacement: '$1$2$3$2router.refresh();\n$4',
 //           },
+//         ];
+
+//         return replaceAll(filePath, content, replacements);
+//       },
+//     },
+
+//     // Apply diff:
+//     // diff --git a/node_modules/next/dist/client/link.js b/node_modules/next/dist/client/link.js
+//     // index d15ce7f..369e036 100644
+//     // --- a/node_modules/next/dist/client/link.js
+//     // +++ b/node_modules/next/dist/client/link.js
+//     // @@ -83,6 +83,7 @@ function linkClicked(e, router, href, as, replace, shallow, scroll, locale, isAp
+//     //      if (isAppRouter) {
+//     //          // @ts-expect-error startTransition exists.
+//     //          _react.default.startTransition(navigate);
+//     // +        router.refresh()
+//     //      } else {
+//     //          navigate();
+//     //      }
+//     {
+//       filePath: join('dist', 'client', 'link.js'),
+//       transform: (filePath, content) => {
+//         /** @type {Replacement[]} */
+//         const replacements = [
 //           {
-//             lineNumber: 6,
-//             patternName: 'NextResponse[INTERNALS]',
+//             lineNumber: 85,
+//             patternName: 'isAppRouter, _react.default.startTransition()',
 //             pattern:
-//               /^( +\[INTERNALS\]: \{\n)( +)(cookies: ResponseCookies;\n)( +url\?: NextURL;\n)( +\};\n)/m,
-//             replacement: `$1$2$3$4$2B: B;\n$5`,
-//           },
-//           {
-//             lineNumber: 12,
-//             patternName: 'NextResponse.json()',
-//             pattern:
-//               /^( +static json)(\(body: )any(, init\?: ResponseInit\): NextResponse)(;)/m,
-//             replacement: `$1<T>$2T$3<T>$4`,
+//               /^( +)(_react\.default\.startTransition\(navigate\);\n)( +\} else \{)/m,
+//             replacement: `$1$2$1router.refresh();\n$3`,
 //           },
 //         ];
 
