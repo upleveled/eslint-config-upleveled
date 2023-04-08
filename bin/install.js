@@ -136,8 +136,22 @@ for (const {
   const filePathInProject = join(process.cwd(), templateFileName);
 
   if (existsSync(filePathInProject)) {
-    console.log(`Skipping update to ${templateFileName} (already exists)`);
-    continue;
+    let skip = true;
+
+    if (templateFileName === 'tsconfig.json') {
+      const projectTsconfigJson = JSON.parse(
+        readFileSync(join(process.cwd(), 'tsconfig.json'), 'utf-8'),
+      );
+
+      if ('plugins' in (projectTsconfigJson.compilerOptions || {})) {
+        skip = false;
+      }
+    }
+
+    if (skip) {
+      console.log(`Skipping update to ${templateFileName} (already exists)`);
+      continue;
+    }
   }
 
   try {
