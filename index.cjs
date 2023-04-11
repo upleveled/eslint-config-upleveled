@@ -147,7 +147,6 @@ const config = {
   plugins: [
     '@next/next',
     '@typescript-eslint',
-    '@upleveled/upleveled',
     'import',
     'jsx-a11y',
     'jsx-expressions',
@@ -156,6 +155,7 @@ const config = {
     'security',
     'sonarjs',
     'unicorn',
+    'upleveled',
   ],
   env: {
     es2020: true,
@@ -271,18 +271,6 @@ const config = {
     // @typescript-eslint plugin
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'error',
-    // Warn about submit handler without event.preventDefault()
-    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-submit-handler-without-preventDefault.md
-    '@upleveled/upleveled/no-submit-handler-without-preventDefault': 'error',
-    // Warn about unnecessary HTML attributes
-    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-html-attributes.md
-    '@upleveled/upleveled/no-unnecessary-html-attributes': 'warn',
-    // Warn about unnecessary for and id attributes with inputs nested inside of labels
-    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-for-and-id.md
-    '@upleveled/upleveled/no-unnecessary-for-and-id': 'warn',
-    // Warn about unnecessary interpolations in template strings
-    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-interpolations.md
-    '@upleveled/upleveled/no-unnecessary-interpolations': 'warn',
     // Allow leaving out curlies only with single-line condition blocks
     // https://github.com/eslint/eslint/blob/master/docs/rules/curly.md#multi-line
     curly: ['error', 'multi-line', 'consistent'],
@@ -409,6 +397,18 @@ const config = {
     'unicorn/prefer-node-protocol': ['warn'],
     // Warn about usage of substring or substr instead of slice
     'unicorn/prefer-string-slice': 'warn',
+    // Warn about submit handler without event.preventDefault()
+    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-submit-handler-without-preventDefault.md
+    'upleveled/no-submit-handler-without-preventDefault': 'error',
+    // Warn about unnecessary HTML attributes
+    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-html-attributes.md
+    'upleveled/no-unnecessary-html-attributes': 'warn',
+    // Warn about unnecessary for and id attributes with inputs nested inside of labels
+    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-for-and-id.md
+    'upleveled/no-unnecessary-for-and-id': 'warn',
+    // Warn about unnecessary interpolations in template strings
+    // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-interpolations.md
+    'upleveled/no-unnecessary-interpolations': 'warn',
   },
   overrides: [
     {

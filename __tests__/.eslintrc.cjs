@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@upleveled/upleveled'],
+  extends: ['upleveled'],
   parserOptions: {
     project: './tsconfig.json',
     tsconfigRootDir: __dirname,
