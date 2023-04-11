@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "update-config-version": "pnpm add --save-dev @upleveled/eslint-config-upleveled@latest && pnpm upleveled-eslint-install"
+    "update-config-version": "pnpm add --save-dev eslint-config-upleveled@latest && pnpm upleveled-eslint-install"
   },
   "dependencies": {
     "next": "13.3.0"
