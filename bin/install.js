@@ -49,13 +49,7 @@ if (
 }
 
 if ('react-scripts' in projectDependencies || 'next' in projectDependencies) {
-  newDevDependenciesToInstall.push(
-    'postcss-styled-syntax',
-    'stylelint',
-    'stylelint-config-css-modules',
-    'stylelint-config-recommended',
-    'stylelint-config-recommended-scss',
-  );
+  newDevDependenciesToInstall.push('stylelint', 'stylelint-config-upleveled');
 }
 
 for (const projectDevDependency of Object.keys(projectDevDependencies)) {
