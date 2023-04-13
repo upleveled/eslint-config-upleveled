@@ -18,9 +18,13 @@ jobs:
       - run: pnpm install
       - run: pnpm eslint . --max-warnings 0
       - run: pnpm tsc
+      - run: ls -al node_modules
+      - run: ls -al node_modules/eslint-config-upleveled
       # Copy the `node_modules` from the root to the tests for the
       # following upleveled-eslint-install command
       - run: cp -R node_modules __tests__/node_modules
+      - run: ls -al __tests__/node_modules
+      - run: ls -al __tests__/node_modules/eslint-config-upleveled
       - run: pnpm upleveled-eslint-install
         working-directory: __tests__
         # Run as if not in CI to avoid pnpm errors like:
