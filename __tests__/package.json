@@ -12,15 +12,15 @@
     "next": "13.3.0"
   },
   "devDependencies": {
-    "@ts-safeql/eslint-plugin": "^0.0.25",
+    "@ts-safeql/eslint-plugin": "^0.0.28",
     "eslint-config-upleveled": "^4.0.12",
     "libpg-query": "^15.0.2",
     "postcss-styled-syntax": "^0.4.0",
     "stylelint": "^15.4.0",
     "stylelint-config-css-modules": "^4.2.0",
     "stylelint-config-recommended": "^11.0.0",
-    "stylelint-config-recommended-scss": "^9.0.1",
-    "typescript": "5.0.3"
+    "stylelint-config-recommended-scss": "^10.0.0",
+    "typescript": "5.0.4"
   },
   "pnpm": {
     "patchedDependencies": {}

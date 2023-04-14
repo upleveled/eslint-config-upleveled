@@ -18,11 +18,14 @@ jobs:
       - run: pnpm install
       - run: pnpm eslint . --max-warnings 0
       - run: pnpm tsc
-      # Copy the `node_modules` from the root to the tests for the
-      # following upleveled-eslint-install command
-      - run: cp -R node_modules __tests__/node_modules
-      - run: pnpm upleveled-eslint-install
-        working-directory: __tests__
+      # Copy the upleveled-eslint-install bin script to __tests__
+      - run: |
+          mkdir -p __tests__/node_modules/.bin
+          cp node_modules/.bin/upleveled-eslint-install __tests__/node_modules/.bin
+          mkdir -p __tests__/node_modules/eslint-config-upleveled/bin
+          cp package.json __tests__/node_modules/eslint-config-upleveled
+          cp bin/install.js __tests__/node_modules/eslint-config-upleveled/bin
+      - run: cd __tests__ && pnpm upleveled-eslint-install
         # Run as if not in CI to avoid pnpm errors like:
         # ERR_PNPM_FROZEN_LOCKFILE_WITH_OUTDATED_LOCKFILE Cannot perform a frozen installation because the lockfile needs updates
         # Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
