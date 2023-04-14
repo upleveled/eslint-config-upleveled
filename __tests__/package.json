@@ -1,10 +1,10 @@
 {
   "name": "eslint-config-upleveled-tests",
   "version": "1.0.0",
-  "main": "index.js",
-  "author": "Karl Horky <karl.horky@gmail.com>",
-  "license": "MIT",
   "private": true,
+  "license": "MIT",
+  "author": "Karl Horky <karl.horky@gmail.com>",
+  "main": "index.js",
   "scripts": {
     "update-config-version": "pnpm add --save-dev eslint-config-upleveled@latest && pnpm upleveled-eslint-install"
   },
