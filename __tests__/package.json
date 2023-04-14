@@ -15,7 +15,7 @@
     "@ts-safeql/eslint-plugin": "0.0.28",
     "eslint-config-upleveled": "4.0.12",
     "libpg-query": "15.0.2",
-    "typescript": "5.0.3"
+    "typescript": "5.0.4"
   },
   "pnpm": {
     "patchedDependencies": {}
