@@ -16,8 +16,5 @@
     "eslint-config-upleveled": "4.0.12",
     "libpg-query": "15.0.2",
     "typescript": "5.0.4"
-  },
-  "pnpm": {
-    "patchedDependencies": {}
   }
 }
