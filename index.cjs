@@ -411,6 +411,7 @@ const config = {
     'upleveled/no-unnecessary-interpolations': 'warn',
   },
   overrides: [
+    // Lint other common extensions by default with rules above
     { files: '**/*.{jsx,cjs,mjs,cts,mts}' },
     {
       files: [
