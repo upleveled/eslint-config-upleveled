@@ -16,7 +16,7 @@ devDependencies:
     specifier: 15.0.2
     version: 15.0.2
   postcss-styled-syntax:
-    specifier: ^0.4.0
+    specifier: 0.4.0
     version: 0.4.0(postcss@8.4.22)(typescript@5.0.4)
   stylelint-config-upleveled:
     specifier: 1.0.2
