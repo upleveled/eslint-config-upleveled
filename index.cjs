@@ -411,6 +411,7 @@ const config = {
     'upleveled/no-unnecessary-interpolations': 'warn',
   },
   overrides: [
+    { files: '**/*.cjs' },
     {
       files: [
         'app/**/layout.js',
