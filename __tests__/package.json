@@ -1,28 +1,27 @@
 {
   "name": "eslint-config-upleveled-tests",
   "version": "1.0.0",
-  "main": "index.js",
-  "author": "Karl Horky <karl.horky@gmail.com>",
-  "license": "MIT",
   "private": true,
+  "license": "MIT",
+  "author": "UpLeveled",
+  "contributors": [
+    "Karl Horky <karl.horky@gmail.com>",
+    "Jose Höwer <josehower@gmail.com>"
+  ],
+  "main": "index.js",
   "scripts": {
     "update-config-version": "pnpm add --save-dev eslint-config-upleveled@latest && pnpm upleveled-eslint-install"
   },
   "dependencies": {
-    "next": "13.3.0"
+    "next": "^13.3.0"
   },
   "devDependencies": {
     "@ts-safeql/eslint-plugin": "^0.0.28",
-    "eslint-config-upleveled": "^4.0.12",
+    "eslint-config-upleveled": "^4.0.13",
     "libpg-query": "^15.0.2",
     "postcss-styled-syntax": "^0.4.0",
     "stylelint": "^15.4.0",
-    "stylelint-config-css-modules": "^4.2.0",
-    "stylelint-config-recommended": "^11.0.0",
-    "stylelint-config-recommended-scss": "^10.0.0",
-    "typescript": "5.0.4"
-  },
-  "pnpm": {
-    "patchedDependencies": {}
+    "stylelint-config-upleveled": "^1.0.2",
+    "typescript": "^5.0.4"
   }
 }

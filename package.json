@@ -14,7 +14,11 @@
   ],
   "repository": "upleveled/eslint-config-upleveled",
   "license": "MIT",
-  "author": "Karl Horky <karl.horky@gmail.com>",
+  "author": "UpLeveled",
+  "contributors": [
+    "Jose Höwer <josehower@gmail.com>",
+    "Karl Horky <karl.horky@gmail.com>"
+  ],
   "type": "module",
   "main": "index.cjs",
   "bin": {
@@ -31,7 +35,7 @@
   },
   "devDependencies": {
     "@types/prettier": "2.7.2",
-    "eslint-config-upleveled": "4.0.12",
+    "eslint-config-upleveled": "4.0.13",
     "stylelint": "15.4.0",
     "typescript": "5.0.4"
   },
