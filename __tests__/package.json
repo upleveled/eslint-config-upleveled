@@ -9,12 +9,14 @@
     "update-config-version": "pnpm add --save-dev eslint-config-upleveled@latest && pnpm upleveled-eslint-install"
   },
   "dependencies": {
-    "next": "13.3.0"
+    "next": "13.3.0",
+    "stylelint-config-upleveled": "^1.0.2"
   },
   "devDependencies": {
     "@ts-safeql/eslint-plugin": "0.0.28",
     "eslint-config-upleveled": "4.0.13",
     "libpg-query": "15.0.2",
+    "postcss-styled-syntax": "^0.4.0",
     "typescript": "5.0.4"
   }
 }
