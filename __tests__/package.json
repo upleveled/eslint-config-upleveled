@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
-  "author": "Karl Horky <karl.horky@gmail.com>",
+  "author": "UpLeveled",
+  "contributors": [
+    "Karl Horky <karl.horky@gmail.com>",
+    "Jose Höwer <josehower@gmail.com>"
+  ],
   "main": "index.js",
   "scripts": {
     "update-config-version": "pnpm add --save-dev eslint-config-upleveled@latest && pnpm upleveled-eslint-install"
