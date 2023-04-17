@@ -25,6 +25,7 @@
     "upleveled-eslint-install": "bin/install.js"
   },
   "files": [
+    "index.cjs",
     "bin",
     "templates",
     "tsconfig.base.json"
