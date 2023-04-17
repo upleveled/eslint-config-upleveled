@@ -14,7 +14,11 @@
   ],
   "repository": "upleveled/eslint-config-upleveled",
   "license": "MIT",
-  "author": "Karl Horky <karl.horky@gmail.com>",
+  "author": "UpLeveled",
+  "contributors": [
+    "Jose Höwer <josehower@gmail.com>",
+    "Karl Horky <karl.horky@gmail.com>"
+  ],
   "type": "module",
   "main": "index.cjs",
   "bin": {
