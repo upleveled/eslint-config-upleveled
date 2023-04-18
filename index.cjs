@@ -110,7 +110,7 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
   // Warn on nesting any invalid elements inside of <tbody>, <thead> and <tfoot> elements
   {
     selector:
-      "JSXElement[openingElement.name.name=/tbody|thead|tfoot/] > JSXElement[openingElement.name.name!='tr'][openingElement.name.name!=/^[A-Z]/]",
+      "JSXElement[openingElement.name.name=/(tbody|thead|tfoot)/] > JSXElement[openingElement.name.name!='tr'][openingElement.name.name!=/^[A-Z]/]",
     message:
       'Invalid DOM Nesting: tbody, thead and tfoot elements cannot have non-tr elements as children',
   },
@@ -118,7 +118,7 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
   // Warn on nesting any invalid elements inside of <tr> elements
   {
     selector:
-      "JSXElement[openingElement.name.name='tr'] > JSXElement[openingElement.name.name!=/th|td/][openingElement.name.name!=/^[A-Z]/]",
+      "JSXElement[openingElement.name.name='tr'] > JSXElement[openingElement.name.name!=/(th|td)/][openingElement.name.name!=/^[A-Z]/]",
     message:
       'Invalid DOM Nesting: tr elements cannot have elements which are not th or td elements as children',
   },
