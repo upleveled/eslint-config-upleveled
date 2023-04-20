@@ -37,9 +37,14 @@ writeFileSync(
 );
 
 const newDevDependenciesToInstall = [
-  // Fixes missing Typescript module error by adding it to devDependencies installed by ESLint
-  // This is due to pnpm not hoisting peerDependencies and their bins, leading to the error
-  // Adding Typescript ensures it's installed when running ESLint installation
+  // pnpm v8+ automatically installs peer dependencies (auto-install-peers=true
+  // is default) and `typescript` is a peer dependency of eslint-config-upleveled,
+  // but the dependencies and their bins are not hoisted, which makes ESLint (and
+  // potentially other tooling) fail to resolve TypeScript
+  //
+  // Similar issue with `stylelint` here:
+  // https://github.com/stylelint/stylelint/issues/6781#issuecomment-1506751686
+  // https://github.com/pnpm/pnpm/issues/6392
   'typescript',
 ];
 
