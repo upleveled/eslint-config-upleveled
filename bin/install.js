@@ -36,7 +36,17 @@ writeFileSync(
   JSON.stringify(projectPackageJson, null, 2) + '\n',
 );
 
-const newDevDependenciesToInstall = [];
+const newDevDependenciesToInstall = [
+  // pnpm v8+ automatically installs peer dependencies (auto-install-peers=true
+  // is default) and `typescript` is a peer dependency of eslint-config-upleveled,
+  // but the dependencies and their bins are not hoisted, which makes ESLint (and
+  // potentially other tooling) fail to resolve TypeScript
+  //
+  // Similar issue with `stylelint` here:
+  // https://github.com/stylelint/stylelint/issues/6781#issuecomment-1506751686
+  // https://github.com/pnpm/pnpm/issues/6392
+  'typescript',
+];
 
 if (
   // Install SafeQL dependencies in Next.js and Postgres.js projects
