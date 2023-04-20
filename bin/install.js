@@ -36,6 +36,9 @@ writeFileSync(
   JSON.stringify(projectPackageJson, null, 2) + '\n',
 );
 
+// Fixes missing Typescript module error by adding it to devDependencies installed by ESLint
+// This is due to pnpm not hoisting peerDependencies and their bins, leading to the error
+// Adding Typescript ensures it's installed when running ESLint installation
 const newDevDependenciesToInstall = ['typescript'];
 
 if (
