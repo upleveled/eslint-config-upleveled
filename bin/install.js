@@ -58,7 +58,10 @@ if (
   newDevDependenciesToInstall.push('@ts-safeql/eslint-plugin', 'libpg-query');
 }
 
-if ('react-scripts' in projectDependencies || 'next' in projectDependencies) {
+if (
+  '@upleveled/react-scripts' in projectDependencies ||
+  'next' in projectDependencies
+) {
   newDevDependenciesToInstall.push('stylelint', 'stylelint-config-upleveled');
 }
 
@@ -132,7 +135,10 @@ for (const {
   // Don't copy Stylelint config for non-React / non-Next.js projects
   if (
     templateFileName === 'stylelint.config.cjs' &&
-    !('react-scripts' in projectDependencies || 'next' in projectDependencies)
+    !(
+      '@upleveled/react-scripts' in projectDependencies ||
+      'next' in projectDependencies
+    )
   ) {
     continue;
   }
