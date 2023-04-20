@@ -65,7 +65,12 @@ console.log(
   `Installing ${newDevDependenciesToInstall.length} ESLint config dependencies...`,
 );
 
-execSync(`pnpm add --save-dev ${newDevDependenciesToInstall.join(' ')}`);
+execSync(
+  newDevDependenciesToInstall.length > 0
+    ? `pnpm add --save-dev ${newDevDependenciesToInstall.join(' ')}`
+    : 'pnpm install',
+  { stdio: 'inherit' },
+);
 
 console.log('✅ Done installing dependencies');
 
