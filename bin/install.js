@@ -36,7 +36,7 @@ writeFileSync(
   JSON.stringify(projectPackageJson, null, 2) + '\n',
 );
 
-const newDevDependenciesToInstall = [];
+const newDevDependenciesToInstall = ['typescript'];
 
 if (
   // Install SafeQL dependencies in Next.js and Postgres.js projects
@@ -65,12 +65,7 @@ console.log(
   `Installing ${newDevDependenciesToInstall.length} ESLint config dependencies...`,
 );
 
-execSync(
-  newDevDependenciesToInstall.length > 0
-    ? `pnpm add --save-dev ${newDevDependenciesToInstall.join(' ')}`
-    : 'pnpm install',
-  { stdio: 'inherit' },
-);
+execSync(`pnpm add --save-dev ${newDevDependenciesToInstall.join(' ')}`);
 
 console.log('✅ Done installing dependencies');
 
