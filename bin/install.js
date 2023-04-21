@@ -30,6 +30,13 @@ if ('next' in projectDependencies) {
     );
   }
 }
+if (
+  '@upleveled/react-scripts' in projectDependencies &&
+  !projectPackageJson.packageManager
+) {
+  projectPackageJson.packageManager = 'pnpm@8.3.1';
+  console.log('✅ Added "packageManager" option to package.json');
+}
 
 writeFileSync(
   projectPackageJsonPath,
@@ -221,24 +228,6 @@ writeFileSync(
 );
 
 console.log('✅ Done updating .gitignore');
-
-if (
-  '@upleveled/react-scripts' in projectDependencies &&
-  !projectPackageJson.packageManager
-) {
-  try {
-    const response = await fetch('https://registry.npmjs.org/pnpm/latest');
-    const data = await response.json();
-    projectPackageJson.packageManager = `pnpm@${data.version}`;
-    writeFileSync(
-      projectPackageJsonPath,
-      JSON.stringify(projectPackageJson, null, 2) + '\n',
-    );
-    console.log('✅ Added "packageManager" option to package.json');
-  } catch (err) {
-    // Swallow error if fetching latest pnpm version fails
-  }
-}
 
 // if ('next' in projectDependencies) {
 //   const patchesPath = join(process.cwd(), 'patches');
