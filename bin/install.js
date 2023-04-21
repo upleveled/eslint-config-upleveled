@@ -139,7 +139,20 @@ for (const {
   name: templateFileName,
   path: templateFilePath,
 } of templateFileNamesAndPaths) {
-  // Don't copy Stylelint config for non-React / non-Next.js projects
+  // Don't copy Next.js types for non-Next.js projects
+  if (templateFileName === 'next.d.ts' && !('next' in projectDependencies)) {
+    continue;
+  }
+
+  // Don't copy create-react-app types for non-create-react-app / non-Next.js projects
+  if (
+    templateFileName === 'react-app-env.d.ts' &&
+    !('@upleveled/react-scripts' in projectDependencies)
+  ) {
+    continue;
+  }
+
+  // Don't copy Stylelint config for non-create-react-app / non-Next.js projects
   if (
     templateFileName === 'stylelint.config.cjs' &&
     !(
