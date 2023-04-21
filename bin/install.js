@@ -33,7 +33,7 @@ if ('next' in projectDependencies) {
 
 // Netlify uses an outdated version of pnpm which can cause
 // issues with peer dependencies during deployment.
-// To avoid this, we need to configure package.json to use pnpm version 8.+.
+// To avoid this, we need to configure package.json to use pnpm v8+.
 // https://answers.netlify.com/t/upgrade-netlify-build-to-pnpm-v8/90570
 if (
   '@upleveled/react-scripts' in projectDependencies &&
