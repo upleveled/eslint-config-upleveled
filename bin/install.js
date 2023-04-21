@@ -31,6 +31,20 @@ if ('next' in projectDependencies) {
   }
 }
 
+// As of April 2023, Netlify uses pnpm v7, which causes peer dependencies
+// which we rely on being automatically installed to not be available
+// (pnpm v8+ sets `auto-install-peers` to true)
+//
+// TODO: Remove again when Netlify upgrades to pnpm v8+
+// https://answers.netlify.com/t/upgrade-netlify-build-to-pnpm-v8/90570
+if (
+  '@upleveled/react-scripts' in projectDependencies &&
+  !projectPackageJson.packageManager
+) {
+  projectPackageJson.packageManager = 'pnpm@8.3.1';
+  console.log('✅ Configured package manager in package.json for Netlify');
+}
+
 writeFileSync(
   projectPackageJsonPath,
   JSON.stringify(projectPackageJson, null, 2) + '\n',
