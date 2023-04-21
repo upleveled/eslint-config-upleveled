@@ -35,7 +35,7 @@ if (
   !projectPackageJson.packageManager
 ) {
   projectPackageJson.packageManager = 'pnpm@8.3.1';
-  console.log('✅ Added "packageManager" option to package.json');
+  console.log('✅ Configured package manager in package.json for Netlify');
 }
 
 writeFileSync(
