@@ -497,7 +497,7 @@ safeql: try {
           databaseUrl: `postgres://${process.env.PGUSERNAME}:${process.env.PGPASSWORD}@${process.env.PGHOST}:5432/${process.env.PGDATABASE}`,
           targets: [
             {
-              tagName: 'sql',
+              tag: 'sql',
               fieldTransform: 'camel',
               transform: '{type}[]',
             },
