@@ -76,7 +76,12 @@ if (
   '@upleveled/react-scripts' in projectDependencies ||
   'next' in projectDependencies
 ) {
-  newDevDependenciesToInstall.push('stylelint', 'stylelint-config-upleveled');
+  newDevDependenciesToInstall.push(
+    '@types/react',
+    '@types/react-dom',
+    'stylelint',
+    'stylelint-config-upleveled',
+  );
 }
 
 for (const projectDevDependency of Object.keys(projectDevDependencies)) {
