@@ -399,6 +399,10 @@ const config = {
     es2020: true,
     node: true,
   },
+  globals: {
+    // Allow using React as a global without importing it
+    React: 'readonly',
+  },
   settings: {
     'import/resolver': {
       // Load <rootdir>/tsconfig.json
