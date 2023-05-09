@@ -782,11 +782,13 @@ safeql: try {
       ],
     },
   ];
-} catch (err) {
-  // Swallow errors in non-CI environments to avoid noisy ESLint logs in non-database projects
-  if (process.env.CI) {
-    throw err;
-  }
+} catch (error) {
+  throw Object.assign(
+    new Error(
+      'The required dependencies for linting PostgreSQL have not been installed, please reinstall the ESLint config',
+    ),
+    error,
+  );
 }
 
 module.exports = config;
