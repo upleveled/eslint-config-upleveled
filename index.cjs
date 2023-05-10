@@ -783,11 +783,9 @@ safeql: try {
     },
   ];
 } catch (error) {
-  throw Object.assign(
-    new Error(
-      'The required dependencies for linting PostgreSQL have not been installed, please reinstall the ESLint config',
-    ),
-    error,
+  throw new Error(
+    'The required dependencies for linting PostgreSQL have not been installed, please reinstall the ESLint config',
+    { cause: error },
   );
 }
 
