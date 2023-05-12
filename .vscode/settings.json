@@ -1,4 +1,0 @@
-{
-  // Disable Stylelint for javascript and typescriptreact
-  "stylelint.validate": ["css", "less", "postcss"]
-}

@@ -164,9 +164,11 @@ for (const {
     continue;
   }
 
-  // Don't copy Stylelint config for non-create-react-app / non-Next.js projects
+  // Don't copy Stylelint config for projects not using create-react-app or Next.js
   if (
-    templateFileName === 'stylelint.config.cjs' &&
+    ['.vscode/settings.json', 'stylelint.config.cjs'].includes(
+      templateFileName,
+    ) &&
     !(
       '@upleveled/react-scripts' in projectDependencies ||
       'next' in projectDependencies
