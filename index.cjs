@@ -760,26 +760,19 @@ safeql: try {
   // @ts-ignore 2307 (module not found) -- The require.resolve() above will ensure that dotenv-safe is available before this line by throwing if it is not available
   require('dotenv-safe').config();
 
-  if (
-    !process.env.PGHOST ||
-    !process.env.PGUSERNAME ||
-    !process.env.PGPASSWORD ||
-    !process.env.PGDATABASE
-  ) {
-    const missingEnvVars = [
-      'PGHOST',
-      'PGUSERNAME',
-      'PGPASSWORD',
-      'PGDATABASE',
-    ].filter((envVar) => !process.env[envVar]);
-    if (missingEnvVars.length) {
-      // eslint-disable-next-line no-throw-literal -- Allowing string throwing here for a simpler error message construction
-      throw `The following environment variables are not set: ${missingEnvVars.join(
-        ', ',
-      )} - please add ${missingEnvVars.join(
-        ', ',
-      )} in your .env and .env.example file`;
-    }
+  const requiredEnvVars = ['PGHOST', 'PGUSERNAME', 'PGPASSWORD', 'PGDATABASE'];
+
+  const missingEnvVars = requiredEnvVars.filter(
+    (envVar) => !process.env[envVar],
+  );
+
+  if (missingEnvVars.length) {
+    // eslint-disable-next-line no-throw-literal -- Allowing string throwing here for a simpler error message construction
+    throw `The following environment variables are not set: ${missingEnvVars.join(
+      ', ',
+    )} - please add ${missingEnvVars.join(
+      ', ',
+    )} in your .env and .env.example file`;
   }
 
   /** @type {string[]} */
