@@ -747,8 +747,15 @@ safeql: try {
   }
 
   // Abort early if either of these modules are not installed
-  require.resolve('@ts-safeql/eslint-plugin');
-  require.resolve('dotenv-safe');
+  try {
+    require.resolve('@ts-safeql/eslint-plugin');
+    require.resolve('dotenv-safe');
+  } catch (error) {
+    // eslint-disable-next-line no-throw-literal -- Allow throwing string here to keep the error message simpler
+    throw `Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled.
+    ${error}
+    `;
+  }
 
   // @ts-ignore 2307 (module not found) -- The require.resolve() above will ensure that dotenv-safe is available before this line by throwing if it is not available
   require('dotenv-safe').config();
@@ -759,7 +766,20 @@ safeql: try {
     !process.env.PGPASSWORD ||
     !process.env.PGDATABASE
   ) {
-    throw new Error('Environment variables are not set');
+    const missingEnvVars = [
+      'PGHOST',
+      'PGUSERNAME',
+      'PGPASSWORD',
+      'PGDATABASE',
+    ].filter((envVar) => !process.env[envVar]);
+    if (missingEnvVars.length) {
+      // eslint-disable-next-line no-throw-literal -- Allow throwing string here to keep the error message simpler
+      throw `The following environment variables are not set: ${missingEnvVars.join(
+        ', ',
+      )} - please add ${missingEnvVars.join(
+        ', ',
+      )} in your .env and .env.example file`;
+    }
   }
 
   /** @type {string[]} */
@@ -783,10 +803,10 @@ safeql: try {
     },
   ];
 } catch (error) {
-  throw new Error(
-    'The required dependencies for linting PostgreSQL have not been installed, please reinstall the ESLint config',
-    { cause: error },
-  );
+  throw new Error(`
+    ❗️SafeQL configuration failed
+    ${error}
+    `);
 }
 
 module.exports = config;
