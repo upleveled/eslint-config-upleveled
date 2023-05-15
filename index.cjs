@@ -752,7 +752,7 @@ safeql: try {
     require.resolve('dotenv-safe');
   } catch (error) {
     // eslint-disable-next-line no-throw-literal -- Allowing string throwing here for a simpler error message construction
-    throw `Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled.
+    throw `Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
     ${error}
     `;
   }
