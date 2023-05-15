@@ -751,7 +751,7 @@ safeql: try {
     require.resolve('@ts-safeql/eslint-plugin');
     require.resolve('dotenv-safe');
   } catch (error) {
-    // eslint-disable-next-line no-throw-literal -- Allow throwing string here to keep the error message simpler
+    // eslint-disable-next-line no-throw-literal -- Allowing string throwing here for a simpler error message construction
     throw `Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled.
     ${error}
     `;
@@ -773,7 +773,7 @@ safeql: try {
       'PGDATABASE',
     ].filter((envVar) => !process.env[envVar]);
     if (missingEnvVars.length) {
-      // eslint-disable-next-line no-throw-literal -- Allow throwing string here to keep the error message simpler
+      // eslint-disable-next-line no-throw-literal -- Allowing string throwing here for a simpler error message construction
       throw `The following environment variables are not set: ${missingEnvVars.join(
         ', ',
       )} - please add ${missingEnvVars.join(
