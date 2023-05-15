@@ -770,9 +770,7 @@ safeql: try {
     // eslint-disable-next-line no-throw-literal -- Allowing string throwing here for a simpler error message construction
     throw `The following environment variables are not set: ${missingEnvVars.join(
       ', ',
-    )} - please add ${missingEnvVars.join(
-      ', ',
-    )} in your .env and .env.example file`;
+    )}`;
   }
 
   /** @type {string[]} */
