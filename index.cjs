@@ -794,10 +794,29 @@ safeql: try {
     },
   ];
 } catch (error) {
-  throw new Error(`
-    ❗️SafeQL configuration failed
-    ${error}
-    `);
+  class MyError extends Error {
+    constructor(message) {
+      super();
+      this._message = message;
+      this._firstErrorReplaced = false;
+    }
+
+    get message() {
+      return this._message;
+    }
+
+    set message(value) {
+      if (!this._firstErrorReplaced) {
+        this._message = value.replace('Error:', '\n❗️Error:');
+        this._firstErrorReplaced = true;
+      }
+    }
+  }
+
+  const err = new MyError(`SafeQL configuration failed
+${error}`);
+
+  throw err;
 }
 
 module.exports = config;
