@@ -766,7 +766,7 @@ safeql: try {
     (envVar) => !process.env[envVar],
   );
 
-  if (missingEnvVars.length) {
+  if (missingEnvVars.length > 0) {
     // eslint-disable-next-line no-throw-literal -- Allowing string throwing here for a simpler error message construction
     throw `The following environment variables are not set: ${missingEnvVars.join(
       ', ',
