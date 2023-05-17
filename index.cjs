@@ -794,7 +794,11 @@ safeql: try {
     },
   ];
 } catch (error) {
-  class MyError extends Error {
+  // This catch block handles any errors that occurred during the execution
+  // of the preceding code block. It creates a custom error class, derived from the built-in Error class.
+  // The purpose of this class is to provide additional functionality and formatting for error messages
+  class SafeQLConfigError extends Error {
+    // @ts-ignore 7709 ('any' type) -- Ignoring type error because this file is a CommonJS module where type annotations are not supported
     constructor(message) {
       super();
       this._message = message;
@@ -813,7 +817,7 @@ safeql: try {
     }
   }
 
-  const err = new MyError(`SafeQL configuration failed
+  const err = new SafeQLConfigError(`SafeQL configuration failed
 ${error}`);
 
   throw err;
