@@ -728,8 +728,11 @@ const config = {
   ],
 };
 
-// This class extends the built-in Error class and provides additional
-// functionality for error handling and message formatting.
+// This class extends the built-in Error class and provides additional functionality
+// for error handling and message formatting. It addresses an issue in an ESLint function
+// where a predefined error string was used to construct the error message.
+// When the error message contained line break characters (\n), the VS Code output window
+// did not recognize them as line breaks.
 class AddLineBreaksForEslintOutputInVscodeError extends Error {
   /**
    * @param {string} message
