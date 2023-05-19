@@ -740,7 +740,6 @@ class AddLineBreaksForEslintOutputInVscodeError extends Error {
   constructor(message) {
     super();
     this._message = message;
-    this._firstErrorReplaced = false;
   }
 
   get message() {
@@ -748,13 +747,10 @@ class AddLineBreaksForEslintOutputInVscodeError extends Error {
   }
 
   set message(value) {
-    if (!this._firstErrorReplaced) {
-      this._message = value.replace(
-        'Error:',
-        '\n❗️Error:\nSafeQL configuration failed\n',
-      );
-      this._firstErrorReplaced = true;
-    }
+    this._message = value.replace(
+      /(?<!❗️)Error:/,
+      '\n❗️Error: SafeQL configuration failed\n',
+    );
   }
 }
 
@@ -781,9 +777,15 @@ safeql: {
     require.resolve('@ts-safeql/eslint-plugin');
     require.resolve('dotenv-safe');
   } catch (error) {
-    throw new AddLineBreaksForEslintOutputInVscodeError(`Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
-${error}
-    `);
+    throw new AddLineBreaksForEslintOutputInVscodeError(
+      `Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
+      ${
+        typeof error === 'object' && error !== null && 'message' in error
+          ? error.message
+          : ''
+      }
+      `,
+    );
   }
 
   // @ts-ignore 2307 (module not found) -- The require.resolve() above will ensure that dotenv-safe is available before this line by throwing if it is not available
