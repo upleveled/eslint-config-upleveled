@@ -779,12 +779,12 @@ safeql: {
   } catch (error) {
     throw new AddLineBreaksForEslintOutputInVscodeError(
       `Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
-      ${
-        typeof error === 'object' && error !== null && 'message' in error
-          ? error.message
-          : ''
-      }
-      `,
+${
+  typeof error === 'object' && error !== null && 'message' in error
+    ? error.message
+    : ''
+}
+    `,
     );
   }
 
