@@ -730,7 +730,7 @@ const config = {
 
 // This class extends the built-in Error class and provides additional
 // functionality for error handling and message formatting.
-class EnhancedErrorFormat extends Error {
+class AddLineBreaksForEslintOutputInVscodeError extends Error {
   /**
    * @param {string} message
    */
@@ -778,7 +778,7 @@ safeql: {
     require.resolve('@ts-safeql/eslint-plugin');
     require.resolve('dotenv-safe');
   } catch (error) {
-    throw new EnhancedErrorFormat(`Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
+    throw new AddLineBreaksForEslintOutputInVscodeError(`Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
 ${error}
     `);
   }
@@ -793,7 +793,7 @@ ${error}
   );
 
   if (missingEnvVars.length > 0) {
-    throw new EnhancedErrorFormat(
+    throw new AddLineBreaksForEslintOutputInVscodeError(
       `The following environment variables are not set: ${missingEnvVars.join(
         ', ',
       )}`,
