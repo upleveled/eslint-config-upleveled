@@ -728,8 +728,35 @@ const config = {
   ],
 };
 
+// This class extends the built-in Error class and provides additional
+// functionality for error handling and message formatting.
+class EnhancedErrorFormat extends Error {
+  /**
+   * @param {string} message
+   */
+  constructor(message) {
+    super();
+    this._message = message;
+    this._firstErrorReplaced = false;
+  }
+
+  get message() {
+    return this._message;
+  }
+
+  set message(value) {
+    if (!this._firstErrorReplaced) {
+      this._message = value.replace(
+        'Error:',
+        '\n❗️Error:\nSafeQL configuration failed\n',
+      );
+      this._firstErrorReplaced = true;
+    }
+  }
+}
+
 // eslint-disable-next-line no-labels -- Allow label here to keep file simpler
-safeql: try {
+safeql: {
   if (
     // SafeQL currently not supported on Windows
     // https://github.com/ts-safeql/safeql/issues/80
@@ -751,10 +778,9 @@ safeql: try {
     require.resolve('@ts-safeql/eslint-plugin');
     require.resolve('dotenv-safe');
   } catch (error) {
-    // eslint-disable-next-line no-throw-literal -- Allowing string throwing here for a simpler error message construction
-    throw `Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
-    ${error}
-    `;
+    throw new EnhancedErrorFormat(`Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
+${error}
+    `);
   }
 
   // @ts-ignore 2307 (module not found) -- The require.resolve() above will ensure that dotenv-safe is available before this line by throwing if it is not available
@@ -767,10 +793,11 @@ safeql: try {
   );
 
   if (missingEnvVars.length > 0) {
-    // eslint-disable-next-line no-throw-literal -- Allowing string throwing here for a simpler error message construction
-    throw `The following environment variables are not set: ${missingEnvVars.join(
-      ', ',
-    )}`;
+    throw new EnhancedErrorFormat(
+      `The following environment variables are not set: ${missingEnvVars.join(
+        ', ',
+      )}`,
+    );
   }
 
   /** @type {string[]} */
@@ -793,36 +820,6 @@ safeql: try {
       ],
     },
   ];
-} catch (error) {
-  // This catch block handles any errors that occurred during the execution
-  // of the preceding code block. It creates a custom error class, derived from the built-in Error class.
-  // The purpose of this class is to provide additional functionality and formatting for error messages
-  class SafeQLConfigError extends Error {
-    /**
-     * @param {string} message
-     */
-    constructor(message) {
-      super();
-      this._message = message;
-      this._firstErrorReplaced = false;
-    }
-
-    get message() {
-      return this._message;
-    }
-
-    set message(value) {
-      if (!this._firstErrorReplaced) {
-        this._message = value.replace('Error:', '\n❗️Error:');
-        this._firstErrorReplaced = true;
-      }
-    }
-  }
-
-  const err = new SafeQLConfigError(`SafeQL configuration failed
-${error}`);
-
-  throw err;
 }
 
 module.exports = config;
