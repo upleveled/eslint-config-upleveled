@@ -694,7 +694,7 @@ const config = {
   },
   overrides: [
     // Lint other common extensions by default with rules above
-    { files: '**/*.{jsx,cjs,mjs,cts,mts}' },
+    { files: '**/*.{jsx,cjs,mjs,ts,tsx,cts,mts}' },
     {
       files: [
         'app/**/layout.js',
