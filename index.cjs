@@ -539,7 +539,13 @@ const config = {
     // in order to enable the rule from the
     // @typescript-eslint plugin
     'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': 'error',
+    '@typescript-eslint/no-use-before-define': [
+      'error',
+      {
+        functions: false,
+        typedefs: false,
+      },
+    ],
     // Warn on useless constructor in class
     // https://typescript-eslint.io/rules/no-useless-constructor/
     'no-useless-constructor': 'off',
