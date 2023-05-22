@@ -728,32 +728,6 @@ const config = {
   ],
 };
 
-// This class extends the built-in Error class and provides additional functionality
-// for error handling and message formatting. It addresses an issue in an ESLint function
-// where a predefined error string was used to construct the error message.
-// When the error message contained line break characters (\n), the VS Code output window
-// did not recognize them as line breaks.
-class AddLineBreaksForEslintOutputInVscodeError extends Error {
-  /**
-   * @param {string} message
-   */
-  constructor(message) {
-    super();
-    this._message = message;
-  }
-
-  get message() {
-    return this._message;
-  }
-
-  set message(value) {
-    this._message = value.replace(
-      /(?<!❗️)Error:/,
-      '\n❗️Error: SafeQL configuration failed\n',
-    );
-  }
-}
-
 // eslint-disable-next-line no-labels -- Allow label here to keep file simpler
 safeql: {
   if (
@@ -777,8 +751,11 @@ safeql: {
     require.resolve('@ts-safeql/eslint-plugin');
     require.resolve('dotenv-safe');
   } catch (error) {
-    throw new AddLineBreaksForEslintOutputInVscodeError(
-      `Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
+    throw new Error(
+      `SafeQL configuration failed
+
+Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
+
 ${
   typeof error === 'object' && error !== null && 'message' in error
     ? error.message
@@ -798,10 +775,11 @@ ${
   );
 
   if (missingEnvVars.length > 0) {
-    throw new AddLineBreaksForEslintOutputInVscodeError(
-      `The following environment variables are not set: ${missingEnvVars.join(
-        ', ',
-      )}`,
+    throw new Error(
+      `SafeQL configuration failed
+
+The following environment variables are not set: ${missingEnvVars.join(', ')}
+`,
     );
   }
 
