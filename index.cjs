@@ -762,11 +762,7 @@ safeql: {
 
 Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
 
-${
-  typeof error === 'object' && error !== null && 'message' in error
-    ? error.message
-    : ''
-}
+${/** @type {Error} */ (error).message}
 `,
     );
   }
@@ -774,11 +770,12 @@ ${
   // @ts-ignore 2307 (module not found) -- The require.resolve() above will ensure that dotenv-safe is available before this line by throwing if it is not available
   require('dotenv-safe').config();
 
-  const requiredEnvVars = ['PGHOST', 'PGUSERNAME', 'PGPASSWORD', 'PGDATABASE'];
-
-  const missingEnvVars = requiredEnvVars.filter(
-    (envVar) => !process.env[envVar],
-  );
+  const missingEnvVars = [
+    'PGHOST',
+    'PGUSERNAME',
+    'PGPASSWORD',
+    'PGDATABASE',
+  ].filter((envVar) => !process.env[envVar]);
 
   if (missingEnvVars.length > 0) {
     throw new Error(
