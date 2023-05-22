@@ -784,6 +784,11 @@ safeql: try {
               transform: '{type}[]',
             },
           ],
+          overrides: {
+            types: {
+              json: 'JsonAgg',
+            },
+          },
         },
       ],
     },
