@@ -63,8 +63,8 @@ const newDevDependenciesToInstall = [
 ];
 
 if (
-  // Install SafeQL dependencies in Next.js and Postgres.js projects
-  ('next' in projectDependencies || 'postgres' in projectDependencies) &&
+  // Install SafeQL dependencies in Postgres.js projects
+  'postgres' in projectDependencies &&
   // SafeQL currently not supported on Windows
   // https://github.com/ts-safeql/safeql/issues/80
   process.platform !== 'win32'

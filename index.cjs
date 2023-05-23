@@ -735,7 +735,7 @@ const config = {
 };
 
 // eslint-disable-next-line no-labels -- Allow label here to keep file simpler
-safeql: try {
+safeql: {
   if (
     // SafeQL currently not supported on Windows
     // https://github.com/ts-safeql/safeql/issues/80
@@ -753,19 +753,37 @@ safeql: try {
   }
 
   // Abort early if either of these modules are not installed
-  require.resolve('@ts-safeql/eslint-plugin');
-  require.resolve('dotenv-safe');
+  try {
+    require.resolve('@ts-safeql/eslint-plugin');
+    require.resolve('dotenv-safe');
+  } catch (error) {
+    throw new Error(
+      `SafeQL configuration failed
+
+Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
+
+${/** @type {Error} */ (error).message}
+`,
+    );
+  }
 
   // @ts-ignore 2307 (module not found) -- The require.resolve() above will ensure that dotenv-safe is available before this line by throwing if it is not available
   require('dotenv-safe').config();
 
-  if (
-    !process.env.PGHOST ||
-    !process.env.PGUSERNAME ||
-    !process.env.PGPASSWORD ||
-    !process.env.PGDATABASE
-  ) {
-    throw new Error('Environment variables are not set');
+  const missingEnvVars = [
+    'PGHOST',
+    'PGUSERNAME',
+    'PGPASSWORD',
+    'PGDATABASE',
+  ].filter((envVar) => !process.env[envVar]);
+
+  if (missingEnvVars.length > 0) {
+    throw new Error(
+      `SafeQL configuration failed
+
+The following environment variables are not set: ${missingEnvVars.join(', ')}
+`,
+    );
   }
 
   /** @type {string[]} */
@@ -793,11 +811,6 @@ safeql: try {
       ],
     },
   ];
-} catch (err) {
-  // Swallow errors in non-CI environments to avoid noisy ESLint logs in non-database projects
-  if (process.env.CI) {
-    throw err;
-  }
 }
 
 module.exports = config;
