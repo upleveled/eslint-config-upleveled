@@ -804,7 +804,7 @@ The following environment variables are not set: ${missingEnvVars.join(', ')}
           ],
           overrides: {
             types: {
-              json: 'JsonAgg[]',
+              json: 'JsonAgg',
             },
           },
         },
