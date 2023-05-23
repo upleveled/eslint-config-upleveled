@@ -802,6 +802,11 @@ The following environment variables are not set: ${missingEnvVars.join(', ')}
               transform: '{type}[]',
             },
           ],
+          overrides: {
+            types: {
+              json: 'JsonAgg',
+            },
+          },
         },
       ],
     },
