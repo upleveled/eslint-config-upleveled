@@ -5,14 +5,14 @@ dependencies:
     specifier: ^7.21.8
     version: 7.21.8(@babel/core@7.21.0)(eslint@8.41.0)
   '@next/eslint-plugin-next':
-    specifier: ^13.4.3
-    version: 13.4.3
+    specifier: ^13.4.4
+    version: 13.4.4
   '@types/eslint':
     specifier: ^8.40.0
     version: 8.40.0
   '@types/node':
-    specifier: '>=20.2.3'
-    version: 20.2.3
+    specifier: '>=20.2.4'
+    version: 20.2.4
   '@types/react':
     specifier: ^18.2.7
     version: 18.2.7
@@ -438,8 +438,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: false
 
-  /@next/eslint-plugin-next@13.4.3:
-    resolution: {integrity: sha512-5B0uOnh7wyUY9vNNdIA6NUvWozhrZaTMZOzdirYAefqD0ZBK5C/h3+KMYdCKrR7JrXGvVpWnHtv54b3dCzwICA==}
+  /@next/eslint-plugin-next@13.4.4:
+    resolution: {integrity: sha512-5jnh7q6I15efnjR/rR+/TGTc9hn53g3JTbEjAMjmeQiExKqEUgIXqrHI5zlTNlNyzCPkBB860/ctxXheZaF2Vw==}
     dependencies:
       glob: 7.1.7
     dev: false
@@ -503,8 +503,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.2.3:
-    resolution: {integrity: sha512-pg9d0yC4rVNWQzX8U7xb4olIOFuuVL9za3bzMT2pu2SU0SNEi66i2qrvhE2qt0HvkhuCaWJu7pLNOt/Pj8BIrw==}
+  /@types/node@20.2.4:
+    resolution: {integrity: sha512-ni5f8Xlf4PwnT/Z3f0HURc3ZSw8UyrqMqmM3L5ysa7VjHu8c3FOmIo1nKCcLrV/OAmtf3N4kFna/aJqxsfEtnA==}
     dev: false
 
   /@types/normalize-package-data@2.4.1:
