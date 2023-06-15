@@ -135,6 +135,55 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
 
 `,
   },
+
+  // Warn on standalone && expressions at top level and inside blocks
+  {
+    selector:
+      "Program > ExpressionStatement > LogicalExpression[operator='&&'], BlockStatement > ExpressionStatement > LogicalExpression[operator='&&']",
+    message: `Prefer if statements to standalone && expressions, eg. instead of a standalone expression like this:
+
+  animal && showAnimal();
+
+Prefer an if statement like this:
+
+  if (animal) showAnimal();
+
+`,
+  },
+
+  // Warn on standalone || expressions at top level and inside blocks
+  {
+    selector:
+      "Program > ExpressionStatement > LogicalExpression[operator='||'], BlockStatement > ExpressionStatement > LogicalExpression[operator='||']",
+    message: `Prefer if statements to standalone || expressions, eg. instead of a standalone expression like this:
+
+  animal || hideAnimal();
+
+Prefer an if statement like this:
+
+  if (!animal) hideAnimal();
+
+`,
+  },
+
+  // Warn on standalone ternary expressions at top level and inside blocks
+  {
+    selector:
+      'Program > ExpressionStatement > ConditionalExpression, BlockStatement > ExpressionStatement > ConditionalExpression',
+    message: `Prefer if...else statements to standalone ternary operators, eg. instead of a standalone ternary operator like this:
+
+  animal ? showAnimal() : hideAnimal();
+
+Prefer an if...else statement like this:
+
+  if (animal) {
+    showAnimal();
+  } else {
+    hideAnimal();
+  }
+
+`,
+  },
 ];
 
 /**
