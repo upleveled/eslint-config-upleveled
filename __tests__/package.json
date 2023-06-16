@@ -19,7 +19,7 @@
     "@ts-safeql/eslint-plugin": "^1.0.0",
     "@types/react": "^18.2.5",
     "@types/react-dom": "^18.2.3",
-    "eslint-config-upleveled": "^4.7.1",
+    "eslint-config-upleveled": "^4.7.2",
     "libpg-query": "^15.0.2",
     "postcss-styled-syntax": "^0.4.0",
     "stylelint": "^15.4.0",
