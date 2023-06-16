@@ -1,1 +1,5 @@
 __tests__
+
+# Files with the same name will not be linted with typescript-eslint
+# https://github.com/typescript-eslint/typescript-eslint/issues/5457#issuecomment-1210617414
+index.d.cts

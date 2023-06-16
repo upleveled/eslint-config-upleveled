@@ -9,7 +9,6 @@
     "**/.eslintrc.cjs",
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.cts",
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
