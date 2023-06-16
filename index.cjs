@@ -1,4 +1,4 @@
-/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RuleEntry} */
+/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RuleLevelAndOptions} */
 const noRestrictedSyntaxOptions = [
   'warn',
   // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
