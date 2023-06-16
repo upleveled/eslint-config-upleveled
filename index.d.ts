@@ -1,4 +1,4 @@
-import { type Linter } from 'eslint';
+import { type TSESLint } from '@typescript-eslint/utils';
 
-declare const config: Linter.Config;
+declare const config: TSESLint.Linter.Config;
 export = config;
