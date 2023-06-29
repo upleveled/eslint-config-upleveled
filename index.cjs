@@ -830,6 +830,7 @@ ${/** @type {Error} */ (error).message}
   const unconfiguredEnvVars = Object.keys(
     dotenv.parse(readFileSync('./.env.example')),
   ).filter((exampleKey) => !process.env[exampleKey]);
+
   if (unconfiguredEnvVars.length > 0) {
     throw new Error(
       `.env.example environment ${
