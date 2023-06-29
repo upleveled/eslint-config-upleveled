@@ -816,12 +816,12 @@ ${/** @type {Error} */ (error).message}
     );
   }
 
-  const { readFileSync } = require('node:fs');
   // Replacement for unmaintained dotenv-safe package
   // https://github.com/rolodato/dotenv-safe/issues/128#issuecomment-1383176751
   //
   // TODO: Remove this and switch to dotenv/safe if this proposal gets implemented:
   // https://github.com/motdotla/dotenv/issues/709
+  const { readFileSync } = require('node:fs');
   // @ts-ignore 2307 (module not found) -- The require.resolve() above will ensure that dotenv is available before this line by throwing if it is not available
   const dotenv = require('dotenv');
 
