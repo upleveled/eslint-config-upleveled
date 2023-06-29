@@ -824,6 +824,7 @@ ${/** @type {Error} */ (error).message}
   // https://github.com/motdotla/dotenv/issues/709
   // @ts-ignore 2307 (module not found) -- The require.resolve() above will ensure that dotenv is available before this line by throwing if it is not available
   const dotenv = require('dotenv');
+
   dotenv.config();
 
   const unconfiguredEnvVars = Object.keys(
