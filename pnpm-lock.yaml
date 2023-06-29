@@ -71,7 +71,7 @@ devDependencies:
     specifier: 2.7.3
     version: 2.7.3
   eslint-config-upleveled:
-    specifier: 4.7.2
+    specifier: 5.0.0
     version: 'link:'
   stylelint:
     specifier: 15.9.0
