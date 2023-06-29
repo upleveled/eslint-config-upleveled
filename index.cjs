@@ -816,6 +816,7 @@ ${/** @type {Error} */ (error).message}
     );
   }
 
+  const { readFileSync } = require('node:fs');
   // Replacement for unmaintained dotenv-safe package
   // https://github.com/rolodato/dotenv-safe/issues/128#issuecomment-1383176751
   //
@@ -826,7 +827,7 @@ ${/** @type {Error} */ (error).message}
   dotenv.config();
 
   const unconfiguredEnvVars = Object.keys(
-    dotenv.parse(require('fs').readFileSync('./.env.example')),
+    dotenv.parse(readFileSync('./.env.example')),
   ).filter((exampleKey) => !process.env[exampleKey]);
   if (unconfiguredEnvVars.length > 0) {
     throw new Error(
