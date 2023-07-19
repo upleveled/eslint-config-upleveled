@@ -1,4 +1,4 @@
-/** @type {import('@typescript-eslint/utils/dist').TSESLint.Linter.RuleLevelAndOptions} */
+/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RuleLevelAndOptions} */
 const noRestrictedSyntaxOptions = [
   'warn',
   // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
@@ -192,7 +192,7 @@ Prefer an if...else statement like this:
  * https://github.com/facebook/create-react-app/blob/main/packages/eslint-config-react-app/index.js
  * https://github.com/facebook/create-react-app/blob/main/packages/eslint-config-react-app/base.js
  *
- * @type {import('@typescript-eslint/utils/dist').TSESLint.Linter.Config['rules']}
+ * @type {import('@typescript-eslint/utils').TSESLint.Linter.Config['rules']}
  */
 const eslintConfigReactAppRules = {
   'array-callback-return': 'warn',
@@ -419,7 +419,7 @@ const eslintConfigReactAppRules = {
   'react-hooks/rules-of-hooks': 'error',
 };
 
-/** @type {import('@typescript-eslint/utils/dist').TSESLint.Linter.Config} */
+/** @type {import('@typescript-eslint/utils').TSESLint.Linter.Config} */
 const config = {
   root: true,
   parser: '@typescript-eslint/parser',

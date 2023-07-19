@@ -1,4 +1,4 @@
-/** @type {import('@typescript-eslint/utils/dist').TSESLint.Linter.Config} */
+/** @type {import('@typescript-eslint/utils').TSESLint.Linter.Config} */
 const config = {
   extends: ['upleveled'],
 };
