@@ -559,6 +559,11 @@ const config = {
     // Prevent unnecessary type assertions
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-assertion.md
     '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
+    // Disable built-in ESLint no-dupe-class-members
+    // to use the more powerful @typescript-eslint/no-dupe-class-members
+    // https://typescript-eslint.io/rules/no-dupe-class-members/
+    'no-dupe-class-members': 'off',
+    '@typescript-eslint/no-dupe-class-members': 'warn',
     // Warn on unused expressions
     // https://typescript-eslint.io/rules/no-unused-expression
     'no-unused-expressions': 'off',
