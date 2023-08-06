@@ -179,7 +179,9 @@ for (const {
 
     if (templateFileName === 'tsconfig.json') {
       const projectTsconfigJson = JSON.parse(
-        readFileSync(join(process.cwd(), 'tsconfig.json'), 'utf-8'),
+        readFileSync(join(process.cwd(), 'tsconfig.json'), 'utf-8')
+          // Remove comments from tsconfig.json
+          .replace(/^\s*\/\/.*/gm, ''),
       );
 
       if ('plugins' in (projectTsconfigJson.compilerOptions || {})) {
