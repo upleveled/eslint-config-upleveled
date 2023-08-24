@@ -38,7 +38,7 @@
     "@types/prettier": "2.7.3",
     "eslint-config-upleveled": "5.0.4",
     "stylelint": "15.10.3",
-    "typescript": "5.1.6"
+    "typescript": "5.2.2"
   },
   "peerDependencies": {
     "@babel/eslint-parser": "^7.22.11",
@@ -61,7 +61,7 @@
     "eslint-plugin-testing-library": "^6.0.1",
     "eslint-plugin-unicorn": "^48.0.1",
     "eslint-plugin-upleveled": "^2.1.9",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=18.0.0"
