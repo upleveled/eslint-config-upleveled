@@ -184,6 +184,15 @@ Prefer an if...else statement like this:
 
 `,
   },
+
+  // Warn on import paths ending in /page to avoid errors with Next.js Statically Typed Links
+  {
+    selector:
+      'ImportDeclaration[source.value=/^\\.\\.?\\u002F(.+\\u002F)?page$/]',
+    message: `Avoid imports from other pages in Next.js - this can cause errors with Next.js Statically Typed Links https://nextjs.org/docs/app/building-your-application/configuring/typescript#statically-typed-links
+
+Instead, move anything you want to import to a non-page file`,
+  },
 ];
 
 /**
