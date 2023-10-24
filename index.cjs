@@ -543,6 +543,12 @@ const config = {
         selector: 'parameter',
         format: ['camelCase', 'snake_case', 'PascalCase'],
       },
+      // Disable @typescript-eslint/naming-convention format for imports
+      // https://github.com/typescript-eslint/typescript-eslint/pull/7269#issuecomment-1777628591
+      {
+        selector: 'import',
+        format: null,
+      },
     ],
     // Warn on usage of array constructor (eg. Array(0, 1), new Array(0, 1))
     // https://typescript-eslint.io/rules/no-array-constructor/
