@@ -13,7 +13,7 @@
     "update-config-version": "pnpm add --save-dev eslint-config-upleveled@latest && pnpm upleveled-eslint-install"
   },
   "dependencies": {
-    "next": "^13.5.6"
+    "next": "^14.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
