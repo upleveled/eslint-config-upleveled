@@ -73,8 +73,9 @@ if (
 }
 
 if (
-  '@upleveled/react-scripts' in projectDependencies ||
-  'next' in projectDependencies
+  projectType === 'create-react-app' ||
+  projectType === 'next-js' ||
+  projectType === 'next-js-postgresql'
 ) {
   newDevDependenciesToInstall.push(
     '@types/react',
@@ -194,8 +195,9 @@ console.log('✅ Done copying config files');
 
 try {
   if (
+    (projectType === 'next-js' || projectType === 'next-js-postgresql') &&
     readFileSync(join(process.cwd(), 'jsconfig.json'), 'utf-8').trim() ===
-    `{
+      `{
   "compilerOptions": {
     "paths": {
       "@/*": ["./*"]
@@ -241,7 +243,7 @@ writeFileSync(
 console.log('✅ Done updating .gitignore');
 
 // Commented out in case we need to patch Next.js again in the future
-// if ('next' in projectDependencies) {
+// if (projectType === 'next-js' || projectType === 'next-js-postgresql') {
 //   const patchesPath = join(process.cwd(), 'patches');
 
 //   // Remove previous patch files
