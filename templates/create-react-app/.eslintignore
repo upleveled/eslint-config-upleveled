@@ -1,0 +1,3 @@
+# /build is default build directory for `@upleveled/react-scripts`
+# Ref: https://github.com/upleveled/create-react-app/pull/2
+build
