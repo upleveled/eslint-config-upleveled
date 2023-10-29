@@ -20,7 +20,20 @@ const projectPackageJson = JSON.parse(
 const projectDependencies = projectPackageJson.dependencies || {};
 const projectDevDependencies = projectPackageJson.devDependencies || {};
 
+const [projectType, projectTypeTitle] =
+  'postgres' in projectDependencies
+    ? ['next-js-postgresql', 'Next.js with PostgreSQL']
+    : 'next' in projectDependencies
+    ? ['next-js', 'Next.js']
+    : '@upleveled/react-scripts' in projectDependencies
+    ? ['create-react-app', 'Create React App']
+    : 'expo' in projectDependencies
+    ? ['expo', 'Expo (React Native)']
+    : ['node-js', 'Node.js'];
 
+console.log(`Detected project type: ${projectTypeTitle}`);
+
+// Commented out in case we need to patch Next.js again in the future
 // if ('next' in projectDependencies) {
 //   // Remove previous patches in package.json
 //   if (projectPackageJson?.pnpm?.patchedDependencies) {
@@ -31,7 +44,7 @@ const projectDevDependencies = projectPackageJson.devDependencies || {};
 //     );
 //   }
 // }
-
+//
 // writeFileSync(
 //   projectPackageJsonPath,
 //   JSON.stringify(projectPackageJson, null, 2) + '\n',
@@ -51,7 +64,7 @@ const newDevDependenciesToInstall = [
 
 if (
   // Install SafeQL dependencies in Postgres.js projects
-  'postgres' in projectDependencies &&
+  projectType === 'next-js-postgresql' &&
   // SafeQL currently not supported on Windows
   // https://github.com/ts-safeql/safeql/issues/80
   process.platform !== 'win32'
@@ -101,6 +114,7 @@ const templatePath = resolve(
   dirname(fileURLToPath(import.meta.url)),
   '..',
   'templates',
+  projectType,
 );
 
 const templateFileNamesAndPaths =
@@ -140,42 +154,22 @@ for (const {
   name: templateFileName,
   path: templateFilePath,
 } of templateFileNamesAndPaths) {
-  // Don't copy create-react-app types for non-create-react-app / non-Next.js projects
-  if (
-    templateFileName === 'react-app-env.d.ts' &&
-    !('@upleveled/react-scripts' in projectDependencies)
-  ) {
-    continue;
-  }
-
-  // Don't copy Stylelint config for projects not using create-react-app or Next.js
-  if (
-    ['.vscode/settings.json', 'stylelint.config.cjs'].includes(
-      templateFileName,
-    ) &&
-    !(
-      '@upleveled/react-scripts' in projectDependencies ||
-      'next' in projectDependencies
-    )
-  ) {
-    continue;
-  }
-
   const filePathInProject = join(process.cwd(), templateFileName);
 
   let overwriteExistingFile = false;
 
   if (existsSync(filePathInProject)) {
-    if (templateFileName === 'tsconfig.json') {
-      const projectTsconfigJson = JSON.parse(
-        readFileSync(join(process.cwd(), 'tsconfig.json'), 'utf-8')
-          // Remove comments from tsconfig.json
-          .replace(/^\s*\/\/.*/gm, ''),
-      );
+    // Always overwrite prettier.config.mjs in Postgres.js projects
+    if (
+      templateFileName === 'prettier.config.mjs' &&
+      projectType === 'next-js-postgresql'
+    ) {
+      overwriteExistingFile = true;
+    }
 
-      if ('plugins' in (projectTsconfigJson.compilerOptions || {})) {
-        overwriteExistingFile = true;
-      }
+    // Always overwrite tsconfig.json
+    if (templateFileName === 'tsconfig.json') {
+      overwriteExistingFile = true;
     }
 
     if (!overwriteExistingFile) {
@@ -246,6 +240,7 @@ writeFileSync(
 
 console.log('✅ Done updating .gitignore');
 
+// Commented out in case we need to patch Next.js again in the future
 // if ('next' in projectDependencies) {
 //   const patchesPath = join(process.cwd(), 'patches');
 

@@ -1,9 +1,0 @@
-# /build is default build directory for `@upleveled/react-scripts`
-# Ref: https://github.com/upleveled/create-react-app/pull/2
-#
-# TODO: Remove `build` and this block altogether when we have
-# moved the full curriculum from create-react-app to Next.js
-build
-
-# Next.js build folder
-.next
