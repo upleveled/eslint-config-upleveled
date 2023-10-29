@@ -2,6 +2,7 @@
 
 import { execSync } from 'node:child_process';
 import {
+  cpSync,
   existsSync,
   mkdirSync,
   readdirSync,
@@ -94,7 +95,9 @@ for (const projectDevDependency of Object.keys(projectDevDependencies)) {
 }
 
 console.log(
-  `Installing ${newDevDependenciesToInstall.length} ESLint config dependencies...`,
+  `Installing ${newDevDependenciesToInstall.length} ESLint config ${
+    newDevDependenciesToInstall.length === 1 ? 'dependency' : 'dependencies'
+  }...`,
 );
 
 execSync(
@@ -106,7 +109,7 @@ execSync(
 
 console.log('✅ Done installing dependencies');
 
-console.log('Writing config files...');
+console.log('Copying config files...');
 
 const templatePath = resolve(
   dirname(fileURLToPath(import.meta.url)),
@@ -174,8 +177,9 @@ for (const {
 
   const filePathInProject = join(process.cwd(), templateFileName);
 
+  let overwriteExistingFile = false;
+
   if (existsSync(filePathInProject)) {
-    let skip = true;
 
     if (templateFileName === 'tsconfig.json') {
       const projectTsconfigJson = JSON.parse(
@@ -185,19 +189,23 @@ for (const {
       );
 
       if ('plugins' in (projectTsconfigJson.compilerOptions || {})) {
-        skip = false;
+        overwriteExistingFile = true;
       }
     }
 
-    if (skip) {
-      console.log(`Skipping update to ${templateFileName} (already exists)`);
+    if (!overwriteExistingFile) {
+      console.log(`Skipping copy of ${templateFileName} (file already exists)`);
       continue;
     }
   }
 
   try {
-    writeFileSync(filePathInProject, readFileSync(templateFilePath, 'utf-8'));
-    console.log(`Wrote ${templateFileName}`);
+    cpSync(templateFilePath, filePathInProject);
+    console.log(
+      `Copied ${templateFileName}${
+        overwriteExistingFile ? ' (existing file overwritten)' : ''
+      }`,
+    );
   } catch (err) {
     console.error('err', err);
   }
