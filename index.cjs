@@ -404,7 +404,17 @@ const eslintConfigReactAppRules = {
   'react/no-is-mounted': 'warn',
   'react/no-typos': 'error',
   'react/require-render-return': 'error',
-  'react/style-prop-object': 'warn',
+  'react/style-prop-object': [
+    'warn',
+    {
+      allow: [
+        // Allow expo-status-bar style prop, which is a string, eg:
+        // <StatusBar style="auto" />
+        // https://github.com/expo/expo/blob/999572cd1036529ffa3a28a0490dd7c0f6f0d731/packages/expo-status-bar/src/StatusBar.types.ts#L2
+        'StatusBar',
+      ],
+    },
+  ],
 
   // https://github.com/evcohen/eslint-plugin-jsx-a11y/tree/master/docs/rules
   'jsx-a11y/alt-text': 'warn',
