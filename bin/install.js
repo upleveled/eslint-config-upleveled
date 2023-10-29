@@ -13,29 +13,29 @@ import {
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const projectPackageJsonPath = join(process.cwd(), 'package.json');
 const projectPackageJson = JSON.parse(
-  readFileSync(projectPackageJsonPath, 'utf-8'),
+  readFileSync(join(process.cwd(), 'package.json'), 'utf-8'),
 );
 
 const projectDependencies = projectPackageJson.dependencies || {};
 const projectDevDependencies = projectPackageJson.devDependencies || {};
 
-if ('next' in projectDependencies) {
-  // Remove previous patches in package.json
-  if (projectPackageJson?.pnpm?.patchedDependencies) {
-    projectPackageJson.pnpm.patchedDependencies = Object.fromEntries(
-      Object.entries(projectPackageJson.pnpm.patchedDependencies).filter(
-        ([packageName]) => !packageName.startsWith('next@'),
-      ),
-    );
-  }
-}
 
-writeFileSync(
-  projectPackageJsonPath,
-  JSON.stringify(projectPackageJson, null, 2) + '\n',
-);
+// if ('next' in projectDependencies) {
+//   // Remove previous patches in package.json
+//   if (projectPackageJson?.pnpm?.patchedDependencies) {
+//     projectPackageJson.pnpm.patchedDependencies = Object.fromEntries(
+//       Object.entries(projectPackageJson.pnpm.patchedDependencies).filter(
+//         ([packageName]) => !packageName.startsWith('next@'),
+//       ),
+//     );
+//   }
+// }
+
+// writeFileSync(
+//   projectPackageJsonPath,
+//   JSON.stringify(projectPackageJson, null, 2) + '\n',
+// );
 
 const newDevDependenciesToInstall = [
   // pnpm v8+ automatically installs peer dependencies (auto-install-peers=true
