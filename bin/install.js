@@ -62,14 +62,20 @@ const newDevDependenciesToInstall = [
   'typescript',
 ];
 
-if (
-  // Install SafeQL dependencies in Postgres.js projects
-  projectType === 'next-js-postgresql' &&
-  // SafeQL currently not supported on Windows
-  // https://github.com/ts-safeql/safeql/issues/80
-  process.platform !== 'win32'
-) {
-  newDevDependenciesToInstall.push('@ts-safeql/eslint-plugin', 'libpg-query');
+// Install Prettier and SafeQL dependencies in Postgres.js projects
+if (projectType === 'next-js-postgresql') {
+  newDevDependenciesToInstall.push(
+    'prettier-plugin-embed',
+    'prettier-plugin-sql',
+  );
+
+  if (
+    // SafeQL currently not supported on Windows
+    // https://github.com/ts-safeql/safeql/issues/80
+    process.platform !== 'win32'
+  ) {
+    newDevDependenciesToInstall.push('@ts-safeql/eslint-plugin', 'libpg-query');
+  }
 }
 
 if (
