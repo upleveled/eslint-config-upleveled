@@ -45,7 +45,7 @@
   },
   "peerDependencies": {
     "@babel/eslint-parser": "^7.23.3",
-    "@next/eslint-plugin-next": "^14.0.1",
+    "@next/eslint-plugin-next": "^14.0.2",
     "@types/eslint": "^8.44.7",
     "@types/node": ">=20.9.0",
     "@types/react": "^18.2.37",
