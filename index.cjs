@@ -564,6 +564,10 @@ const config = {
     // https://typescript-eslint.io/rules/no-array-constructor/
     'no-array-constructor': 'off',
     '@typescript-eslint/no-array-constructor': 'warn',
+    // Error on expressions where operations with ||, && and
+    // ?? operators have likely unintended effects
+    // https://eslint.org/docs/latest/rules/no-constant-binary-expression
+    'no-constant-binary-expression': 'error',
     // Warn on dangling promises without await
     '@typescript-eslint/no-floating-promises': ['warn', { ignoreVoid: false }],
     // Warn on redeclare of variables
