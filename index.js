@@ -513,6 +513,7 @@ const config = [
     },
     rules: {
       ...eslintConfigReactAppRules,
+      // eslint-disable-next-line rest-spread-spacing
       .../** @type {Exclude<Exclude<import('eslint').ESLint.Plugin['configs'], undefined>['recommended'], undefined | import('eslint').Linter.FlatConfig[]>} */ (
         /** @type {Exclude<import('eslint').ESLint.Plugin['configs'], undefined>} */ (
           jsxA11y.configs
@@ -895,6 +896,7 @@ ${/** @type {Error} */ (error).message}
     // https://github.com/motdotla/dotenv/issues/709
     const { readFileSync } = await import('node:fs');
     // @ts-ignore 2307 (module not found) -- The import.meta.resolve() above will ensure that dotenv is available before this line by throwing if it is not available
+    // eslint-disable-next-line import/no-unresolved
     const dotenv = await import('dotenv');
 
     dotenv.config();
@@ -930,6 +932,7 @@ The following environment variables are not set: ${missingEnvVars.join(', ')}
     /** @type {Exclude<import('eslint').Linter.FlatConfig['plugins'], undefined>} */ (
       /** @type {import('eslint').Linter.FlatConfig} */ (config[0]).plugins
       // @ts-expect-error 2307 Cannot find module '@ts-safeql/eslint-plugin' because it is not a dependency of the ESLint config
+      // eslint-disable-next-line import/no-unresolved
     )['@ts-safeql/eslint-plugin'] = await import('@ts-safeql/eslint-plugin');
 
     /** @type {Exclude<import('eslint').Linter.FlatConfig['rules'], undefined>} */
