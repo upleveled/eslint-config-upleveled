@@ -8,6 +8,7 @@
     "Karl Horky <karl.horky@gmail.com>",
     "Jose Höwer <josehower@gmail.com>"
   ],
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "update-config-version": "pnpm add --save-dev eslint-config-upleveled@latest && pnpm upleveled-eslint-install"
