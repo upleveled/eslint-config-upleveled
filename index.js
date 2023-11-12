@@ -466,6 +466,18 @@ const config = [
       '**/*.cts',
       '**/*.mts',
     ],
+    ignores: [
+      // Next.js cache
+      '.next/**/*',
+      // Next.js builds
+      //
+      // Also `@upleveled/create-react-app` builds, until we migrate
+      // everything to Next.js
+      // https://github.com/upleveled/create-react-app/pull/2
+      // TODO: Remove this part of the comment once we migrate
+      // everything from create-react-app to Next.js
+      'build/**/*',
+    ],
     languageOptions: {
       parser: /** @type {import('eslint').Linter.ParserModule} */ (
         typescriptParser
