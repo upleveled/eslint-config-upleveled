@@ -54,12 +54,14 @@ console.log(`Detected project type: ${projectTypeTitle}`);
 // that the config file is ESM such as an .mjs extension:
 // https://github.com/eslint/eslint/issues/13440
 // https://github.com/eslint/eslint/issues/16580
-projectPackageJson.type = 'module';
+if (projectPackageJson.type !== 'module') {
+  projectPackageJson.type = 'module';
 
-writeFileSync(
-  projectPackageJsonPath,
-  JSON.stringify(projectPackageJson, null, 2) + '\n',
-);
+  writeFileSync(
+    projectPackageJsonPath,
+    JSON.stringify(projectPackageJson, null, 2) + '\n',
+  );
+}
 
 const newDevDependenciesToInstall = [
   // pnpm v8+ automatically installs peer dependencies (auto-install-peers=true
