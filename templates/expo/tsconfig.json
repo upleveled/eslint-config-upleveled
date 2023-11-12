@@ -8,7 +8,6 @@
     "target": "ESNext"
   },
   "include": [
-    "**/.eslintrc.cjs",
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
