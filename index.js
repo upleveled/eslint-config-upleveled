@@ -851,116 +851,114 @@ const config = [
   },
 ];
 
-export default (async function getConfig() {
-  // eslint-disable-next-line no-labels -- Allow label here to keep file simpler
-  safeql: {
-    if (
-      // SafeQL currently not supported on Windows
-      // https://github.com/ts-safeql/safeql/issues/80
-      process.platform === 'win32' ||
-      // Don't configure SafeQL if Postgres.js is not installed
-      !(
-        'postgres' in
-        ((
-          await import(`${process.cwd()}/package.json`, {
-            assert: { type: 'json' },
-          })
-        ).dependencies || {})
-      )
-    ) {
-      // Stop execution of try block using break <label> syntax
-      // https://stackoverflow.com/a/31988856/1268612
-      // eslint-disable-next-line no-labels -- Allow label here to keep file simpler
-      break safeql;
-    }
+// eslint-disable-next-line no-labels -- Allow label here to keep file simpler
+safeql: {
+  if (
+    // SafeQL currently not supported on Windows
+    // https://github.com/ts-safeql/safeql/issues/80
+    process.platform === 'win32' ||
+    // Don't configure SafeQL if Postgres.js is not installed
+    !(
+      'postgres' in
+      ((
+        await import(`${process.cwd()}/package.json`, {
+          assert: { type: 'json' },
+        })
+      ).dependencies || {})
+    )
+  ) {
+    // Stop execution of try block using break <label> syntax
+    // https://stackoverflow.com/a/31988856/1268612
+    // eslint-disable-next-line no-labels -- Allow label here to keep file simpler
+    break safeql;
+  }
 
-    // Abort early if either of these modules are not installed
-    try {
-      import.meta.resolve('@ts-safeql/eslint-plugin');
-      import.meta.resolve('dotenv');
-    } catch (error) {
-      throw new Error(
-        `SafeQL configuration failed
+  // Abort early if either of these modules are not installed
+  try {
+    import.meta.resolve('@ts-safeql/eslint-plugin');
+    import.meta.resolve('dotenv');
+  } catch (error) {
+    throw new Error(
+      `SafeQL configuration failed
 
 Please reinstall the UpLeveled ESLint Config using the instructions on https://www.npmjs.com/package/eslint-config-upleveled
 
 ${/** @type {Error} */ (error).message}
 `,
-      );
-    }
+    );
+  }
 
-    // Replacement for unmaintained dotenv-safe package
-    // https://github.com/rolodato/dotenv-safe/issues/128#issuecomment-1383176751
-    //
-    // TODO: Remove this and switch to dotenv/safe if this proposal gets implemented:
-    // https://github.com/motdotla/dotenv/issues/709
-    const { readFileSync } = await import('node:fs');
-    // @ts-ignore 2307 (module not found) -- The import.meta.resolve() above will ensure that dotenv is available before this line by throwing if it is not available
-    // eslint-disable-next-line import/no-unresolved
-    const dotenv = await import('dotenv');
+  // Replacement for unmaintained dotenv-safe package
+  // https://github.com/rolodato/dotenv-safe/issues/128#issuecomment-1383176751
+  //
+  // TODO: Remove this and switch to dotenv/safe if this proposal gets implemented:
+  // https://github.com/motdotla/dotenv/issues/709
+  const { readFileSync } = await import('node:fs');
+  // @ts-ignore 2307 (module not found) -- The import.meta.resolve() above will ensure that dotenv is available before this line by throwing if it is not available
+  // eslint-disable-next-line import/no-unresolved
+  const dotenv = await import('dotenv');
 
-    dotenv.config();
+  dotenv.config();
 
-    const unconfiguredEnvVars = Object.keys(
-      dotenv.parse(readFileSync('./.env.example')),
-    ).filter((exampleKey) => !process.env[exampleKey]);
+  const unconfiguredEnvVars = Object.keys(
+    dotenv.parse(readFileSync('./.env.example')),
+  ).filter((exampleKey) => !process.env[exampleKey]);
 
-    if (unconfiguredEnvVars.length > 0) {
-      throw new Error(
-        `.env.example environment ${
-          unconfiguredEnvVars.length > 1 ? 'variables' : 'variable'
-        } ${unconfiguredEnvVars.join(', ')} not configured in .env file`,
-      );
-    }
+  if (unconfiguredEnvVars.length > 0) {
+    throw new Error(
+      `.env.example environment ${
+        unconfiguredEnvVars.length > 1 ? 'variables' : 'variable'
+      } ${unconfiguredEnvVars.join(', ')} not configured in .env file`,
+    );
+  }
 
-    const missingEnvVars = [
-      'PGHOST',
-      'PGUSERNAME',
-      'PGPASSWORD',
-      'PGDATABASE',
-    ].filter((envVar) => !process.env[envVar]);
+  const missingEnvVars = [
+    'PGHOST',
+    'PGUSERNAME',
+    'PGPASSWORD',
+    'PGDATABASE',
+  ].filter((envVar) => !process.env[envVar]);
 
-    if (missingEnvVars.length > 0) {
-      throw new Error(
-        `SafeQL configuration failed
+  if (missingEnvVars.length > 0) {
+    throw new Error(
+      `SafeQL configuration failed
 
 The following environment variables are not set: ${missingEnvVars.join(', ')}
 `,
-      );
-    }
-
-    /** @type {Exclude<import('eslint').Linter.FlatConfig['plugins'], undefined>} */ (
-      /** @type {import('eslint').Linter.FlatConfig} */ (config[0]).plugins
-      // @ts-expect-error 2307 Cannot find module '@ts-safeql/eslint-plugin' because it is not a dependency of the ESLint config
-      // eslint-disable-next-line import/no-unresolved
-    )['@ts-safeql/eslint-plugin'] = await import('@ts-safeql/eslint-plugin');
-
-    /** @type {Exclude<import('eslint').Linter.FlatConfig['rules'], undefined>} */
-    (/** @type {import('eslint').Linter.FlatConfig} */ (config[0]).rules)[
-      '@ts-safeql/check-sql'
-    ] = [
-      'error',
-      {
-        connections: [
-          {
-            databaseUrl: `postgres://${process.env.PGUSERNAME}:${process.env.PGPASSWORD}@${process.env.PGHOST}:5432/${process.env.PGDATABASE}`,
-            targets: [
-              {
-                tag: 'sql',
-                fieldTransform: 'camel',
-                transform: '{type}[]',
-              },
-            ],
-            overrides: {
-              types: {
-                json: 'JsonAgg',
-              },
-            },
-          },
-        ],
-      },
-    ];
+    );
   }
 
-  return config;
-})();
+  /** @type {Exclude<import('eslint').Linter.FlatConfig['plugins'], undefined>} */ (
+    /** @type {import('eslint').Linter.FlatConfig} */ (config[0]).plugins
+    // @ts-expect-error 2307 Cannot find module '@ts-safeql/eslint-plugin' because it is not a dependency of the ESLint config
+    // eslint-disable-next-line import/no-unresolved
+  )['@ts-safeql/eslint-plugin'] = await import('@ts-safeql/eslint-plugin');
+
+  /** @type {Exclude<import('eslint').Linter.FlatConfig['rules'], undefined>} */
+  (/** @type {import('eslint').Linter.FlatConfig} */ (config[0]).rules)[
+    '@ts-safeql/check-sql'
+  ] = [
+    'error',
+    {
+      connections: [
+        {
+          databaseUrl: `postgres://${process.env.PGUSERNAME}:${process.env.PGPASSWORD}@${process.env.PGHOST}:5432/${process.env.PGDATABASE}`,
+          targets: [
+            {
+              tag: 'sql',
+              fieldTransform: 'camel',
+              transform: '{type}[]',
+            },
+          ],
+          overrides: {
+            types: {
+              json: 'JsonAgg',
+            },
+          },
+        },
+      ],
+    },
+  ];
+}
+
+export default config;
