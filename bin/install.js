@@ -13,8 +13,9 @@ import {
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+const projectPackageJsonPath = join(process.cwd(), 'package.json');
 const projectPackageJson = JSON.parse(
-  readFileSync(join(process.cwd(), 'package.json'), 'utf-8'),
+  readFileSync(projectPackageJsonPath, 'utf-8'),
 );
 
 const projectDependencies = projectPackageJson.dependencies || {};
@@ -45,10 +46,20 @@ console.log(`Detected project type: ${projectTypeTitle}`);
 //   }
 // }
 //
-// writeFileSync(
-//   projectPackageJsonPath,
-//   JSON.stringify(projectPackageJson, null, 2) + '\n',
-// );
+
+// Set "type": "module" in package.json for support
+// of ESM syntax in eslint.config.js
+//
+// ESLint does not support other ways of specifying
+// that the config file is ESM such as an .mjs extension:
+// https://github.com/eslint/eslint/issues/13440
+// https://github.com/eslint/eslint/issues/16580
+projectPackageJson.type = 'module';
+
+writeFileSync(
+  projectPackageJsonPath,
+  JSON.stringify(projectPackageJson, null, 2) + '\n',
+);
 
 const newDevDependenciesToInstall = [
   // pnpm v8+ automatically installs peer dependencies (auto-install-peers=true
