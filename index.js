@@ -876,7 +876,7 @@ safeql: {
         await import(`${process.cwd()}/package.json`, {
           assert: { type: 'json' },
         })
-      ).dependencies || {})
+      ).default.dependencies || {})
     )
   ) {
     // Stop execution of try block using break <label> syntax
