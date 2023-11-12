@@ -944,7 +944,7 @@ The following environment variables are not set: ${missingEnvVars.join(', ')}
     /** @type {import('eslint').Linter.FlatConfig} */ (config[0]).plugins
     // @ts-expect-error 2307 Cannot find module '@ts-safeql/eslint-plugin' because it is not a dependency of the ESLint config
     // eslint-disable-next-line import/no-unresolved
-  )['@ts-safeql/eslint-plugin'] = await import('@ts-safeql/eslint-plugin');
+  )['@ts-safeql'] = await import('@ts-safeql/eslint-plugin');
 
   /** @type {Exclude<import('eslint').Linter.FlatConfig['rules'], undefined>} */
   (/** @type {import('eslint').Linter.FlatConfig} */ (config[0]).rules)[
