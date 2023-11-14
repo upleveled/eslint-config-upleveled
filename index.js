@@ -12,7 +12,7 @@ import unicorn from 'eslint-plugin-unicorn';
 import upleveled from 'eslint-plugin-upleveled';
 import globals from 'globals';
 
-/** @type {import('eslint').Linter.RuleEntry} */
+/** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.RuleEntry} */
 const noRestrictedSyntaxOptions = [
   'warn',
   // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
@@ -215,7 +215,7 @@ Instead, move anything you want to import to a non-page file`,
  * https://github.com/facebook/create-react-app/blob/main/packages/eslint-config-react-app/index.js
  * https://github.com/facebook/create-react-app/blob/main/packages/eslint-config-react-app/base.js
  *
- * @type {import('eslint').Linter.FlatConfig['rules']}
+ * @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Rules}
  */
 const eslintConfigReactAppRules = {
   'array-callback-return': 'warn',
@@ -452,7 +452,7 @@ const eslintConfigReactAppRules = {
   'react-hooks/rules-of-hooks': 'error',
 };
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
+/** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray} */
 const config = [
   {
     // Lint common extensions by default with rules above
@@ -479,9 +479,7 @@ const config = [
       'build/**/*',
     ],
     languageOptions: {
-      parser: /** @type {import('eslint').Linter.ParserModule} */ (
-        typescriptParser
-      ),
+      parser: typescriptParser,
       parserOptions: {
         project: './tsconfig.json',
         // typescript-eslint specific options
@@ -498,9 +496,7 @@ const config = [
     },
     plugins: {
       '@next/next': next,
-      '@typescript-eslint': /** @type {import('eslint').ESLint.Plugin} */ (
-        /** @type {unknown} */ (eslintTypescript)
-      ),
+      '@typescript-eslint': eslintTypescript,
       'jsx-a11y': jsxA11y,
       'jsx-expressions': jsxExpressions,
       'react-hooks': reactHooks,
@@ -525,12 +521,7 @@ const config = [
     },
     rules: {
       ...eslintConfigReactAppRules,
-      // eslint-disable-next-line rest-spread-spacing
-      .../** @type {Exclude<Exclude<import('eslint').ESLint.Plugin['configs'], undefined>['recommended'], undefined | import('eslint').Linter.FlatConfig[]>} */ (
-        /** @type {Exclude<import('eslint').ESLint.Plugin['configs'], undefined>} */ (
-          jsxA11y.configs
-        ).recommended
-      ).rules,
+      ...jsxA11y.configs.recommended.rules,
 
       // Error about importing next/document in a page other than pages/_document.js
       // https://github.com/vercel/next.js/blob/canary/errors/no-document-import-in-page.md
@@ -940,16 +931,20 @@ The following environment variables are not set: ${missingEnvVars.join(', ')}
     );
   }
 
-  /** @type {Exclude<import('eslint').Linter.FlatConfig['plugins'], undefined>} */ (
-    /** @type {import('eslint').Linter.FlatConfig} */ (config[0]).plugins
+  /** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugins} */ (
+    /** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Config} */ (
+      config[0]
+    ).plugins
     // @ts-expect-error 2307 Cannot find module '@ts-safeql/eslint-plugin' because it is not a dependency of the ESLint config
     // eslint-disable-next-line import/no-unresolved
   )['@ts-safeql'] = await import('@ts-safeql/eslint-plugin');
 
-  /** @type {Exclude<import('eslint').Linter.FlatConfig['rules'], undefined>} */
-  (/** @type {import('eslint').Linter.FlatConfig} */ (config[0]).rules)[
-    '@ts-safeql/check-sql'
-  ] = [
+  /** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Rules} */
+  (
+    /** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Config} */ (
+      config[0]
+    ).rules
+  )['@ts-safeql/check-sql'] = [
     'error',
     {
       connections: [

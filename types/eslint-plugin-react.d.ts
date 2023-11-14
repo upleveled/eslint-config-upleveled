@@ -1,6 +1,6 @@
 declare module 'eslint-plugin-react' {
-  import type { ESLint } from 'eslint';
+  import type { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 
-  let plugin: ESLint.Plugin;
+  let plugin: FlatConfig.Plugin;
   export default plugin;
 }

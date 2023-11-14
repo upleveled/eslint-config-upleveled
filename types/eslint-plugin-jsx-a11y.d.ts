@@ -1,6 +1,10 @@
 declare module 'eslint-plugin-jsx-a11y' {
-  import type { ESLint } from 'eslint';
+  import type { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 
-  let plugin: ESLint.Plugin;
+  let plugin: FlatConfig.Plugin & {
+    configs: {
+      recommended: FlatConfig.Config;
+    };
+  };
   export default plugin;
 }
