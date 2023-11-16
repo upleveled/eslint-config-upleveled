@@ -37,8 +37,8 @@
   "dependencies": {
     "@babel/eslint-parser": "7.23.3",
     "@next/eslint-plugin-next": "14.0.2",
-    "@typescript-eslint/eslint-plugin": "6.11.0",
-    "@typescript-eslint/parser": "6.11.0",
+    "@typescript-eslint/eslint-plugin": "6.11.1-alpha.20",
+    "@typescript-eslint/parser": "6.11.1-alpha.20",
     "eslint-import-resolver-typescript": "3.6.1",
     "eslint-plugin-import": "2.29.0",
     "eslint-plugin-jsx-a11y": "6.8.0",
@@ -54,7 +54,7 @@
   "devDependencies": {
     "@types/eslint": "8.44.7",
     "@types/prettier": "2.7.3",
-    "@typescript-eslint/utils": "6.11.0",
+    "@typescript-eslint/utils": "6.11.1-alpha.20",
     "eslint-config-upleveled": "7.0.1",
     "prettier-plugin-embed": "0.2.5",
     "prettier-plugin-sql": "0.16.0",

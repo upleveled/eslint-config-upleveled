@@ -496,14 +496,18 @@ const config = [
     },
     plugins: {
       '@next/next': next,
-      '@typescript-eslint': eslintTypescript,
+      '@typescript-eslint': {
+        rules: eslintTypescript.rules,
+      },
       'jsx-a11y': jsxA11y,
       'jsx-expressions': jsxExpressions,
       'react-hooks': reactHooks,
       import: eslintImport,
       react,
       security,
-      sonarjs,
+      sonarjs: {
+        rules: sonarjs.rules,
+      },
       unicorn,
       upleveled,
     },
@@ -521,7 +525,12 @@ const config = [
     },
     rules: {
       ...eslintConfigReactAppRules,
-      ...jsxA11y.configs.recommended.rules,
+      // eslint-disable-next-line rest-spread-spacing -- Allow JSDoc casting
+      .../** @type {Exclude<Exclude<import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin['configs'], undefined>[string], undefined>} */ (
+        /** @type {Exclude<import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin['configs'], undefined>} */ (
+          jsxA11y.configs
+        ).recommended
+      ).rules,
 
       // Error about importing next/document in a page other than pages/_document.js
       // https://github.com/vercel/next.js/blob/canary/errors/no-document-import-in-page.md
@@ -930,21 +939,21 @@ The following environment variables are not set: ${missingEnvVars.join(', ')}
 `,
     );
   }
+  const firstConfig = config[0];
 
-  /** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugins} */ (
-    /** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Config} */ (
-      config[0]
-    ).plugins
-    // @ts-expect-error 2307 Cannot find module '@ts-safeql/eslint-plugin' because it is not a dependency of the ESLint config
-    // eslint-disable-next-line import/no-unresolved
-  )['@ts-safeql'] = await import('@ts-safeql/eslint-plugin');
+  if (!firstConfig || !firstConfig.plugins || !firstConfig.rules) {
+    throw new Error(
+      `SafeQL configuration failed
 
-  /** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Rules} */
-  (
-    /** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Config} */ (
-      config[0]
-    ).rules
-  )['@ts-safeql/check-sql'] = [
+The UpLeveled ESLint config object does not contain properties plugins and rules`,
+    );
+  }
+
+  // @ts-expect-error 2307 Cannot find module '@ts-safeql/eslint-plugin' because it is not a dependency of the ESLint config
+  // eslint-disable-next-line import/no-unresolved
+  firstConfig.plugins['@ts-safeql'] = await import('@ts-safeql/eslint-plugin');
+
+  firstConfig.rules['@ts-safeql/check-sql'] = [
     'error',
     {
       connections: [
