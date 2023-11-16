@@ -945,7 +945,7 @@ The following environment variables are not set: ${missingEnvVars.join(', ')}
     throw new Error(
       `SafeQL configuration failed
 
-The UpLeveled ESLint config object does not contain the properties .plugins and .rules`,
+The UpLeveled ESLint config object does not contain all of the properties: .plugins, .rules`,
     );
   }
 
