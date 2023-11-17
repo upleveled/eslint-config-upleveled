@@ -454,7 +454,7 @@ const eslintConfigReactAppRules = {
 };
 
 /** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray} */
-const config = [
+const configArray = [
   gitignore(),
   {
     // Lint common extensions by default with rules above
@@ -929,7 +929,10 @@ The following environment variables are not set: ${missingEnvVars.join(', ')}
 `,
     );
   }
-  const firstConfig = config[0];
+
+  const firstConfig = configArray.find((config) => {
+    return config.languageOptions && config.plugins && config.rules;
+  });
 
   if (!firstConfig || !firstConfig.plugins || !firstConfig.rules) {
     throw new Error(
@@ -967,4 +970,4 @@ The UpLeveled ESLint config object does not contain all of the properties: .plug
   ];
 }
 
-export default config;
+export default configArray;
