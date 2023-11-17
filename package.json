@@ -39,6 +39,7 @@
     "@next/eslint-plugin-next": "14.0.2",
     "@typescript-eslint/eslint-plugin": "6.11.1-alpha.20",
     "@typescript-eslint/parser": "6.11.1-alpha.20",
+    "eslint-config-flat-gitignore": "0.1.1",
     "eslint-import-resolver-typescript": "3.6.1",
     "eslint-plugin-import": "2.29.0",
     "eslint-plugin-jsx-a11y": "6.8.0",
