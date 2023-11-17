@@ -1,6 +1,7 @@
 import next from '@next/eslint-plugin-next';
 import eslintTypescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
+import gitignore from 'eslint-config-flat-gitignore';
 import eslintImport from 'eslint-plugin-import';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import jsxExpressions from 'eslint-plugin-jsx-expressions';
@@ -454,6 +455,7 @@ const eslintConfigReactAppRules = {
 
 /** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray} */
 const config = [
+  gitignore(),
   {
     // Lint common extensions by default with rules above
     files: [
@@ -465,18 +467,6 @@ const config = [
       '**/*.tsx',
       '**/*.cts',
       '**/*.mts',
-    ],
-    ignores: [
-      // Next.js cache
-      '.next/**/*',
-      // Next.js builds
-      //
-      // Also `@upleveled/create-react-app` builds, until we migrate
-      // everything to Next.js
-      // https://github.com/upleveled/create-react-app/pull/2
-      // TODO: Remove this part of the comment once we migrate
-      // everything from create-react-app to Next.js
-      'build/**/*',
     ],
     languageOptions: {
       parser: typescriptParser,
