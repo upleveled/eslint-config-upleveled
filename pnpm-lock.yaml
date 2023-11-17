@@ -9,11 +9,11 @@ dependencies:
     specifier: 7.23.3
     version: 7.23.3(@babel/core@7.21.0)(eslint@8.53.0)
   '@next/eslint-plugin-next':
-    specifier: 14.0.2
-    version: 14.0.2
+    specifier: 14.0.3
+    version: 14.0.3
   '@types/node':
-    specifier: '>=20.9.0'
-    version: 20.9.0
+    specifier: '>=20.9.1'
+    version: 20.9.1
   '@types/react':
     specifier: ^18.2.37
     version: 18.2.37
@@ -81,7 +81,7 @@ devDependencies:
     version: 6.11.1-alpha.20(eslint@8.53.0)(typescript@5.2.2)
   eslint-config-upleveled:
     specifier: 7.0.1
-    version: 7.0.1(@babel/core@7.21.0)(@types/eslint@8.44.7)(@types/node@20.9.0)(@types/react-dom@18.2.15)(@types/react@18.2.37)(eslint@8.53.0)(globals@13.23.0)(typescript@5.2.2)
+    version: 7.0.1(@babel/core@7.21.0)(@types/eslint@8.44.7)(@types/node@20.9.1)(@types/react-dom@18.2.15)(@types/react@18.2.37)(eslint@8.53.0)(globals@13.23.0)(typescript@5.2.2)
   prettier-plugin-embed:
     specifier: 0.2.5
     version: 0.2.5(@prettier/plugin-php@0.20.1)(@prettier/plugin-ruby@4.0.2)(@prettier/plugin-xml@3.2.2)(@xml-tools/parser@1.0.11)(chevrotain@7.1.1)(prettier-plugin-glsl@0.1.2)(prettier-plugin-sql@0.16.0)(prettier@3.0.3)
@@ -453,6 +453,13 @@ packages:
     resolution: {integrity: sha512-APrYFsXfAhnysycqxHcpg6Y4i7Ukp30GzVSZQRKT3OczbzkqGjt33vNhScmgoOXYBU1CfkwgtXmNxdiwv1jKmg==}
     dependencies:
       glob: 7.1.7
+    dev: true
+
+  /@next/eslint-plugin-next@14.0.3:
+    resolution: {integrity: sha512-j4K0n+DcmQYCVnSAM+UByTVfIHnYQy2ODozfQP+4RdwtRDfobrIvKq1K4Exb2koJ79HSSa7s6B2SA8T/1YR3RA==}
+    dependencies:
+      glob: 7.1.7
+    dev: false
 
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
     resolution: {integrity: sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==}
@@ -526,8 +533,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.9.0:
-    resolution: {integrity: sha512-nekiGu2NDb1BcVofVcEKMIwzlx4NjHlcjhoxxKBNLtz15Y1z7MYf549DFvkHSId02Ax6kGwWntIBPC3l/JZcmw==}
+  /@types/node@20.9.1:
+    resolution: {integrity: sha512-HhmzZh5LSJNS5O8jQKpJ/3ZcrrlG6L70hpGqMIAoM9YVD0YBRNWYsfwcXq8VnSjlNpCpgLzMXdiPo+dxcvSmiA==}
     dependencies:
       undici-types: 5.26.5
 
@@ -1497,7 +1504,7 @@ packages:
       parse-gitignore: 2.0.0
     dev: false
 
-  /eslint-config-upleveled@7.0.1(@babel/core@7.21.0)(@types/eslint@8.44.7)(@types/node@20.9.0)(@types/react-dom@18.2.15)(@types/react@18.2.37)(eslint@8.53.0)(globals@13.23.0)(typescript@5.2.2):
+  /eslint-config-upleveled@7.0.1(@babel/core@7.21.0)(@types/eslint@8.44.7)(@types/node@20.9.1)(@types/react-dom@18.2.15)(@types/react@18.2.37)(eslint@8.53.0)(globals@13.23.0)(typescript@5.2.2):
     resolution: {integrity: sha512-GvUyDHpp1q3AUJxtQ4B8IwbtaKhg2qbt75NGK2wV+PniqBiOVcFO8UQaMDnQt6fsV72i6F/aVwpIh+SGPBGvdw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
@@ -1513,7 +1520,7 @@ packages:
       '@babel/eslint-parser': 7.23.3(@babel/core@7.21.0)(eslint@8.53.0)
       '@next/eslint-plugin-next': 14.0.2
       '@types/eslint': 8.44.7
-      '@types/node': 20.9.0
+      '@types/node': 20.9.1
       '@types/react': 18.2.37
       '@types/react-dom': 18.2.15
       '@typescript-eslint/eslint-plugin': 6.11.0(@typescript-eslint/parser@6.11.0)(eslint@8.53.0)(typescript@5.2.2)
