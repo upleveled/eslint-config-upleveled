@@ -12,6 +12,7 @@ import {
 } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import sortPackageJson from 'sort-package-json';
 
 const projectPackageJsonPath = join(process.cwd(), 'package.json');
 const projectPackageJson = JSON.parse(
@@ -55,11 +56,12 @@ console.log(`Detected project type: ${projectTypeTitle}`);
 // https://github.com/eslint/eslint/issues/13440
 // https://github.com/eslint/eslint/issues/16580
 if (projectPackageJson.type !== 'module') {
+  console.log('Setting "type": "module" in package.json...');
   projectPackageJson.type = 'module';
 
   writeFileSync(
     projectPackageJsonPath,
-    JSON.stringify(projectPackageJson, null, 2) + '\n',
+    JSON.stringify(sortPackageJson(projectPackageJson), null, 2) + '\n',
   );
 }
 
