@@ -13,7 +13,7 @@ import unicorn from 'eslint-plugin-unicorn';
 import upleveled from 'eslint-plugin-upleveled';
 import globals from 'globals';
 
-/** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.RuleEntry} */
+/** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.RuleLevelAndOptions} */
 export const noRestrictedSyntaxOptions = [
   'warn',
   // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
