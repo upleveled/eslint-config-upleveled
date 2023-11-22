@@ -17,8 +17,8 @@ devDependencies:
     specifier: ^18.2.6
     version: 18.2.6
   eslint-config-upleveled:
-    specifier: ^7.1.2
-    version: 7.1.2(@babel/core@7.23.2)(@types/eslint@8.44.7)(@types/node@20.9.2)(@types/react-dom@18.2.6)(@types/react@18.2.14)(eslint@8.54.0)(globals@13.23.0)(typescript@5.1.6)
+    specifier: ^7.3.0
+    version: 7.3.0(@babel/core@7.23.2)(@types/eslint@8.44.7)(@types/node@20.9.2)(@types/react-dom@18.2.6)(@types/react@18.2.14)(eslint@8.54.0)(globals@13.23.0)(typescript@5.1.6)
   postcss-styled-syntax:
     specifier: ^0.5.0
     version: 0.5.0(postcss@8.4.31)
@@ -1245,6 +1245,16 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /detect-indent@7.0.1:
+    resolution: {integrity: sha512-Mc7QhQ8s+cLrnUfU/Ji94vG/r8M26m8f++vyres4ZoojaRDpZ1eSIh/EpzLNwlWuvzSZ3UbDFspjFvTDXe6e/g==}
+    engines: {node: '>=12.20'}
+    dev: true
+
+  /detect-newline@4.0.1:
+    resolution: {integrity: sha512-qE3Veg1YXzGHQhlA6jzebZN2qVf6NX+A7m7qlhCGG30dJixrAQhYOsJjsnBjJkCSmuOPpCk30145fr8FV0bzog==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: true
+
   /dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
@@ -1403,8 +1413,8 @@ packages:
       parse-gitignore: 2.0.0
     dev: true
 
-  /eslint-config-upleveled@7.1.2(@babel/core@7.23.2)(@types/eslint@8.44.7)(@types/node@20.9.2)(@types/react-dom@18.2.6)(@types/react@18.2.14)(eslint@8.54.0)(globals@13.23.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-b5kwPUVnYv+Y+lZyFyNaeLDmjSUrEbFdehOHGOzmcnmp2bXHjc6aHFd9XBA6o8cc8uC+QEPA3eieZ+XBt2x96Q==}
+  /eslint-config-upleveled@7.3.0(@babel/core@7.23.2)(@types/eslint@8.44.7)(@types/node@20.9.2)(@types/react-dom@18.2.6)(@types/react@18.2.14)(eslint@8.54.0)(globals@13.23.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-8Vnw0SL3AE0rIslKTAocsApzJiOzOj7tikATxMDr6laPx404X85rAMbc5v7AFzO5voKzL/d4XQQWmLn3sK+vTw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
@@ -1438,6 +1448,7 @@ packages:
       eslint-plugin-unicorn: 49.0.0(eslint@8.54.0)
       eslint-plugin-upleveled: 2.1.9(eslint@8.54.0)
       globals: 13.23.0
+      sort-package-json: 2.6.0
       typescript: 5.1.6
     transitivePeerDependencies:
       - '@babel/core'
@@ -1930,6 +1941,11 @@ packages:
       hasown: 2.0.0
     dev: true
 
+  /get-stdin@9.0.0:
+    resolution: {integrity: sha512-dVKBjfWisLAicarI2Sf+JuBE/DghV4UzNAVe9yhEJuzeREd3JhOTE9cUaJTeSa77fsbQUK3pcOpJfM59+VKZaA==}
+    engines: {node: '>=12'}
+    dev: true
+
   /get-symbol-description@1.0.0:
     resolution: {integrity: sha512-2EmdH1YvIQiZpltCNgkuiUnyukzxM/R6NDJX31Ke3BG1Nq5b0S2PhX59UKi9vZpPDQVdqn+1IcaAwnzTT5vCjw==}
     engines: {node: '>= 0.4'}
@@ -1942,6 +1958,10 @@ packages:
     resolution: {integrity: sha512-wuMsz4leaj5hbGgg4IvDU0bqJagpftG5l5cXIAvo8uZrqn0NJqwtfupTN00VnkQJPcIRrxYrm1Ue24btpCha2A==}
     dependencies:
       resolve-pkg-maps: 1.0.0
+    dev: true
+
+  /git-hooks-list@3.1.0:
+    resolution: {integrity: sha512-LF8VeHeR7v+wAbXqfgRlTSX/1BJR9Q1vEMR8JAz1cEg6GX07+zyj3sAdDvYjj/xnlIfVuGgj4qBei1K3hKH+PA==}
     dev: true
 
   /glob-parent@5.1.2:
@@ -2028,6 +2048,17 @@ packages:
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
+    dev: true
+
+  /globby@13.2.2:
+    resolution: {integrity: sha512-Y1zNGV+pzQdh7H39l9zgB4PJqjRNqydvdYCDG4HFXM4XuvSaQQlEc91IU1yALL8gUTDomgBAfz3XJdmUS+oo0w==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      dir-glob: 3.0.1
+      fast-glob: 3.3.1
+      ignore: 5.2.4
+      merge2: 1.4.1
+      slash: 4.0.0
     dev: true
 
   /globjoin@0.1.4:
@@ -2293,6 +2324,11 @@ packages:
   /is-plain-obj@1.1.0:
     resolution: {integrity: sha512-yvkRyxmFKEOQ4pNXCmJG5AEQNlXJS5LaONXo5/cLdTZdWvsZ1ioJEonLGAosKlMWE8lwUy/bJzMjcw8az73+Fg==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /is-plain-obj@4.1.0:
+    resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
+    engines: {node: '>=12'}
     dev: true
 
   /is-plain-object@5.0.0:
@@ -3183,6 +3219,11 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /slash@4.0.0:
+    resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
+    engines: {node: '>=12'}
+    dev: true
+
   /slice-ansi@4.0.0:
     resolution: {integrity: sha512-qMCMfhY040cVHT43K9BFygqYbUPFZKHOg7K73mtTWJRb8pyP3fzf4Ixd5SzdEJQ6MRUg/WBnOLxghZtKKurENQ==}
     engines: {node: '>=10'}
@@ -3190,6 +3231,23 @@ packages:
       ansi-styles: 4.3.0
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
+    dev: true
+
+  /sort-object-keys@1.1.3:
+    resolution: {integrity: sha512-855pvK+VkU7PaKYPc+Jjnmt4EzejQHyhhF33q31qG8x7maDzkeFhAAThdCYay11CISO+qAMwjOBP+fPZe0IPyg==}
+    dev: true
+
+  /sort-package-json@2.6.0:
+    resolution: {integrity: sha512-XSQ+lY9bAYA8ZsoChcEoPlgcSMaheziEp1beox1JVxy1SV4F2jSq9+h2rJ+3mC/Dhu9Ius1DLnInD5AWcsDXZw==}
+    hasBin: true
+    dependencies:
+      detect-indent: 7.0.1
+      detect-newline: 4.0.1
+      get-stdin: 9.0.0
+      git-hooks-list: 3.1.0
+      globby: 13.2.2
+      is-plain-obj: 4.1.0
+      sort-object-keys: 1.1.3
     dev: true
 
   /source-map-js@1.0.2:
