@@ -17,8 +17,8 @@ devDependencies:
     specifier: ^18.2.6
     version: 18.2.6
   eslint-config-upleveled:
-    specifier: ^7.3.1
-    version: 7.3.1(@babel/core@7.23.2)(@types/eslint@8.44.7)(@types/node@20.9.2)(@types/react-dom@18.2.6)(@types/react@18.2.14)(eslint@8.54.0)(globals@13.23.0)(typescript@5.1.6)
+    specifier: ^7.3.2
+    version: 7.3.2(@babel/core@7.23.2)(@types/eslint@8.44.7)(@types/node@20.9.2)(@types/react-dom@18.2.6)(@types/react@18.2.14)(eslint@8.54.0)(globals@13.23.0)(typescript@5.1.6)
   postcss-styled-syntax:
     specifier: ^0.5.0
     version: 0.5.0(postcss@8.4.31)
@@ -1413,9 +1413,9 @@ packages:
       parse-gitignore: 2.0.0
     dev: true
 
-  /eslint-config-upleveled@7.3.1(@babel/core@7.23.2)(@types/eslint@8.44.7)(@types/node@20.9.2)(@types/react-dom@18.2.6)(@types/react@18.2.14)(eslint@8.54.0)(globals@13.23.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-JOEquHogcg1ZIw21IDxc+EoZoQ2NNI//Kd2DTb76KI3dOQSLMjJL0tQQbsgxjWybu7JySI38pfYqe4hd0LRX+A==}
-    engines: {node: '>=18.0.0'}
+  /eslint-config-upleveled@7.3.2(@babel/core@7.23.2)(@types/eslint@8.44.7)(@types/node@20.9.2)(@types/react-dom@18.2.6)(@types/react@18.2.14)(eslint@8.54.0)(globals@13.23.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-4CFAOm8QfHhuS3gwF/D1kV/WBHJI2WyJATFZkPZbcBJly1lnPOKWsBLe3YheecbfVOz0sEE0nfaWeQ4JOZHTFg==}
+    engines: {node: '>=20.9.0'}
     hasBin: true
     peerDependencies:
       '@types/eslint': ^8.44.7
