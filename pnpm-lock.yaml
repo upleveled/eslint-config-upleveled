@@ -9,8 +9,8 @@ dependencies:
     specifier: 7.23.3
     version: 7.23.3(@babel/core@7.21.0)(eslint@8.55.0)
   '@next/eslint-plugin-next':
-    specifier: 14.0.3
-    version: 14.0.3
+    specifier: 14.0.4
+    version: 14.0.4
   '@types/node':
     specifier: '>=20.10.4'
     version: 20.10.4
@@ -448,8 +448,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: false
 
-  /@next/eslint-plugin-next@14.0.3:
-    resolution: {integrity: sha512-j4K0n+DcmQYCVnSAM+UByTVfIHnYQy2ODozfQP+4RdwtRDfobrIvKq1K4Exb2koJ79HSSa7s6B2SA8T/1YR3RA==}
+  /@next/eslint-plugin-next@14.0.4:
+    resolution: {integrity: sha512-U3qMNHmEZoVmHA0j/57nRfi3AscXNvkOnxDmle/69Jz/G0o/gWjXTDdlgILZdrxQ0Lw/jv2mPW8PGy0EGIHXhQ==}
     dependencies:
       glob: 7.1.7
     dev: false

@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "7.23.3",
-    "@next/eslint-plugin-next": "14.0.3",
+    "@next/eslint-plugin-next": "14.0.4",
     "@typescript-eslint/eslint-plugin": "6.13.2",
     "@typescript-eslint/parser": "6.13.2",
     "eslint-config-flat-gitignore": "0.1.2",
