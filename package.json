@@ -60,7 +60,6 @@
     "eslint-config-upleveled": "7.3.4",
     "prettier-plugin-embed": "0.3.2",
     "prettier-plugin-sql": "0.18.0",
-    "sql-formatter": "15.0.2",
     "stylelint": "16.0.2",
     "typescript": "5.3.3"
   },

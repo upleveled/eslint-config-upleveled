@@ -1,5 +1,3 @@
-import { postgresql } from 'sql-formatter';
-
 /** @type {import('prettier').Config} */
 const prettierConfig = {
   plugins: ['prettier-plugin-embed', 'prettier-plugin-sql'],
@@ -14,7 +12,7 @@ const prettierPluginEmbedConfig = {
 
 /** @type {import('prettier-plugin-sql').SqlBaseOptions} */
 const prettierPluginSqlConfig = {
-  dialect: JSON.stringify(postgresql),
+  language: 'postgresql',
   keywordCase: 'upper',
   identifierCase: 'lower',
   dataTypeCase: 'lower',
