@@ -1,3 +1,5 @@
+import { postgresql } from 'sql-formatter';
+
 /** @type {import('prettier').Config} */
 const prettierConfig = {
   plugins: ['prettier-plugin-embed', 'prettier-plugin-sql'],
@@ -12,7 +14,7 @@ const prettierPluginEmbedConfig = {
 
 /** @type {import('prettier-plugin-sql').SqlBaseOptions} */
 const prettierPluginSqlConfig = {
-  language: 'postgresql',
+  dialect: JSON.stringify(postgresql),
   keywordCase: 'upper',
   // - Wrap all parenthesized expressions to new lines (eg. `INSERT` columns)
   // - Do not wrap foreign keys (eg. `REFERENCES table_name (id)`)
