@@ -19,7 +19,7 @@
   "devDependencies": {
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "eslint-config-upleveled": "^7.3.5",
+    "eslint-config-upleveled": "^7.4.0",
     "postcss-styled-syntax": "^0.5.0",
     "stylelint": "^16.0.0",
     "stylelint-config-upleveled": "^1.0.2",
