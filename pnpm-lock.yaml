@@ -91,9 +91,6 @@ devDependencies:
   prettier-plugin-sql:
     specifier: 0.18.0
     version: 0.18.0(prettier@3.0.3)
-  sql-formatter:
-    specifier: 15.0.2
-    version: 15.0.2
   stylelint:
     specifier: 16.0.2
     version: 16.0.2(typescript@5.3.3)
