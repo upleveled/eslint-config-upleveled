@@ -672,6 +672,9 @@ const configArray = [
       // https://typescript-eslint.io/rules/no-useless-constructor/
       'no-useless-constructor': 'off',
       '@typescript-eslint/no-useless-constructor': 'warn',
+      // Warn about unnecessary tepmlate literals
+      // https://typescript-eslint.io/rules/no-useless-template-literals/
+      '@typescript-eslint/no-useless-template-literals': 'warn',
       // Allow leaving out curlies only with single-line condition blocks
       // https://github.com/eslint/eslint/blob/master/docs/rules/curly.md#multi-line
       curly: ['warn', 'multi-line', 'consistent'],
@@ -810,9 +813,6 @@ const configArray = [
       // Warn about unnecessary for and id attributes with inputs nested inside of labels
       // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-for-and-id.md
       'upleveled/no-unnecessary-for-and-id': 'warn',
-      // Warn about unnecessary interpolations in template strings
-      // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-interpolations.md
-      'upleveled/no-unnecessary-interpolations': 'warn',
     },
   },
   {
