@@ -35,7 +35,9 @@ const [projectType, projectTypeTitle] =
 
 console.log(`Detected project type: ${projectTypeTitle}`);
 
-// Commented out in case we need to patch Next.js again in the future
+// Commented out in case we need to patch Next.js again in the
+// future
+// ```
 // if ('next' in projectDependencies) {
 //   // Remove previous patches in package.json
 //   if (projectPackageJson?.pnpm?.patchedDependencies) {
@@ -46,13 +48,13 @@ console.log(`Detected project type: ${projectTypeTitle}`);
 //     );
 //   }
 // }
-//
+// ```
 
-// Set "type": "module" in package.json for support
-// of ESM syntax in eslint.config.js
+// Set "type": "module" in package.json for support of ESM syntax
+// in eslint.config.js
 //
-// ESLint does not support other ways of specifying
-// that the config file is ESM such as an .mjs extension:
+// ESLint does not support other ways of specifying that the
+// config file is ESM such as an .mjs extension:
 // https://github.com/eslint/eslint/issues/13440
 // https://github.com/eslint/eslint/issues/16580
 if (projectPackageJson.type !== 'module') {
@@ -66,10 +68,19 @@ if (projectPackageJson.type !== 'module') {
 }
 
 const newDevDependenciesToInstall = [
-  // pnpm v8+ automatically installs peer dependencies (auto-install-peers=true
-  // is default) and `typescript` is a peer dependency of eslint-config-upleveled,
-  // but the dependencies and their bins are not hoisted, which makes ESLint (and
-  // potentially other tooling) fail to resolve TypeScript
+  // The VS Code Prettier extension uses Prettier v2 internally,
+  // but Preflight uses the latest Prettier version, which causes
+  // crashes and formatting conflicts:
+  // https://github.com/prettier/prettier-vscode/pull/3069#issuecomment-1817589047
+  // https://github.com/prettier/prettier-vscode/issues/3298
+  // https://github.com/upleveled/preflight/issues/429
+  'prettier',
+  // pnpm v8+ automatically installs peer dependencies
+  // (auto-install-peers=true is default) and `typescript` is a
+  // peer dependency of eslint-config-upleveled, but the
+  // dependencies and their bins are not hoisted, which makes
+  // ESLint (and potentially other tooling) fail to resolve
+  // TypeScript
   //
   // Similar issue with `stylelint` here:
   // https://github.com/stylelint/stylelint/issues/6781#issuecomment-1506751686
@@ -77,7 +88,8 @@ const newDevDependenciesToInstall = [
   'typescript',
 ];
 
-// Install Prettier and SafeQL dependencies in Postgres.js projects
+// Install Prettier and SafeQL dependencies in Postgres.js
+// projects
 if (projectType === 'next-js-postgresql') {
   newDevDependenciesToInstall.push(
     'prettier-plugin-embed',
@@ -143,7 +155,8 @@ const templateFileNamesAndPaths =
   /** @type {{name: string, path: string}[]} */ (
     readdirSync(templatePath, { withFileTypes: true }).flatMap(
       (templateFileOrDirectory) => {
-        // TODO: Add support for multiple level of nesting in directories
+        // TODO: Add support for multiple level of nesting in
+        // directories
         if (templateFileOrDirectory.isDirectory()) {
           const directoryPathInProject = join(
             process.cwd(),
@@ -181,9 +194,10 @@ for (const {
   let overwriteExistingFile = false;
 
   if (existsSync(filePathInProject)) {
-    // Always overwrite prettier.config.mjs in Postgres.js projects
+    // Always overwrite prettier.config.js in Postgres.js
+    // projects
     if (
-      templateFileName === 'prettier.config.mjs' &&
+      templateFileName === 'prettier.config.js' &&
       projectType === 'next-js-postgresql'
     ) {
       overwriteExistingFile = true;
@@ -263,35 +277,37 @@ writeFileSync(
 
 console.log('✅ Done updating .gitignore');
 
-// Commented out in case we need to patch Next.js again in the future
+// Commented out in case we need to patch Next.js again in the
+// future
+// ```
 // if (projectType === 'next-js' || projectType === 'next-js-postgresql') {
 //   const patchesPath = join(process.cwd(), 'patches');
-
+//
 //   // Remove previous patch files
 //   if (existsSync(patchesPath)) {
 //     const patchFiles = readdirSync(patchesPath);
-
+//
 //     for (const patchFile of patchFiles) {
 //       if (patchFile.startsWith('next@')) {
 //         rmSync(join(patchesPath, patchFile));
 //       }
 //     }
 //   }
-
+//
 //   const nextVersion = JSON.parse(
 //     execSync('pnpm list next --json', { encoding: 'utf-8' }),
 //   )[0].dependencies.next.version;
-
+//
 //   const pnpmPatchNextEditDir = join(
 //     process.cwd(),
 //     'node_modules',
 //     '.upleveled-next-patch',
 //   );
-
+//
 //   if (existsSync(pnpmPatchNextEditDir)) {
 //     rmSync(pnpmPatchNextEditDir, { recursive: true });
 //   }
-
+//
 //   execSync(
 //     `pnpm patch next@${nextVersion} --edit-dir ${pnpmPatchNextEditDir}`,
 //     {
@@ -299,7 +315,7 @@ console.log('✅ Done updating .gitignore');
 //       stdio: ['ignore', 'ignore', 'inherit'],
 //     },
 //   );
-
+//
 //   /**
 //    * @typedef {{
 //    *   lineNumber: number;
@@ -308,7 +324,7 @@ console.log('✅ Done updating .gitignore');
 //    *   replacement: string;
 //    * }} Replacement
 //    */
-
+//
 //   function replaceAll(
 //     /** @type {string} */
 //     filePath,
@@ -326,7 +342,7 @@ console.log('✅ Done updating .gitignore');
 //       const match = content.match(pattern);
 //       if (!match) {
 //         throw new Error(`Pattern "${patternName}" not matched
-
+//
 // Regex: /${pattern.source}/m
 // Source link: https://www.runpkg.com/?next@${nextVersion}/${filePath}#${lineNumber}`);
 //       }
@@ -334,7 +350,7 @@ console.log('✅ Done updating .gitignore');
 //     }
 //     return content;
 //   }
-
+//
 //   /**
 //    * @type {{
 //    *   filePath: string;
@@ -368,11 +384,11 @@ console.log('✅ Done updating .gitignore');
 //             replacement: '$1$2$3$2router.refresh();\n$4',
 //           },
 //         ];
-
+//
 //         return replaceAll(filePath, content, replacements);
 //       },
 //     },
-
+//
 //     // Apply diff:
 //     // diff --git a/node_modules/next/dist/client/link.js b/node_modules/next/dist/client/link.js
 //     // index d15ce7f..369e036 100644
@@ -399,12 +415,12 @@ console.log('✅ Done updating .gitignore');
 //             replacement: `$1$2$1router.refresh();\n$3`,
 //           },
 //         ];
-
+//
 //         return replaceAll(filePath, content, replacements);
 //       },
 //     },
 //   ];
-
+//
 //   for (const { filePath: relativeFilePath, transform } of transforms) {
 //     const filePath = join(pnpmPatchNextEditDir, relativeFilePath);
 //     console.log(`Patching node_modules/next/${relativeFilePath}...`);
@@ -413,14 +429,15 @@ console.log('✅ Done updating .gitignore');
 //       transform(relativeFilePath, readFileSync(filePath, 'utf8')),
 //     );
 //   }
-
+//
 //   console.log('Generating patch...');
-
+//
 //   execSync(`pnpm patch-commit ${pnpmPatchNextEditDir}`, {
 //     // Show stdout stderr
 //     stdio: ['ignore', 'inherit', 'inherit'],
 //   });
-
+//
 //   rmSync(pnpmPatchNextEditDir, { recursive: true });
 //   console.log('✅ Done patching Next.js');
 // }
+// ```
