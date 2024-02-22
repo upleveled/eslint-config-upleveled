@@ -12,8 +12,8 @@ dependencies:
     specifier: 14.1.0
     version: 14.1.0
   '@types/node':
-    specifier: '>=20.11.19'
-    version: 20.11.19
+    specifier: '>=20.11.20'
+    version: 20.11.20
   '@types/react':
     specifier: ^18.2.57
     version: 18.2.57
@@ -69,8 +69,8 @@ dependencies:
     specifier: ^14.0.0
     version: 14.0.0
   sort-package-json:
-    specifier: 2.7.0
-    version: 2.7.0
+    specifier: 2.8.0
+    version: 2.8.0
 
 devDependencies:
   '@types/eslint':
@@ -80,7 +80,7 @@ devDependencies:
     specifier: 7.0.2
     version: 7.0.2(eslint@8.56.0)(typescript@5.3.3)
   eslint-config-upleveled:
-    specifier: 7.8.0
+    specifier: 7.8.1
     version: 'link:'
   prettier:
     specifier: 3.2.5
@@ -517,8 +517,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: false
 
-  /@types/node@20.11.19:
-    resolution: {integrity: sha512-7xMnVEcZFu0DikYjWOlRq7NTPETrm7teqUT2WkQjrTIkEgUyyGdWsj/Zg8bEJt5TNklzbPD1X3fqfsHw3SpapQ==}
+  /@types/node@20.11.20:
+    resolution: {integrity: sha512-7/rR21OS+fq8IyHTgtLkDK949uzsa6n8BkziAKtPVpugIkO6D+/ooXMvzXxDnZrmtXVfjb1bKQafYpb8s89LOg==}
     dependencies:
       undici-types: 5.26.5
     dev: false
@@ -3091,8 +3091,8 @@ packages:
     resolution: {integrity: sha512-855pvK+VkU7PaKYPc+Jjnmt4EzejQHyhhF33q31qG8x7maDzkeFhAAThdCYay11CISO+qAMwjOBP+fPZe0IPyg==}
     dev: false
 
-  /sort-package-json@2.7.0:
-    resolution: {integrity: sha512-6AayF8bp6L+WROgpbhTMUtB9JSFmpGHjmW7DyaNPS1HwlTw2oSVlUUtlkHSEZmg5o89F3zvLBZNvMeZ1T4fjQg==}
+  /sort-package-json@2.8.0:
+    resolution: {integrity: sha512-PxeNg93bTJWmDGnu0HADDucoxfFiKkIr73Kv85EBThlI1YQPdc0XovBgg2llD0iABZbu2SlKo8ntGmOP9wOj/g==}
     hasBin: true
     dependencies:
       detect-indent: 7.0.1
