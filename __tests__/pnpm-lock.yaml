@@ -12,13 +12,13 @@ dependencies:
 devDependencies:
   '@types/react':
     specifier: ^18.2.14
-    version: 18.2.64
+    version: 18.2.66
   '@types/react-dom':
     specifier: ^18.2.6
-    version: 18.2.21
+    version: 18.2.22
   eslint-config-upleveled:
     specifier: ^7.8.1
-    version: 7.8.1(@babel/core@7.24.0)(@types/eslint@8.56.5)(@types/node@20.11.25)(@types/react-dom@18.2.21)(@types/react@18.2.64)(eslint@8.57.0)(globals@14.0.0)(typescript@5.4.2)
+    version: 7.8.1(@babel/core@7.24.0)(@types/eslint@8.56.5)(@types/node@20.11.27)(@types/react-dom@18.2.22)(@types/react@18.2.66)(eslint@8.57.0)(globals@14.0.0)(typescript@5.4.2)
   postcss-styled-syntax:
     specifier: ^0.6.0
     version: 0.6.4(postcss@8.4.35)
@@ -518,8 +518,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node@20.11.25:
-    resolution: {integrity: sha512-TBHyJxk2b7HceLVGFcpAUjsa5zIdsPWlR6XHfyGzd0SFu+/NFgQgMAl96MSDZgQDvJAvV6BKsFOrt6zIL09JDw==}
+  /@types/node@20.11.27:
+    resolution: {integrity: sha512-qyUZfMnCg1KEz57r7pzFtSGt49f6RPkPBis3Vo4PbS7roQEDn22hiHzl/Lo1q4i4hDEgBJmBF/NTNg2XR0HbFg==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -532,14 +532,14 @@ packages:
     resolution: {integrity: sha512-ga8y9v9uyeiLdpKddhxYQkxNDrfvuPrlFb0N1qnZZByvcElJaXthF1UhvCh9TLWJBEHeNtdnbysW7Y6Uq8CVng==}
     dev: true
 
-  /@types/react-dom@18.2.21:
-    resolution: {integrity: sha512-gnvBA/21SA4xxqNXEwNiVcP0xSGHh/gi1VhWv9Bl46a0ItbTT5nFY+G9VSQpaG/8N/qdJpJ+vftQ4zflTtnjLw==}
+  /@types/react-dom@18.2.22:
+    resolution: {integrity: sha512-fHkBXPeNtfvri6gdsMYyW+dW7RXFo6Ad09nLFK0VQWR7yGLai/Cyvyj696gbwYvBnhGtevUG9cET0pmUbMtoPQ==}
     dependencies:
-      '@types/react': 18.2.64
+      '@types/react': 18.2.66
     dev: true
 
-  /@types/react@18.2.64:
-    resolution: {integrity: sha512-MlmPvHgjj2p3vZaxbQgFUQFvD8QiZwACfGqEdDSWou5yISWxDQ4/74nCAwsUiX7UFLKZz3BbVSPj+YxeoGGCfg==}
+  /@types/react@18.2.66:
+    resolution: {integrity: sha512-OYTmMI4UigXeFMF/j4uv0lBBEbongSgptPrHBxqME44h9+yNov+oL6Z3ocJKo0WyXR84sQUNeyIp9MRfckvZpg==}
     dependencies:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
@@ -1049,8 +1049,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001596
-      electron-to-chromium: 1.4.696
+      caniuse-lite: 1.0.30001597
+      electron-to-chromium: 1.4.705
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
 
@@ -1081,6 +1081,9 @@ packages:
 
   /caniuse-lite@1.0.30001596:
     resolution: {integrity: sha512-zpkZ+kEr6We7w63ORkoJ2pOfBwBkY/bJrG/UZ90qNb45Isblu8wzDgevEOrRL1r9dWayHjYiiyCMEXPn4DweGQ==}
+
+  /caniuse-lite@1.0.30001597:
+    resolution: {integrity: sha512-7LjJvmQU6Sj7bL0j5b5WY/3n7utXUJvAe1lxhsHDbLmwX9mdL86Yjtr+5SRCyf8qME4M7pU2hswj0FpyBVCv9w==}
 
   /chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -1290,8 +1293,8 @@ packages:
     resolution: {integrity: sha512-9AQB5eFTHyR3Gvt2t/NwR0le2jBSUNwCnMbUCejFWHD+so4tH40/dRLgoE+jxlPeWS43XJewyvCv+I8LPMl49Q==}
     dev: true
 
-  /electron-to-chromium@1.4.696:
-    resolution: {integrity: sha512-SOr0bHP52OvYg2chCsz/0+FUSMGFm8L8HKwPpx3cbwRY24EOemVJtbgTm+IFO8LzhcnPy+hXmTq7ZcZ8uUuaYg==}
+  /electron-to-chromium@1.4.705:
+    resolution: {integrity: sha512-LKqhpwJCLhYId2VVwEzFXWrqQI5n5zBppz1W9ehhTlfYU8CUUW6kClbN8LHF/v7flMgRdETS772nqywJ+ckVAw==}
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -1437,7 +1440,7 @@ packages:
       parse-gitignore: 2.0.0
     dev: true
 
-  /eslint-config-upleveled@7.8.1(@babel/core@7.24.0)(@types/eslint@8.56.5)(@types/node@20.11.25)(@types/react-dom@18.2.21)(@types/react@18.2.64)(eslint@8.57.0)(globals@14.0.0)(typescript@5.4.2):
+  /eslint-config-upleveled@7.8.1(@babel/core@7.24.0)(@types/eslint@8.56.5)(@types/node@20.11.27)(@types/react-dom@18.2.22)(@types/react@18.2.66)(eslint@8.57.0)(globals@14.0.0)(typescript@5.4.2):
     resolution: {integrity: sha512-jvJefouBciyUlxcxZJl59ORHxluUyE0yt9kWGmBhcl83UPkdMJGOhbxTsg9e0Ubpx1J0BaV34XtgiBga9ARBrA==}
     engines: {node: '>=20.9.0'}
     hasBin: true
@@ -1453,9 +1456,9 @@ packages:
       '@babel/eslint-parser': 7.23.10(@babel/core@7.24.0)(eslint@8.57.0)
       '@next/eslint-plugin-next': 14.1.0
       '@types/eslint': 8.56.5
-      '@types/node': 20.11.25
-      '@types/react': 18.2.64
-      '@types/react-dom': 18.2.21
+      '@types/node': 20.11.27
+      '@types/react': 18.2.66
+      '@types/react-dom': 18.2.22
       '@typescript-eslint/eslint-plugin': 7.0.2(@typescript-eslint/parser@7.0.2)(eslint@8.57.0)(typescript@5.4.2)
       '@typescript-eslint/parser': 7.0.2(eslint@8.57.0)(typescript@5.4.2)
       eslint: 8.57.0
