@@ -30,7 +30,7 @@ devDependencies:
     version: 16.2.1(typescript@5.4.2)
   stylelint-config-upleveled:
     specifier: ^1.0.2
-    version: 1.0.7(postcss@8.4.35)(stylelint@16.2.1)
+    version: 1.1.0(postcss@8.4.35)(stylelint@16.2.1)
   typescript:
     specifier: ^5.1.6
     version: 5.4.2
@@ -1050,7 +1050,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001597
-      electron-to-chromium: 1.4.705
+      electron-to-chromium: 1.4.706
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
 
@@ -1293,8 +1293,8 @@ packages:
     resolution: {integrity: sha512-9AQB5eFTHyR3Gvt2t/NwR0le2jBSUNwCnMbUCejFWHD+so4tH40/dRLgoE+jxlPeWS43XJewyvCv+I8LPMl49Q==}
     dev: true
 
-  /electron-to-chromium@1.4.705:
-    resolution: {integrity: sha512-LKqhpwJCLhYId2VVwEzFXWrqQI5n5zBppz1W9ehhTlfYU8CUUW6kClbN8LHF/v7flMgRdETS772nqywJ+ckVAw==}
+  /electron-to-chromium@1.4.706:
+    resolution: {integrity: sha512-fO01fufoGd6jKK3HR8ofBapF3ZPfgxNJ/ua9xQAhFu93TwWIs4d+weDn3kje3GB4S7aGUTfk5nvdU5F7z5mF9Q==}
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -2957,14 +2957,13 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-  /postcss-styled-syntax@0.6.2(postcss@8.4.35):
-    resolution: {integrity: sha512-uJ9IuvbkuKGKkbWw3IoBaZA73eIIjSx8+X0Z9+hY4dez4TzeXOxa4my5cKmkUKWcCg8aOE/n2iuMnpKbZVDmsw==}
-    engines: {node: '>=14.17'}
-    peerDependencies:
-      postcss: ^8.4.21
+  /postcss-selector-parser@6.0.16:
+    resolution: {integrity: sha512-A0RVJrX+IUkVZbW3ClroRWurercFhieevHB38sr2+l9eUClMqome3LmEmnhlNy+5Mr2EYN6B2Kaw9wYdd+VHiw==}
+    engines: {node: '>=4'}
+    requiresBuild: true
     dependencies:
-      postcss: 8.4.35
-      typescript: 5.4.2
+      cssesc: 3.0.0
+      util-deprecate: 1.0.2
     dev: true
 
   /postcss-styled-syntax@0.6.4(postcss@8.4.35):
@@ -3458,7 +3457,7 @@ packages:
       postcss-scss: 4.0.9(postcss@8.4.35)
       stylelint: 16.2.1(typescript@5.4.2)
       stylelint-config-recommended: 14.0.0(stylelint@16.2.1)
-      stylelint-scss: 6.1.0(stylelint@16.2.1)
+      stylelint-scss: 6.2.1(stylelint@16.2.1)
     dev: true
 
   /stylelint-config-recommended@14.0.0(stylelint@16.2.1):
@@ -3470,33 +3469,19 @@ packages:
       stylelint: 16.2.1(typescript@5.4.2)
     dev: true
 
-  /stylelint-config-upleveled@1.0.7(postcss@8.4.35)(stylelint@16.2.1):
-    resolution: {integrity: sha512-L+fct8AmdQclq1S3/o81qE409bRD0ow9n6+xixNY/PTXh0/u7+G7UDAwGmFidZR1R4JlsqBH7Dg+BRYJ/tniAA==}
+  /stylelint-config-upleveled@1.1.0(postcss@8.4.35)(stylelint@16.2.1):
+    resolution: {integrity: sha512-EkdNnCcid4iBajNlLjEP1QZepo+smltDY5Bc/ThVJk6qX/NyMdvffiA2jYVekNwKoG13MSqM9+Ywj19jceWLKQ==}
     engines: {node: '>=20.9.0'}
     peerDependencies:
-      stylelint: ^16.1.0
+      stylelint: ^16.2.1
     dependencies:
-      postcss-styled-syntax: 0.6.2(postcss@8.4.35)
+      postcss-styled-syntax: 0.6.4(postcss@8.4.35)
       stylelint: 16.2.1(typescript@5.4.2)
       stylelint-config-css-modules: 4.4.0(stylelint@16.2.1)
       stylelint-config-recommended: 14.0.0(stylelint@16.2.1)
       stylelint-config-recommended-scss: 14.0.0(postcss@8.4.35)(stylelint@16.2.1)
     transitivePeerDependencies:
       - postcss
-    dev: true
-
-  /stylelint-scss@6.1.0(stylelint@16.2.1):
-    resolution: {integrity: sha512-kCfK8TQzthGwb4vaZniZgxRsVbCM4ZckmT1b/H5m4FU3I8Dz0id9llKsy1NMp3XXqC8+OPD4rVKtUbSxXlJb5g==}
-    engines: {node: '>=18.12.0'}
-    peerDependencies:
-      stylelint: ^16.0.2
-    dependencies:
-      known-css-properties: 0.29.0
-      postcss-media-query-parser: 0.2.3
-      postcss-resolve-nested-selector: 0.1.1
-      postcss-selector-parser: 6.0.15
-      postcss-value-parser: 4.2.0
-      stylelint: 16.2.1(typescript@5.4.2)
     dev: true
 
   /stylelint-scss@6.2.1(stylelint@16.2.1):
@@ -3509,11 +3494,10 @@ packages:
       known-css-properties: 0.29.0
       postcss-media-query-parser: 0.2.3
       postcss-resolve-nested-selector: 0.1.1
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.0.16
       postcss-value-parser: 4.2.0
       stylelint: 16.2.1(typescript@5.4.2)
     dev: true
-    optional: true
 
   /stylelint@16.2.1(typescript@5.4.2):
     resolution: {integrity: sha512-SfIMGFK+4n7XVAyv50CpVfcGYWG4v41y6xG7PqOgQSY8M/PgdK0SQbjWFblxjJZlN9jNq879mB4BCZHJRIJ1hA==}
