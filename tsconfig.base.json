@@ -4,7 +4,7 @@
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "target": "ES2015",
-    "module": "ESNext",
+    "module": "Preserve",
     "moduleResolution": "Bundler",
     "moduleDetection": "force",
     "resolveJsonModule": true,
