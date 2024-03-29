@@ -26,12 +26,12 @@ const [projectType, projectTypeTitle] =
   'postgres' in projectDependencies
     ? ['next-js-postgresql', 'Next.js with PostgreSQL']
     : 'next' in projectDependencies
-    ? ['next-js', 'Next.js']
-    : '@upleveled/react-scripts' in projectDependencies
-    ? ['create-react-app', 'Create React App']
-    : 'expo' in projectDependencies
-    ? ['expo', 'Expo (React Native)']
-    : ['node-js', 'Node.js'];
+      ? ['next-js', 'Next.js']
+      : '@upleveled/react-scripts' in projectDependencies
+        ? ['create-react-app', 'Create React App']
+        : 'expo' in projectDependencies
+          ? ['expo', 'Expo (React Native)']
+          : ['node-js', 'Node.js'];
 
 console.log(`Detected project type: ${projectTypeTitle}`);
 
@@ -92,17 +92,11 @@ const newDevDependenciesToInstall = [
 // projects
 if (projectType === 'next-js-postgresql') {
   newDevDependenciesToInstall.push(
+    '@ts-safeql/eslint-plugin',
+    'libpg-query',
     'prettier-plugin-embed',
     'prettier-plugin-sql',
   );
-
-  if (
-    // SafeQL currently not supported on Windows
-    // https://github.com/ts-safeql/safeql/issues/80
-    process.platform !== 'win32'
-  ) {
-    newDevDependenciesToInstall.push('@ts-safeql/eslint-plugin', 'libpg-query');
-  }
 }
 
 if (

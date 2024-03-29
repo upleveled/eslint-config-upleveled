@@ -865,9 +865,6 @@ const configArray = [
 // eslint-disable-next-line no-labels -- Allow label here to keep file simpler
 safeql: {
   if (
-    // SafeQL currently not supported on Windows
-    // https://github.com/ts-safeql/safeql/issues/80
-    process.platform === 'win32' ||
     // Don't configure SafeQL if Postgres.js is not installed
     !(
       'postgres' in
