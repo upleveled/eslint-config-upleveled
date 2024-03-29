@@ -862,25 +862,15 @@ const configArray = [
   },
 ];
 
-// eslint-disable-next-line no-labels -- Allow label here to keep file simpler
-safeql: {
-  if (
-    // Don't configure SafeQL if Postgres.js is not installed
-    !(
-      'postgres' in
-      ((
-        await import(`${process.cwd()}/package.json`, {
-          assert: { type: 'json' },
-        })
-      ).default.dependencies || {})
-    )
-  ) {
-    // Stop execution of try block using break <label> syntax
-    // https://stackoverflow.com/a/31988856/1268612
-    // eslint-disable-next-line no-labels -- Allow label here to keep file simpler
-    break safeql;
-  }
-
+// Only configure SafeQL if Postgres.js is installed
+if (
+  'postgres' in
+  ((
+    await import(`${process.cwd()}/package.json`, {
+      assert: { type: 'json' },
+    })
+  ).default.dependencies || {})
+) {
   // Abort early if either of these modules are not installed
   try {
     import.meta.resolve('@ts-safeql/eslint-plugin');
