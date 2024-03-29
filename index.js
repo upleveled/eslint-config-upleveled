@@ -887,7 +887,7 @@ safeql: {
   // Abort early if either of these modules are not installed
   try {
     import.meta.resolve('@ts-safeql/eslint-plugin');
-    import.meta.resolve('dotenv');
+    import.meta.resolve('dotenv-safe');
   } catch (error) {
     throw new Error(
       `SafeQL configuration failed
@@ -899,29 +899,9 @@ ${/** @type {Error} */ (error).message}
     );
   }
 
-  // Replacement for unmaintained dotenv-safe package
-  // https://github.com/rolodato/dotenv-safe/issues/128#issuecomment-1383176751
-  //
-  // TODO: Remove this and switch to dotenv/safe if this proposal gets implemented:
-  // https://github.com/motdotla/dotenv/issues/709
-  const { readFileSync } = await import('node:fs');
   // @ts-ignore 2307 (module not found) -- The import.meta.resolve() above will ensure that dotenv is available before this line by throwing if it is not available
   // eslint-disable-next-line import/no-unresolved
-  const dotenv = await import('dotenv');
-
-  dotenv.config();
-
-  const unconfiguredEnvVars = Object.keys(
-    dotenv.parse(readFileSync('./.env.example')),
-  ).filter((exampleKey) => !process.env[exampleKey]);
-
-  if (unconfiguredEnvVars.length > 0) {
-    throw new Error(
-      `.env.example environment ${
-        unconfiguredEnvVars.length > 1 ? 'variables' : 'variable'
-      } ${unconfiguredEnvVars.join(', ')} not configured in .env file`,
-    );
-  }
+  (await import('dotenv-safe')).config();
 
   const missingEnvVars = [
     'PGHOST',
