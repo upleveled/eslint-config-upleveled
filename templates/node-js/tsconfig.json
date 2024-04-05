@@ -2,8 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "eslint-config-upleveled/tsconfig.base.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext"
+    "module": "NodeNext"
   },
   "include": [
     "**/*.ts",
