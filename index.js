@@ -1,3 +1,4 @@
+import { pathToFileURL } from 'node:url';
 import next from '@next/eslint-plugin-next';
 import eslintTypescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
@@ -866,7 +867,7 @@ const configArray = [
 if (
   'postgres' in
   ((
-    await import(`${process.cwd()}/package.json`, {
+    await import(pathToFileURL(`${process.cwd()}/package.json`).href, {
       assert: { type: 'json' },
     })
   ).default.dependencies || {})
