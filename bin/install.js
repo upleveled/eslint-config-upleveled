@@ -68,6 +68,14 @@ if (projectPackageJson.type !== 'module') {
 }
 
 const newDevDependenciesToInstall = [
+  // Add types for any usage of Node.js built-in modules
+  //
+  // To avoid confusing problems like eg.
+  // `@typescript-eslint/restrict-template-expressions` errors in
+  // Node.js projects with `any` type of `argv` imported from
+  // `node:process`
+  // https://typescript-eslint.io/rules/restrict-template-expressions/
+  '@types/node',
   // The VS Code Prettier extension uses Prettier v2 internally,
   // but Preflight uses the latest Prettier version, which causes
   // crashes and formatting conflicts:
