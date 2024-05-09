@@ -56,7 +56,7 @@
   "devDependencies": {
     "@types/eslint": "8.56.10",
     "@typescript-eslint/utils": "7.8.0",
-    "eslint-config-upleveled": "8.0.1",
+    "eslint-config-upleveled": "8.1.0",
     "prettier": "3.2.5",
     "prettier-plugin-embed": "0.4.15",
     "prettier-plugin-sql": "0.18.0",
@@ -65,11 +65,11 @@
   },
   "peerDependencies": {
     "@types/eslint": "^8.56.10",
-    "@types/node": ">=20.12.8",
+    "@types/node": ">=20.12.11",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "eslint": "^8.57.0",
-    "globals": "^15.1.0",
+    "globals": "^15.2.0",
     "typescript": "^5.4.5"
   },
   "engines": {
