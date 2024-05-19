@@ -6,7 +6,6 @@ import typescriptParser from '@typescript-eslint/parser';
 import gitignore from 'eslint-config-flat-gitignore';
 import eslintImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
-import jsxExpressions from 'eslint-plugin-jsx-expressions';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import security from 'eslint-plugin-security';
@@ -14,6 +13,7 @@ import sonarjs from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
 import upleveled from 'eslint-plugin-upleveled';
 import globals from 'globals';
+import jsxExpressions from './vendor/eslint-plugin-jsx-expressions/dist/index.js';
 
 /** @type
  * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.RuleLevelAndOptions}
