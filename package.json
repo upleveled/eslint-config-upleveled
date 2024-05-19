@@ -25,10 +25,11 @@
     "upleveled-eslint-install": "bin/install.js"
   },
   "files": [
-    "index.js",
-    "index.d.ts",
     "bin",
     "templates",
+    "vendor",
+    "index.js",
+    "index.d.ts",
     "tsconfig.base.json"
   ],
   "scripts": {
