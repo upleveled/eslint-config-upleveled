@@ -505,7 +505,20 @@ const configArray = [
       },
     },
     plugins: {
-      '@next/next': next,
+      // Type assertions required because of incompatibility of
+      '@next/next':
+        // @eslint/compat types
+        // - https://github.com/typescript-eslint/typescript-eslint/issues/9115
+        // - https://github.com/eslint/rewrite/issues/25
+        /** @type
+         * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin}
+         * */ (
+          fixupPluginRules(
+            /** @type
+             * {import('@eslint/compat').FixupPluginDefinition}
+             * */ (next),
+          )
+        ),
       '@typescript-eslint': {
         rules: eslintTypescript.rules,
       },
