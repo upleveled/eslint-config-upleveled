@@ -1,9 +1,10 @@
 import { pathToFileURL } from 'node:url';
+import { fixupPluginRules } from '@eslint/compat';
 import next from '@next/eslint-plugin-next';
 import eslintTypescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import gitignore from 'eslint-config-flat-gitignore';
-import eslintImport from 'eslint-plugin-import';
+import eslintImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import jsxExpressions from 'eslint-plugin-jsx-expressions';
 import react from 'eslint-plugin-react';
@@ -14,10 +15,13 @@ import unicorn from 'eslint-plugin-unicorn';
 import upleveled from 'eslint-plugin-upleveled';
 import globals from 'globals';
 
-/** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.RuleLevelAndOptions} */
+/** @type
+ * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.RuleLevelAndOptions}
+ * */
 export const noRestrictedSyntaxOptions = [
   'warn',
-  // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
+  // Currently it is not possible to use Markdown eg. links in
+  // ESLint warnings / error messages
   //
   // FIXME: Switch to a custom rule
   // https://github.com/upleveled/eslint-config-upleveled/issues/123
@@ -40,7 +44,8 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
 https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
   },
 
-  // Currently it is not possible to use Markdown eg. links in ESLint warnings / error messages
+  // Currently it is not possible to use Markdown eg. links in
+  // ESLint warnings / error messages
   //
   // FIXME: Switch to a custom rule
   // https://github.com/upleveled/eslint-config-upleveled/issues/126
@@ -79,7 +84,8 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       'Use template literals including a prefixes for the values of key props (eg. <div key={`user-${user.id}`}> instead of <div key={user.id}>)',
   },
 
-  // Warn on nesting <a> elements, <button> elements and framework <Link> components inside of each other
+  // Warn on nesting <a> elements, <button> elements and
+  // framework <Link> components inside of each other
   {
     selector:
       "JSXElement[openingElement.name.name='a'] > JSXElement[openingElement.name.name=/^(a|button|Link)$/]",
@@ -99,7 +105,8 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       'Invalid DOM Nesting: Link components cannot have anchor elements, button elements or Link components as children',
   },
 
-  // Warn on nesting of non-<li> elements inside of <ol> and <ul> elements
+  // Warn on nesting of non-<li> elements inside of <ol> and <ul>
+  // elements
   {
     selector:
       "JSXElement[openingElement.name.name=/^(ol|ul)$/] > JSXElement[openingElement.name.name!='li'][openingElement.name.name!=/^[A-Z]/]",
@@ -107,7 +114,8 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       'Invalid DOM Nesting: ol and ul elements cannot have non-li elements as children',
   },
 
-  // Warn on nesting common invalid elements inside of <p> elements
+  // Warn on nesting common invalid elements inside of <p>
+  // elements
   {
     selector:
       "JSXElement[openingElement.name.name='p'] > JSXElement[openingElement.name.name=/^(div|h1|h2|h3|h4|h5|h6|hr|ol|p|table|ul)$/]",
@@ -115,7 +123,8 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       'Invalid DOM Nesting: p elements cannot have div, h1, h2, h3, h4, h5, h6, hr, ol, p, table or ul elements as children',
   },
 
-  // Warn on nesting any invalid elements inside of <table> elements
+  // Warn on nesting any invalid elements inside of <table>
+  // elements
   {
     selector:
       "JSXElement[openingElement.name.name='table'] > JSXElement[openingElement.name.name!=/^(caption|colgroup|tbody|tfoot|thead)$/][openingElement.name.name!=/^[A-Z]/]",
@@ -123,7 +132,8 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       'Invalid DOM Nesting: table elements cannot have element which are not caption, colgroup, tbody, tfoot or thead elements as children',
   },
 
-  // Warn on nesting any invalid elements inside of <tbody>, <thead> and <tfoot> elements
+  // Warn on nesting any invalid elements inside of <tbody>,
+  // <thead> and <tfoot> elements
   {
     selector:
       "JSXElement[openingElement.name.name=/(tbody|thead|tfoot)/] > JSXElement[openingElement.name.name!='tr'][openingElement.name.name!=/^[A-Z]/]",
@@ -139,7 +149,8 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
       'Invalid DOM Nesting: tr elements cannot have elements which are not th or td elements as children',
   },
 
-  // Warn on sql tagged template literal without generic type argument
+  // Warn on sql tagged template literal without generic type
+  // argument
   {
     selector:
       "VariableDeclarator > AwaitExpression > TaggedTemplateExpression[tag.name='sql']:not([typeParameters.params.0])",
@@ -152,7 +163,8 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
 `,
   },
 
-  // Warn on standalone && expressions at top level and inside blocks
+  // Warn on standalone && expressions at top level and inside
+  // blocks
   {
     selector:
       "Program > ExpressionStatement > LogicalExpression[operator='&&'], BlockStatement > ExpressionStatement > LogicalExpression[operator='&&']",
@@ -167,7 +179,8 @@ Prefer an if statement like this:
 `,
   },
 
-  // Warn on standalone || expressions at top level and inside blocks
+  // Warn on standalone || expressions at top level and inside
+  // blocks
   {
     selector:
       "Program > ExpressionStatement > LogicalExpression[operator='||'], BlockStatement > ExpressionStatement > LogicalExpression[operator='||']",
@@ -182,7 +195,8 @@ Prefer an if statement like this:
 `,
   },
 
-  // Warn on standalone ternary expressions at top level and inside blocks
+  // Warn on standalone ternary expressions at top level and
+  // inside blocks
   {
     selector:
       'Program > ExpressionStatement > ConditionalExpression, BlockStatement > ExpressionStatement > ConditionalExpression',
@@ -201,7 +215,8 @@ Prefer an if...else statement like this:
 `,
   },
 
-  // Warn on import paths ending in /page to avoid errors with Next.js Statically Typed Links
+  // Warn on import paths ending in /page to avoid errors with
+  // Next.js Statically Typed Links
   {
     selector:
       'ImportDeclaration[source.value=/^\\.\\.?\\u002F(.+\\u002F)?page$/]',
@@ -212,12 +227,14 @@ Instead, move anything you want to import to a non-page file`,
 ];
 
 /**
- * Copied contents from the defunct project eslint-config-react-app
+ * Copied contents from the defunct project
+ * eslint-config-react-app
  *
- * https://github.com/facebook/create-react-app/blob/main/packages/eslint-config-react-app/index.js
- * https://github.com/facebook/create-react-app/blob/main/packages/eslint-config-react-app/base.js
+ * - https://github.com/facebook/create-react-app/blob/main/packages/eslint-config-react-app/index.js
+ * - https://github.com/facebook/create-react-app/blob/main/packages/eslint-config-react-app/base.js
  *
- * @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Rules}
+ * @type
+ * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Rules}
  */
 const eslintConfigReactAppRules = {
   'array-callback-return': 'warn',
@@ -287,11 +304,13 @@ const eslintConfigReactAppRules = {
     'error',
     // Confusing browser globals (copied from create-react-app)
     //
-    // The ESLint browser environment defines all browser globals as valid,
-    // even though most people don't know some of them exist (e.g. `name` or `status`).
-    // This is dangerous as it hides accidentally undefined variables.
-    // We blacklist the globals that we deem potentially confusing.
-    // To use them, explicitly reference them, e.g. `window.name` or `window.status`.
+    // The ESLint browser environment defines all browser globals
+    // as valid, even though most people don't know some of them
+    // exist (e.g. `name` or `status`). This is dangerous as it
+    // hides accidentally undefined variables. We blacklist the
+    // globals that we deem potentially confusing. To use them,
+    // explicitly reference them, e.g. `window.name` or
+    // `window.status`.
     //
     // https://github.com/facebook/create-react-app/blob/main/packages/confusing-browser-globals/index.js
     'addEventListener',
@@ -393,12 +412,11 @@ const eslintConfigReactAppRules = {
   'getter-return': 'warn',
 
   // https://github.com/benmosher/eslint-plugin-import/tree/master/docs/rules
-  'import/first': 'error',
-  'import/no-amd': 'error',
-  'import/no-anonymous-default-export': 'warn',
-  'import/no-webpack-loader-syntax': 'error',
+  // 'import/first': 'error', 'import/no-amd': 'error',
+  // 'import/no-anonymous-default-export': 'warn',
+  // 'import/no-webpack-loader-syntax': 'error',
 
-  // https://github.com/yannickcr/eslint-plugin-react/tree/master/docs/rules
+  // https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules
   'react/forbid-foreign-prop-types': ['warn', { allowInPropTypes: true }],
   'react/jsx-no-comment-textnodes': 'warn',
   'react/jsx-no-duplicate-props': 'warn',
@@ -412,10 +430,9 @@ const eslintConfigReactAppRules = {
     },
   ],
   'react/no-danger-with-children': 'warn',
-  // Disabled because of undesirable warnings
-  // See https://github.com/facebook/create-react-app/issues/5204 for
-  // blockers until its re-enabled
-  // 'react/no-deprecated': 'warn',
+  // Disabled because of undesirable warnings See
+  // https://github.com/facebook/create-react-app/issues/5204 for
+  // blockers until its re-enabled 'react/no-deprecated': 'warn',
   'react/no-direct-mutation-state': 'warn',
   'react/no-is-mounted': 'warn',
   'react/no-typos': 'error',
@@ -424,8 +441,8 @@ const eslintConfigReactAppRules = {
     'warn',
     {
       allow: [
-        // Allow expo-status-bar style prop, which is a string, eg:
-        // <StatusBar style="auto" />
+        // Allow expo-status-bar style prop, which is a string,
+        // eg: <StatusBar style="auto" />
         // https://github.com/expo/expo/blob/999572cd1036529ffa3a28a0490dd7c0f6f0d731/packages/expo-status-bar/src/StatusBar.types.ts#L2
         'StatusBar',
       ],
@@ -454,7 +471,9 @@ const eslintConfigReactAppRules = {
   'react-hooks/rules-of-hooks': 'error',
 };
 
-/** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray} */
+/** @type
+ * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray}
+ * */
 const configArray = [
   gitignore(),
   {
@@ -493,8 +512,21 @@ const configArray = [
       'jsx-a11y': jsxA11y,
       'jsx-expressions': jsxExpressions,
       'react-hooks': reactHooks,
-      import: eslintImport,
-      react,
+      'import-x': eslintImportX,
+      react:
+        // Type assertions required because of incompatibility of
+        // @eslint/compat types
+        // - https://github.com/typescript-eslint/typescript-eslint/issues/9115
+        // - https://github.com/eslint/rewrite/issues/25
+        /** @type
+         * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin}
+         * */ (
+          fixupPluginRules(
+            /** @type
+             * {import('@eslint/compat').FixupPluginDefinition}
+             * */ (react),
+          )
+        ),
       security,
       sonarjs: {
         rules: sonarjs.rules,
@@ -503,12 +535,13 @@ const configArray = [
       upleveled,
     },
     settings: {
-      'import/resolver': {
+      'import-x/parsers': {
+        '@typescript-eslint/parser': ['.ts', '.tsx'],
+      },
+      'import-x/resolver': {
         // Load <rootdir>/tsconfig.json
-        typescript: {
-          // Always try resolving any corresponding @types/* folders
-          alwaysTryTypes: true,
-        },
+        typescript: true,
+        node: true,
       },
       react: {
         version: 'detect',
@@ -518,24 +551,28 @@ const configArray = [
       ...eslintConfigReactAppRules,
       // eslint-disable-next-line rest-spread-spacing -- Allow JSDoc casting
       .../** @type {Exclude<Exclude<import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin['configs'], undefined>[string], undefined>} */ (
-        /** @type {Exclude<import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin['configs'], undefined>} */ (
-          jsxA11y.configs
-        ).recommended
+        /** @type
+         * {Exclude<import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin['configs'],
+         * undefined>} */ (jsxA11y.configs).recommended
       ).rules,
 
-      // Error about importing next/document in a page other than pages/_document.js
+      // Error about importing next/document in a page other than
+      // pages/_document.js
       // https://github.com/vercel/next.js/blob/canary/errors/no-document-import-in-page.md
       '@next/next/no-document-import-in-page': 'error',
       // Error about importing next/head in pages/_document.js
       // https://github.com/vercel/next.js/blob/canary/errors/no-head-import-in-document.md
       '@next/next/no-head-import-in-document': 'error',
-      // Error about using <a> element to navigate to a page route instead of Next.js <Link /> component
+      // Error about using <a> element to navigate to a page
+      // route instead of Next.js <Link /> component
       // https://github.com/vercel/next.js/blob/canary/errors/no-html-link-for-pages.md
       '@next/next/no-html-link-for-pages': 'error',
-      // Warn about using a custom font in a single page instead of in pages/_document.js
+      // Warn about using a custom font in a single page instead
+      // of in pages/_document.js
       // https://github.com/vercel/next.js/blob/canary/errors/no-page-custom-font.md
       '@next/next/no-page-custom-font': 'warn',
-      // Warn about setting a title for all pages in a single page by importing <Head /> from next/document
+      // Warn about setting a title for all pages in a single
+      // page by importing <Head /> from next/document
       // https://github.com/vercel/next.js/blob/canary/errors/no-title-in-document-head.md
       '@next/next/no-title-in-document-head': 'warn',
       // Error on dangerous types like:
@@ -544,7 +581,8 @@ const configArray = [
       // - Object and {}
       // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/ban-types.md
       '@typescript-eslint/ban-types': ['error'],
-      // Warn on usage of angle brackets for type assertions (eg. `<Type>x`)
+      // Warn on usage of angle brackets for type assertions (eg.
+      // `<Type>x`)
       // https://typescript-eslint.io/rules/consistent-type-assertions/
       '@typescript-eslint/consistent-type-assertions': 'warn',
       // Warn on variables not following naming convention
@@ -590,14 +628,16 @@ const configArray = [
           selector: 'parameter',
           format: ['camelCase', 'snake_case', 'PascalCase'],
         },
-        // Disable @typescript-eslint/naming-convention format for imports
+        // Disable @typescript-eslint/naming-convention format
+        // for imports
         // https://github.com/typescript-eslint/typescript-eslint/pull/7269#issuecomment-1777628591
         {
           selector: 'import',
           format: null,
         },
       ],
-      // Warn on usage of array constructor (eg. Array(0, 1), new Array(0, 1))
+      // Warn on usage of array constructor (eg. Array(0, 1), new
+      // Array(0, 1))
       // https://typescript-eslint.io/rules/no-array-constructor/
       'no-array-constructor': 'off',
       '@typescript-eslint/no-array-constructor': 'warn',
@@ -617,8 +657,9 @@ const configArray = [
       // Warn about variable shadowing
       // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-shadow.md
       '@typescript-eslint/no-shadow': 'warn',
-      // Disable built-in ESLint no-constant-condition
-      // to use the more powerful @typescript-eslint/no-unnecessary-condition
+      // Disable built-in ESLint no-constant-condition to use the
+      // more powerful
+      // @typescript-eslint/no-unnecessary-condition
       // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-condition.md
       'no-constant-condition': 'off',
       '@typescript-eslint/no-unnecessary-condition': 'warn',
@@ -628,8 +669,8 @@ const configArray = [
       // Prevent unnecessary type assertions
       // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-assertion.md
       '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
-      // Disable built-in ESLint no-dupe-class-members
-      // to use the more powerful @typescript-eslint/no-dupe-class-members
+      // Disable built-in ESLint no-dupe-class-members to use the
+      // more powerful @typescript-eslint/no-dupe-class-members
       // https://typescript-eslint.io/rules/no-dupe-class-members/
       'no-dupe-class-members': 'off',
       '@typescript-eslint/no-dupe-class-members': 'warn',
@@ -644,12 +685,13 @@ const configArray = [
           allowTaggedTemplates: true,
         },
       ],
-      // Disable built-in ESLint no-unused-vars
-      // to use the more powerful @typescript-eslint/no-unused-vars
+      // Disable built-in ESLint no-unused-vars to use the more
+      // powerful @typescript-eslint/no-unused-vars
       // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
       // https://eslint.org/docs/rules/no-unused-vars
       'no-unused-vars': 'off',
-      // No need for this, @typescript-eslint/parser fully understands JSX semantics
+      // No need for this, @typescript-eslint/parser fully
+      // understands JSX semantics
       // https://github.com/typescript-eslint/typescript-eslint/issues/2985#issuecomment-771771967
       '@typescript-eslint/no-unused-vars': [
         'warn',
@@ -658,9 +700,8 @@ const configArray = [
           ignoreRestSiblings: true,
         },
       ],
-      // Disable built-in ESLint no-use-before-define
-      // in order to enable the rule from the
-      // @typescript-eslint plugin
+      // Disable built-in ESLint no-use-before-define in order to
+      // enable the rule from the @typescript-eslint plugin
       'no-use-before-define': 'off',
       '@typescript-eslint/no-use-before-define': [
         'error',
@@ -676,8 +717,9 @@ const configArray = [
       // Warn about unnecessary tepmlate literals
       // https://typescript-eslint.io/rules/no-useless-template-literals/
       '@typescript-eslint/no-useless-template-literals': 'warn',
-      // Warn about template literal interpolation of non-primitive
-      // data types like objects / arrays and values with type `any`
+      // Warn about template literal interpolation of
+      // non-primitive data types like objects / arrays and
+      // values with type `any`
       // https://typescript-eslint.io/rules/restrict-template-expressions/
       '@typescript-eslint/restrict-template-expressions': [
         'error',
@@ -685,16 +727,32 @@ const configArray = [
           allowAny: false,
         },
       ],
-      // Allow leaving out curlies only with single-line condition blocks
+      // Allow leaving out curlies only with single-line
+      // condition blocks
       // https://github.com/eslint/eslint/blob/master/docs/rules/curly.md#multi-line
       curly: ['warn', 'multi-line', 'consistent'],
-      // Error out on imports that don't match
-      // the underlying file system
-      // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-      'import/no-unresolved': 'error',
-      // Remove `href` warnings on anchor tags for Next.js
-      // Issue in Next.js: https://github.com/zeit/next.js/issues/5533
-      // Fix: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402#issuecomment-368305051
+      // Warn on imports not at top of the file
+      // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/first.md
+      'import-x/first': 'warn',
+      // Error on usage of AMD require() and define()
+      // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-amd.md
+      'import-x/no-amd': 'error',
+      // Warn on anonymous (unnamed) default exports
+      // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-anonymous-default-export.md
+      'import-x/no-anonymous-default-export': 'warn',
+      // Error on usage of non-standard, non-portable webpack
+      // loader syntax
+      // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-webpack-loader-syntax.md
+      'import-x/no-webpack-loader-syntax': 'error',
+      // Error on imports that don't match the underlying file
+      // system
+      // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-unresolved.md
+      'import-x/no-unresolved': 'error',
+      // Remove `href` warnings on anchor tags for Next.js Issue
+      // in Next.js:
+      // - https://github.com/zeit/next.js/issues/5533
+      // Fix:
+      // - https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402#issuecomment-368305051
       'jsx-a11y/anchor-is-valid': [
         'error',
         {
@@ -706,7 +764,8 @@ const configArray = [
       // Disable obsolete rule
       // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
       'jsx-a11y/no-onchange': 'off',
-      // Disallow potentially falsey string and number values in logical && expressions
+      // Disallow potentially falsey string and number values in
+      // logical && expressions
       // https://github.com/hpersson/eslint-plugin-jsx-expressions/blob/master/docs/rules/strict-logical-expressions.md
       'jsx-expressions/strict-logical-expressions': 'error',
       // Warn on async promise executor function
@@ -717,7 +776,8 @@ const configArray = [
       'no-promise-executor-return': 'warn',
       // Warn on restricted syntax
       'no-restricted-syntax': noRestrictedSyntaxOptions,
-      // Warn on usage of var (which doesn't follow block scope rules)
+      // Warn on usage of var (which doesn't follow block scope
+      // rules)
       // https://eslint.org/docs/rules/no-var
       'no-var': 'warn',
       // Warn about non-changing variables not being constants
@@ -726,20 +786,23 @@ const configArray = [
       // Warn on promise rejection without Error object
       // https://github.com/eslint/eslint/blob/main/docs/src/rules/prefer-promise-reject-errors.md
       'prefer-promise-reject-errors': 'warn',
-      // Warn about state variable and setter names which are not symmetrically named
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md
+      // Warn about state variable and setter names which are not
+      // symmetrically named
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md
       'react/hook-use-state': 'warn',
-      // Error on missing sandbox attribute on iframes (good security practice)
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/iframe-missing-sandbox.md
+      // Error on missing sandbox attribute on iframes (good
+      // security practice)
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/iframe-missing-sandbox.md
       'react/iframe-missing-sandbox': 'error',
-      // Warn about unnecessary curly braces around props and string literal children
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
+      // Warn about unnecessary curly braces around props and
+      // string literal children
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
       'react/jsx-curly-brace-presence': [
         'warn',
         { props: 'never', children: 'never', propElementValues: 'always' },
       ],
       // Error on missing or incorrect `key` props in maps in JSX
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-key.md
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-key.md
       'react/jsx-key': [
         'error',
         {
@@ -754,35 +817,37 @@ const configArray = [
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-uses-react.md
       'react/jsx-uses-react': 'warn',
       // Warn if a `key` is set to an `index`
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
       'react/no-array-index-key': ['error'],
-      // Error on invalid HTML attributes (only `rel` as of March 2022)
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-invalid-html-attribute.md
+      // Error on invalid HTML attributes (only `rel` as of March
+      // 2022)
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-invalid-html-attribute.md
       'react/no-invalid-html-attribute': 'error',
       // Warn on usage of `class` prop instead of `className`
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
       'react/no-unknown-property': ['warn', { ignore: ['css'] }],
       // Error on creating components within components
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
       'react/no-unstable-nested-components': 'error',
       // Error on unused React prop types
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
       'react/no-unused-prop-types': 'warn',
       // Disable rule because the new JSX transform in React 17,
       // Next.js and Gatsby no longer requires the import.
-      // https://github.com/yannickcr/eslint-plugin-react/issues/2440#issuecomment-683433266
+      // https://github.com/jsx-eslint/eslint-plugin-react/issues/2440#issuecomment-683433266
       'react/react-in-jsx-scope': 'off',
-      // Warn about components that have a closing
-      // tag but no children
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
+      // Warn about components that have a closing tag but no
+      // children
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
       'react/self-closing-comp': 'warn',
       // Error on passing children to void elements
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
       'react/void-dom-elements-no-children': 'error',
       // Warn on missing `await` within async functions
       // https://eslint.org/docs/rules/require-await
       'require-await': 'warn',
-      // Error on trojan source code attacks using bidirectional characters
+      // Error on trojan source code attacks using bidirectional
+      // characters
       // https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-bidi-characters.md
       'security/detect-bidi-characters': 'error',
       // Error on child_process.exec usage with variables
@@ -791,7 +856,8 @@ const configArray = [
       // Error on running eval with a variable
       // https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-eval-with-expression.md
       'security/detect-eval-with-expression': 'error',
-      // Warn on comments without a space between the `//` and the comment
+      // Warn on comments without a space between the `//` and
+      // the comment
       // https://github.com/eslint/eslint/blob/master/docs/rules/spaced-comment.md
       'spaced-comment': ['warn', 'always', { markers: ['/'] }],
       // Warn on duplicate code in if / else if branches
@@ -803,13 +869,16 @@ const configArray = [
       // Warn on return of boolean literals inside if / else
       // https://github.com/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/prefer-single-boolean-return.md
       'sonarjs/prefer-single-boolean-return': 'warn',
-      // Warn on usage of .map(...).flat() and recommend .flatMap()
+      // Warn on usage of .map(...).flat() and recommend
+      // .flatMap()
       // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-array-flat-map.md
       'unicorn/prefer-array-flat-map': 'warn',
-      // Warn on legacy techniques to flatten and recommend .flat()
+      // Warn on legacy techniques to flatten and recommend
+      // .flat()
       // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-array-flat.md
       'unicorn/prefer-array-flat': 'warn',
-      // Warn about importing or requiring builtin modules without node: prefix
+      // Warn about importing or requiring builtin modules
+      // without node: prefix
       // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md
       'unicorn/prefer-node-protocol': ['warn'],
       // Warn about usage of substring or substr instead of slice
@@ -820,7 +889,8 @@ const configArray = [
       // Warn about unnecessary HTML attributes
       // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-html-attributes.md
       'upleveled/no-unnecessary-html-attributes': 'warn',
-      // Warn about unnecessary for and id attributes with inputs nested inside of labels
+      // Warn about unnecessary for and id attributes with inputs
+      // nested inside of labels
       // https://github.com/upleveled/eslint-plugin-upleveled/blob/main/docs/rules/no-unnecessary-for-and-id.md
       'upleveled/no-unnecessary-for-and-id': 'warn',
     },
@@ -851,7 +921,8 @@ const configArray = [
       // Warn on restricted syntax
       'no-restricted-syntax': [
         ...noRestrictedSyntaxOptions,
-        // Warn on Route Handler function without NextResponse return type annotation
+        // Warn on Route Handler function without NextResponse
+        // return type annotation
         {
           selector:
             "FunctionDeclaration[id.name=/^(GET|POST|PUT|DELETE)$/]:not([returnType.typeAnnotation.typeName.name='Promise'][returnType.typeAnnotation.typeParameters.params.0.typeName.name='NextResponse'][returnType.typeAnnotation.typeParameters.params.0.typeParameters.params.0]):not([returnType.typeAnnotation.typeName.name='NextResponse'][returnType.typeAnnotation.typeParameters.params.0])",
@@ -887,8 +958,11 @@ ${/** @type {Error} */ (error).message}
     );
   }
 
-  // @ts-ignore 2307 (module not found) -- The import.meta.resolve() above will ensure that dotenv is available before this line by throwing if it is not available
-  // eslint-disable-next-line import/no-unresolved
+  // @ts-ignore 2307 (module not found) -- The
+  // import.meta.resolve() above will ensure that dotenv is
+  // available before this line by throwing if it is not
+  // available
+  // eslint-disable-next-line import-x/no-unresolved
   (await import('dotenv-safe')).config();
 
   const missingEnvVars = [
@@ -919,8 +993,10 @@ The UpLeveled ESLint config object does not contain all of the properties: .plug
     );
   }
 
-  // @ts-expect-error 2307 Cannot find module '@ts-safeql/eslint-plugin' because it is not a dependency of the ESLint config
-  // eslint-disable-next-line import/no-unresolved
+  // @ts-expect-error 2307 Cannot find module
+  // '@ts-safeql/eslint-plugin' because it is not a dependency of
+  // the ESLint config
+  // eslint-disable-next-line import-x/no-unresolved
   firstConfig.plugins['@ts-safeql'] = await import('@ts-safeql/eslint-plugin');
 
   firstConfig.rules['@ts-safeql/check-sql'] = [
