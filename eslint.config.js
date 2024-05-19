@@ -4,7 +4,12 @@ import upleveled from './index.js';
 const config = [
   ...upleveled,
   {
-    ignores: ['__tests__/**/*'],
+    ignores: [
+      // Tests
+      '__tests__/**/*',
+      // Vendored packages (workarounds for incompatibilities)
+      'vendor/**/*',
+    ],
   },
 ];
 
