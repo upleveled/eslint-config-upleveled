@@ -245,7 +245,7 @@ try {
     rmSync(join(process.cwd(), 'jsconfig.json'));
     console.log('✅ Done removing default Next.js jsconfig.json config');
   }
-} catch (err) {
+} catch {
   // Swallow error if jsconfig.json file does not exist
 }
 
@@ -258,7 +258,7 @@ let gitignoreContentLines = [];
 
 try {
   gitignoreContentLines = readFileSync(gitignorePath, 'utf-8').split('\n');
-} catch (err) {
+} catch {
   // Swallow error in case .gitignore doesn't exist yet
 }
 
