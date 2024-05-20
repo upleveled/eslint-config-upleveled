@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("@typescript-eslint/utils");
-const tsutils = __importStar(require("tsutils"));
+const tsutils = __importStar(require("ts-api-utils"));
 const ts = __importStar(require("typescript"));
 const createRule_1 = require("../util/createRule");
 const types_1 = require("../util/types");
