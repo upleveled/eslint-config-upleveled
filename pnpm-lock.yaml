@@ -66,8 +66,8 @@ importers:
         specifier: 53.0.0
         version: 53.0.0(eslint@9.3.0)
       eslint-plugin-upleveled:
-        specifier: 2.1.10
-        version: 2.1.10(eslint@9.3.0)
+        specifier: 2.1.11
+        version: 2.1.11(eslint@9.3.0)
       globals:
         specifier: ^15.3.0
         version: 15.3.0
@@ -969,8 +969,8 @@ packages:
     peerDependencies:
       eslint: '>=8.56.0'
 
-  eslint-plugin-upleveled@2.1.10:
-    resolution: {integrity: sha512-tDPxwR4Ic75/eFqSDzaClIwugODH3VPFCtUhpQIgqJQ7+3gZxY7i9GnwkgfV9hjdkSbGK6DEjMMGsb7R4vxH9Q==}
+  eslint-plugin-upleveled@2.1.11:
+    resolution: {integrity: sha512-4g51Fq7GprCbG++Gd0fBxd2e08sz/GLzSwX9E5LwR5MGtdvfBA4icKJ3zSOtBBNCKlJqWP6j9QHvB1MQv+FvWQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       eslint: ^9.3.0
@@ -3246,7 +3246,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-upleveled@2.1.10(eslint@9.3.0):
+  eslint-plugin-upleveled@2.1.11(eslint@9.3.0):
     dependencies:
       eslint: 9.3.0
 
