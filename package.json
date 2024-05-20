@@ -58,7 +58,7 @@
   "devDependencies": {
     "@types/eslint": "8.56.10",
     "@typescript-eslint/utils": "8.0.0-alpha.14",
-    "eslint-config-upleveled": "8.1.0",
+    "eslint-config-upleveled": "8.1.2",
     "prettier": "3.2.5",
     "prettier-plugin-embed": "0.4.15",
     "prettier-plugin-sql": "0.18.0",
@@ -71,7 +71,7 @@
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "eslint": "^9.3.0",
-    "globals": "^15.2.0",
+    "globals": "^15.3.0",
     "typescript": "^5.4.5"
   },
   "packageManager": "pnpm@9.1.1+sha256.9551e803dcb7a1839fdf5416153a844060c7bce013218ce823410532504ac10b",
