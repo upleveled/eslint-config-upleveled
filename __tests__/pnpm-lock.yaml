@@ -22,8 +22,8 @@ importers:
         specifier: ^18.2.6
         version: 18.3.0
       eslint-config-upleveled:
-        specifier: ^8.1.6
-        version: 8.1.6(@babel/core@7.24.4)(@types/eslint@8.56.8)(@types/node@20.12.12)(@types/react-dom@18.3.0)(@types/react@18.3.2)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.0.0-alpha.14(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(globals@15.0.0)(typescript@5.4.5)
+        specifier: ^8.1.7
+        version: 8.1.7(@babel/core@7.24.4)(@types/eslint@8.56.8)(@types/node@20.12.12)(@types/react-dom@18.3.0)(@types/react@18.3.2)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.0.0-alpha.14(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(globals@15.0.0)(typescript@5.4.5)
       postcss-styled-syntax:
         specifier: ^0.6.0
         version: 0.6.4(postcss@8.4.38)
@@ -805,8 +805,8 @@ packages:
   eslint-config-flat-gitignore@0.1.5:
     resolution: {integrity: sha512-hEZLwuZjDBGDERA49c2q7vxc8sCGv8EdBp6PQYzGOMcHIgrfG9YOM6s/4jx24zhD+wnK9AI8mgN5RxSss5nClQ==}
 
-  eslint-config-upleveled@8.1.6:
-    resolution: {integrity: sha512-5+NwEhCtops1XxSPxVHmv1XavQUmARd4w9TF4Yw64FlvtRyRLyfOQE2KVaV9vaDarg4Eo8Txvs46amahDFRm3A==}
+  eslint-config-upleveled@8.1.7:
+    resolution: {integrity: sha512-4FU1xpBbjINCpxpZzH3HTGZGPvTuqBEwu5H3SBJCDnN/zDhA1wLOziV4+6oz+6IZDljU/2VLX+LiwTr4PthalQ==}
     engines: {node: '>=20.9.0'}
     hasBin: true
     peerDependencies:
@@ -3029,7 +3029,7 @@ snapshots:
       find-up: 7.0.0
       parse-gitignore: 2.0.0
 
-  eslint-config-upleveled@8.1.6(@babel/core@7.24.4)(@types/eslint@8.56.8)(@types/node@20.12.12)(@types/react-dom@18.3.0)(@types/react@18.3.2)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.0.0-alpha.14(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(globals@15.0.0)(typescript@5.4.5):
+  eslint-config-upleveled@8.1.7(@babel/core@7.24.4)(@types/eslint@8.56.8)(@types/node@20.12.12)(@types/react-dom@18.3.0)(@types/react@18.3.2)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.0.0-alpha.14(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(globals@15.0.0)(typescript@5.4.5):
     dependencies:
       '@babel/eslint-parser': 7.24.5(@babel/core@7.24.4)(eslint@8.57.0)
       '@eslint/compat': 1.0.1
