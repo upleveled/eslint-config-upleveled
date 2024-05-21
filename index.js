@@ -545,7 +545,23 @@ const configArray = [
         rules: sonarjs.rules,
       },
       unicorn,
-      upleveled,
+      upleveled:
+        // TODO: Fix UpLeveled plugin for ESLint 9
+        // - https://github.com/upleveled/eslint-plugin-upleveled/issues/117
+        //
+        // Type assertions required because of incompatibility of
+        // @eslint/compat types
+        // - https://github.com/typescript-eslint/typescript-eslint/issues/9115
+        // - https://github.com/eslint/rewrite/issues/25
+        /** @type
+         * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin}
+         * */ (
+          fixupPluginRules(
+            /** @type
+             * {import('@eslint/compat').FixupPluginDefinition}
+             * */ (upleveled),
+          )
+        ),
     },
     settings: {
       'import-x/parsers': {
