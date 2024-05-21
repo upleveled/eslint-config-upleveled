@@ -731,15 +731,9 @@ const configArray = [
       // https://typescript-eslint.io/rules/no-useless-template-literals/
       '@typescript-eslint/no-useless-template-literals': 'warn',
       // Warn about template literal interpolation of
-      // non-primitive data types like objects / arrays and
-      // values with type `any`
+      // non-primitive data types like objects / arrays
       // https://typescript-eslint.io/rules/restrict-template-expressions/
-      '@typescript-eslint/restrict-template-expressions': [
-        'error',
-        {
-          allowAny: false,
-        },
-      ],
+      '@typescript-eslint/restrict-template-expressions': 'error',
       // Allow leaving out curlies only with single-line
       // condition blocks
       // https://github.com/eslint/eslint/blob/master/docs/rules/curly.md#multi-line
