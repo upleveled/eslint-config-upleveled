@@ -1,6 +1,6 @@
 declare module 'eslint-plugin-upleveled' {
-  import type { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
+  import type { ESLint } from 'eslint';
 
-  let plugin: FlatConfig.Plugin;
+  let plugin: ESLint.Plugin;
   export default plugin;
 }

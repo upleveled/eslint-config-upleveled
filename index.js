@@ -505,20 +505,7 @@ const configArray = [
       },
     },
     plugins: {
-      // Type assertions required because of incompatibility of
-      '@next/next':
-        // @eslint/compat types
-        // - https://github.com/typescript-eslint/typescript-eslint/issues/9115
-        // - https://github.com/eslint/rewrite/issues/25
-        /** @type
-         * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin}
-         * */ (
-          fixupPluginRules(
-            /** @type
-             * {import('@eslint/compat').FixupPluginDefinition}
-             * */ (next),
-          )
-        ),
+      '@next/next': fixupPluginRules(next),
       '@typescript-eslint': {
         rules: eslintTypescript.rules,
       },
@@ -526,20 +513,7 @@ const configArray = [
       'jsx-expressions': jsxExpressions,
       'react-hooks': reactHooks,
       'import-x': eslintImportX,
-      react:
-        // Type assertions required because of incompatibility of
-        // @eslint/compat types
-        // - https://github.com/typescript-eslint/typescript-eslint/issues/9115
-        // - https://github.com/eslint/rewrite/issues/25
-        /** @type
-         * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin}
-         * */ (
-          fixupPluginRules(
-            /** @type
-             * {import('@eslint/compat').FixupPluginDefinition}
-             * */ (react),
-          )
-        ),
+      react: fixupPluginRules(react),
       security,
       sonarjs: {
         rules: sonarjs.rules,
@@ -548,20 +522,7 @@ const configArray = [
       upleveled:
         // TODO: Fix UpLeveled plugin for ESLint 9
         // - https://github.com/upleveled/eslint-plugin-upleveled/issues/117
-        //
-        // Type assertions required because of incompatibility of
-        // @eslint/compat types
-        // - https://github.com/typescript-eslint/typescript-eslint/issues/9115
-        // - https://github.com/eslint/rewrite/issues/25
-        /** @type
-         * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin}
-         * */ (
-          fixupPluginRules(
-            /** @type
-             * {import('@eslint/compat').FixupPluginDefinition}
-             * */ (upleveled),
-          )
-        ),
+        fixupPluginRules(upleveled),
     },
     settings: {
       'import-x/parsers': {
