@@ -704,9 +704,9 @@ const configArray = [
       // https://typescript-eslint.io/rules/no-useless-constructor/
       'no-useless-constructor': 'off',
       '@typescript-eslint/no-useless-constructor': 'warn',
-      // Warn about unnecessary tepmlate literals
-      // https://typescript-eslint.io/rules/no-useless-template-literals/
-      '@typescript-eslint/no-useless-template-literals': 'warn',
+      // Warn about unnecessary template literals
+      // https://typescript-eslint.io/rules/no-unnecessary-template-literals/
+      '@typescript-eslint/no-unnecessary-template-literals': 'warn',
       // Warn about template literal interpolation of
       // non-primitive data types like objects / arrays
       // https://typescript-eslint.io/rules/restrict-template-expressions/
