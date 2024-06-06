@@ -653,6 +653,9 @@ const configArray = [
       // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-condition.md
       'no-constant-condition': 'off',
       '@typescript-eslint/no-unnecessary-condition': 'warn',
+      // Warn about unnecessary template expressions
+      // https://typescript-eslint.io/rules/no-unnecessary-template-expressions/
+      '@typescript-eslint/no-unnecessary-template-expressions': 'warn',
       // Prevent unnecessary type arguments
       // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-arguments.md
       '@typescript-eslint/no-unnecessary-type-arguments': 'warn',
@@ -704,9 +707,6 @@ const configArray = [
       // https://typescript-eslint.io/rules/no-useless-constructor/
       'no-useless-constructor': 'off',
       '@typescript-eslint/no-useless-constructor': 'warn',
-      // Warn about unnecessary template literals
-      // https://typescript-eslint.io/rules/no-unnecessary-template-literals/
-      '@typescript-eslint/no-unnecessary-template-literals': 'warn',
       // Warn about template literal interpolation of
       // non-primitive data types like objects / arrays
       // https://typescript-eslint.io/rules/restrict-template-expressions/
