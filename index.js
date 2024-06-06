@@ -654,8 +654,8 @@ const configArray = [
       'no-constant-condition': 'off',
       '@typescript-eslint/no-unnecessary-condition': 'warn',
       // Warn about unnecessary template expressions
-      // https://typescript-eslint.io/rules/no-unnecessary-template-expressions/
-      '@typescript-eslint/no-unnecessary-template-expressions': 'warn',
+      // https://typescript-eslint.io/rules/no-unnecessary-template-expression/
+      '@typescript-eslint/no-unnecessary-template-expression': 'warn',
       // Prevent unnecessary type arguments
       // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-arguments.md
       '@typescript-eslint/no-unnecessary-type-arguments': 'warn',
