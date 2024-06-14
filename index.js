@@ -731,7 +731,12 @@ const configArray = [
       // Error on imports that don't match the underlying file
       // system
       // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-unresolved.md
-      'import-x/no-unresolved': 'error',
+      'import-x/no-unresolved': [
+        'error',
+        {
+          ignore: ['^bun:\\w+$'],
+        },
+      ],
       // Remove `href` warnings on anchor tags for Next.js Issue
       // in Next.js:
       // - https://github.com/zeit/next.js/issues/5533
