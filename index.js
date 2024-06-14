@@ -734,7 +734,11 @@ const configArray = [
       'import-x/no-unresolved': [
         'error',
         {
-          ignore: ['^bun:\\w+$'],
+          ignore: [
+            // Allow imports of `bun` and modules with `bun:` prefix
+            // https://github.com/un-ts/eslint-plugin-import-x/issues/92
+            '^bun(:\\w+)?$',
+          ],
         },
       ],
       // Remove `href` warnings on anchor tags for Next.js Issue
