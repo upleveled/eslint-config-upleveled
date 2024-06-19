@@ -208,6 +208,27 @@ for (const {
     // Always overwrite tsconfig.json
     if (templateFileName === 'tsconfig.json') {
       overwriteExistingFile = true;
+
+      const projectTsConfig = JSON.parse(
+        readFileSync(filePathInProject, 'utf-8'),
+      );
+      const templateTsConfig = JSON.parse(
+        readFileSync(templateFilePath, 'utf-8'),
+      );
+
+      if (projectTsConfig.compilerOptions?.paths) {
+        templateTsConfig.compilerOptions.paths = {
+          ...projectTsConfig.compilerOptions.paths,
+          ...templateTsConfig.compilerOptions.paths,
+        };
+      }
+
+      writeFileSync(
+        filePathInProject,
+        `${JSON.stringify(templateTsConfig, null, 2)}\n`,
+      );
+      console.log('✅ Done merging default tsconfig.json');
+      continue;
     }
 
     if (!overwriteExistingFile) {
