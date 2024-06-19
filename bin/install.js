@@ -232,9 +232,7 @@ console.log('✅ Done copying config files');
 
 try {
   if (
-    (projectType === 'next-js' ||
-      projectType === 'next-js-postgresql' ||
-      projectType === 'expo') &&
+    (projectType === 'next-js' || projectType === 'next-js-postgresql') &&
     readFileSync(join(process.cwd(), 'jsconfig.json'), 'utf-8').trim() ===
       `{
   "compilerOptions": {
