@@ -215,6 +215,7 @@ for (const {
 
       if (
         projectTsConfig &&
+        templateTsConfig &&
         typeof projectTsConfig === 'object' &&
         !Array.isArray(projectTsConfig) &&
         projectTsConfig.compilerOptions &&
@@ -222,7 +223,6 @@ for (const {
         !Array.isArray(projectTsConfig.compilerOptions) &&
         projectTsConfig.compilerOptions.paths &&
         typeof projectTsConfig.compilerOptions.paths === 'object' &&
-        templateTsConfig &&
         typeof templateTsConfig === 'object' &&
         !Array.isArray(templateTsConfig) &&
         templateTsConfig.compilerOptions &&
