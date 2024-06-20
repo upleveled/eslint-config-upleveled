@@ -1,9 +1,9 @@
 // Enable Expo non-default options for performance:
 //
-// 1. .env.development - Enable the new Metro resolver available starting in Expo SDK 51
+// 1. .env.development, .env.production - Enable the new Metro resolver available starting in Expo SDK 51
 //    https://github.com/EvanBacon/pillar-valley/commit/ede321ef7addc67e4047624aedb3e92af3cb5060
 // 2. app.json - Add plugins section to enable New Architecture for iOS and Android
-// https://docs.expo.dev/guides/new-architecture/
+//    https://docs.expo.dev/guides/new-architecture/
 // 3. eas.json - Enable the new Metro resolver available starting in Expo SDK 51
 //    https://archive.ph/MG03E
 //
