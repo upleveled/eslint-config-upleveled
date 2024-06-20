@@ -12,6 +12,7 @@ import {
 } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parse, stringify } from 'comment-json';
 import sortPackageJson from 'sort-package-json';
 
 const projectPackageJsonPath = join(process.cwd(), 'package.json');
@@ -209,14 +210,28 @@ for (const {
     if (templateFileName === 'tsconfig.json') {
       overwriteExistingFile = true;
 
-      const projectTsConfig = JSON.parse(
-        readFileSync(filePathInProject, 'utf-8'),
-      );
-      const templateTsConfig = JSON.parse(
-        readFileSync(templateFilePath, 'utf-8'),
-      );
+      const projectTsConfig = parse(readFileSync(filePathInProject, 'utf-8'));
+      const templateTsConfig = parse(readFileSync(templateFilePath, 'utf-8'));
 
-      if (projectTsConfig.compilerOptions?.paths) {
+      if (
+        projectTsConfig &&
+        typeof projectTsConfig === 'object' &&
+        !Array.isArray(projectTsConfig) &&
+        projectTsConfig.compilerOptions &&
+        typeof projectTsConfig.compilerOptions === 'object' &&
+        !Array.isArray(projectTsConfig.compilerOptions) &&
+        projectTsConfig.compilerOptions.paths &&
+        typeof projectTsConfig.compilerOptions.paths === 'object' &&
+        templateTsConfig &&
+        typeof templateTsConfig === 'object' &&
+        !Array.isArray(templateTsConfig) &&
+        templateTsConfig.compilerOptions &&
+        typeof templateTsConfig.compilerOptions === 'object' &&
+        !Array.isArray(templateTsConfig.compilerOptions)
+      ) {
+        templateTsConfig.compilerOptions.paths =
+          projectTsConfig.compilerOptions.paths;
+
         templateTsConfig.compilerOptions.paths = {
           ...projectTsConfig.compilerOptions.paths,
           ...templateTsConfig.compilerOptions.paths,
@@ -225,7 +240,7 @@ for (const {
 
       writeFileSync(
         filePathInProject,
-        `${JSON.stringify(templateTsConfig, null, 2)}\n`,
+        `${stringify(templateTsConfig, null, 2)}\n`,
       );
       console.log('✅ Done merging default tsconfig.json');
       continue;
