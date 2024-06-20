@@ -1,12 +1,19 @@
 // Enable Expo non-default options for performance:
 //
-// 1. app.json - Add plugins section to enable New Architecture for iOS and Android
+// 1. .env.development - Enable the new Metro resolver available starting in Expo SDK 51
+//    https://github.com/EvanBacon/pillar-valley/commit/ede321ef7addc67e4047624aedb3e92af3cb5060
+// 2. app.json - Add plugins section to enable New Architecture for iOS and Android
 // https://docs.expo.dev/guides/new-architecture/
-// 2. eas.json - Enable the new Metro resolver available starting in Expo SDK 51
+// 3. eas.json - Enable the new Metro resolver available starting in Expo SDK 51
 //    https://archive.ph/MG03E
 //
 // "TODO: Remove when Expo enables New Architecture and new Metro resolver by default"
 import { readFile, writeFile } from 'node:fs/promises';
+
+await writeFile('.env.development', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
+console.log('✅ Enabled New Metro Resolver in .env.development');
+await writeFile('.env.production', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
+console.log('✅ Enabled New Metro Resolver in .env.production');
 
 const appFilePath = 'app.json';
 const appJson = JSON.parse(await readFile(appFilePath, 'utf8'));
