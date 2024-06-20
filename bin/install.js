@@ -227,7 +227,8 @@ for (const {
         !Array.isArray(templateTsConfig) &&
         templateTsConfig.compilerOptions &&
         typeof templateTsConfig.compilerOptions === 'object' &&
-        !Array.isArray(templateTsConfig.compilerOptions)
+        !Array.isArray(templateTsConfig.compilerOptions) &&
+        !templateTsConfig.compilerOptions.paths
       ) {
         templateTsConfig.compilerOptions.paths =
           projectTsConfig.compilerOptions.paths;
