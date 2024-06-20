@@ -7,7 +7,7 @@
 // 3. eas.json - Enable the new Metro resolver available starting in Expo SDK 51
 //    https://archive.ph/MG03E
 //
-// "TODO: Remove when Expo enables New Architecture and new Metro resolver by default"
+// TODO: Remove when Expo enables New Architecture and new Metro resolver by default
 import { readFile, writeFile } from 'node:fs/promises';
 
 await writeFile('.env.development', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
