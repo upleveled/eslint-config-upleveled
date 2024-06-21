@@ -12,6 +12,7 @@ import {
 } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parse, stringify } from 'comment-json';
 import sortPackageJson from 'sort-package-json';
 
 const projectPackageJsonPath = join(process.cwd(), 'package.json');
@@ -208,6 +209,42 @@ for (const {
     // Always overwrite tsconfig.json
     if (templateFileName === 'tsconfig.json') {
       overwriteExistingFile = true;
+
+      const projectTsConfig = parse(readFileSync(filePathInProject, 'utf-8'));
+      const templateTsConfig = parse(readFileSync(templateFilePath, 'utf-8'));
+
+      if (
+        projectTsConfig &&
+        templateTsConfig &&
+        typeof projectTsConfig === 'object' &&
+        !Array.isArray(projectTsConfig) &&
+        projectTsConfig.compilerOptions &&
+        typeof projectTsConfig.compilerOptions === 'object' &&
+        !Array.isArray(projectTsConfig.compilerOptions) &&
+        projectTsConfig.compilerOptions.paths &&
+        typeof projectTsConfig.compilerOptions.paths === 'object' &&
+        typeof templateTsConfig === 'object' &&
+        !Array.isArray(templateTsConfig) &&
+        templateTsConfig.compilerOptions &&
+        typeof templateTsConfig.compilerOptions === 'object' &&
+        !Array.isArray(templateTsConfig.compilerOptions) &&
+        !templateTsConfig.compilerOptions.paths
+      ) {
+        templateTsConfig.compilerOptions.paths =
+          projectTsConfig.compilerOptions.paths;
+
+        templateTsConfig.compilerOptions.paths = {
+          ...projectTsConfig.compilerOptions.paths,
+          ...templateTsConfig.compilerOptions.paths,
+        };
+      }
+
+      writeFileSync(
+        filePathInProject,
+        `${stringify(templateTsConfig, null, 2)}\n`,
+      );
+      console.log('✅ Done merging default tsconfig.json');
+      continue;
     }
 
     if (!overwriteExistingFile) {
