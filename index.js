@@ -565,12 +565,6 @@ const configArray = [
       // page by importing <Head /> from next/document
       // https://github.com/vercel/next.js/blob/canary/errors/no-title-in-document-head.md
       '@next/next/no-title-in-document-head': 'warn',
-      // Error on dangerous types like:
-      // - uppercase primitive types
-      // - Function
-      // - Object and {}
-      // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/ban-types.md
-      '@typescript-eslint/ban-types': ['error'],
       // Warn on usage of angle brackets for type assertions (eg.
       // `<Type>x`)
       // https://typescript-eslint.io/rules/consistent-type-assertions/
@@ -631,10 +625,14 @@ const configArray = [
       // https://typescript-eslint.io/rules/no-array-constructor/
       'no-array-constructor': 'off',
       '@typescript-eslint/no-array-constructor': 'warn',
-      // Error on expressions where operations with ||, && and
-      // ?? operators have likely unintended effects
-      // https://eslint.org/docs/latest/rules/no-constant-binary-expression
-      'no-constant-binary-expression': 'error',
+      // Disable built-in ESLint no-dupe-class-members to use the
+      // more powerful @typescript-eslint/no-dupe-class-members
+      // https://typescript-eslint.io/rules/no-dupe-class-members/
+      'no-dupe-class-members': 'off',
+      '@typescript-eslint/no-dupe-class-members': 'warn',
+      // Error on usage of {} type
+      // https://github.com/typescript-eslint/typescript-eslint/blob/78ed7d4bc8897e77e46346bb19ccabf918373603/packages/eslint-plugin/docs/rules/no-empty-object-type.mdx
+      '@typescript-eslint/no-empty-object-type': ['error'],
       // Warn on dangling promises without await
       '@typescript-eslint/no-floating-promises': [
         'warn',
@@ -662,11 +660,9 @@ const configArray = [
       // Prevent unnecessary type assertions
       // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-assertion.md
       '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
-      // Disable built-in ESLint no-dupe-class-members to use the
-      // more powerful @typescript-eslint/no-dupe-class-members
-      // https://typescript-eslint.io/rules/no-dupe-class-members/
-      'no-dupe-class-members': 'off',
-      '@typescript-eslint/no-dupe-class-members': 'warn',
+      // Error on usage of Function type
+      // https://github.com/typescript-eslint/typescript-eslint/blob/78ed7d4bc8897e77e46346bb19ccabf918373603/packages/eslint-plugin/docs/rules/no-unsafe-function-type.mdx
+      '@typescript-eslint/no-unsafe-function-type': ['error'],
       // Warn on unused expressions
       // https://typescript-eslint.io/rules/no-unused-expression
       'no-unused-expressions': 'off',
@@ -707,6 +703,10 @@ const configArray = [
       // https://typescript-eslint.io/rules/no-useless-constructor/
       'no-useless-constructor': 'off',
       '@typescript-eslint/no-useless-constructor': 'warn',
+      // Error on usage of Boolean, Number, String,
+      // BigInt, Symbol, Object types
+      // https://github.com/typescript-eslint/typescript-eslint/blob/78ed7d4bc8897e77e46346bb19ccabf918373603/packages/eslint-plugin/docs/rules/no-wrapper-object-types.mdx
+      '@typescript-eslint/no-wrapper-object-types': ['error'],
       // Warn about template literal interpolation of
       // non-primitive data types like objects / arrays
       // https://typescript-eslint.io/rules/restrict-template-expressions/
@@ -764,6 +764,10 @@ const configArray = [
       // Warn on async promise executor function
       // https://github.com/eslint/eslint/blob/main/docs/src/rules/no-async-promise-executor.md
       'no-async-promise-executor': 'warn',
+      // Error on expressions where operations with ||, && and
+      // ?? operators have likely unintended effects
+      // https://eslint.org/docs/latest/rules/no-constant-binary-expression
+      'no-constant-binary-expression': 'error',
       // Warn on return in promise executor function
       // https://github.com/eslint/eslint/blob/main/docs/src/rules/no-promise-executor-return.md
       'no-promise-executor-return': 'warn',
