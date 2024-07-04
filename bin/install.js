@@ -202,7 +202,8 @@ for (const {
     // projects
     if (
       templateFileName === 'prettier.config.js' &&
-      projectType === 'next-js-postgresql'
+      (projectType === 'next-js-postgresql' ||
+        projectType === 'expo-postgresql')
     ) {
       overwriteExistingFile = true;
     }
