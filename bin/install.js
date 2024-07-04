@@ -23,16 +23,16 @@ const projectDependencies = projectPackageJson.dependencies || {};
 const projectDevDependencies = projectPackageJson.devDependencies || {};
 
 const [projectType, projectTypeTitle] =
-  'expo' in projectDependencies && 'postgres' in projectDependencies
-    ? ['expo-postgresql', 'Expo with PostgreSQL']
-    : 'postgres' in projectDependencies
-      ? ['next-js-postgresql', 'Next.js with PostgreSQL']
+  'postgres' in projectDependencies && 'next' in projectDependencies
+    ? ['next-js-postgresql', 'Next.js with PostgreSQL']
+    : 'postgres' in projectDependencies && 'expo' in projectDependencies
+      ? ['expo-postgresql', 'Expo with PostgreSQL']
       : 'next' in projectDependencies
         ? ['next-js', 'Next.js']
-        : '@upleveled/react-scripts' in projectDependencies
-          ? ['create-react-app', 'Create React App']
-          : 'expo' in projectDependencies
-            ? ['expo', 'Expo (React Native)']
+        : 'expo' in projectDependencies
+          ? ['expo', 'Expo (React Native)']
+          : '@upleveled/react-scripts' in projectDependencies
+            ? ['create-react-app', 'Create React App']
             : ['node-js', 'Node.js'];
 
 console.log(`Detected project type: ${projectTypeTitle}`);
