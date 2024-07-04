@@ -632,7 +632,10 @@ const configArray = [
       '@typescript-eslint/no-dupe-class-members': 'warn',
       // Error on usage of {} type
       // https://github.com/typescript-eslint/typescript-eslint/blob/78ed7d4bc8897e77e46346bb19ccabf918373603/packages/eslint-plugin/docs/rules/no-empty-object-type.mdx
-      '@typescript-eslint/no-empty-object-type': ['error'],
+      '@typescript-eslint/no-empty-object-type': [
+        'error',
+        { allowInterfaces: 'with-single-extends' },
+      ],
       // Warn on dangling promises without await
       '@typescript-eslint/no-floating-promises': [
         'warn',
