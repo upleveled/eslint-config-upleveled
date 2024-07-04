@@ -23,15 +23,17 @@ const projectDependencies = projectPackageJson.dependencies || {};
 const projectDevDependencies = projectPackageJson.devDependencies || {};
 
 const [projectType, projectTypeTitle] =
-  'postgres' in projectDependencies
-    ? ['next-js-postgresql', 'Next.js with PostgreSQL']
-    : 'next' in projectDependencies
-      ? ['next-js', 'Next.js']
-      : '@upleveled/react-scripts' in projectDependencies
-        ? ['create-react-app', 'Create React App']
-        : 'expo' in projectDependencies
-          ? ['expo', 'Expo (React Native)']
-          : ['node-js', 'Node.js'];
+  'expo' in projectDependencies && 'postgres' in projectDependencies
+    ? ['expo-postgresql', 'Expo with PostgreSQL']
+    : 'postgres' in projectDependencies
+      ? ['next-js-postgresql', 'Next.js with PostgreSQL']
+      : 'next' in projectDependencies
+        ? ['next-js', 'Next.js']
+        : '@upleveled/react-scripts' in projectDependencies
+          ? ['create-react-app', 'Create React App']
+          : 'expo' in projectDependencies
+            ? ['expo', 'Expo (React Native)']
+            : ['node-js', 'Node.js'];
 
 console.log(`Detected project type: ${projectTypeTitle}`);
 
@@ -98,7 +100,7 @@ const newDevDependenciesToInstall = [
 
 // Install Prettier and SafeQL dependencies in Postgres.js
 // projects
-if (projectType === 'next-js-postgresql') {
+if (projectType === 'next-js-postgresql' || projectType === 'expo-postgresql') {
   newDevDependenciesToInstall.push(
     '@ts-safeql/eslint-plugin',
     'libpg-query',
