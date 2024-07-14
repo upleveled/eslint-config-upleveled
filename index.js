@@ -625,29 +625,67 @@ const configArray = [
       // https://typescript-eslint.io/rules/no-array-constructor/
       'no-array-constructor': 'off',
       '@typescript-eslint/no-array-constructor': 'warn',
+      // Warn on .toString() usage on non-primitives which don't
+      // define a custom toString() method
+      // https://typescript-eslint.io/rules/no-base-to-string/
+      '@typescript-eslint/no-base-to-string': 'warn',
       // Disable built-in ESLint no-dupe-class-members to use the
       // more powerful @typescript-eslint/no-dupe-class-members
       // https://typescript-eslint.io/rules/no-dupe-class-members/
       'no-dupe-class-members': 'off',
       '@typescript-eslint/no-dupe-class-members': 'warn',
+      // Warn on duplicate constituents of unions or intersections
+      // https://typescript-eslint.io/rules/no-duplicate-type-constituents/
+      '@typescript-eslint/no-duplicate-type-constituents': 'warn',
       // Error on usage of {} type
       // https://github.com/typescript-eslint/typescript-eslint/blob/78ed7d4bc8897e77e46346bb19ccabf918373603/packages/eslint-plugin/docs/rules/no-empty-object-type.mdx
       '@typescript-eslint/no-empty-object-type': [
         'error',
         { allowInterfaces: 'with-single-extends' },
       ],
+      // Warn on extra non-null assertions
+      // https://typescript-eslint.io/rules/no-extra-non-null-assertion/
+      '@typescript-eslint/no-extra-non-null-assertion': 'warn',
       // Warn on dangling promises without await
+      // https://typescript-eslint.io/rules/no-floating-promises/
       '@typescript-eslint/no-floating-promises': [
         'warn',
         { ignoreVoid: false },
       ],
+      // Warn on for...in loops over arrays to avoid iterating
+      // over array prototype properties and skipping holes
+      // https://typescript-eslint.io/rules/no-for-in-array/
+      '@typescript-eslint/no-for-in-array': 'warn',
+      // Error on usage of `eval()`-like methods
+      // https://typescript-eslint.io/rules/no-implied-eval/
+      'no-implied-eval': 'off',
+      '@typescript-eslint/no-implied-eval': 'error',
+      // Warn on usage of promises in incorrect locations
+      // https://typescript-eslint.io/rules/no-misused-promises/
+      '@typescript-eslint/no-misused-promises': 'error',
+      // Warn on usage of TypeScript namespaces
+      // https://typescript-eslint.io/rules/no-namespace/
+      '@typescript-eslint/no-namespace': 'warn',
+      // Error on usage of non-null assertions after optional
+      // chaining expressions
+      '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
+      // Error on no-op or overriding constituents in unions or
+      // intersections
+      // https://typescript-eslint.io/rules/no-redundant-type-constituents/
+      '@typescript-eslint/no-redundant-type-constituents': 'error',
       // Warn on redeclare of variables
       // https://typescript-eslint.io/rules/no-redeclare/
       'no-redeclare': 'off',
       '@typescript-eslint/no-redeclare': 'warn',
+      // Warn on usage of require()
+      // https://typescript-eslint.io/rules/no-require-imports/
+      '@typescript-eslint/no-require-imports': 'warn',
       // Warn about variable shadowing
       // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-shadow.md
       '@typescript-eslint/no-shadow': 'warn',
+      // Warn on aliasing `this`, common in legacy code
+      // https://typescript-eslint.io/rules/no-this-alias/
+      '@typescript-eslint/no-this-alias': 'warn',
       // Disable built-in ESLint no-constant-condition to use the
       // more powerful
       // @typescript-eslint/no-unnecessary-condition
@@ -663,9 +701,21 @@ const configArray = [
       // Prevent unnecessary type assertions
       // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-assertion.md
       '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
+      // Warn on unnecessary generic TS type constraints
+      // https://typescript-eslint.io/rules/no-unnecessary-type-constraint/
+      '@typescript-eslint/no-unnecessary-type-constraint': 'warn',
+      // Warn on calling a value with type `any`
+      // https://typescript-eslint.io/rules/no-unsafe-call/
+      '@typescript-eslint/no-unsafe-call': 'warn',
       // Error on usage of Function type
       // https://github.com/typescript-eslint/typescript-eslint/blob/78ed7d4bc8897e77e46346bb19ccabf918373603/packages/eslint-plugin/docs/rules/no-unsafe-function-type.mdx
       '@typescript-eslint/no-unsafe-function-type': ['error'],
+      // Warn on property access of values with `any` types
+      // https://typescript-eslint.io/rules/no-unsafe-member-access/
+      '@typescript-eslint/no-unsafe-member-access': 'warn',
+      // Warn on returning values with `any` types
+      // https://typescript-eslint.io/rules/no-unsafe-return/
+      '@typescript-eslint/no-unsafe-return': 'warn',
       // Warn on unused expressions
       // https://typescript-eslint.io/rules/no-unused-expression
       'no-unused-expressions': 'off',
@@ -710,6 +760,18 @@ const configArray = [
       // BigInt, Symbol, Object types
       // https://github.com/typescript-eslint/typescript-eslint/blob/78ed7d4bc8897e77e46346bb19ccabf918373603/packages/eslint-plugin/docs/rules/no-wrapper-object-types.mdx
       '@typescript-eslint/no-wrapper-object-types': ['error'],
+      // Warn on `as <literal>` type assertions - instead suggest
+      // usage of `as const`
+      // https://typescript-eslint.io/rules/prefer-as-const/
+      '@typescript-eslint/prefer-as-const': 'warn',
+      // Warn on missing `await` within async functions
+      // https://typescript-eslint.io/rules/require-await/
+      'require-await': 'off',
+      '@typescript-eslint/require-await': 'warn',
+      // Error on incorrect or mismatching operands with the
+      // `+` operator
+      // https://typescript-eslint.io/rules/restrict-plus-operands/
+      '@typescript-eslint/restrict-plus-operands': 'error',
       // Warn about template literal interpolation of
       // non-primitive data types like objects / arrays
       // https://typescript-eslint.io/rules/restrict-template-expressions/
@@ -843,9 +905,6 @@ const configArray = [
       // Error on passing children to void elements
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
       'react/void-dom-elements-no-children': 'error',
-      // Warn on missing `await` within async functions
-      // https://eslint.org/docs/rules/require-await
-      'require-await': 'warn',
       // Error on trojan source code attacks using bidirectional
       // characters
       // https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-bidi-characters.md
