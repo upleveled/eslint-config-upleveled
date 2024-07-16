@@ -663,7 +663,21 @@ const configArray = [
       '@typescript-eslint/no-implied-eval': 'error',
       // Warn on usage of promises in incorrect locations
       // https://typescript-eslint.io/rules/no-misused-promises/
-      '@typescript-eslint/no-misused-promises': 'error',
+      '@typescript-eslint/no-misused-promises': [
+        'error',
+        {
+          checksVoidReturn: {
+            // Allow async functions passed to event handler props
+            // - https://github.com/typescript-eslint/typescript-eslint/pull/4623
+            // - https://github.com/typescript-eslint/typescript-eslint/issues/4619
+            //
+            // Although technically, async functions should not
+            // be passed to event handler props:
+            // - https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/66505#discussioncomment-10066385
+            attributes: false,
+          },
+        },
+      ],
       // Warn on usage of TypeScript namespaces
       // https://typescript-eslint.io/rules/no-namespace/
       '@typescript-eslint/no-namespace': 'warn',
