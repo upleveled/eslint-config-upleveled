@@ -71,6 +71,9 @@ importers:
       globals:
         specifier: ^15.8.0
         version: 15.8.0
+      is-plain-obj:
+        specifier: ^4.1.0
+        version: 4.1.0
       sort-package-json:
         specifier: 2.10.0
         version: 2.10.0

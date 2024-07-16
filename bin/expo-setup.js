@@ -8,9 +8,16 @@
 //
 // TODO: Remove when Expo enables New Architecture and new Metro resolver by default
 import { readFile, writeFile } from 'node:fs/promises';
+import isPlainObject from 'is-plain-obj';
 
 const appFilePath = 'app.json';
 const appJson = JSON.parse(await readFile(appFilePath, 'utf8'));
+
+if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
+  throw new Error(
+    "app.json is either not an object or object doesn't contain .expo property",
+  );
+}
 
 appJson.expo.plugins = [
   [
@@ -36,6 +43,18 @@ console.log('✅ Enabled new Metro resolver in .env.production');
 
 const easFilePath = 'eas.json';
 const easJson = JSON.parse(await readFile(easFilePath, 'utf8'));
+
+if (
+  !isPlainObject(easJson) ||
+  !isPlainObject(easJson.build) ||
+  !isPlainObject(easJson.build.development) ||
+  !isPlainObject(easJson.build.preview) ||
+  !isPlainObject(easJson.build.production)
+) {
+  throw new Error(
+    "eas.json is either not an object or object doesn't contain .build property",
+  );
+}
 
 easJson.build.base = {
   env: {
