@@ -12,6 +12,7 @@ import {
 } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import isPlainObject from 'is-plain-obj';
 import sortPackageJson from 'sort-package-json';
 
 const projectPackageJsonPath = join(process.cwd(), 'package.json');
@@ -19,7 +20,13 @@ const projectPackageJson = JSON.parse(
   readFileSync(projectPackageJsonPath, 'utf-8'),
 );
 
+if (!isPlainObject(projectPackageJson)) {
+  throw new Error('package.json contains non-object');
+}
+
+/** @type {Record<string, string>} */
 const projectDependencies = projectPackageJson.dependencies || {};
+/** @type {Record<string, string>} */
 const projectDevDependencies = projectPackageJson.devDependencies || {};
 
 const [projectType, projectTypeTitle] =

@@ -13,6 +13,7 @@ import sonarjs from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
 import upleveled from 'eslint-plugin-upleveled';
 import globals from 'globals';
+import isPlainObject from 'is-plain-obj';
 import jsxExpressions from './vendor/eslint-plugin-jsx-expressions/dist/index.js';
 
 /** @type
@@ -1042,15 +1043,25 @@ const getArticleCategoriesInsecure = async () =>
   },
 ];
 
-// Only configure SafeQL if Postgres.js is installed
+const packageJson = await import(
+  pathToFileURL(`${process.cwd()}/package.json`).href,
+  {
+    assert: { type: 'json' },
+  }
+);
+
 if (
-  'postgres' in
-  ((
-    await import(pathToFileURL(`${process.cwd()}/package.json`).href, {
-      assert: { type: 'json' },
-    })
-  ).default.dependencies || {})
+  !isPlainObject(packageJson) ||
+  !isPlainObject(packageJson.default) ||
+  !isPlainObject(packageJson.default.dependencies)
 ) {
+  throw new Error(
+    'package.json either contains non-object or contains object without .dependencies property',
+  );
+}
+
+// Only configure SafeQL if Postgres.js is installed
+if ('postgres' in packageJson.default.dependencies) {
   // Abort early if either of these modules are not installed
   try {
     import.meta.resolve('@ts-safeql/eslint-plugin');
@@ -1066,12 +1077,19 @@ ${/** @type {Error} */ (error).message}
     );
   }
 
-  // @ts-ignore 2307 (module not found) -- The
-  // import.meta.resolve() above will ensure that dotenv is
-  // available before this line by throwing if it is not
-  // available
-  // eslint-disable-next-line import-x/no-unresolved
-  (await import('dotenv-safe')).config();
+  // Intermediate variable because @typescript-eslint/no-unsafe-member-access
+  // does not apply JSDoc type assertion in chained expression
+  // https://github.com/typescript-eslint/typescript-eslint/issues/9568
+  const dotenvSafe = /** @type {{ config: () => unknown }} */ (
+    // @ts-ignore 2307 (module not found) -- The
+    // import.meta.resolve() above will ensure that dotenv is
+    // available before this line by throwing if it is not
+    // available
+    // eslint-disable-next-line import-x/no-unresolved
+    await import('dotenv-safe')
+  );
+
+  dotenvSafe.config();
 
   const missingEnvVars = [
     'PGHOST',

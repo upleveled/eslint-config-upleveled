@@ -15,7 +15,7 @@ const appJson = JSON.parse(await readFile(appFilePath, 'utf8'));
 
 if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
   throw new Error(
-    "app.json is either not an object or object doesn't contain .expo property",
+    'app.json either contains non-object or contains object without .expo property',
   );
 }
 
@@ -52,7 +52,7 @@ if (
   !isPlainObject(easJson.build.production)
 ) {
   throw new Error(
-    "eas.json is either not an object or object doesn't contain .build property",
+    'eas.json either contains non-object or contains object without .build property',
   );
 }
 
