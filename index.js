@@ -1043,15 +1043,15 @@ const getArticleCategoriesInsecure = async () =>
   },
 ];
 
-const packageJson = await import(
-  pathToFileURL(`${process.cwd()}/package.json`).href,
-  {
+const packageJson = /** @type {Record<string, any>} */ (
+  await import(pathToFileURL(`${process.cwd()}/package.json`).href, {
     assert: { type: 'json' },
-  }
+  })
 );
 
 if (
-  !isPlainObject(packageJson) ||
+  // packageJson isn't a plain object, it's a module
+  typeof packageJson !== 'object' ||
   !isPlainObject(packageJson.default) ||
   !isPlainObject(packageJson.default.dependencies)
 ) {
