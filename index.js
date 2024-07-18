@@ -687,6 +687,7 @@ const configArray = [
       // '@typescript-eslint/no-namespace': 'warn',
       // Error on usage of non-null assertions after optional
       // chaining expressions
+      // https://typescript-eslint.io/rules/no-non-null-asserted-optional-chain/
       '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
       // Error on no-op or overriding constituents in unions or
       // intersections
