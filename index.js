@@ -697,9 +697,10 @@ const configArray = [
       // https://typescript-eslint.io/rules/no-redeclare/
       'no-redeclare': 'off',
       '@typescript-eslint/no-redeclare': 'warn',
-      // Warn on usage of require()
+      // Error on usage of require(), because this will often
+      // result in a runtime error
       // https://typescript-eslint.io/rules/no-require-imports/
-      '@typescript-eslint/no-require-imports': 'warn',
+      '@typescript-eslint/no-require-imports': 'error',
       // Warn about variable shadowing
       // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-shadow.md
       '@typescript-eslint/no-shadow': 'warn',
