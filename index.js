@@ -680,7 +680,11 @@ const configArray = [
       ],
       // Warn on usage of TypeScript namespaces
       // https://typescript-eslint.io/rules/no-namespace/
-      '@typescript-eslint/no-namespace': 'warn',
+      //
+      // TODO: Enable when better globalThis module augmentation
+      // option available
+      // https://github.com/upleveled/eslint-config-upleveled/issues/402
+      // '@typescript-eslint/no-namespace': 'warn',
       // Error on usage of non-null assertions after optional
       // chaining expressions
       '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
