@@ -1072,14 +1072,15 @@ const tsconfigJson = /** @type {Record<string, any>} */ (
 if (
   // tsconfigJson isn't a plain object, it's a module
   typeof tsconfigJson !== 'object' ||
-  !isPlainObject(tsconfigJson.compilerOptions)
+  !isPlainObject(tsconfigJson.default) ||
+  !isPlainObject(tsconfigJson.default.compilerOptions)
 ) {
   throw new Error('tsconfig.json is not a plain object');
 }
 
 // Disable complex type-checking rules for JavaScript files
 // if compilerOptions.checkJs is `false` or not set in tsconfig.json
-if (!tsconfigJson.compilerOptions.checkJs) {
+if (!tsconfigJson.default.compilerOptions.checkJs) {
   configArray.push({
     files: ['**/*.js'],
     rules: {
