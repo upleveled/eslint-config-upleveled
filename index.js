@@ -1063,6 +1063,33 @@ const getArticleCategoriesInsecure = async () =>
   },
 ];
 
+const tsconfigJson = /** @type {Record<string, any>} */ (
+  await import(pathToFileURL(`${process.cwd()}/tsconfig.json`).href, {
+    assert: { type: 'json' },
+  })
+);
+
+if (
+  // tsconfigJson isn't a plain object, it's a module
+  typeof tsconfigJson !== 'object' ||
+  !isPlainObject(tsconfigJson.compilerOptions)
+) {
+  throw new Error('tsconfig.json is not a plain object');
+}
+
+// Disable complex type-checking rules for JavaScript files
+// if compilerOptions.checkJs is `false` or not set in tsconfig.json
+if (!tsconfigJson.compilerOptions.checkJs) {
+  configArray.push({
+    files: ['**/*.js'],
+    rules: {
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
+    },
+  });
+}
+
 const packageJson = /** @type {Record<string, any>} */ (
   await import(pathToFileURL(`${process.cwd()}/package.json`).href, {
     assert: { type: 'json' },
