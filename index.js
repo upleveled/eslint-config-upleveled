@@ -1,3 +1,4 @@
+import { readFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import { fixupPluginRules } from '@eslint/compat';
 import next from '@next/eslint-plugin-next';
@@ -14,6 +15,7 @@ import unicorn from 'eslint-plugin-unicorn';
 import upleveled from 'eslint-plugin-upleveled';
 import globals from 'globals';
 import isPlainObject from 'is-plain-obj';
+import stripJsonComments from 'strip-json-comments';
 import jsxExpressions from './vendor/eslint-plugin-jsx-expressions/dist/index.js';
 
 /** @type
@@ -1063,26 +1065,20 @@ const getArticleCategoriesInsecure = async () =>
   },
 ];
 
-const tsconfigJson = /** @type {Record<string, any>} */ (
-  await import(pathToFileURL(`${process.cwd()}/tsconfig.json`).href, {
-    assert: { type: 'json' },
-  })
+const tsconfigJson = JSON.parse(
+  stripJsonComments(await readFile(`${process.cwd()}/tsconfig.json`, 'utf-8')),
 );
 
-if (
-  // tsconfigJson isn't a plain object, it's a module
-  typeof tsconfigJson !== 'object' ||
-  !isPlainObject(tsconfigJson.default)
-) {
+if (!isPlainObject(tsconfigJson)) {
   throw new Error('tsconfig.json contains non-object');
 }
 
 // Disable complex type-checking rules for JavaScript files
 // if compilerOptions.checkJs is `false` or not set in tsconfig.json
 if (
-  !('compilerOptions' in tsconfigJson.default) ||
-  !isPlainObject(tsconfigJson.default.compilerOptions) ||
-  !tsconfigJson.default.compilerOptions.checkJs
+  !('compilerOptions' in tsconfigJson) ||
+  !isPlainObject(tsconfigJson.compilerOptions) ||
+  !tsconfigJson.compilerOptions.checkJs
 ) {
   configArray.push({
     files: ['**/*.js'],

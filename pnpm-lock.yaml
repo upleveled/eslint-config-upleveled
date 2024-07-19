@@ -72,11 +72,14 @@ importers:
         specifier: ^15.8.0
         version: 15.8.0
       is-plain-obj:
-        specifier: ^4.1.0
+        specifier: 4.1.0
         version: 4.1.0
       sort-package-json:
         specifier: 2.10.0
         version: 2.10.0
+      strip-json-comments:
+        specifier: 5.0.1
+        version: 5.0.1
       ts-api-utils:
         specifier: 1.3.0
         version: 1.3.0(typescript@5.5.3)
@@ -1877,6 +1880,10 @@ packages:
   strip-json-comments@3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
+
+  strip-json-comments@5.0.1:
+    resolution: {integrity: sha512-0fk9zBqO67Nq5M/m45qHCJxylV/DhBlIOVExqgOMiCCrzrhU6tCibRXNqE3jwJLftzE9SNuZtYbpzcO+i9FiKw==}
+    engines: {node: '>=14.16'}
 
   stylelint@16.7.0:
     resolution: {integrity: sha512-Q1ATiXlz+wYr37a7TGsfvqYn2nSR3T/isw3IWlZQzFzCNoACHuGBb6xBplZXz56/uDRJHIygxjh7jbV/8isewA==}
@@ -4113,6 +4120,8 @@ snapshots:
       min-indent: 1.0.1
 
   strip-json-comments@3.1.1: {}
+
+  strip-json-comments@5.0.1: {}
 
   stylelint@16.7.0(typescript@5.5.3):
     dependencies:
