@@ -1103,8 +1103,7 @@ const packageJson = /** @type {Record<string, any>} */ (
 if (
   // packageJson isn't a plain object, it's a module
   typeof packageJson !== 'object' ||
-  !isPlainObject(packageJson.default) ||
-  !isPlainObject(packageJson.default.dependencies)
+  !isPlainObject(packageJson.default)
 ) {
   throw new Error(
     'package.json either contains non-object or contains object without .dependencies property',
@@ -1112,7 +1111,10 @@ if (
 }
 
 // Only configure SafeQL if Postgres.js is installed
-if ('postgres' in packageJson.default.dependencies) {
+if (
+  isPlainObject(packageJson.default.dependencies) &&
+  'postgres' in packageJson.default.dependencies
+) {
   // Abort early if either of these modules are not installed
   try {
     import.meta.resolve('@ts-safeql/eslint-plugin');
