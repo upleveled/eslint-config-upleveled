@@ -1066,7 +1066,11 @@ const getArticleCategoriesInsecure = async () =>
 ];
 
 const tsconfigJson = JSON.parse(
-  stripJsonComments(await readFile(`${process.cwd()}/tsconfig.json`, 'utf-8')),
+  stripJsonComments(await readFile(`${process.cwd()}/tsconfig.json`, 'utf-8'))
+    // Strip trailing comments, from strip-json-trailing-commas pkg:
+    // https://www.npmjs.com/package/strip-json-trailing-commas
+    // https://github.com/nokazn/strip-json-trailing-commas/blob/beced788eb7c35d8b5d26b368dff295455a0aef4/src/index.ts#L13
+    .replace(/(?<=(true|false|null|["\d}\]])\s*)\s*,(?=\s*[}\]])/g, ''),
 );
 
 if (!isPlainObject(tsconfigJson)) {
