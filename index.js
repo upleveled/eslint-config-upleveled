@@ -1063,6 +1063,13 @@ const getArticleCategoriesInsecure = async () =>
       ],
     },
   },
+  {
+    files: ['**/*.cjs'],
+    rules: {
+      // Allow require() in CommonJS files
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
 ];
 
 const tsconfigJson = JSON.parse(
