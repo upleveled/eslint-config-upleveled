@@ -673,9 +673,9 @@ const configArray = [
             // - https://github.com/typescript-eslint/typescript-eslint/pull/4623
             // - https://github.com/typescript-eslint/typescript-eslint/issues/4619
             //
-            // Although technically, async functions should not
-            // be passed to event handler props:
-            // - https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/66505#discussioncomment-10066385
+            // Although technically, async functions are officially
+            // discouraged to be passed to event handler props:
+            // - https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/66505#discussioncomment-10411110
             attributes: false,
           },
         },
