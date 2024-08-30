@@ -514,7 +514,11 @@ const configArray = [
       },
       'jsx-a11y': jsxA11y,
       'jsx-expressions': jsxExpressions,
-      'react-hooks': reactHooks,
+      'react-hooks': fixupPluginRules(
+        /** @type {import('@eslint/compat').FixupPluginDefinition} */ (
+          reactHooks
+        ),
+      ),
       'import-x': eslintImportX,
       react: fixupPluginRules(react),
       security,
