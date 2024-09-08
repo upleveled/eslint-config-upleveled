@@ -85,6 +85,75 @@ const newDevDependenciesToInstall = [
   // `node:process`
   // https://typescript-eslint.io/rules/restrict-template-expressions/
   '@types/node',
+
+  // Install `eslint` at top level to avoid pnpm "Conflicting
+  // peer dependencies" error with mismatching transitive
+  // dependencies on `eslint`, eg:
+  //
+  // ```
+  // mkdir abc
+  // cd abc
+  // pnpm init
+  // ...
+  // pnpm add --save-dev @ts-safeql/eslint-plugin eslint-config-upleveled
+  // ...
+  // devDependencies:
+  // + @ts-safeql/eslint-plugin 3.4.1
+  // + eslint-config-upleveled 8.6.16
+  //
+  //  WARN  Issues with peer dependencies found
+  // .
+  // ├─┬ eslint-plugin-import-x 4.1.1
+  // │ ├── ✕ missing peer eslint@"^8.57.0 || ^9.0.0"
+  // │ └─┬ @typescript-eslint/utils 8.4.0
+  // │   ├── ✕ missing peer eslint@"^8.57.0 || ^9.0.0"
+  // │   └─┬ @eslint-community/eslint-utils 4.4.0
+  // │     └── ✕ missing peer eslint@"^6.0.0 || ^7.0.0 || >=8.0.0"
+  // ├─┬ @typescript-eslint/parser 8.3.0
+  // │ └── ✕ missing peer eslint@"^8.57.0 || ^9.0.0"
+  // ├─┬ @ts-safeql/eslint-plugin 3.4.1
+  // │ └─┬ @typescript-eslint/utils 7.18.0
+  // │   └── ✕ missing peer eslint@^8.56.0
+  // └─┬ eslint-config-upleveled 8.6.16
+  //   ├── ✕ missing peer eslint@^9.9.1
+  //   ├─┬ eslint-import-resolver-typescript 3.6.3
+  //   │ ├── ✕ missing peer eslint@"*"
+  //   │ └─┬ eslint-module-utils 2.11.0
+  //   │   └── ✕ missing peer eslint@"*"
+  //   ├─┬ @babel/eslint-parser 7.25.1
+  //   │ └── ✕ missing peer eslint@"^7.5.0 || ^8.0.0 || ^9.0.0"
+  //   ├─┬ eslint-config-flat-gitignore 0.3.0
+  //   │ └── ✕ missing peer eslint@^9.5.0
+  //   ├─┬ eslint-plugin-react 7.35.0
+  //   │ └── ✕ missing peer eslint@"^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7"
+  //   ├─┬ eslint-plugin-jsx-a11y 6.9.0
+  //   │ └── ✕ missing peer eslint@"^3 || ^4 || ^5 || ^6 || ^7 || ^8"
+  //   ├─┬ eslint-plugin-sonarjs 1.0.4
+  //   │ └── ✕ missing peer eslint@"^8.0.0 || ^9.0.0"
+  //   ├─┬ eslint-plugin-testing-library 6.3.0
+  //   │ ├── ✕ missing peer eslint@"^7.5.0 || ^8.0.0"
+  //   │ └─┬ @typescript-eslint/utils 5.62.0
+  //   │   └── ✕ missing peer eslint@"^6.0.0 || ^7.0.0 || ^8.0.0"
+  //   ├─┬ eslint-plugin-unicorn 55.0.0
+  //   │ └── ✕ missing peer eslint@>=8.56.0
+  //   ├─┬ eslint-plugin-upleveled 2.1.12
+  //   │ └── ✕ missing peer eslint@^9.3.0
+  //   ├─┬ eslint-plugin-react-hooks 4.6.2
+  //   │ └── ✕ missing peer eslint@"^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0"
+  //   └─┬ @typescript-eslint/eslint-plugin 8.3.0
+  //     ├── ✕ missing peer eslint@"^8.57.0 || ^9.0.0"
+  //     └─┬ @typescript-eslint/utils 8.3.0
+  //       └── ✕ missing peer eslint@"^8.57.0 || ^9.0.0"
+  // ✕ Conflicting peer dependencies:
+  //   eslint
+  //
+  // Done in 26.4s
+  // ```
+  //
+  // - https://github.com/upleveled/eslint-config-upleveled/pull/421
+  // - https://github.com/ts-safeql/safeql/issues/258
+  'eslint',
+
   // The VS Code Prettier extension uses Prettier v2 internally,
   // but Preflight uses the latest Prettier version, which causes
   // crashes and formatting conflicts:
@@ -92,6 +161,7 @@ const newDevDependenciesToInstall = [
   // https://github.com/prettier/prettier-vscode/issues/3298
   // https://github.com/upleveled/preflight/issues/429
   'prettier',
+
   // pnpm v8+ automatically installs peer dependencies
   // (auto-install-peers=true is default) and `typescript` is a
   // peer dependency of eslint-config-upleveled, but the
