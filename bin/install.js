@@ -180,7 +180,11 @@ const newDevDependenciesToInstall = [
 if (projectType === 'next-js-postgresql' || projectType === 'expo-postgresql') {
   newDevDependenciesToInstall.push(
     '@ts-safeql/eslint-plugin',
-    'libpg-query',
+
+    // Install non-broken version of libpg-query for Windows
+    // - https://github.com/launchql/libpg-query-node/issues/70
+    'libpg-query@16.2.0',
+
     'prettier-plugin-embed',
     'prettier-plugin-sql',
   );
