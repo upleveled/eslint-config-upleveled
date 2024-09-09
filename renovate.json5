@@ -1,26 +1,21 @@
 {
-  "extends": [
-    "github>karlhorky/renovate-config:default.json5"
-  ],
+  extends: ['github>karlhorky/renovate-config:default.json5'],
   // Mostly default configuration for ignorePaths
   // https://docs.renovatebot.com/presets-default/#ignoremodulesandtests
-  "ignorePaths": [
-    "**/node_modules/**",
-    "**/bower_components/**",
-    "**/vendor/**",
-    "**/examples/**",
+  ignorePaths: [
+    '**/node_modules/**',
+    '**/bower_components/**',
+    '**/examples/**',
     // Allow upgrades to tests
     // "**/__tests__/**",
-    "**/test/**",
-    "**/tests/**",
-    "**/__fixtures__/**"
+    '**/test/**',
+    '**/tests/**',
+    '**/__fixtures__/**',
   ],
-  "packageRules": [
+  packageRules: [
     {
-      "matchDepTypes": [
-        "peerDependencies"
-      ],
-      "rangeStrategy": "bump"
-    }
-  ]
+      matchDepTypes: ['peerDependencies'],
+      rangeStrategy: 'bump',
+    },
+  ],
 }

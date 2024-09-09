@@ -7,8 +7,6 @@ const config = [
     ignores: [
       // Tests
       '__tests__/**/*',
-      // Vendored packages (workarounds for incompatibilities)
-      'vendor/**/*',
     ],
   },
 ];
