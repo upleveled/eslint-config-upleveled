@@ -9,6 +9,7 @@ import eslintImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
+import * as reactX from 'eslint-plugin-react-x';
 import security from 'eslint-plugin-security';
 import sonarjs from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
@@ -16,7 +17,6 @@ import upleveled from 'eslint-plugin-upleveled';
 import globals from 'globals';
 import isPlainObject from 'is-plain-obj';
 import stripJsonComments from 'strip-json-comments';
-import jsxExpressions from './vendor/eslint-plugin-jsx-expressions/dist/index.js';
 
 /** @type
  * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.RuleLevelAndOptions}
@@ -512,8 +512,9 @@ const configArray = [
       '@typescript-eslint': {
         rules: eslintTypescript.rules,
       },
+      'import-x': eslintImportX,
       'jsx-a11y': jsxA11y,
-      'jsx-expressions': jsxExpressions,
+      'react-x': reactX,
       'react-hooks':
         // Fix eslint-plugin-react-hooks for ESLint 9
         //
@@ -526,7 +527,6 @@ const configArray = [
             reactHooks
           ),
         ),
-      'import-x': eslintImportX,
       react: fixupPluginRules(react),
       security,
       sonarjs: {
@@ -847,10 +847,6 @@ const configArray = [
       // Disable obsolete rule
       // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
       'jsx-a11y/no-onchange': 'off',
-      // Disallow potentially falsey string and number values in
-      // logical && expressions
-      // https://github.com/hpersson/eslint-plugin-jsx-expressions/blob/master/docs/rules/strict-logical-expressions.md
-      'jsx-expressions/strict-logical-expressions': 'error',
       // Warn on async promise executor function
       // https://github.com/eslint/eslint/blob/main/docs/src/rules/no-async-promise-executor.md
       'no-async-promise-executor': 'warn',
@@ -930,6 +926,10 @@ const configArray = [
       // Error on passing children to void elements
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
       'react/void-dom-elements-no-children': 'error',
+      // Disallow potentially falsey string and number values in
+      // logical && expressions
+      // https://eslint-react.xyz/docs/rules/no-leaked-conditional-rendering
+      'react-x/no-leaked-conditional-rendering': 'error',
       // Error on trojan source code attacks using bidirectional
       // characters
       // https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-bidi-characters.md
