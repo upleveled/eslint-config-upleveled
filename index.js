@@ -1105,7 +1105,7 @@ if (
 
 const packageJson = /** @type {Record<string, any>} */ (
   await import(pathToFileURL(`${process.cwd()}/package.json`).href, {
-    assert: { type: 'json' },
+    with: { type: 'json' },
   })
 );
 
