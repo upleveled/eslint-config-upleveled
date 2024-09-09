@@ -25,8 +25,8 @@ importers:
         specifier: ^9.10.0
         version: 9.10.0
       eslint-config-upleveled:
-        specifier: ^8.6.18
-        version: 8.6.18(@babel/core@7.24.4)(@types/eslint@8.56.8)(@types/node@22.5.4)(@types/react-dom@18.3.0)(@types/react@18.3.5)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.4.0(eslint@9.10.0)(typescript@5.5.4))(eslint@9.10.0))(eslint@9.10.0)(globals@15.9.0)(typescript@5.5.4)
+        specifier: ^8.6.19
+        version: 8.6.19(@babel/core@7.24.4)(@types/eslint@8.56.8)(@types/node@22.5.4)(@types/react-dom@18.3.0)(@types/react@18.3.5)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.4.0(eslint@9.10.0)(typescript@5.5.4))(eslint@9.10.0))(eslint@9.10.0)(globals@15.9.0)(typescript@5.5.4)
       postcss-styled-syntax:
         specifier: ^0.6.0
         version: 0.6.4(postcss@8.4.41)
@@ -771,8 +771,8 @@ packages:
     peerDependencies:
       eslint: ^9.5.0
 
-  eslint-config-upleveled@8.6.18:
-    resolution: {integrity: sha512-LmJguXaLv29wwl3ygfbrrOFqR23jSc5F3scensQUtpDqcAK3PmAy5EJS26sPB4ZanNaQ4lnE09YWMm4i3LctsA==}
+  eslint-config-upleveled@8.6.19:
+    resolution: {integrity: sha512-JFHCYmx0llepElp0BekyHlX1Rke7ISJDAny4zFrENVN2IfoF7bmHdz/y4isLmhPpTTFIk3B7XXYVU+ePzE3/0A==}
     engines: {node: '>=20.9.0'}
     hasBin: true
     peerDependencies:
@@ -2927,7 +2927,7 @@ snapshots:
       eslint: 9.10.0
       find-up-simple: 1.0.0
 
-  eslint-config-upleveled@8.6.18(@babel/core@7.24.4)(@types/eslint@8.56.8)(@types/node@22.5.4)(@types/react-dom@18.3.0)(@types/react@18.3.5)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.4.0(eslint@9.10.0)(typescript@5.5.4))(eslint@9.10.0))(eslint@9.10.0)(globals@15.9.0)(typescript@5.5.4):
+  eslint-config-upleveled@8.6.19(@babel/core@7.24.4)(@types/eslint@8.56.8)(@types/node@22.5.4)(@types/react-dom@18.3.0)(@types/react@18.3.5)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.4.0(eslint@9.10.0)(typescript@5.5.4))(eslint@9.10.0))(eslint@9.10.0)(globals@15.9.0)(typescript@5.5.4):
     dependencies:
       '@babel/eslint-parser': 7.25.1(@babel/core@7.24.4)(eslint@9.10.0)
       '@eslint/compat': 1.1.1
