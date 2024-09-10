@@ -1,7 +1,8 @@
 {
   // Ignore unknown CSS at rules for Tailwind CSS
   "css.lint.unknownAtRules": "ignore",
-  // Enable Stylelint in javascript and typescriptreact (for CSS-in-JS) and scss
+  // Enable Stylelint in javascript and typescriptreact (for
+  // CSS-in-JS) and scss
   "stylelint.validate": [
     "css",
     "scss",
