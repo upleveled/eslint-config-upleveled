@@ -37,9 +37,9 @@
   "dependencies": {
     "@babel/eslint-parser": "7.25.1",
     "@eslint/compat": "1.1.1",
-    "@next/eslint-plugin-next": "14.2.11",
-    "@typescript-eslint/eslint-plugin": "8.5.0",
-    "@typescript-eslint/parser": "8.5.0",
+    "@next/eslint-plugin-next": "14.2.12",
+    "@typescript-eslint/eslint-plugin": "8.6.0",
+    "@typescript-eslint/parser": "8.6.0",
     "eslint-config-flat-gitignore": "0.3.0",
     "eslint-import-resolver-typescript": "3.6.3",
     "eslint-plugin-import-x": "4.2.1",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@types/eslint": "9.6.1",
-    "@typescript-eslint/utils": "8.5.0",
+    "@typescript-eslint/utils": "8.6.0",
     "eslint-config-upleveled": "8.7.0",
     "prettier": "3.3.3",
     "prettier-plugin-embed": "0.4.15",
@@ -69,8 +69,8 @@
   },
   "peerDependencies": {
     "@types/eslint": "^9.6.1",
-    "@types/node": ">=22.5.4",
-    "@types/react": "^18.3.5",
+    "@types/node": ">=22.5.5",
+    "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",
     "eslint": "^9.10.0",
     "globals": "^15.9.0",
