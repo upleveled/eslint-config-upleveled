@@ -515,18 +515,7 @@ const configArray = [
       'import-x': eslintImportX,
       'jsx-a11y': jsxA11y,
       'react-x': reactX,
-      'react-hooks':
-        // Fix eslint-plugin-react-hooks for ESLint 9
-        //
-        // TODO: Remove this once eslint-plugin-react-hooks fully
-        // supports ESLint 9
-        // - https://github.com/facebook/react/pull/30774
-        // - https://github.com/facebook/react/issues/28313#issuecomment-2069701429
-        fixupPluginRules(
-          /** @type {import('@eslint/compat').FixupPluginDefinition} */ (
-            reactHooks
-          ),
-        ),
+      'react-hooks': reactHooks,
       react: fixupPluginRules(react),
       security,
       sonarjs: {
