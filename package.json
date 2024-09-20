@@ -60,7 +60,7 @@
   "devDependencies": {
     "@types/eslint": "9.6.1",
     "@typescript-eslint/utils": "8.6.0",
-    "eslint-config-upleveled": "8.7.0",
+    "eslint-config-upleveled": "8.7.1",
     "prettier": "3.3.3",
     "prettier-plugin-embed": "0.4.15",
     "prettier-plugin-sql": "0.18.1",
