@@ -37,16 +37,16 @@
   "dependencies": {
     "@babel/eslint-parser": "7.25.1",
     "@eslint/compat": "1.1.1",
-    "@next/eslint-plugin-next": "14.2.12",
-    "@typescript-eslint/eslint-plugin": "8.6.0",
-    "@typescript-eslint/parser": "8.6.0",
+    "@next/eslint-plugin-next": "14.2.13",
+    "@typescript-eslint/eslint-plugin": "8.7.0",
+    "@typescript-eslint/parser": "8.7.0",
     "eslint-config-flat-gitignore": "0.3.0",
     "eslint-import-resolver-typescript": "3.6.3",
-    "eslint-plugin-import-x": "4.2.1",
+    "eslint-plugin-import-x": "4.3.0",
     "eslint-plugin-jsx-a11y": "6.10.0",
     "eslint-plugin-react": "7.36.1",
-    "eslint-plugin-react-hooks": "5.1.0-rc-e740d4b1-20240919",
-    "eslint-plugin-react-x": "1.14.1",
+    "eslint-plugin-react-hooks": "5.1.0-rc-fb9a90fa48-20240614",
+    "eslint-plugin-react-x": "1.14.2",
     "eslint-plugin-security": "3.0.1",
     "eslint-plugin-sonarjs": "1.0.4",
     "eslint-plugin-testing-library": "6.3.0",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@types/eslint": "9.6.1",
-    "@typescript-eslint/utils": "8.6.0",
+    "@typescript-eslint/utils": "8.7.0",
     "eslint-config-upleveled": "8.7.1",
     "prettier": "3.3.3",
     "prettier-plugin-embed": "0.4.15",
@@ -69,14 +69,14 @@
   },
   "peerDependencies": {
     "@types/eslint": "^9.6.1",
-    "@types/node": ">=22.5.5",
-    "@types/react": "^18.3.8",
+    "@types/node": ">=22.7.2",
+    "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
-    "eslint": "^9.10.0",
+    "eslint": "^9.11.1",
     "globals": "^15.9.0",
     "typescript": "^5.6.2"
   },
-  "packageManager": "pnpm@9.10.0",
+  "packageManager": "pnpm@9.11.0",
   "engines": {
     "node": ">=20.9.0"
   }
