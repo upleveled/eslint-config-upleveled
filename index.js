@@ -1083,7 +1083,7 @@ if (
   !tsconfigJson.compilerOptions.checkJs
 ) {
   configArray.push({
-    files: ['**/*.js', '**/*.mjs', '**/*.cjs'],
+    files: ['**/*.js', '**/*.mjs', '**/*.cjs', '**/*.jsx'],
     rules: {
       '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',
