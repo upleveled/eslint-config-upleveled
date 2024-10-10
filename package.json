@@ -51,7 +51,7 @@
     "eslint-plugin-sonarjs": "1.0.4",
     "eslint-plugin-testing-library": "6.3.0",
     "eslint-plugin-unicorn": "56.0.0",
-    "eslint-plugin-upleveled": "2.1.12",
+    "eslint-plugin-upleveled": "2.1.13",
     "is-plain-obj": "4.1.0",
     "sort-package-json": "2.10.1",
     "strip-json-comments": "5.0.1",

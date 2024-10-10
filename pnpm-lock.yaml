@@ -69,8 +69,8 @@ importers:
         specifier: 56.0.0
         version: 56.0.0(eslint@9.12.0)
       eslint-plugin-upleveled:
-        specifier: 2.1.12
-        version: 2.1.12(eslint@9.12.0)
+        specifier: 2.1.13
+        version: 2.1.13(eslint@9.12.0)
       globals:
         specifier: ^15.11.0
         version: 15.11.0
@@ -1094,6 +1094,12 @@ packages:
     engines: {node: '>=18.0.0'}
     peerDependencies:
       eslint: ^9.3.0
+
+  eslint-plugin-upleveled@2.1.13:
+    resolution: {integrity: sha512-CAhFtWVH4uENoEpjwGIsB+mIrEj4wvWhXBbXoVp4YNpGVdQDWF82SLGyoaCnf3kemu8soDlkGSOBz4zxpo6Nfw==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      eslint: ^9.12.0
 
   eslint-scope@5.1.1:
     resolution: {integrity: sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==}
@@ -3721,6 +3727,10 @@ snapshots:
       strip-indent: 3.0.0
 
   eslint-plugin-upleveled@2.1.12(eslint@9.12.0):
+    dependencies:
+      eslint: 9.12.0
+
+  eslint-plugin-upleveled@2.1.13(eslint@9.12.0):
     dependencies:
       eslint: 9.12.0
 
