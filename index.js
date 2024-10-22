@@ -608,6 +608,11 @@ const configArray = [
           leadingUnderscore: 'allow',
         },
         {
+          selector: 'method',
+          format: ['camelCase', 'PascalCase'],
+          leadingUnderscore: 'allow',
+        },
+        {
           selector: 'property',
           format: null,
         },
