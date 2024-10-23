@@ -926,6 +926,9 @@ const configArray = [
       // logical && expressions
       // https://eslint-react.xyz/docs/rules/no-leaked-conditional-rendering
       'react-x/no-leaked-conditional-rendering': 'error',
+      // Error on code which is problematic for the React Compiler
+      // https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler
+      'react-compiler/react-compiler': 'error',
       // Error on trojan source code attacks using bidirectional
       // characters
       // https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-bidi-characters.md
