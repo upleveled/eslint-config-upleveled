@@ -8,6 +8,7 @@ import gitignore from 'eslint-config-flat-gitignore';
 import eslintImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
+import reactCompiler from 'eslint-plugin-react-compiler';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactX from 'eslint-plugin-react-x';
 import security from 'eslint-plugin-security';
@@ -515,6 +516,7 @@ const configArray = [
       'import-x': eslintImportX,
       'jsx-a11y': jsxA11y,
       'react-x': reactX,
+      'react-compiler': reactCompiler,
       'react-hooks': reactHooks,
       react: fixupPluginRules(react),
       security,
