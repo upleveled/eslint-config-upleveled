@@ -19,6 +19,10 @@ if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
   );
 }
 
+appJson.expo.experiments ||= {};
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- Set to empty object in previous line, if falsy
+appJson.expo.experiments.typedRoutes = true;
+
 appJson.expo.plugins = [
   [
     'expo-build-properties',
