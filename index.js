@@ -1004,13 +1004,30 @@ const configArray = [
       // Warn on restricted syntax
       'no-restricted-syntax': [
         ...noRestrictedSyntaxOptions,
-        // Warn on Route Handler function without NextResponse
+        // Warn on Next.js Route Handler function without NextResponse
         // return type annotation
         {
           selector:
             "FunctionDeclaration[id.name=/^(GET|POST|PUT|DELETE)$/]:not([returnType.typeAnnotation.typeName.name='Promise'][returnType.typeAnnotation.typeArguments.params.0.typeName.name='NextResponse'][returnType.typeAnnotation.typeArguments.params.0.typeArguments.params.0]):not([returnType.typeAnnotation.typeName.name='NextResponse'][returnType.typeAnnotation.typeArguments.params.0])",
           message:
             'Route Handler function missing return type annotation (eg. `async function PUT(request: NextRequest): Promise<NextResponse<AnimalResponseBodyPut>>`)',
+        },
+      ],
+    },
+  },
+  {
+    files: ['app/**/*+api.js', 'app/**/*+api.ts'],
+    rules: {
+      // Warn on restricted syntax
+      'no-restricted-syntax': [
+        ...noRestrictedSyntaxOptions,
+        // Warn on Expo API Route function without ExpoApiResponse
+        // return type annotation
+        {
+          selector:
+            "FunctionDeclaration[id.name=/^(GET|POST|PUT|DELETE)$/]:not([returnType.typeAnnotation.typeName.name='Promise'][returnType.typeAnnotation.typeArguments.params.0.typeName.name='ExpoApiResponse'][returnType.typeAnnotation.typeArguments.params.0.typeArguments.params.0]):not([returnType.typeAnnotation.typeName.name='ExpoApiResponse'][returnType.typeAnnotation.typeArguments.params.0])",
+          message:
+            'API Route function missing return type annotation (eg. `async function PUT(request: Request): Promise<ExpoApiResponse<AnimalResponseBodyPut>>`)',
         },
       ],
     },
