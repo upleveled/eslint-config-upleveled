@@ -38,7 +38,9 @@ appJson.expo.plugins = [
 ];
 
 await writeFile(appFilePath, JSON.stringify(appJson, null, 2), 'utf8');
-console.log('✅ Enabled New Architecture in app.json');
+console.log(
+  '✅ Enabled New Architecture and typedRoutes experiment in app.json',
+);
 
 await writeFile('.env.development', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
 console.log('✅ Enabled new Metro resolver in .env.development');
@@ -77,3 +79,54 @@ easJson.build.production.extends = 'base';
 
 await writeFile(easFilePath, JSON.stringify(easJson, null, 2), 'utf8');
 console.log('✅ Enabled new Metro resolver in eas.json');
+
+const imagesDts = `// Image types inspired by Next.js \`global.d.ts\`
+declare module '*.png' {
+  const path: string;
+  export default path;
+}
+
+declare module '*.jpg' {
+  const path: string;
+  export default path;
+}
+
+declare module '*.jpeg' {
+  const path: string;
+  export default path;
+}
+
+declare module '*.webp' {
+  const path: string;
+  export default path;
+}
+
+declare module '*.avif' {
+  const path: string;
+  export default path;
+}
+
+declare module '*.gif' {
+  const path: string;
+  export default path;
+}
+
+declare module '*.ico' {
+  const path: string;
+  export default path;
+}
+
+declare module '*.bmp' {
+  const path: string;
+  export default path;
+}
+
+declare module '*.svg' {
+  const path: string;
+  export default path;
+}
+`;
+
+await writeFile('images.d.ts', imagesDts, 'utf8');
+
+console.log('✅ Created images.d.ts');
