@@ -902,9 +902,6 @@ const configArray = [
       // 2022)
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-invalid-html-attribute.md
       'react/no-invalid-html-attribute': 'error',
-      // Warn on usage of `class` prop instead of `className`
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
-      'react/no-unknown-property': ['warn', { ignore: ['css'] }],
       // Error on creating components within components
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
       'react/no-unstable-nested-components': 'error',
@@ -980,9 +977,30 @@ const configArray = [
   },
   {
     files: [
+      '**/*.js',
+      '**/*.jsx',
+      '**/*.cjs',
+      '**/*.mjs',
+    ],
+    rules: {
+      // Warn on usage of `class` prop instead of `className`
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
+      //
+      // Enable react/no-unknown-property only in JavaScript / JSX files to:
+      // 1. Avoid duplicate checks https://github.com/Rel1cx/eslint-react/issues/85#:~:text=members%C2%A0%23234-,The%20following%20can%20be%20enforced%20by%20TypeScript%2C%20no%20need%20to%20implement%20them,-react/jsx%2Dno
+      // 2. Prevent false positives in @react-three/fiber
+      //    - https://github.com/jsx-eslint/eslint-plugin-react/issues/3423
+      //    - https://github.com/Rel1cx/eslint-react/issues/846
+      'react/no-unknown-property': ['warn', { ignore: ['css'] }],
+    },
+  },
+  {
+    files: [
       'app/**/layout.js',
+      'app/**/layout.jsx',
       'app/**/layout.tsx',
       'app/**/page.js',
+      'app/**/page.jsx',
       'app/**/page.tsx',
     ],
     rules: {
