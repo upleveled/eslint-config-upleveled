@@ -545,10 +545,15 @@ const configArray = [
     rules: {
       ...eslintConfigReactAppRules,
       // eslint-disable-next-line rest-spread-spacing -- Allow JSDoc casting
-      .../** @type {Exclude<Exclude<import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin['configs'], undefined>[string], undefined>} */ (
-        /** @type
-         * {Exclude<import('@typescript-eslint/utils/ts-eslint').FlatConfig.Plugin['configs'],
-         * undefined>} */ (jsxA11y.configs).recommended
+      .../** @type {Exclude<Exclude<import('@typescript-eslint/utils/ts-eslint').FlatConfig.Config, undefined>, undefined>} */ (
+        /**
+         * @type {{
+         *   [key: string]: Exclude<
+         *     import('@typescript-eslint/utils/ts-eslint').FlatConfig.Config,
+         *     undefined
+         *   >;
+         * }}
+         */ (jsxA11y.configs).recommended
       ).rules,
 
       // Error about importing next/document in a page other than
@@ -976,12 +981,7 @@ const configArray = [
     },
   },
   {
-    files: [
-      '**/*.js',
-      '**/*.jsx',
-      '**/*.cjs',
-      '**/*.mjs',
-    ],
+    files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
     rules: {
       // Warn on usage of `class` prop instead of `className`
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
