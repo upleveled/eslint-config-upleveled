@@ -36,18 +36,18 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "7.25.9",
-    "@eslint/compat": "1.2.2",
+    "@eslint/compat": "1.2.3",
     "@next/eslint-plugin-next": "15.0.3",
-    "@typescript-eslint/eslint-plugin": "8.13.0",
-    "@typescript-eslint/parser": "8.13.0",
+    "@typescript-eslint/eslint-plugin": "8.14.0",
+    "@typescript-eslint/parser": "8.14.0",
     "eslint-config-flat-gitignore": "0.3.0",
     "eslint-import-resolver-typescript": "3.6.3",
-    "eslint-plugin-import-x": "4.4.0",
+    "eslint-plugin-import-x": "4.4.2",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react": "7.37.2",
-    "eslint-plugin-react-compiler": "19.0.0-beta-9ee70a1-20241017",
+    "eslint-plugin-react-compiler": "19.0.0-beta-a7bf2bd-20241110",
     "eslint-plugin-react-hooks": "5.0.0",
-    "eslint-plugin-react-x": "1.15.2",
+    "eslint-plugin-react-x": "1.16.1",
     "eslint-plugin-security": "3.0.1",
     "eslint-plugin-sonarjs": "1.0.4",
     "eslint-plugin-testing-library": "6.4.0",
@@ -59,8 +59,8 @@
     "ts-api-utils": "1.4.0"
   },
   "devDependencies": {
-    "@typescript-eslint/utils": "8.13.0",
-    "eslint-config-upleveled": "8.11.3",
+    "@typescript-eslint/utils": "8.14.0",
+    "eslint-config-upleveled": "8.11.4",
     "prettier": "3.3.3",
     "prettier-plugin-embed": "0.4.15",
     "prettier-plugin-sql": "0.18.1",
@@ -75,7 +75,7 @@
     "globals": "^15.12.0",
     "typescript": "^5.6.3"
   },
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "pnpm@9.13.0",
   "engines": {
     "node": ">=20.9.0"
   }
