@@ -50,7 +50,7 @@
     "eslint-plugin-react-x": "1.17.1",
     "eslint-plugin-security": "3.0.1",
     "eslint-plugin-sonarjs": "1.0.4",
-    "eslint-plugin-testing-library": "6.5.0",
+    "eslint-plugin-testing-library": "7.0.0",
     "eslint-plugin-unicorn": "56.0.1",
     "eslint-plugin-upleveled": "2.1.14",
     "is-plain-obj": "4.1.0",
