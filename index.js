@@ -811,6 +811,11 @@ const configArray = [
       // non-primitive data types like objects / arrays
       // https://typescript-eslint.io/rules/restrict-template-expressions/
       '@typescript-eslint/restrict-template-expressions': 'error',
+      // Warn about returning promises without `await`,
+      // which will result in worse stack traces
+      // https://typescript-eslint.io/rules/return-await/
+      'no-return-await': 'off',
+      '@typescript-eslint/return-await': ['warn', 'always'],
       // Allow leaving out curlies only with single-line
       // condition blocks
       // https://github.com/eslint/eslint/blob/master/docs/rules/curly.md#multi-line
