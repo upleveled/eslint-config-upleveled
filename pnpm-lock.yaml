@@ -87,8 +87,8 @@ importers:
         specifier: 5.0.1
         version: 5.0.1
       ts-api-utils:
-        specifier: 1.4.2
-        version: 1.4.2(typescript@5.7.2)
+        specifier: 2.0.0
+        version: 2.0.0(typescript@5.7.2)
     devDependencies:
       '@typescript-eslint/utils':
         specifier: 8.17.0
@@ -2198,6 +2198,12 @@ packages:
     engines: {node: '>=16'}
     peerDependencies:
       typescript: '>=4.2.0'
+
+  ts-api-utils@2.0.0:
+    resolution: {integrity: sha512-xCt/TOAc+EOHS1XPnijD3/yzpH6qg2xppZO1YDqGoVsNXfQfzHpOdNuXwrwOU8u4ITXJyDCTyt8w5g1sZv9ynQ==}
+    engines: {node: '>=18.12'}
+    peerDependencies:
+      typescript: '>=4.8.4'
 
   ts-declaration-location@1.0.4:
     resolution: {integrity: sha512-r4JoxYhKULbZuH81Pjrp9OEG5St7XWk7zXwGkLKhmVcjiBVHTJXV5wK6dEa9JKW5QGSTW6b1lOjxAKp8R1SQhg==}
@@ -4921,6 +4927,10 @@ snapshots:
       typescript: 5.7.2
 
   ts-api-utils@1.4.2(typescript@5.7.2):
+    dependencies:
+      typescript: 5.7.2
+
+  ts-api-utils@2.0.0(typescript@5.7.2):
     dependencies:
       typescript: 5.7.2
 
