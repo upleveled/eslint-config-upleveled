@@ -69,8 +69,8 @@
   },
   "peerDependencies": {
     "@types/node": ">=22.10.1",
-    "@types/react": "^18.3.13",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "eslint": "^9.16.0",
     "globals": "^15.13.0",
     "typescript": "^5.7.2"

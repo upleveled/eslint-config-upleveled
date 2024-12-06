@@ -21,11 +21,11 @@ importers:
         specifier: '>=22.10.1'
         version: 22.10.1
       '@types/react':
-        specifier: ^18.3.13
-        version: 18.3.13
+        specifier: ^19.0.0
+        version: 19.0.0
       '@types/react-dom':
-        specifier: ^18.3.1
-        version: 18.3.1
+        specifier: ^19.0.0
+        version: 19.0.0
       '@typescript-eslint/eslint-plugin':
         specifier: 8.17.0
         version: 8.17.0(@typescript-eslint/parser@8.17.0(eslint@9.16.0)(typescript@5.7.2))(eslint@9.16.0)(typescript@5.7.2)
@@ -95,7 +95,7 @@ importers:
         version: 8.17.0(eslint@9.16.0)(typescript@5.7.2)
       eslint-config-upleveled:
         specifier: 8.12.0
-        version: 8.12.0(@babel/core@7.24.5)(@types/node@22.10.1)(@types/react-dom@18.3.1)(@types/react@18.3.13)(eslint-plugin-import@2.29.1)(eslint@9.16.0)(globals@15.13.0)(typescript@5.7.2)
+        version: 8.12.0(@babel/core@7.24.5)(@types/node@22.10.1)(@types/react-dom@19.0.0)(@types/react@19.0.0)(eslint-plugin-import@2.29.1)(eslint@9.16.0)(globals@15.13.0)(typescript@5.7.2)
       prettier:
         specifier: 3.4.2
         version: 3.4.2
@@ -460,14 +460,11 @@ packages:
   '@types/normalize-package-data@2.4.1':
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
 
-  '@types/prop-types@15.7.5':
-    resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+  '@types/react-dom@19.0.0':
+    resolution: {integrity: sha512-1KfiQKsH1o00p9m5ag12axHQSb3FOU9H20UTrujVSkNhuCrRHiQWFqgEnTNK5ZNfnzZv8UWrnXVqCmCF9fgY3w==}
 
-  '@types/react-dom@18.3.1':
-    resolution: {integrity: sha512-qW1Mfv8taImTthu4KoXgDfLuk4bydU6Q/TkADnDWWHwi4NX4BR+LWfTp2sVmTqRrsHvyDDTelgelxJ+SsejKKQ==}
-
-  '@types/react@18.3.13':
-    resolution: {integrity: sha512-ii/gswMmOievxAJed4PAHT949bpYjPKXvXo1v6cRB/kqc2ZR4n+SgyCyvyc5Fec5ez8VnUumI1Vk7j6fRyRogg==}
+  '@types/react@19.0.0':
+    resolution: {integrity: sha512-MY3oPudxvMYyesqs/kW1Bh8y9VqSmf+tzqw3ae8a9DZW68pUe3zAdHeI1jc6iAysuRdACnVknHP8AhwD4/dxtg==}
 
   '@types/semver@7.5.8':
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
@@ -2860,15 +2857,12 @@ snapshots:
 
   '@types/normalize-package-data@2.4.1': {}
 
-  '@types/prop-types@15.7.5': {}
-
-  '@types/react-dom@18.3.1':
+  '@types/react-dom@19.0.0':
     dependencies:
-      '@types/react': 18.3.13
+      '@types/react': 19.0.0
 
-  '@types/react@18.3.13':
+  '@types/react@19.0.0':
     dependencies:
-      '@types/prop-types': 15.7.5
       csstype: 3.1.1
 
   '@types/semver@7.5.8': {}
@@ -3493,14 +3487,14 @@ snapshots:
       eslint: 9.16.0
       find-up-simple: 1.0.0
 
-  eslint-config-upleveled@8.12.0(@babel/core@7.24.5)(@types/node@22.10.1)(@types/react-dom@18.3.1)(@types/react@18.3.13)(eslint-plugin-import@2.29.1)(eslint@9.16.0)(globals@15.13.0)(typescript@5.7.2):
+  eslint-config-upleveled@8.12.0(@babel/core@7.24.5)(@types/node@22.10.1)(@types/react-dom@19.0.0)(@types/react@19.0.0)(eslint-plugin-import@2.29.1)(eslint@9.16.0)(globals@15.13.0)(typescript@5.7.2):
     dependencies:
       '@babel/eslint-parser': 7.25.9(@babel/core@7.24.5)(eslint@9.16.0)
       '@eslint/compat': 1.2.3(eslint@9.16.0)
       '@next/eslint-plugin-next': 15.0.3
       '@types/node': 22.10.1
-      '@types/react': 18.3.13
-      '@types/react-dom': 18.3.1
+      '@types/react': 19.0.0
+      '@types/react-dom': 19.0.0
       '@typescript-eslint/eslint-plugin': 8.15.0(@typescript-eslint/parser@8.15.0(eslint@9.16.0)(typescript@5.7.2))(eslint@9.16.0)(typescript@5.7.2)
       '@typescript-eslint/parser': 8.15.0(eslint@9.16.0)(typescript@5.7.2)
       eslint: 9.16.0
