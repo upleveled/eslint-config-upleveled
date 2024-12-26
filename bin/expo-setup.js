@@ -10,38 +10,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import isPlainObject from 'is-plain-obj';
 
-const appFilePath = 'app.json';
-const appJson = JSON.parse(await readFile(appFilePath, 'utf8'));
-
-if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
-  throw new Error(
-    'app.json either contains non-object or contains object without .expo property',
-  );
-}
-
-appJson.expo.experiments ||= {};
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- Set to empty object in previous line, if falsy
-appJson.expo.experiments.typedRoutes = true;
-
-appJson.expo.plugins = [
-  [
-    'expo-build-properties',
-    {
-      ios: {
-        newArchEnabled: true,
-      },
-      android: {
-        newArchEnabled: true,
-      },
-    },
-  ],
-];
-
-await writeFile(appFilePath, JSON.stringify(appJson, null, 2), 'utf8');
-console.log(
-  '✅ Enabled New Architecture and typedRoutes experiment in app.json',
-);
-
 await writeFile('.env.development', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
 console.log('✅ Enabled new Metro resolver in .env.development');
 await writeFile('.env.production', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
