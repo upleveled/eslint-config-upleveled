@@ -1,7 +1,7 @@
 // Enable Expo non-default options for performance:
 //
-// 1. app.json - Enable New Architecture for iOS and Android
-//    - https://docs.expo.dev/guides/new-architecture/
+// 1. app.json - Enable API Routes
+//    - https://docs.expo.dev/router/reference/api-routes/
 // 2. .env.development, .env.production, eas.json - Enable the new Metro resolver available starting in Expo SDK 51
 //    - https://github.com/EvanBacon/pillar-valley/commit/ede321ef7addc67e4047624aedb3e92af3cb5060
 //    - https://archive.ph/MG03E
@@ -9,6 +9,29 @@
 // TODO: Remove when Expo enables New Architecture and new Metro resolver by default
 import { readFile, writeFile } from 'node:fs/promises';
 import isPlainObject from 'is-plain-obj';
+
+const appFilePath = 'app.json';
+const appJson = JSON.parse(await readFile(appFilePath, 'utf8'));
+
+if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
+  throw new Error(
+    'app.json either contains non-object or contains object without .expo property',
+  );
+}
+
+appJson.expo.plugins = [
+  [
+    'expo-router',
+    {
+      origin: 'https://evanbacon.dev/',
+    },
+  ],
+];
+
+appJson.expo.web.output = 'server';
+
+await writeFile(appFilePath, JSON.stringify(appJson, null, 2), 'utf8');
+console.log('✅ Enabled Expo Router API Routes in app.json');
 
 await writeFile('.env.development', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
 console.log('✅ Enabled new Metro resolver in .env.development');
