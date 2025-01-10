@@ -20,6 +20,9 @@ if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- appJson.expo.web is an object
+appJson.expo.web.output = 'server';
+
 appJson.expo.plugins = [
   [
     'expo-router',
@@ -27,11 +30,19 @@ appJson.expo.plugins = [
       origin: 'https://evanbacon.dev/',
     },
   ],
+  [
+    'expo-splash-screen',
+    {
+      image: './assets/images/splash-icon.png',
+      imageWidth: 200,
+      resizeMode: 'contain',
+      backgroundColor: '#ffffff',
+    },
+  ],
 ];
 
-appJson.expo.web.output = 'server';
-
-appJson.expo.experiments = { reactServerFunctions: true };
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- appJson.expo.experiments is an object
+appJson.expo.experiments.reactServerFunctions = true;
 
 await writeFile(appFilePath, JSON.stringify(appJson, null, 2), 'utf8');
 console.log('✅ Enabled Expo Router API Routes in app.json');
