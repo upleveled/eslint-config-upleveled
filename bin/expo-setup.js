@@ -1,7 +1,8 @@
 // Enable Expo non-default options for performance:
 //
-// 1. app.json - Enable New Architecture for iOS and Android
-//    - https://docs.expo.dev/guides/new-architecture/
+// 1. app.json - Enable API Routes and React Server Components
+//    - https://docs.expo.dev/router/reference/api-routes/
+//    - https://docs.expo.dev/guides/server-components/
 // 2. .env.development, .env.production, eas.json - Enable the new Metro resolver available starting in Expo SDK 51
 //    - https://github.com/EvanBacon/pillar-valley/commit/ede321ef7addc67e4047624aedb3e92af3cb5060
 //    - https://archive.ph/MG03E
@@ -19,28 +20,32 @@ if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
   );
 }
 
-appJson.expo.experiments ||= {};
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- Set to empty object in previous line, if falsy
-appJson.expo.experiments.typedRoutes = true;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- appJson.expo.web is an object
+appJson.expo.web.output = 'server';
 
 appJson.expo.plugins = [
   [
-    'expo-build-properties',
+    'expo-router',
     {
-      ios: {
-        newArchEnabled: true,
-      },
-      android: {
-        newArchEnabled: true,
-      },
+      origin: 'https://evanbacon.dev/',
+    },
+  ],
+  [
+    'expo-splash-screen',
+    {
+      image: './assets/images/splash-icon.png',
+      imageWidth: 200,
+      resizeMode: 'contain',
+      backgroundColor: '#ffffff',
     },
   ],
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- appJson.expo.experiments is an object
+appJson.expo.experiments.reactServerFunctions = true;
+
 await writeFile(appFilePath, JSON.stringify(appJson, null, 2), 'utf8');
-console.log(
-  '✅ Enabled New Architecture and typedRoutes experiment in app.json',
-);
+console.log('✅ Enabled Expo Router API Routes in app.json');
 
 await writeFile('.env.development', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
 console.log('✅ Enabled new Metro resolver in .env.development');
