@@ -45,7 +45,7 @@ appJson.expo.plugins = [
 appJson.expo.experiments.reactServerFunctions = true;
 
 await writeFile(appFilePath, JSON.stringify(appJson, null, 2), 'utf8');
-console.log('✅ Enabled Expo Router API Routes in app.json');
+console.log('✅ Enabled Expo Router API Routes and RSC in app.json');
 
 await writeFile('.env.development', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
 console.log('✅ Enabled new Metro resolver in .env.development');
