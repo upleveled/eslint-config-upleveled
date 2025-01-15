@@ -2,7 +2,6 @@
 //
 // 1. app.json - Enable API Routes and React Server Components
 //    - https://docs.expo.dev/router/reference/api-routes/
-//    - https://docs.expo.dev/guides/server-components/
 // 2. .env.development, .env.production, eas.json - Enable the new Metro resolver available starting in Expo SDK 51
 //    - https://github.com/EvanBacon/pillar-valley/commit/ede321ef7addc67e4047624aedb3e92af3cb5060
 //    - https://archive.ph/MG03E
@@ -41,11 +40,8 @@ appJson.expo.plugins = [
   ],
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- appJson.expo.experiments is an object
-appJson.expo.experiments.reactServerFunctions = true;
-
 await writeFile(appFilePath, JSON.stringify(appJson, null, 2), 'utf8');
-console.log('✅ Enabled Expo Router API Routes and RSC in app.json');
+console.log('✅ Enabled Expo Router API Routes in app.json');
 
 await writeFile('.env.development', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
 console.log('✅ Enabled new Metro resolver in .env.development');
