@@ -1,6 +1,6 @@
 // Enable Expo non-default options for performance:
 //
-// 1. app.json - Enable API Routes and React Server Components
+// 1. app.json - Enable API Routes
 //    - https://docs.expo.dev/router/reference/api-routes/
 // 2. .env.development, .env.production, eas.json - Enable the new Metro resolver available starting in Expo SDK 51
 //    - https://github.com/EvanBacon/pillar-valley/commit/ede321ef7addc67e4047624aedb3e92af3cb5060
