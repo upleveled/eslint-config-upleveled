@@ -1,17 +1,17 @@
 // Enable Expo non-default options for performance:
 //
-// 1. app.json - Enable API Routes
-//    - https://docs.expo.dev/router/reference/api-routes/
+// 1. app.json - Convert to app.config.ts
+//    - https://docs.expo.dev/workflow/configuration/
 // 2. .env.development, .env.production, eas.json - Enable the new Metro resolver available starting in Expo SDK 51
 //    - https://github.com/EvanBacon/pillar-valley/commit/ede321ef7addc67e4047624aedb3e92af3cb5060
 //    - https://archive.ph/MG03E
 //
 // TODO: Remove when Expo enables New Architecture and new Metro resolver by default
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, unlink, writeFile } from 'node:fs/promises';
 import isPlainObject from 'is-plain-obj';
 
 const appFilePath = 'app.json';
-const appJson = JSON.parse(await readFile(appFilePath, 'utf8'));
+const appJson = JSON.parse(await readFile('app.json', 'utf8'));
 
 if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
   throw new Error(
@@ -19,29 +19,24 @@ if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- appJson.expo.web is an object
-appJson.expo.web.output = 'server';
+const expoConfig =
+  `import { ExpoConfig } from "expo/config";
 
-appJson.expo.plugins = [
-  [
-    'expo-router',
-    {
-      origin: 'https://evanbacon.dev/',
-    },
-  ],
-  [
-    'expo-splash-screen',
-    {
-      image: './assets/images/splash-icon.png',
-      imageWidth: 200,
-      resizeMode: 'contain',
-      backgroundColor: '#ffffff',
-    },
-  ],
-];
+const config: ExpoConfig = ${JSON.stringify(appJson.expo, null, 2)
+    .replace(/"([^\"]+)":/g, '$1:')
+    .replace(/"(.*?)"/g, `'$1'`)
+    .replace(/([}\]])(\s*[}\]])/g, '$1,$2')
+    .replace(/}(\s+\])/g, '},$1')
+    .replace(/(?<!,)(\n\s*[}\]])/g, ',$1')};
 
-await writeFile(appFilePath, JSON.stringify(appJson, null, 2), 'utf8');
-console.log('✅ Enabled Expo Router API Routes in app.json');
+export default config;
+`.trim() + '\n';
+
+await writeFile('app.config.ts', expoConfig, 'utf8');
+console.log('✅ Converted app.json to app.config.ts');
+
+await unlink(appFilePath);
+console.log('✅ Deleted app.json');
 
 await writeFile('.env.development', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
 console.log('✅ Enabled new Metro resolver in .env.development');
