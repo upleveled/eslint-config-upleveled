@@ -23,7 +23,7 @@ const expoConfig =
   `import { ExpoConfig } from "expo/config";
 
 const config: ExpoConfig = ${JSON.stringify(appJson.expo, null, 2)
-    .replace(/"([^\"]+)":/g, '$1:')
+    .replace(/"([^"]+)":/g, '$1:')
     .replace(/"(.*?)"/g, `'$1'`)
     .replace(/([}\]])(\s*[}\]])/g, '$1,$2')
     .replace(/}(\s+\])/g, '},$1')
