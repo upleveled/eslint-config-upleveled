@@ -1,4 +1,4 @@
-// Enable Expo non-default options for performance:
+// Enable Expo non-default options for performance and consistency:
 //
 // 1. Convert app.json to app.config.ts for better flexibility, TypeScript support, and dynamic configuration
 //    This change is temporary until create-expo-app generates app.config.ts by default
