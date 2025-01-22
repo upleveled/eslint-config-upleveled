@@ -1,9 +1,10 @@
 // Enable Expo non-default options for performance and consistency:
 //
-// 1. Convert app.json to app.config.ts for better flexibility, TypeScript support, and dynamic configuration
-//    This change is temporary until create-expo-app generates app.config.ts by default
-//    - Issue: https://github.com/expo/expo/issues/34357
-//    - https://docs.expo.dev/workflow/configuration/
+// 1. Convert app.json to app.config.ts for consistent TS language and dynamic config
+//    - https://docs.expo.dev/workflow/configuration/#dynamic-configuration
+//
+//    TODO: Remove this if `create-expo-app` generates `app.config.ts` in future
+//    - https://github.com/expo/expo/issues/34357
 // 2. .env.development, .env.production, eas.json - Enable the new Metro resolver available starting in Expo SDK 51
 //    - https://github.com/EvanBacon/pillar-valley/commit/ede321ef7addc67e4047624aedb3e92af3cb5060
 //    - https://archive.ph/MG03E
