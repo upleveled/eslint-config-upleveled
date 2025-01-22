@@ -11,7 +11,7 @@ import { readFile, unlink, writeFile } from 'node:fs/promises';
 import isPlainObject from 'is-plain-obj';
 
 const appFilePath = 'app.json';
-const appJson = JSON.parse(await readFile('app.json', 'utf8'));
+const appJson = JSON.parse(await readFile(appFilePath, 'utf8'));
 
 if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
   throw new Error(
