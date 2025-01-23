@@ -363,6 +363,20 @@ writeFileSync(
 
 console.log('✅ Done updating .gitignore');
 
+if (projectType === 'expo' || projectType === 'expo-postgresql') {
+  console.log('Running Expo setup script...');
+  try {
+    const expoSetupPath = join(
+      dirname(fileURLToPath(import.meta.url)),
+      'expo-setup.js',
+    );
+    execSync(`node ${expoSetupPath}`, { stdio: 'inherit' });
+    console.log('✅ Done running Expo setup script');
+  } catch (error) {
+    console.error('❌ Failed to run Expo setup script', error);
+  }
+}
+
 // Commented out in case we need to patch Next.js again in the
 // future
 // ```
