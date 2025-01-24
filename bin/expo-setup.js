@@ -10,11 +10,12 @@
 //    - https://archive.ph/MG03E
 //
 // TODO: Remove when Expo enables New Architecture and new Metro resolver by default
-import { execSync } from 'node:child_process';
+import { exec } from 'node:child_process';
 import { readFile, unlink, writeFile } from 'node:fs/promises';
+import { promisify } from 'node:util';
 import isPlainObject from 'is-plain-obj';
 
-execSync('pnpm add --save-dev prettier', { stdio: 'inherit' });
+await promisify(exec)('pnpm add --save-dev prettier');
 
 const { format } = await import('prettier');
 
@@ -75,7 +76,6 @@ easJson.build.development.extends = 'base';
 easJson.build.development.env = {
   NODE_ENV: 'development',
 };
-
 easJson.build.preview.extends = 'base';
 easJson.build.production.extends = 'base';
 
