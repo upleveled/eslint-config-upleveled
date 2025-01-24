@@ -47,7 +47,7 @@ export default config;`.trim(),
   ),
   'utf8',
 );
-console.log('✅ Converted and formatted app.json to app.config.ts');
+console.log('✅ Created app.config.ts');
 
 await unlink(appJsonFilePath);
 console.log('✅ Deleted app.json');
