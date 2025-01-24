@@ -39,7 +39,7 @@ await writeFile(
 
 const config: ExpoConfig = ${JSON.stringify(appJson.expo, null, 2)};
 
-export default config;`.trim(),
+export default config;`,
     {
       parser: 'typescript',
       singleQuote: true,
