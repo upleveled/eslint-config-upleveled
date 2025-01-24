@@ -10,8 +10,13 @@
 //    - https://archive.ph/MG03E
 //
 // TODO: Remove when Expo enables New Architecture and new Metro resolver by default
+import { execSync } from 'node:child_process';
 import { readFile, unlink, writeFile } from 'node:fs/promises';
 import isPlainObject from 'is-plain-obj';
+
+execSync('pnpm add --save-dev prettier', { stdio: 'inherit' });
+
+const { format } = await import('prettier');
 
 const appFilePath = 'app.json';
 const appJson = JSON.parse(await readFile(appFilePath, 'utf8'));
@@ -22,19 +27,18 @@ if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
   );
 }
 
-const expoConfig =
-  `import { type ExpoConfig } from "expo/config";
+const expoConfig = `import { type ExpoConfig } from 'expo/config';
 
-const config: ExpoConfig = ${JSON.stringify(appJson.expo, null, 2)
-    .replace(/"([^"]+)":/g, '$1:')
-    .replace(/"(.*?)"/g, `'$1'`)
-    .replace(/([}\]])(\s*[}\]])/g, '$1,$2')
-    .replace(/}(\s+\])/g, '},$1')
-    .replace(/(?<!,)(\n\s*[}\]])/g, ',$1')};
+const config: ExpoConfig = ${JSON.stringify(appJson.expo, null, 2)};
 
-export default config;`.trim() + '\n';
+export default config;`.trim();
 
-await writeFile('app.config.ts', expoConfig, 'utf8');
+const formattedConfig = await format(expoConfig, {
+  parser: 'typescript',
+  singleQuote: true,
+});
+
+await writeFile('app.config.ts', formattedConfig, 'utf8');
 console.log('✅ Converted and formatted app.json to app.config.ts');
 
 await unlink(appFilePath);
