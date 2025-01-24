@@ -27,7 +27,7 @@ if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
 // Install Prettier to format `app.config.ts`, colocated in this script for
 // easier removal
 //
-// TODO: Remove if `create-expo-app` creates `app.config.ts` in future:
+// TODO: Remove this if `create-expo-app` generates `app.config.ts` in future
 // - https://github.com/expo/expo/issues/34357
 await promisify(exec)('pnpm add --save-dev prettier');
 const { format } = await import('prettier');
