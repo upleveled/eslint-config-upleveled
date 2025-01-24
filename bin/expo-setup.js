@@ -23,8 +23,8 @@ await promisify(exec)('pnpm add --save-dev prettier');
 
 const { format } = await import('prettier');
 
-const appFilePath = 'app.json';
-const appJson = JSON.parse(await readFile(appFilePath, 'utf8'));
+const appJsonFilePath = 'app.json';
+const appJson = JSON.parse(await readFile(appJsonFilePath, 'utf8'));
 
 if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
   throw new Error(
@@ -32,21 +32,24 @@ if (!isPlainObject(appJson) || !isPlainObject(appJson.expo)) {
   );
 }
 
-const expoConfig = `import { type ExpoConfig } from 'expo/config';
+await writeFile(
+  'app.config.ts',
+  await format(
+    `import { type ExpoConfig } from 'expo/config';
 
 const config: ExpoConfig = ${JSON.stringify(appJson.expo, null, 2)};
 
-export default config;`.trim();
-
-const formattedConfig = await format(expoConfig, {
-  parser: 'typescript',
-  singleQuote: true,
-});
-
-await writeFile('app.config.ts', formattedConfig, 'utf8');
+export default config;`.trim(),
+    {
+      parser: 'typescript',
+      singleQuote: true,
+    },
+  ),
+  'utf8',
+);
 console.log('✅ Converted and formatted app.json to app.config.ts');
 
-await unlink(appFilePath);
+await unlink(appJsonFilePath);
 console.log('✅ Deleted app.json');
 
 await writeFile('.env.development', 'EXPO_USE_FAST_RESOLVER=1', 'utf8');
