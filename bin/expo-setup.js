@@ -80,6 +80,7 @@ easJson.build.development.extends = 'base';
 easJson.build.development.env = {
   NODE_ENV: 'development',
 };
+
 easJson.build.preview.extends = 'base';
 easJson.build.production.extends = 'base';
 
