@@ -15,6 +15,10 @@ import { readFile, unlink, writeFile } from 'node:fs/promises';
 import { promisify } from 'node:util';
 import isPlainObject from 'is-plain-obj';
 
+// Add Prettier to format app.config.ts
+// Keep installation near usage for clarity and easier removal later
+// Simplifies cleanup when Expo generates app.config.ts by default
+// - https://github.com/expo/expo/issues/34357
 await promisify(exec)('pnpm add --save-dev prettier');
 
 const { format } = await import('prettier');
