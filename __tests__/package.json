@@ -21,11 +21,16 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.10.0",
-    "eslint-config-upleveled": "^9.1.1",
+    "eslint-config-upleveled": "^9.1.2",
     "postcss-styled-syntax": "^0.7.0",
     "prettier": "^3.2.5",
     "stylelint": "^16.0.0",
     "stylelint-config-upleveled": "^1.0.2",
     "typescript": "^5.1.6"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
   }
 }
