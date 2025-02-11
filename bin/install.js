@@ -333,8 +333,6 @@ try {
   // Swallow error if jsconfig.json file does not exist
 }
 
-console.log('Updating .gitignore...');
-
 const gitignorePath = join(process.cwd(), '.gitignore');
 
 /** @type {string[]} */
@@ -346,22 +344,27 @@ try {
   // Swallow error in case .gitignore doesn't exist yet
 }
 
+let gitignoreChanged = false;
+
 for (const ignorePath of ['.eslintcache', '*.tsbuildinfo']) {
   if (gitignoreContentLines.includes(ignorePath)) {
     continue;
   }
 
   gitignoreContentLines.push(ignorePath);
+  gitignoreChanged = true;
 }
 
-writeFileSync(
-  gitignorePath,
-  gitignoreContentLines.join('\n') +
-    // Add trailing newline if last line is not empty
-    (gitignoreContentLines.at(-1) === '' ? '' : '\n'),
-);
-
-console.log('✅ Done updating .gitignore');
+if (gitignoreChanged) {
+  console.log('Updating .gitignore...');
+  writeFileSync(
+    gitignorePath,
+    gitignoreContentLines.join('\n') +
+      // Add trailing newline if last line is not empty
+      (gitignoreContentLines.at(-1) === '' ? '' : '\n'),
+  );
+  console.log('✅ Done updating .gitignore');
+}
 
 const npmrcPath = join(process.cwd(), '.npmrc');
 
