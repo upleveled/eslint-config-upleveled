@@ -363,6 +363,31 @@ writeFileSync(
 
 console.log('✅ Done updating .gitignore');
 
+const npmrcPath = join(process.cwd(), '.npmrc');
+
+/** @type {string[]} */
+let npmrcContentLines = [];
+
+try {
+  npmrcContentLines = readFileSync(npmrcPath, 'utf-8').split('\n');
+} catch {
+  // Swallow error in case .npmrc doesn't exist yet
+}
+
+if (!npmrcContentLines.includes('strict-dep-builds=true')) {
+  console.log('Updating .npmrc...');
+  npmrcContentLines.push(`# Fail on pnpm ignored build scripts
+# - https://github.com/pnpm/pnpm/pull/9071
+strict-dep-builds=true`);
+  writeFileSync(
+    npmrcPath,
+    npmrcContentLines.join('\n') +
+      // Add trailing newline if last line is not empty
+      (npmrcContentLines.at(-1) === '' ? '' : '\n'),
+  );
+  console.log('✅ Done updating .npmrc');
+}
+
 // Commented out in case we need to patch Next.js again in the
 // future
 // ```
