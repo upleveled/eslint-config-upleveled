@@ -180,11 +180,7 @@ const newDevDependenciesToInstall = [
 if (projectType === 'next-js-postgresql' || projectType === 'expo-postgresql') {
   newDevDependenciesToInstall.push(
     '@ts-safeql/eslint-plugin',
-
-    // Install non-broken version of libpg-query for Windows
-    // - https://github.com/launchql/libpg-query-node/issues/70
-    'libpg-query@16.2.0',
-
+    'libpg-query',
     'prettier-plugin-embed',
     'prettier-plugin-sql',
   );
@@ -212,11 +208,13 @@ for (const projectDevDependency of Object.keys(projectDevDependencies)) {
   }
 }
 
-console.log(
-  `Installing ${newDevDependenciesToInstall.length} ESLint config ${
-    newDevDependenciesToInstall.length === 1 ? 'dependency' : 'dependencies'
-  }...`,
-);
+if (newDevDependenciesToInstall.length > 0) {
+  console.log(
+    `Installing ${newDevDependenciesToInstall.length} ESLint config ${
+      newDevDependenciesToInstall.length === 1 ? 'dependency' : 'dependencies'
+    }: ${newDevDependenciesToInstall.join(', ')}`,
+  );
+}
 
 execSync(
   newDevDependenciesToInstall.length > 0
