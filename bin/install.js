@@ -376,7 +376,8 @@ try {
 
 if (!npmrcContentLines.includes('strict-dep-builds=true')) {
   console.log('Updating .npmrc...');
-  npmrcContentLines.push(`# Fail on pnpm ignored build scripts https://github.com/pnpm/pnpm/pull/9071
+  npmrcContentLines.push(`# Fail on pnpm ignored build scripts
+# - https://github.com/pnpm/pnpm/pull/9071
 strict-dep-builds=true`);
   writeFileSync(
     npmrcPath,
