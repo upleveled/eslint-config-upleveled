@@ -47,7 +47,7 @@
     "eslint-plugin-react": "7.37.4",
     "eslint-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
     "eslint-plugin-react-hooks": "5.1.0",
-    "eslint-plugin-react-x": "1.26.2",
+    "eslint-plugin-react-x": "1.27.0",
     "eslint-plugin-security": "3.0.1",
     "eslint-plugin-sonarjs": "3.0.2",
     "eslint-plugin-testing-library": "7.1.1",
