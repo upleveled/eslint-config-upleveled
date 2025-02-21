@@ -75,8 +75,8 @@ importers:
         specifier: 2.1.14
         version: 2.1.14(eslint@9.20.1)
       globals:
-        specifier: ^15.15.0
-        version: 15.15.0
+        specifier: ^16.0.0
+        version: 16.0.0
       is-plain-obj:
         specifier: 4.1.0
         version: 4.1.0
@@ -95,7 +95,7 @@ importers:
         version: 8.24.1(eslint@9.20.1)(typescript@5.7.3)
       eslint-config-upleveled:
         specifier: 9.1.2
-        version: 9.1.2(@babel/core@7.26.8)(@types/node@22.13.4)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(eslint-plugin-import@2.29.1)(eslint@9.20.1)(globals@15.15.0)(typescript@5.7.3)
+        version: 9.1.2(@babel/core@7.26.8)(@types/node@22.13.4)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(eslint-plugin-import@2.29.1)(eslint@9.20.1)(globals@16.0.0)(typescript@5.7.3)
       prettier:
         specifier: 3.5.1
         version: 3.5.1
@@ -1752,6 +1752,10 @@ packages:
 
   globals@15.15.0:
     resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
+    engines: {node: '>=18'}
+
+  globals@16.0.0:
+    resolution: {integrity: sha512-iInW14XItCXET01CQFqudPOWP2jYMl7T+QRQT+UNcR/iQncN/F0UNpgd76iFkBPgNQb4+X3LV9tLJYzwh+Gl3A==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -4511,7 +4515,7 @@ snapshots:
       '@eslint/compat': 1.2.6(eslint@9.20.1)
       eslint: 9.20.1
 
-  eslint-config-upleveled@9.1.2(@babel/core@7.26.8)(@types/node@22.13.4)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(eslint-plugin-import@2.29.1)(eslint@9.20.1)(globals@15.15.0)(typescript@5.7.3):
+  eslint-config-upleveled@9.1.2(@babel/core@7.26.8)(@types/node@22.13.4)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(eslint-plugin-import@2.29.1)(eslint@9.20.1)(globals@16.0.0)(typescript@5.7.3):
     dependencies:
       '@babel/eslint-parser': 7.26.8(@babel/core@7.26.8)(eslint@9.20.1)
       '@eslint/compat': 1.2.6(eslint@9.20.1)
@@ -4535,7 +4539,7 @@ snapshots:
       eslint-plugin-testing-library: 7.1.1(eslint@9.20.1)(typescript@5.7.3)
       eslint-plugin-unicorn: 56.0.1(eslint@9.20.1)
       eslint-plugin-upleveled: 2.1.14(eslint@9.20.1)
-      globals: 15.15.0
+      globals: 16.0.0
       is-plain-obj: 4.1.0
       sort-package-json: 2.14.0
       strip-json-comments: 5.0.1
@@ -5065,6 +5069,8 @@ snapshots:
   globals@14.0.0: {}
 
   globals@15.15.0: {}
+
+  globals@16.0.0: {}
 
   globalthis@1.0.4:
     dependencies:
