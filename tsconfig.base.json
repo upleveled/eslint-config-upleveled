@@ -13,7 +13,7 @@
     "verbatimModuleSyntax": true,
 
     // Standard library
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": ["ES2024", "DOM", "DOM.Iterable"],
 
     // Output
     "target": "ES2022",
