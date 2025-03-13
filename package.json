@@ -35,19 +35,19 @@
     "postpublish": "cd __tests__ && pnpm update-config-version"
   },
   "dependencies": {
-    "@babel/eslint-parser": "7.26.8",
+    "@babel/eslint-parser": "7.26.10",
     "@eslint/compat": "1.2.7",
-    "@next/eslint-plugin-next": "15.2.1",
-    "@typescript-eslint/eslint-plugin": "8.26.0",
-    "@typescript-eslint/parser": "8.26.0",
+    "@next/eslint-plugin-next": "15.2.2",
+    "@typescript-eslint/eslint-plugin": "8.26.1",
+    "@typescript-eslint/parser": "8.26.1",
     "eslint-config-flat-gitignore": "2.1.0",
-    "eslint-import-resolver-typescript": "3.8.3",
+    "eslint-import-resolver-typescript": "3.8.6",
     "eslint-plugin-import-x": "4.6.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react": "7.37.4",
     "eslint-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
     "eslint-plugin-react-hooks": "5.2.0",
-    "eslint-plugin-react-x": "1.30.2",
+    "eslint-plugin-react-x": "1.32.1",
     "eslint-plugin-security": "3.0.1",
     "eslint-plugin-sonarjs": "3.0.2",
     "eslint-plugin-testing-library": "7.1.1",
@@ -59,7 +59,7 @@
     "ts-api-utils": "2.0.1"
   },
   "devDependencies": {
-    "@typescript-eslint/utils": "8.26.0",
+    "@typescript-eslint/utils": "8.26.1",
     "eslint-config-upleveled": "9.2.1",
     "prettier": "3.5.3",
     "prettier-plugin-embed": "0.5.0",
@@ -68,14 +68,14 @@
     "typescript": "5.8.2"
   },
   "peerDependencies": {
-    "@types/node": ">=22.13.9",
+    "@types/node": ">=22.13.10",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "eslint": "^9.21.0",
+    "eslint": "^9.22.0",
     "globals": "^16.0.0",
     "typescript": "^5.8.2"
   },
-  "packageManager": "pnpm@10.6.0+sha512.df0136e797db0cfa7ec1084e77f3bdf81bacbae9066832fbf95cba4c2140ad05e64f316cde51ce3f99ea00a91ffc702d6aedd3c0f450f895e3e7c052fe573cd8",
+  "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
   "engines": {
     "node": ">=20.9.0"
   }
