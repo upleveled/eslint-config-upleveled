@@ -37,17 +37,17 @@
   "dependencies": {
     "@babel/eslint-parser": "7.26.10",
     "@eslint/compat": "1.2.7",
-    "@next/eslint-plugin-next": "15.2.2",
-    "@typescript-eslint/eslint-plugin": "8.26.1",
-    "@typescript-eslint/parser": "8.26.1",
+    "@next/eslint-plugin-next": "15.2.3",
+    "@typescript-eslint/eslint-plugin": "8.27.0",
+    "@typescript-eslint/parser": "8.27.0",
     "eslint-config-flat-gitignore": "2.1.0",
     "eslint-import-resolver-typescript": "3.8.7",
-    "eslint-plugin-import-x": "4.6.1",
+    "eslint-plugin-import-x": "4.9.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react": "7.37.4",
     "eslint-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
     "eslint-plugin-react-hooks": "5.2.0",
-    "eslint-plugin-react-x": "1.33.0",
+    "eslint-plugin-react-x": "1.37.0",
     "eslint-plugin-security": "3.0.1",
     "eslint-plugin-sonarjs": "3.0.2",
     "eslint-plugin-testing-library": "7.1.1",
@@ -56,26 +56,26 @@
     "is-plain-obj": "4.1.0",
     "sort-package-json": "3.0.0",
     "strip-json-comments": "5.0.1",
-    "ts-api-utils": "2.0.1"
+    "ts-api-utils": "2.1.0"
   },
   "devDependencies": {
-    "@typescript-eslint/utils": "8.26.1",
+    "@typescript-eslint/utils": "8.27.0",
     "eslint-config-upleveled": "9.2.1",
     "prettier": "3.5.3",
     "prettier-plugin-embed": "0.5.0",
     "prettier-plugin-sql": "0.18.1",
-    "stylelint": "16.15.0",
+    "stylelint": "16.16.0",
     "typescript": "5.8.2"
   },
   "peerDependencies": {
     "@types/node": ">=22.13.10",
-    "@types/react": "^19.0.10",
+    "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "eslint": "^9.22.0",
     "globals": "^16.0.0",
     "typescript": "^5.8.2"
   },
-  "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
+  "packageManager": "pnpm@10.6.5+sha512.cdf928fca20832cd59ec53826492b7dc25dc524d4370b6b4adbf65803d32efaa6c1c88147c0ae4e8d579a6c9eec715757b50d4fa35eea179d868eada4ed043af",
   "engines": {
     "node": ">=20.9.0"
   }
