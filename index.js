@@ -5,6 +5,7 @@ import next from '@next/eslint-plugin-next';
 import eslintTypescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import gitignore from 'eslint-config-flat-gitignore';
+import * as tsResolver from 'eslint-import-resolver-typescript';
 import eslintImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
@@ -534,9 +535,11 @@ const configArray = [
         '@typescript-eslint/parser': ['.ts', '.tsx'],
       },
       'import-x/resolver': {
-        // Load <rootdir>/tsconfig.json
-        typescript: true,
-        node: true,
+        name: 'tsResolver',
+        options: {
+          bun: true,
+        },
+        resolver: tsResolver,
       },
       react: {
         version: 'detect',
