@@ -544,6 +544,9 @@ const configArray = [
       react: {
         version: 'detect',
       },
+      'react-x': {
+        version: 'detect',
+      },
     },
     rules: {
       ...eslintConfigReactAppRules,
