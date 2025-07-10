@@ -298,7 +298,17 @@ const eslintConfigReactAppRules = {
   'no-script-url': 'warn',
   'no-self-assign': 'warn',
   'no-self-compare': 'warn',
-  'no-sequences': 'warn',
+  // Warn on expression sequences (multiple expressions chained
+  // together with comma operators)
+  // - https://eslint.org/docs/latest/rules/no-sequences
+  'no-sequences': [
+    'warn',
+    {
+      // Warn on expression sequences in parentheses
+      // - https://eslint.org/docs/latest/rules/no-sequences#allowinparentheses
+      allowInParentheses: false,
+    },
+  ],
   'no-shadow-restricted-names': 'warn',
   'no-sparse-arrays': 'warn',
   'no-template-curly-in-string': 'warn',
