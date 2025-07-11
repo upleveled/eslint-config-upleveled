@@ -30,7 +30,8 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "sharp"
+      "sharp",
+      "unrs-resolver"
     ]
   }
 }
