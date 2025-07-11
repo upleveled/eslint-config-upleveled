@@ -11,7 +11,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "update-config-version": "pnpm add --save-dev eslint-config-upleveled@latest && pnpm upleveled-eslint-install"
+    "update-config-version": "pnpm add --save-dev eslint-config-upleveled@latest --allow-build=unrs-resolver && pnpm upleveled-eslint-install"
   },
   "dependencies": {
     "next": "^15.0.0"
