@@ -931,14 +931,6 @@ const configArray = [
       // Warn on promise rejection without Error object
       // https://github.com/eslint/eslint/blob/main/docs/src/rules/prefer-promise-reject-errors.md
       'prefer-promise-reject-errors': 'warn',
-      // Warn about state variable and setter names which are not
-      // destructured or symmetrically named
-      // https://eslint-react.xyz/docs/rules/naming-convention-use-state
-      'react-naming-convention/use-state': 'warn',
-      // Error on missing sandbox attribute on iframes (good
-      // security practice)
-      // https://eslint-react.xyz/docs/rules/dom-no-missing-iframe-sandbox
-      'react-dom/no-missing-iframe-sandbox': 'error',
       // Warn about unnecessary curly braces around props and
       // string literal children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
@@ -947,15 +939,6 @@ const configArray = [
         'warn',
         { props: 'never', children: 'never', propElementValues: 'always' },
       ],
-      // Error on missing `key` prop in React elements
-      // https://eslint-react.xyz/docs/rules/no-missing-key
-      'react-x/no-missing-key': 'error',
-      // Error on duplicate `key` props in React elements
-      // https://eslint-react.xyz/docs/rules/no-duplicate-key
-      'react-x/no-duplicate-key': 'error',
-      // Disallow React being marked as unused
-      // https://eslint-react.xyz/docs/rules/jsx-uses-react
-      'react-x/jsx-uses-react': 'warn',
       // Warn about components that have a closing tag but no
       // children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
@@ -973,6 +956,10 @@ const configArray = [
       // Error on usage of ReactDOM.hydrate() (replaced by hydrateRoot)
       // https://eslint-react.xyz/docs/rules/dom-no-hydrate
       'react-dom/no-hydrate': 'error',
+      // Error on missing sandbox attribute on iframes (good
+      // security practice)
+      // https://eslint-react.xyz/docs/rules/dom-no-missing-iframe-sandbox
+      'react-dom/no-missing-iframe-sandbox': 'error',
       // Error on usage of ReactDOM.render() (replaced by createRoot)
       // https://eslint-react.xyz/docs/rules/dom-no-render
       'react-dom/no-render': 'error',
@@ -985,9 +972,16 @@ const configArray = [
       // Error on passing children to void elements
       // https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
       'react-dom/no-void-elements-with-children': 'error',
+      // Warn about state variable and setter names which are not
+      // destructured or symmetrically named
+      // https://eslint-react.xyz/docs/rules/naming-convention-use-state
+      'react-naming-convention/use-state': 'warn',
       // Warn on duplicate props in JSX
       // https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
       'react-x/jsx-no-duplicate-props': 'warn',
+      // Disallow React being marked as unused
+      // https://eslint-react.xyz/docs/rules/jsx-uses-react
+      'react-x/jsx-uses-react': 'warn',
       // Warn if a `key` is set to an `index`
       // https://eslint-react.xyz/docs/rules/no-array-index-key
       'react-x/no-array-index-key': 'error',
@@ -1006,10 +1000,16 @@ const configArray = [
       // Error on direct mutation of state
       // https://eslint-react.xyz/docs/rules/no-direct-mutation-state
       'react-x/no-direct-mutation-state': 'warn',
+      // Error on duplicate `key` props in React elements
+      // https://eslint-react.xyz/docs/rules/no-duplicate-key
+      'react-x/no-duplicate-key': 'error',
       // Disallow potentially falsey string and number values in
       // logical && expressions
       // https://eslint-react.xyz/docs/rules/no-leaked-conditional-rendering
       'react-x/no-leaked-conditional-rendering': 'error',
+      // Error on missing `key` prop in React elements
+      // https://eslint-react.xyz/docs/rules/no-missing-key
+      'react-x/no-missing-key': 'error',
       // Error on creating components within components
       // https://eslint-react.xyz/docs/rules/no-nested-component-definitions
       'react-x/no-nested-component-definitions': 'error',
