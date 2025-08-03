@@ -10,6 +10,7 @@ import eslintImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
 import reactCompiler from 'eslint-plugin-react-compiler';
+import reactDom from 'eslint-plugin-react-dom';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactX from 'eslint-plugin-react-x';
 import security from 'eslint-plugin-security';
@@ -539,9 +540,10 @@ const configArray = [
       },
       'import-x': eslintImportX,
       'jsx-a11y': jsxA11y,
-      'react-x': reactX,
       'react-compiler': reactCompiler,
+      'react-dom': reactDom,
       'react-hooks': reactHooks,
+      'react-x': reactX,
       react: fixupPluginRules(react),
       security,
       sonarjs: {
@@ -954,8 +956,8 @@ const configArray = [
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
       'react/self-closing-comp': 'warn',
       // Error on passing children to void elements
-      // https://eslint-react.xyz/docs/rules/no-void-elements-with-children
-      'react-x/no-void-elements-with-children': 'error',
+      // https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
+      'react-dom/no-void-elements-with-children': 'error',
       // Disallow potentially falsey string and number values in
       // logical && expressions
       // https://eslint-react.xyz/docs/rules/no-leaked-conditional-rendering
