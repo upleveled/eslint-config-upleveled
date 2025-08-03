@@ -10,6 +10,7 @@ import eslintImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
 import reactCompiler from 'eslint-plugin-react-compiler';
+import reactDom from 'eslint-plugin-react-dom';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactX from 'eslint-plugin-react-x';
 import security from 'eslint-plugin-security';
@@ -427,13 +428,20 @@ const eslintConfigReactAppRules = {
   'getter-return': 'warn',
 
   // https://github.com/benmosher/eslint-plugin-import/tree/master/docs/rules
-  // 'import/first': 'error', 'import/no-amd': 'error',
+  // Disabled to enable moving to eslint-plugin-import-x
+  // ```
+  // 'import/first': 'error',
+  // 'import/no-amd': 'error',
   // 'import/no-anonymous-default-export': 'warn',
   // 'import/no-webpack-loader-syntax': 'error',
+  // ```
 
   // https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules
   'react/forbid-foreign-prop-types': ['warn', { allowInPropTypes: true }],
-  'react/jsx-no-comment-textnodes': 'warn',
+  // Disabled because replacement rule react-x/no-comment-textnodes configured below
+  // ```
+  // 'react/jsx-no-comment-textnodes': 'warn',
+  // ```
   'react/jsx-no-duplicate-props': 'warn',
   'react/jsx-no-target-blank': 'warn',
   'react/jsx-no-undef': 'error',
@@ -447,8 +455,14 @@ const eslintConfigReactAppRules = {
   'react/no-danger-with-children': 'warn',
   // Disabled because of undesirable warnings See
   // https://github.com/facebook/create-react-app/issues/5204 for
-  // blockers until its re-enabled 'react/no-deprecated': 'warn',
-  'react/no-direct-mutation-state': 'warn',
+  // blockers until its re-enabled
+  // ```
+  // 'react/no-deprecated': 'warn',
+  // ```
+  // Disabled because replacement rule react-x/no-direct-mutation-state configured below
+  // ```
+  // 'react/no-direct-mutation-state': 'warn',
+  // ```
   'react/no-is-mounted': 'warn',
   'react/no-typos': 'error',
   'react/require-render-return': 'error',
@@ -526,9 +540,10 @@ const configArray = [
       },
       'import-x': eslintImportX,
       'jsx-a11y': jsxA11y,
-      'react-x': reactX,
       'react-compiler': reactCompiler,
+      'react-dom': reactDom,
       'react-hooks': reactHooks,
+      'react-x': reactX,
       react: fixupPluginRules(react),
       security,
       sonarjs: {
@@ -914,20 +929,21 @@ const configArray = [
         },
       ],
       // Error on useless React fragments
-      'react/jsx-no-useless-fragment': 'warn',
+      // https://eslint-react.xyz/docs/rules/no-useless-fragment
+      'react-x/no-useless-fragment': 'warn',
       // Disallow React being marked as unused
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-uses-react.md
       'react/jsx-uses-react': 'warn',
       // Warn if a `key` is set to an `index`
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
-      'react/no-array-index-key': ['error'],
+      // https://eslint-react.xyz/docs/rules/no-array-index-key
+      'react-x/no-array-index-key': 'error',
       // Error on invalid HTML attributes (only `rel` as of March
       // 2022)
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-invalid-html-attribute.md
       'react/no-invalid-html-attribute': 'error',
       // Error on creating components within components
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
-      'react/no-unstable-nested-components': 'error',
+      // https://eslint-react.xyz/docs/rules/no-nested-component-definitions
+      'react-x/no-nested-component-definitions': 'error',
       // Error on unused React prop types
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
       'react/no-unused-prop-types': 'warn',
@@ -939,13 +955,52 @@ const configArray = [
       // children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
       'react/self-closing-comp': 'warn',
+      // Error on usage of ReactDOM.findDOMNode()
+      // https://eslint-react.xyz/docs/rules/dom-no-find-dom-node
+      'react-dom/no-find-dom-node': 'error',
+      // Error on usage of ReactDOM.render() (replaced by createRoot)
+      // https://eslint-react.xyz/docs/rules/dom-no-render
+      'react-dom/no-render': 'error',
+      // Error on usage of ReactDOM.hydrate() (replaced by hydrateRoot)
+      // https://eslint-react.xyz/docs/rules/dom-no-hydrate
+      'react-dom/no-hydrate': 'error',
+      // Warn on usage of ReactDOM.renderToNodeStream()
+      // https://eslint-react.xyz/docs/rules/dom-no-render-return-value
+      'react-dom/no-render-return-value': 'warn',
       // Error on passing children to void elements
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
-      'react/void-dom-elements-no-children': 'error',
+      // https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
+      'react-dom/no-void-elements-with-children': 'error',
       // Disallow potentially falsey string and number values in
       // logical && expressions
       // https://eslint-react.xyz/docs/rules/no-leaked-conditional-rendering
       'react-x/no-leaked-conditional-rendering': 'error',
+      // Error on comment textnodes in JSX
+      // https://eslint-react.xyz/docs/rules/no-comment-textnodes
+      'react-x/no-comment-textnodes': 'warn',
+      // Error on direct mutation of state
+      // https://eslint-react.xyz/docs/rules/no-direct-mutation-state
+      'react-x/no-direct-mutation-state': 'warn',
+      // Warn on usage of componentWillMount lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-component-will-mount
+      'react-x/no-component-will-mount': 'warn',
+      // Warn on usage of componentWillReceiveProps lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-component-will-receive-props
+      'react-x/no-component-will-receive-props': 'warn',
+      // Warn on usage of componentWillUpdate lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-component-will-update
+      'react-x/no-component-will-update': 'warn',
+      // Warn on usage of UNSAFE_componentWillMount lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-unsafe-component-will-mount
+      'react-x/no-unsafe-component-will-mount': 'warn',
+      // Warn on usage of UNSAFE_componentWillReceiveProps lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-unsafe-component-will-receive-props
+      'react-x/no-unsafe-component-will-receive-props': 'warn',
+      // Warn on usage of UNSAFE_componentWillUpdate lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-unsafe-component-will-update
+      'react-x/no-unsafe-component-will-update': 'warn',
+      // Warn on usage of string refs
+      // https://eslint-react.xyz/docs/rules/no-string-refs
+      'react-x/no-string-refs': 'warn',
       // Error on code which is problematic for the React Compiler
       // https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler
       'react-compiler/react-compiler': 'error',
