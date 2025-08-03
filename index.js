@@ -450,7 +450,7 @@ const eslintConfigReactAppRules = {
   // ```
   // 'react/jsx-no-duplicate-props': 'warn',
   // ```
-  // Disabled because replacement rule react-x/no-unsafe-target-blank configured below
+  // Disabled because replacement rule react-dom/no-unsafe-target-blank configured below
   // ```
   // 'react/jsx-no-target-blank': 'warn',
   // ```
