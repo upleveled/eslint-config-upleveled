@@ -955,6 +955,18 @@ const configArray = [
       // children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
       'react/self-closing-comp': 'warn',
+      // Error on usage of ReactDOM.findDOMNode()
+      // https://eslint-react.xyz/docs/rules/dom-no-find-dom-node
+      'react-dom/no-find-dom-node': 'error',
+      // Error on usage of ReactDOM.render() (replaced by createRoot)
+      // https://eslint-react.xyz/docs/rules/dom-no-render
+      'react-dom/no-render': 'error',
+      // Error on usage of ReactDOM.hydrate() (replaced by hydrateRoot)
+      // https://eslint-react.xyz/docs/rules/dom-no-hydrate
+      'react-dom/no-hydrate': 'error',
+      // Warn on usage of ReactDOM.renderToNodeStream()
+      // https://eslint-react.xyz/docs/rules/dom-no-render-return-value
+      'react-dom/no-render-return-value': 'warn',
       // Error on passing children to void elements
       // https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
       'react-dom/no-void-elements-with-children': 'error',
@@ -968,6 +980,27 @@ const configArray = [
       // Error on direct mutation of state
       // https://eslint-react.xyz/docs/rules/no-direct-mutation-state
       'react-x/no-direct-mutation-state': 'warn',
+      // Warn on usage of componentWillMount lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-component-will-mount
+      'react-x/no-component-will-mount': 'warn',
+      // Warn on usage of componentWillReceiveProps lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-component-will-receive-props
+      'react-x/no-component-will-receive-props': 'warn',
+      // Warn on usage of componentWillUpdate lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-component-will-update
+      'react-x/no-component-will-update': 'warn',
+      // Warn on usage of UNSAFE_componentWillMount lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-unsafe-component-will-mount
+      'react-x/no-unsafe-component-will-mount': 'warn',
+      // Warn on usage of UNSAFE_componentWillReceiveProps lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-unsafe-component-will-receive-props
+      'react-x/no-unsafe-component-will-receive-props': 'warn',
+      // Warn on usage of UNSAFE_componentWillUpdate lifecycle method
+      // https://eslint-react.xyz/docs/rules/no-unsafe-component-will-update
+      'react-x/no-unsafe-component-will-update': 'warn',
+      // Warn on usage of string refs
+      // https://eslint-react.xyz/docs/rules/no-string-refs
+      'react-x/no-string-refs': 'warn',
       // Error on code which is problematic for the React Compiler
       // https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler
       'react-compiler/react-compiler': 'error',
