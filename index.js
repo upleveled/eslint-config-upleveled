@@ -1025,6 +1025,9 @@ const configArray = [
       // Warn on usage of UNSAFE_componentWillUpdate lifecycle method
       // https://eslint-react.xyz/docs/rules/no-unsafe-component-will-update
       'react-x/no-unsafe-component-will-update': 'warn',
+      // Warn on unused props
+      // https://github.com/Rel1cx/eslint-react/blob/2.0.0-beta/packages/plugins/eslint-plugin-react-x/src/rules/no-unused-props.md
+      'react-x/no-unused-props': 'warn',
       // Error on useless React fragments
       // https://eslint-react.xyz/docs/rules/no-useless-fragment
       'react-x/no-useless-fragment': 'warn',
