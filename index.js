@@ -490,8 +490,9 @@ const eslintConfigReactAppRules = {
   // 'react/no-typos': 'error',
   // 'react/require-render-return': 'error',
   // ```
-  // Cannot migrate to eslint-plugin-react-x yet, since there is no replacement rule for non-TS environments like MDX
-  // https://github.com/Rel1cx/eslint-react/issues/85
+  // TODO: Migrate to eslint-plugin-react-x, once there is a
+  // replacement rule for non-TS environments like MDX
+  // https://github.com/Rel1cx/eslint-react/issues/85#issuecomment-3148421342
   'react/style-prop-object': [
     'warn',
     {
