@@ -12,6 +12,7 @@ import react from 'eslint-plugin-react';
 import reactCompiler from 'eslint-plugin-react-compiler';
 import reactDom from 'eslint-plugin-react-dom';
 import reactHooks from 'eslint-plugin-react-hooks';
+import reactNamingConvention from 'eslint-plugin-react-naming-convention';
 import reactX from 'eslint-plugin-react-x';
 import security from 'eslint-plugin-security';
 import sonarjs from 'eslint-plugin-sonarjs';
@@ -437,14 +438,28 @@ const eslintConfigReactAppRules = {
   // ```
 
   // https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules
-  'react/forbid-foreign-prop-types': ['warn', { allowInPropTypes: true }],
+  // Disabled because of obsolescence of the rule (has to do with propTypes)
+  // ```
+  // 'react/forbid-foreign-prop-types': ['warn', { allowInPropTypes: true }],
+  // ```
   // Disabled because replacement rule react-x/no-comment-textnodes configured below
   // ```
   // 'react/jsx-no-comment-textnodes': 'warn',
   // ```
-  'react/jsx-no-duplicate-props': 'warn',
-  'react/jsx-no-target-blank': 'warn',
-  'react/jsx-no-undef': 'error',
+  // Disabled because replacement rule react-x/jsx-no-duplicate-props configured below
+  // ```
+  // 'react/jsx-no-duplicate-props': 'warn',
+  // ```
+  // Disabled because replacement rule react-dom/no-unsafe-target-blank configured below
+  // ```
+  // 'react/jsx-no-target-blank': 'warn',
+  // ```
+  // Disable because typescript-eslint parser + ESLint built-in rule no-undef replace this
+  // https://github.com/jsx-eslint/eslint-plugin-react/pull/3941
+  // ```
+  // 'react/jsx-no-undef': 'error',
+  // ```
+  // TODO: Migrate to https://eslint.style/rules/jsx-pascal-case
   'react/jsx-pascal-case': [
     'warn',
     {
@@ -452,7 +467,10 @@ const eslintConfigReactAppRules = {
       ignore: [],
     },
   ],
-  'react/no-danger-with-children': 'warn',
+  // Disable because replacement rule react-dom/no-dangerously-set-innerhtml-with-children configured below
+  // ```
+  // 'react/no-danger-with-children': 'warn',
+  // ```
   // Disabled because of undesirable warnings See
   // https://github.com/facebook/create-react-app/issues/5204 for
   // blockers until its re-enabled
@@ -463,9 +481,18 @@ const eslintConfigReactAppRules = {
   // ```
   // 'react/no-direct-mutation-state': 'warn',
   // ```
-  'react/no-is-mounted': 'warn',
-  'react/no-typos': 'error',
-  'react/require-render-return': 'error',
+  // Disabled because of obsolescence of the rule (createReactClass is very uncommon)
+  // ```
+  // 'react/no-is-mounted': 'warn',
+  // ```
+  // Disabled because of obsolescence of the rule (relates to class components)
+  // ```
+  // 'react/no-typos': 'error',
+  // 'react/require-render-return': 'error',
+  // ```
+  // TODO: Migrate to eslint-plugin-react-x, once there is a
+  // replacement rule for non-TS environments like MDX
+  // https://github.com/Rel1cx/eslint-react/issues/85#issuecomment-3148421342
   'react/style-prop-object': [
     'warn',
     {
@@ -543,6 +570,7 @@ const configArray = [
       'react-compiler': reactCompiler,
       'react-dom': reactDom,
       'react-hooks': reactHooks,
+      'react-naming-convention': reactNamingConvention,
       'react-x': reactX,
       react: fixupPluginRules(react),
       security,
@@ -904,51 +932,41 @@ const configArray = [
       // https://github.com/eslint/eslint/blob/main/docs/src/rules/prefer-promise-reject-errors.md
       'prefer-promise-reject-errors': 'warn',
       // Warn about state variable and setter names which are not
-      // symmetrically named
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md
-      'react/hook-use-state': 'warn',
+      // destructured or symmetrically named
+      // https://eslint-react.xyz/docs/rules/naming-convention-use-state
+      'react-naming-convention/use-state': 'warn',
       // Error on missing sandbox attribute on iframes (good
       // security practice)
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/iframe-missing-sandbox.md
-      'react/iframe-missing-sandbox': 'error',
+      // https://eslint-react.xyz/docs/rules/dom-no-missing-iframe-sandbox
+      'react-dom/no-missing-iframe-sandbox': 'error',
       // Warn about unnecessary curly braces around props and
       // string literal children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
+      // TODO: Migrate to https://eslint.style/rules/jsx-curly-brace-presence
       'react/jsx-curly-brace-presence': [
         'warn',
         { props: 'never', children: 'never', propElementValues: 'always' },
       ],
-      // Error on missing or incorrect `key` props in maps in JSX
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-key.md
-      'react/jsx-key': [
-        'error',
-        {
-          checkFragmentShorthand: true,
-          checkKeyMustBeforeSpread: true,
-          warnOnDuplicates: true,
-        },
-      ],
+      // Error on missing `key` prop in React elements
+      // https://eslint-react.xyz/docs/rules/no-missing-key
+      'react-x/no-missing-key': 'error',
+      // Error on duplicate `key` props in React elements
+      // https://eslint-react.xyz/docs/rules/no-duplicate-key
+      'react-x/no-duplicate-key': 'error',
       // Disallow React being marked as unused
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-uses-react.md
-      'react/jsx-uses-react': 'warn',
-      // Error on invalid HTML attributes (only `rel` as of March
-      // 2022)
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-invalid-html-attribute.md
-      'react/no-invalid-html-attribute': 'error',
-      // Error on unused React prop types
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
-      'react/no-unused-prop-types': 'warn',
-      // Disable rule because the new JSX transform in React 17,
-      // Next.js and Gatsby no longer requires the import.
-      // https://github.com/jsx-eslint/eslint-plugin-react/issues/2440#issuecomment-683433266
-      'react/react-in-jsx-scope': 'off',
+      // https://eslint-react.xyz/docs/rules/jsx-uses-react
+      'react-x/jsx-uses-react': 'warn',
       // Warn about components that have a closing tag but no
       // children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
+      // TODO: Migrate to https://eslint.style/rules/jsx-self-closing-comp
       'react/self-closing-comp': 'warn',
       // Error on code which is problematic for the React Compiler
       // https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler
       'react-compiler/react-compiler': 'error',
+      // Error on usage of dangerouslySetInnerHTML with children
+      // https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml-with-children
+      'react-dom/no-dangerously-set-innerhtml-with-children': 'error',
       // Error on usage of ReactDOM.findDOMNode()
       // https://eslint-react.xyz/docs/rules/dom-no-find-dom-node
       'react-dom/no-find-dom-node': 'error',
@@ -961,9 +979,15 @@ const configArray = [
       // Warn on usage of ReactDOM.renderToNodeStream()
       // https://eslint-react.xyz/docs/rules/dom-no-render-return-value
       'react-dom/no-render-return-value': 'warn',
+      // Error on usage of target="_blank" without rel="noreferrer noopener"
+      // https://eslint-react.xyz/docs/rules/dom-no-unsafe-target-blank
+      'react-dom/no-unsafe-target-blank': 'error',
       // Error on passing children to void elements
       // https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
       'react-dom/no-void-elements-with-children': 'error',
+      // Warn on duplicate props in JSX
+      // https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
+      'react-x/jsx-no-duplicate-props': 'warn',
       // Warn if a `key` is set to an `index`
       // https://eslint-react.xyz/docs/rules/no-array-index-key
       'react-x/no-array-index-key': 'error',
@@ -1064,7 +1088,7 @@ const configArray = [
       // 2. Prevent false positives in @react-three/fiber
       //    - https://github.com/jsx-eslint/eslint-plugin-react/issues/3423
       //    - https://github.com/Rel1cx/eslint-react/issues/846
-      'react/no-unknown-property': ['warn', { ignore: ['css'] }],
+      'react-dom/no-unknown-property': ['warn', { ignore: ['css'] }],
     },
   },
   {

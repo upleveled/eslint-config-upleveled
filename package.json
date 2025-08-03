@@ -62,6 +62,7 @@
   "devDependencies": {
     "@typescript-eslint/utils": "8.38.0",
     "eslint-config-upleveled": "9.2.6",
+    "eslint-plugin-react-naming-convention": "1.52.3",
     "prettier": "3.6.2",
     "prettier-plugin-embed": "0.5.0",
     "prettier-plugin-sql": "0.19.2",
