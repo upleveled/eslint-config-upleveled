@@ -985,6 +985,9 @@ const configArray = [
       // Error on passing children to void elements
       // https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
       'react-dom/no-void-elements-with-children': 'error',
+      // Warn on duplicate props in JSX
+      // https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
+      'react-x/jsx-no-duplicate-props': 'warn',
       // Warn if a `key` is set to an `index`
       // https://eslint-react.xyz/docs/rules/no-array-index-key
       'react-x/no-array-index-key': 'error',
@@ -1003,9 +1006,6 @@ const configArray = [
       // Error on direct mutation of state
       // https://eslint-react.xyz/docs/rules/no-direct-mutation-state
       'react-x/no-direct-mutation-state': 'warn',
-      // Warn on duplicate props in JSX
-      // https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
-      'react-x/jsx-no-duplicate-props': 'warn',
       // Disallow potentially falsey string and number values in
       // logical && expressions
       // https://eslint-react.xyz/docs/rules/no-leaked-conditional-rendering
