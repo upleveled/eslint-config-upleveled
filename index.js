@@ -936,7 +936,7 @@ const configArray = [
       'react/jsx-uses-react': 'warn',
       // Warn if a `key` is set to an `index`
       // https://eslint-react.xyz/docs/rules/no-array-index-key
-      'react-x/no-array-index-key': ['error'],
+      'react-x/no-array-index-key': 'error',
       // Error on invalid HTML attributes (only `rel` as of March
       // 2022)
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-invalid-html-attribute.md
