@@ -427,13 +427,20 @@ const eslintConfigReactAppRules = {
   'getter-return': 'warn',
 
   // https://github.com/benmosher/eslint-plugin-import/tree/master/docs/rules
-  // 'import/first': 'error', 'import/no-amd': 'error',
+  // Disabled to enable moving to eslint-plugin-import-x
+  // ```
+  // 'import/first': 'error',
+  // 'import/no-amd': 'error',
   // 'import/no-anonymous-default-export': 'warn',
   // 'import/no-webpack-loader-syntax': 'error',
+  // ```
 
   // https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules
   'react/forbid-foreign-prop-types': ['warn', { allowInPropTypes: true }],
-  'react/jsx-no-comment-textnodes': 'warn',
+  // Disabled because replacement rule react-x/no-comment-textnodes configured below
+  // ```
+  // 'react/jsx-no-comment-textnodes': 'warn',
+  // ```
   'react/jsx-no-duplicate-props': 'warn',
   'react/jsx-no-target-blank': 'warn',
   'react/jsx-no-undef': 'error',
@@ -447,8 +454,14 @@ const eslintConfigReactAppRules = {
   'react/no-danger-with-children': 'warn',
   // Disabled because of undesirable warnings See
   // https://github.com/facebook/create-react-app/issues/5204 for
-  // blockers until its re-enabled 'react/no-deprecated': 'warn',
-  'react/no-direct-mutation-state': 'warn',
+  // blockers until its re-enabled
+  // ```
+  // 'react/no-deprecated': 'warn',
+  // ```
+  // Disabled because replacement rule react-x/no-direct-mutation-state configured below
+  // ```
+  // 'react/no-direct-mutation-state': 'warn',
+  // ```
   'react/no-is-mounted': 'warn',
   'react/no-typos': 'error',
   'react/require-render-return': 'error',
@@ -914,20 +927,21 @@ const configArray = [
         },
       ],
       // Error on useless React fragments
-      'react/jsx-no-useless-fragment': 'warn',
+      // https://eslint-react.xyz/docs/rules/no-useless-fragment
+      'react-x/no-useless-fragment': 'warn',
       // Disallow React being marked as unused
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-uses-react.md
       'react/jsx-uses-react': 'warn',
       // Warn if a `key` is set to an `index`
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
-      'react/no-array-index-key': ['error'],
+      // https://eslint-react.xyz/docs/rules/no-array-index-key
+      'react-x/no-array-index-key': ['error'],
       // Error on invalid HTML attributes (only `rel` as of March
       // 2022)
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-invalid-html-attribute.md
       'react/no-invalid-html-attribute': 'error',
       // Error on creating components within components
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
-      'react/no-unstable-nested-components': 'error',
+      // https://eslint-react.xyz/docs/rules/no-nested-component-definitions
+      'react-x/no-nested-component-definitions': 'error',
       // Error on unused React prop types
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
       'react/no-unused-prop-types': 'warn',
@@ -940,12 +954,18 @@ const configArray = [
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
       'react/self-closing-comp': 'warn',
       // Error on passing children to void elements
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
-      'react/void-dom-elements-no-children': 'error',
+      // https://eslint-react.xyz/docs/rules/no-void-elements-with-children
+      'react-x/no-void-elements-with-children': 'error',
       // Disallow potentially falsey string and number values in
       // logical && expressions
       // https://eslint-react.xyz/docs/rules/no-leaked-conditional-rendering
       'react-x/no-leaked-conditional-rendering': 'error',
+      // Error on comment textnodes in JSX
+      // https://eslint-react.xyz/docs/rules/no-comment-textnodes
+      'react-x/no-comment-textnodes': 'warn',
+      // Error on direct mutation of state
+      // https://eslint-react.xyz/docs/rules/no-direct-mutation-state
+      'react-x/no-direct-mutation-state': 'warn',
       // Error on code which is problematic for the React Compiler
       // https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler
       'react-compiler/react-compiler': 'error',
