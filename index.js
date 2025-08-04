@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import { fixupPluginRules } from '@eslint/compat';
 import next from '@next/eslint-plugin-next';
+import stylistic from '@stylistic/eslint-plugin';
 import eslintTypescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import gitignore from 'eslint-config-flat-gitignore';
@@ -459,14 +460,16 @@ const eslintConfigReactAppRules = {
   // ```
   // 'react/jsx-no-undef': 'error',
   // ```
-  // TODO: Migrate to https://eslint.style/rules/jsx-pascal-case
-  'react/jsx-pascal-case': [
-    'warn',
-    {
-      allowAllCaps: true,
-      ignore: [],
-    },
-  ],
+  // Disabled because replacement rule @stylistic/jsx-pascal-case configured below
+  // ```
+  // 'react/jsx-pascal-case': [
+  //   'warn',
+  //   {
+  //     allowAllCaps: false,
+  //     ignore: [],
+  //   },
+  // ],
+  // ```
   // Disable because replacement rule react-dom/no-dangerously-set-innerhtml-with-children configured below
   // ```
   // 'react/no-danger-with-children': 'warn',
@@ -562,6 +565,7 @@ const configArray = [
     },
     plugins: {
       '@next/next': fixupPluginRules(next),
+      '@stylistic': stylistic,
       '@typescript-eslint': {
         rules: eslintTypescript.rules,
       },
@@ -631,6 +635,24 @@ const configArray = [
       // page by importing <Head /> from next/document
       // https://github.com/vercel/next.js/blob/canary/errors/no-title-in-document-head.md
       '@next/next/no-title-in-document-head': 'warn',
+      // Warn about unnecessary curly braces around props and
+      // string literal children
+      // https://eslint.style/rules/jsx-curly-brace-presence
+      '@stylistic/jsx-curly-brace-presence': [
+        'warn',
+        {
+          props: 'never',
+          children: 'never',
+          propElementValues: 'always',
+        },
+      ],
+      // Warn on usage of non-Pascal case React components in JSX
+      // https://eslint.style/rules/jsx-pascal-case
+      '@stylistic/jsx-pascal-case': 'warn',
+      // Warn about components that have a closing tag but no
+      // children
+      // https://eslint.style/rules/jsx-self-closing-comp
+      '@stylistic/jsx-self-closing-comp': 'warn',
       // Warn on usage of angle brackets for type assertions (eg.
       // `<Type>x`)
       // https://typescript-eslint.io/rules/consistent-type-assertions/
@@ -931,19 +953,6 @@ const configArray = [
       // Warn on promise rejection without Error object
       // https://github.com/eslint/eslint/blob/main/docs/src/rules/prefer-promise-reject-errors.md
       'prefer-promise-reject-errors': 'warn',
-      // Warn about unnecessary curly braces around props and
-      // string literal children
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
-      // TODO: Migrate to https://eslint.style/rules/jsx-curly-brace-presence
-      'react/jsx-curly-brace-presence': [
-        'warn',
-        { props: 'never', children: 'never', propElementValues: 'always' },
-      ],
-      // Warn about components that have a closing tag but no
-      // children
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
-      // TODO: Migrate to https://eslint.style/rules/jsx-self-closing-comp
-      'react/self-closing-comp': 'warn',
       // Error on code which is problematic for the React Compiler
       // https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler
       'react-compiler/react-compiler': 'error',
