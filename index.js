@@ -10,7 +10,6 @@ import * as tsResolver from 'eslint-import-resolver-typescript';
 import eslintImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
-import reactCompiler from 'eslint-plugin-react-compiler';
 import reactDom from 'eslint-plugin-react-dom';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactNamingConvention from 'eslint-plugin-react-naming-convention';
@@ -571,7 +570,6 @@ const configArray = [
       },
       'import-x': eslintImportX,
       'jsx-a11y': jsxA11y,
-      'react-compiler': reactCompiler,
       'react-dom': reactDom,
       'react-hooks': reactHooks,
       'react-naming-convention': reactNamingConvention,
@@ -955,7 +953,7 @@ const configArray = [
       'prefer-promise-reject-errors': 'warn',
       // Error on code which is problematic for the React Compiler
       // https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler
-      'react-compiler/react-compiler': 'error',
+      'react-hooks/react-compiler': 'error',
       // Error on usage of dangerouslySetInnerHTML with children
       // https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml-with-children
       'react-dom/no-dangerously-set-innerhtml-with-children': 'error',
