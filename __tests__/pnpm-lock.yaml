@@ -25,8 +25,8 @@ importers:
         specifier: ^9.10.0
         version: 9.31.0
       eslint-config-upleveled:
-        specifier: ^9.2.11
-        version: 9.2.11(@babel/core@7.28.0)(@types/node@24.1.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(@typescript-eslint/utils@8.38.0(eslint@9.31.0)(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.38.0(eslint@9.31.0)(typescript@5.8.3))(eslint@9.31.0))(eslint@9.31.0)(globals@16.3.0)(typescript@5.8.3)
+        specifier: ^9.2.12
+        version: 9.2.12(@babel/core@7.28.0)(@types/node@24.1.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(@typescript-eslint/utils@8.38.0(eslint@9.31.0)(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.38.0(eslint@9.31.0)(typescript@5.8.3))(eslint@9.31.0))(eslint@9.31.0)(globals@16.3.0)(typescript@5.8.3)
       postcss-styled-syntax:
         specifier: ^0.7.0
         version: 0.7.1(postcss@8.5.6)
@@ -143,10 +143,9 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
-  '@babel/plugin-proposal-private-methods@7.18.6':
-    resolution: {integrity: sha512-nutsvktDItsNn4rpGItSNV2sz1XwS+nfU0Rg8aCx3W3NOKVzdMjJRu0O5OkgDp3ZGICSTbgRpxZoWsxoKRvbeA==}
+  '@babel/plugin-transform-private-methods@7.27.1':
+    resolution: {integrity: sha512-10FVt+X55AjRAYI9BrdISN9/AQWHqldOeZDUoLyif1Kn05a56xVBXb8ZouL8pZ9jem8QpXaOt8TS7RHUIS+GPA==}
     engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
@@ -1052,8 +1051,8 @@ packages:
     peerDependencies:
       eslint: ^9.5.0
 
-  eslint-config-upleveled@9.2.11:
-    resolution: {integrity: sha512-0KBFRQYN23VUXe8twzj4Z+TQHNsohc4puFkfXLCKY6hR2Vk36I5r2QIoDU8vAZ6o+bgIyWGDnbSzuXY9IAToCQ==}
+  eslint-config-upleveled@9.2.12:
+    resolution: {integrity: sha512-LXGRoIdCUodxJT0NPgK787+8Wlqot3L9w0+n0a+keN4aVmKklD2u3vFzE5Wb3s4ui0G1Igt5ZhE1IDUMXWYf1g==}
     engines: {node: '>=20.9.0'}
     hasBin: true
     peerDependencies:
@@ -1139,12 +1138,6 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
 
-  eslint-plugin-react-compiler@19.1.0-rc.2:
-    resolution: {integrity: sha512-oKalwDGcD+RX9mf3NEO4zOoUMeLvjSvcbbEOpquzmzqEEM2MQdp7/FY/Hx9NzmUwFzH1W9SKTz5fihfMldpEYw==}
-    engines: {node: ^14.17.0 || ^16.0.0 || >= 18.0.0}
-    peerDependencies:
-      eslint: '>=7'
-
   eslint-plugin-react-dom@2.0.0-beta.23:
     resolution: {integrity: sha512-eNPqEIROUL8VjIwdV0dZ2ka8CNcGZschuZ6U0hvD2WSxti+otyyq0pwNf7lRz+a6GDgc4yq0MJ0VXsebu8S6Zw==}
     engines: {node: '>=20.19.0'}
@@ -1155,9 +1148,9 @@ packages:
       typescript:
         optional: true
 
-  eslint-plugin-react-hooks@5.2.0:
-    resolution: {integrity: sha512-+f15FfK64YQwZdJNELETdn5ibXEUQmW1DZL6KXhNnc2heoy/sg9VJJeT7n8TlMWouzWqSWavFkIhHyIbIAEapg==}
-    engines: {node: '>=10'}
+  eslint-plugin-react-hooks@6.0.0-rc.1:
+    resolution: {integrity: sha512-7C4c7bdtd/B7Q+HruZxYhGjwZVvJawvQpilEYlRG1Jncuk1ZNqrFy9bO8SJNieyj3iDh8WPQA7BzzPO7sNAyEA==}
+    engines: {node: '>=18'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
 
@@ -2516,7 +2509,7 @@ snapshots:
     dependencies:
       '@babel/types': 7.28.0
 
-  '@babel/plugin-proposal-private-methods@7.18.6(@babel/core@7.28.0)':
+  '@babel/plugin-transform-private-methods@7.27.1(@babel/core@7.28.0)':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/helper-create-class-features-plugin': 7.27.1(@babel/core@7.28.0)
@@ -3496,7 +3489,7 @@ snapshots:
       '@eslint/compat': 1.3.1(eslint@9.31.0)
       eslint: 9.31.0
 
-  eslint-config-upleveled@9.2.11(@babel/core@7.28.0)(@types/node@24.1.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(@typescript-eslint/utils@8.38.0(eslint@9.31.0)(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.38.0(eslint@9.31.0)(typescript@5.8.3))(eslint@9.31.0))(eslint@9.31.0)(globals@16.3.0)(typescript@5.8.3):
+  eslint-config-upleveled@9.2.12(@babel/core@7.28.0)(@types/node@24.1.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(@typescript-eslint/utils@8.38.0(eslint@9.31.0)(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.38.0(eslint@9.31.0)(typescript@5.8.3))(eslint@9.31.0))(eslint@9.31.0)(globals@16.3.0)(typescript@5.8.3):
     dependencies:
       '@babel/eslint-parser': 7.28.0(@babel/core@7.28.0)(eslint@9.31.0)
       '@eslint/compat': 1.3.1(eslint@9.31.0)
@@ -3513,9 +3506,8 @@ snapshots:
       eslint-plugin-import-x: 4.16.1(@typescript-eslint/utils@8.38.0(eslint@9.31.0)(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@9.31.0)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.31.0)
       eslint-plugin-react: 7.37.5(eslint@9.31.0)
-      eslint-plugin-react-compiler: 19.1.0-rc.2(eslint@9.31.0)
       eslint-plugin-react-dom: 2.0.0-beta.23(eslint@9.31.0)(typescript@5.8.3)
-      eslint-plugin-react-hooks: 5.2.0(eslint@9.31.0)
+      eslint-plugin-react-hooks: 6.0.0-rc.1(eslint@9.31.0)
       eslint-plugin-react-naming-convention: 2.0.0-beta.23(eslint@9.31.0)(typescript@5.8.3)
       eslint-plugin-react-x: 2.0.0-beta.23(eslint@9.31.0)(ts-api-utils@2.1.0(typescript@5.8.3))(typescript@5.8.3)
       eslint-plugin-security: 3.0.1
@@ -3644,18 +3636,6 @@ snapshots:
       safe-regex-test: 1.1.0
       string.prototype.includes: 2.0.1
 
-  eslint-plugin-react-compiler@19.1.0-rc.2(eslint@9.31.0):
-    dependencies:
-      '@babel/core': 7.28.0
-      '@babel/parser': 7.28.0
-      '@babel/plugin-proposal-private-methods': 7.18.6(@babel/core@7.28.0)
-      eslint: 9.31.0
-      hermes-parser: 0.25.1
-      zod: 3.25.76
-      zod-validation-error: 3.5.2(zod@3.25.76)
-    transitivePeerDependencies:
-      - supports-color
-
   eslint-plugin-react-dom@2.0.0-beta.23(eslint@9.31.0)(typescript@5.8.3):
     dependencies:
       '@eslint-react/ast': 2.0.0-beta.23(eslint@9.31.0)(typescript@5.8.3)
@@ -3676,9 +3656,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-react-hooks@5.2.0(eslint@9.31.0):
+  eslint-plugin-react-hooks@6.0.0-rc.1(eslint@9.31.0):
     dependencies:
+      '@babel/core': 7.28.0
+      '@babel/parser': 7.28.0
+      '@babel/plugin-transform-private-methods': 7.27.1(@babel/core@7.28.0)
       eslint: 9.31.0
+      hermes-parser: 0.25.1
+      zod: 3.25.76
+      zod-validation-error: 3.5.2(zod@3.25.76)
+    transitivePeerDependencies:
+      - supports-color
 
   eslint-plugin-react-naming-convention@2.0.0-beta.23(eslint@9.31.0)(typescript@5.8.3):
     dependencies:
