@@ -316,7 +316,10 @@ const eslintConfigReactAppRules = {
   'no-template-curly-in-string': 'warn',
   'no-this-before-super': 'warn',
   'no-throw-literal': 'warn',
-  'no-undef': 'error',
+  // Disabled because no-undef configured on JavaScript / JSX files conditionally below
+  // ```
+  // 'no-undef': 'error',
+  // ```
   'no-restricted-globals': [
     'error',
     // Confusing browser globals (copied from create-react-app)
@@ -1090,6 +1093,13 @@ const configArray = [
   {
     files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
     rules: {
+      // Error on undefined variables
+      // https://eslint.org/docs/latest/rules/no-undef
+      //
+      // Enable no-undef only in JavaScript / JSX files because
+      // TypeScript's checks are better
+      // - https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+      'no-undef': 'error',
       // Warn on usage of `class` prop instead of `className`
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
       //
