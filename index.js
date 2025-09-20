@@ -997,7 +997,7 @@ const configArray = [
       'react-x/no-array-index-key': 'error',
       // Error on comment textnodes in JSX
       // https://eslint-react.xyz/docs/rules/no-comment-textnodes
-      'react-x/no-comment-textnodes': 'warn',
+      'react-x/jsx-no-comment-textnodes': 'warn',
       // Warn on usage of componentWillMount lifecycle method
       // https://eslint-react.xyz/docs/rules/no-component-will-mount
       'react-x/no-component-will-mount': 'warn',
