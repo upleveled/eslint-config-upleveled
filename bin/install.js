@@ -364,29 +364,41 @@ if (gitignoreChanged) {
   console.log('✅ Done updating .gitignore');
 }
 
-const npmrcPath = join(process.cwd(), '.npmrc');
+const pnpmWorkspaceYamlPath = join(process.cwd(), 'pnpm-workspace.yaml');
 
 /** @type {string[]} */
-let npmrcContentLines = [];
+let pnpmWorkspaceYamlContentLines = [];
 
 try {
-  npmrcContentLines = readFileSync(npmrcPath, 'utf-8').split('\n');
+  pnpmWorkspaceYamlContentLines = readFileSync(
+    pnpmWorkspaceYamlPath,
+    'utf-8',
+  ).split('\n');
 } catch {
-  // Swallow error in case .npmrc doesn't exist yet
+  // Swallow error in case pnpm-workspace.yaml doesn't exist yet
 }
 
-if (!npmrcContentLines.includes('strict-dep-builds=true')) {
-  console.log('Updating .npmrc...');
-  npmrcContentLines.push(`# Fail on pnpm ignored build scripts
-# - https://github.com/pnpm/pnpm/pull/9071
-strict-dep-builds=true`);
+if (!pnpmWorkspaceYamlContentLines.includes('strict-dep-builds=true')) {
+  console.log('Updating pnpm-workspace.yaml...');
+  pnpmWorkspaceYamlContentLines.push(`# Prevents installation of packages newer than 7 days
+# to mitigate supply chain security risks
+# - https://pnpm.io/settings#minimumreleaseage
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - '@upleveled/*'
+  - eslint-config-upleveled
+  - stylelint-config-upleveled
+
+# Fail on pnpm ignored build scripts
+# - https://pnpm.io/settings#strictdepbuilds
+strictDepBuilds: true`);
   writeFileSync(
-    npmrcPath,
-    npmrcContentLines.join('\n') +
+    pnpmWorkspaceYamlPath,
+    pnpmWorkspaceYamlContentLines.join('\n') +
       // Add trailing newline if last line is not empty
-      (npmrcContentLines.at(-1) === '' ? '' : '\n'),
+      (pnpmWorkspaceYamlContentLines.at(-1) === '' ? '' : '\n'),
   );
-  console.log('✅ Done updating .npmrc');
+  console.log('✅ Done updating pnpm-workspace.yaml');
 }
 
 // Commented out in case we need to patch Next.js again in the
