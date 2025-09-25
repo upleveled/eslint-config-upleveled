@@ -58,7 +58,8 @@
     "is-plain-obj": "4.1.0",
     "sort-package-json": "3.4.0",
     "strip-json-comments": "5.0.3",
-    "ts-api-utils": "2.1.0"
+    "ts-api-utils": "2.1.0",
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
     "@typescript-eslint/utils": "8.43.0",

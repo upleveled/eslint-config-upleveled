@@ -14,6 +14,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import isPlainObject from 'is-plain-obj';
 import sortPackageJson from 'sort-package-json';
+import { parseDocument } from 'yaml';
 
 const projectPackageJsonPath = join(process.cwd(), 'package.json');
 const projectPackageJson = JSON.parse(
@@ -366,37 +367,47 @@ if (gitignoreChanged) {
 
 const pnpmWorkspaceYamlPath = join(process.cwd(), 'pnpm-workspace.yaml');
 
-/** @type {string[]} */
-let pnpmWorkspaceYamlContentLines = [];
+/** @type {string} */
+let pnpmWorkspaceYamlContent = '';
 
 try {
-  pnpmWorkspaceYamlContentLines = readFileSync(
-    pnpmWorkspaceYamlPath,
-    'utf-8',
-  ).split('\n');
+  pnpmWorkspaceYamlContent = readFileSync(pnpmWorkspaceYamlPath, 'utf8');
 } catch {
   // Swallow error in case pnpm-workspace.yaml doesn't exist yet
 }
 
-if (!pnpmWorkspaceYamlContentLines.includes('strict-dep-builds=true')) {
-  console.log('Updating pnpm-workspace.yaml...');
-  pnpmWorkspaceYamlContentLines.push(`# Prevents installation of packages newer than 7 days
-# to mitigate supply chain security risks
-# - https://pnpm.io/settings#minimumreleaseage
-minimumReleaseAge: 10080
-minimumReleaseAgeExclude:
-  - '@upleveled/*'
-  - eslint-config-upleveled
-  - stylelint-config-upleveled
+const doc = parseDocument(pnpmWorkspaceYamlContent);
 
-# Fail on pnpm ignored build scripts
-# - https://pnpm.io/settings#strictdepbuilds
-strictDepBuilds: true`);
+const minimumReleaseAgeKey = doc.createNode('minimumReleaseAge');
+minimumReleaseAgeKey.commentBefore =
+  `# Prevents installation of packages newer than 7 days
+# to mitigate supply chain risks
+# - https://pnpm.io/settings#minimumreleaseage`.replaceAll(/^#/gm, '');
+
+doc.setIn([minimumReleaseAgeKey], doc.createNode(10080));
+doc.setIn(
+  ['minimumReleaseAgeExclude'],
+  doc.createNode([
+    '@upleveled/*',
+    'eslint-config-upleveled',
+    'stylelint-config-upleveled',
+  ]),
+);
+
+const strictDepBuildsKey = doc.createNode('strictDepBuilds');
+strictDepBuildsKey.commentBefore = `# Fail on pnpm ignored build scripts
+# - https://pnpm.io/settings#strictdepbuilds`.replaceAll(/^#/gm, '');
+doc.setIn([strictDepBuildsKey], doc.createNode(true));
+
+const updatedPnpmWorkspaceYamlContent = String(doc);
+if (updatedPnpmWorkspaceYamlContent !== pnpmWorkspaceYamlContent) {
+  console.log('Updating pnpm-workspace.yaml...');
   writeFileSync(
     pnpmWorkspaceYamlPath,
-    pnpmWorkspaceYamlContentLines.join('\n') +
-      // Add trailing newline if last line is not empty
-      (pnpmWorkspaceYamlContentLines.at(-1) === '' ? '' : '\n'),
+    updatedPnpmWorkspaceYamlContent.endsWith('\n')
+      ? updatedPnpmWorkspaceYamlContent
+      : updatedPnpmWorkspaceYamlContent + '\n',
+    'utf8',
   );
   console.log('✅ Done updating pnpm-workspace.yaml');
 }
