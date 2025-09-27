@@ -402,13 +402,7 @@ doc.setIn([strictDepBuildsKey], doc.createNode(true));
 const updatedPnpmWorkspaceYamlContent = String(doc);
 if (updatedPnpmWorkspaceYamlContent !== pnpmWorkspaceYamlContent) {
   console.log('Updating pnpm-workspace.yaml...');
-  writeFileSync(
-    pnpmWorkspaceYamlPath,
-    updatedPnpmWorkspaceYamlContent.endsWith('\n')
-      ? updatedPnpmWorkspaceYamlContent
-      : updatedPnpmWorkspaceYamlContent + '\n',
-    'utf8',
-  );
+  writeFileSync(pnpmWorkspaceYamlPath, updatedPnpmWorkspaceYamlContent, 'utf8');
   console.log('✅ Done updating pnpm-workspace.yaml');
 }
 
