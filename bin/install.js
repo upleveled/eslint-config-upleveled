@@ -14,6 +14,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import isPlainObject from 'is-plain-obj';
 import sortPackageJson from 'sort-package-json';
+import { parseDocument } from 'yaml';
 
 const projectPackageJsonPath = join(process.cwd(), 'package.json');
 const projectPackageJson = JSON.parse(
@@ -364,29 +365,45 @@ if (gitignoreChanged) {
   console.log('✅ Done updating .gitignore');
 }
 
-const npmrcPath = join(process.cwd(), '.npmrc');
+const pnpmWorkspaceYamlPath = join(process.cwd(), 'pnpm-workspace.yaml');
 
-/** @type {string[]} */
-let npmrcContentLines = [];
+/** @type {string} */
+let pnpmWorkspaceYamlContent = '';
 
 try {
-  npmrcContentLines = readFileSync(npmrcPath, 'utf-8').split('\n');
+  pnpmWorkspaceYamlContent = readFileSync(pnpmWorkspaceYamlPath, 'utf8');
 } catch {
-  // Swallow error in case .npmrc doesn't exist yet
+  // Swallow error in case pnpm-workspace.yaml doesn't exist yet
 }
 
-if (!npmrcContentLines.includes('strict-dep-builds=true')) {
-  console.log('Updating .npmrc...');
-  npmrcContentLines.push(`# Fail on pnpm ignored build scripts
-# - https://github.com/pnpm/pnpm/pull/9071
-strict-dep-builds=true`);
-  writeFileSync(
-    npmrcPath,
-    npmrcContentLines.join('\n') +
-      // Add trailing newline if last line is not empty
-      (npmrcContentLines.at(-1) === '' ? '' : '\n'),
-  );
-  console.log('✅ Done updating .npmrc');
+const doc = parseDocument(pnpmWorkspaceYamlContent);
+
+const minimumReleaseAgeKey = doc.createNode('minimumReleaseAge');
+minimumReleaseAgeKey.commentBefore =
+  `# Prevents installation of packages newer than 7 days
+# to mitigate supply chain risks
+# - https://pnpm.io/settings#minimumreleaseage`.replaceAll(/^#/gm, '');
+
+doc.setIn([minimumReleaseAgeKey], doc.createNode(10080));
+doc.setIn(
+  ['minimumReleaseAgeExclude'],
+  doc.createNode([
+    '@upleveled/*',
+    'eslint-config-upleveled',
+    'stylelint-config-upleveled',
+  ]),
+);
+
+const strictDepBuildsKey = doc.createNode('strictDepBuilds');
+strictDepBuildsKey.commentBefore = `# Fail on pnpm ignored build scripts
+# - https://pnpm.io/settings#strictdepbuilds`.replaceAll(/^#/gm, '');
+doc.setIn([strictDepBuildsKey], doc.createNode(true));
+
+const updatedPnpmWorkspaceYamlContent = String(doc);
+if (updatedPnpmWorkspaceYamlContent !== pnpmWorkspaceYamlContent) {
+  console.log('Updating pnpm-workspace.yaml...');
+  writeFileSync(pnpmWorkspaceYamlPath, updatedPnpmWorkspaceYamlContent, 'utf8');
+  console.log('✅ Done updating pnpm-workspace.yaml');
 }
 
 // Commented out in case we need to patch Next.js again in the
