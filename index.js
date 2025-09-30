@@ -487,9 +487,9 @@ const eslintConfigReactAppRules = {
   // ```
   // 'react/no-danger-with-children': 'warn',
   // ```
-  // Disabled because of undesirable warnings See
+  // Disabled because of undesirable warnings - see issue for
+  // blockers until it's re-enabled:
   // - https://github.com/facebook/create-react-app/issues/5204
-  // for blockers until its re-enabled
   // ```
   // 'react/no-deprecated': 'warn',
   // ```
