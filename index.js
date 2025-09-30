@@ -976,10 +976,63 @@ const configArray = [
       // Warn on promise rejection without Error object
       // - https://github.com/eslint/eslint/blob/main/docs/src/rules/prefer-promise-reject-errors.md
       'prefer-promise-reject-errors': 'warn',
-      // Error on code which is problematic for the React
-      // Compiler
-      // - https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler
-      'react-hooks/react-compiler': 'error',
+      // Error on component or hook factory functions
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/component-hook-factories
+      'react-hooks/component-hook-factories': 'error',
+      // Error on invalid React Compiler configuration
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/config
+      'react-hooks/config': 'error',
+      // Error on try/catch usage around elements or use()
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/error-boundaries
+      'react-hooks/error-boundaries': 'error',
+      // Error on invalid React Compiler gating configuration
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/gating
+      'react-hooks/gating': 'error',
+      // Error on assignment/mutation of globals during render
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/globals
+      'react-hooks/globals': 'error',
+      // Error on mutation of props, state and other immutable
+      // values (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/immutability
+      'react-hooks/immutability': 'error',
+      // Error on missing dependencies in useMemo and useCallback
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/preserve-manual-memoization
+      'react-hooks/preserve-manual-memoization': 'error',
+      // Error on calling known-impure functions like
+      // Math.random() and Date.now() (problematic for the React
+      // Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+      'react-hooks/purity': 'error',
+      // Error on reading or writing of refs during render
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/refs
+      'react-hooks/refs': 'error',
+      // Error on calling setState synchronously in an effect
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/set-state-in-effect
+      'react-hooks/set-state-in-effect': 'error',
+      // Error on calling setState during render
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/set-state-in-render
+      'react-hooks/set-state-in-render': 'error',
+      // Error on dynamically-recreated components
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/static-components
+      'react-hooks/static-components': 'error',
+      // Error on syntax unsupported by the React Compiler
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/unsupported-syntax
+      'react-hooks/unsupported-syntax': 'error',
+      // Error on useMemo without a return value
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/use-memo
+      'react-hooks/use-memo': 'error',
       // Error on usage of dangerouslySetInnerHTML with children
       // - https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml-with-children
       'react-dom/no-dangerously-set-innerhtml-with-children': 'error',

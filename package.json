@@ -47,7 +47,7 @@
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-dom": "2.0.0-next.187",
-    "eslint-plugin-react-hooks": "6.0.0-rc1",
+    "eslint-plugin-react-hooks": "6.0.0-rc.2",
     "eslint-plugin-react-naming-convention": "2.0.0-next.187",
     "eslint-plugin-react-x": "2.0.0-next.187",
     "eslint-plugin-security": "3.0.1",
