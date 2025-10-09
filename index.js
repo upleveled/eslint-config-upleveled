@@ -9,7 +9,6 @@ import gitignore from 'eslint-config-flat-gitignore';
 import * as tsResolver from 'eslint-import-resolver-typescript';
 import eslintImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
-import react from 'eslint-plugin-react';
 import reactDom from 'eslint-plugin-react-dom';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactNamingConvention from 'eslint-plugin-react-naming-convention';
@@ -60,7 +59,7 @@ https://github.com/reactjs/reactjs.org/issues/4626#issuecomment-1117535930`,
     selector:
       'FunctionDeclaration VariableDeclaration:has(VariableDeclarator > TaggedTemplateExpression > MemberExpression[object.name="styled"][property]), FunctionDeclaration VariableDeclaration:has(VariableDeclarator > TaggedTemplateExpression[tag.name="css"])',
     message:
-      'Declaring Emotion styles or a styled component within a React component will cause the element to get recreated, causing loss of state and other problems - see the react/no-unstable-nested-components docs for more info https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md',
+      'Declaring Emotion styles or a styled component within a React component will cause the element to get recreated, causing loss of state and other problems - see the react/no-nested-component-definitions docs for more info https://eslint-react.xyz/docs/rules/no-nested-component-definitions',
   },
 
   {
@@ -509,20 +508,20 @@ const eslintConfigReactAppRules = {
   // 'react/no-typos': 'error',
   // 'react/require-render-return': 'error',
   // ```
-  // TODO: Migrate to eslint-plugin-react-x, once there is a
-  // replacement rule for non-TS environments like MDX
-  // - https://github.com/Rel1cx/eslint-react/issues/85#issuecomment-3148421342
-  'react/style-prop-object': [
-    'warn',
-    {
-      allow: [
-        // Allow expo-status-bar style prop, which is a string,
-        // eg: <StatusBar style="auto" />
-        // - https://github.com/expo/expo/blob/999572cd1036529ffa3a28a0490dd7c0f6f0d731/packages/expo-status-bar/src/StatusBar.types.ts#L2
-        'StatusBar',
-      ],
-    },
-  ],
+  // Disabled because replacement rule react-dom/no-string-style-prop configured below
+  // ```
+  // 'react/style-prop-object': [
+  //   'warn',
+  //   {
+  //     allow: [
+  //       // Allow expo-status-bar style prop, which is a string,
+  //       // eg: <StatusBar style="auto" />
+  //       // - https://github.com/expo/expo/blob/999572cd1036529ffa3a28a0490dd7c0f6f0d731/packages/expo-status-bar/src/StatusBar.types.ts#L2
+  //       'StatsBar',
+  //     ],
+  //   },
+  // ],
+  // ```
 
   // - https://github.com/evcohen/eslint-plugin-jsx-a11y/tree/master/docs/rules
   'jsx-a11y/alt-text': 'warn',
@@ -591,7 +590,6 @@ const configArray = [
       'react-hooks': reactHooks,
       'react-naming-convention': reactNamingConvention,
       'react-x': reactX,
-      react: fixupPluginRules(react),
       security,
       sonarjs: {
         rules: sonarjs.rules,
@@ -1054,6 +1052,9 @@ const configArray = [
       // Warn on usage of ReactDOM.renderToNodeStream()
       // - https://eslint-react.xyz/docs/rules/dom-no-render-return-value
       'react-dom/no-render-return-value': 'warn',
+      // Warn on usage of string values with style prop
+      // - https://eslint-react.xyz/docs/rules/dom-no-string-style-prop
+      'react-dom/no-string-style-prop': 'warn',
       // Error on usage of target="_blank" without
       // rel="noreferrer noopener"
       // - https://eslint-react.xyz/docs/rules/dom-no-unsafe-target-blank
@@ -1184,7 +1185,7 @@ const configArray = [
       // - https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
       'no-undef': 'error',
       // Warn on usage of `class` prop instead of `className`
-      // - https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
+      // - https://eslint-react.xyz/docs/rules/dom-no-unknown-property
       //
       // Enable react/no-unknown-property only in JavaScript /
       // JSX files to:
