@@ -998,6 +998,10 @@ const configArray = [
       // values (problematic for the React Compiler)
       // https://react.dev/reference/eslint-plugin-react-hooks/lints/immutability
       'react-hooks/immutability': 'error',
+      // Error on libraries which do not support memoization
+      // (problematic for the React Compiler)
+      // https://react.dev/reference/eslint-plugin-react-hooks/lints/incompatible-library
+      'react-hooks/incompatible-library': 'error',
       // Error on missing dependencies in useMemo and useCallback
       // (problematic for the React Compiler)
       // https://react.dev/reference/eslint-plugin-react-hooks/lints/preserve-manual-memoization
@@ -1015,20 +1019,20 @@ const configArray = [
       // (problematic for the React Compiler)
       // https://react.dev/reference/eslint-plugin-react-hooks/lints/set-state-in-effect
       'react-hooks/set-state-in-effect': 'error',
-      // Error on calling setState during render
-      // (problematic for the React Compiler)
+      // Error on calling setState during render (problematic for
+      // the React Compiler)
       // https://react.dev/reference/eslint-plugin-react-hooks/lints/set-state-in-render
       'react-hooks/set-state-in-render': 'error',
-      // Error on dynamically-recreated components
-      // (problematic for the React Compiler)
+      // Error on dynamically-recreated components (problematic
+      // for the React Compiler)
       // https://react.dev/reference/eslint-plugin-react-hooks/lints/static-components
       'react-hooks/static-components': 'error',
       // Error on syntax unsupported by the React Compiler
       // (problematic for the React Compiler)
       // https://react.dev/reference/eslint-plugin-react-hooks/lints/unsupported-syntax
       'react-hooks/unsupported-syntax': 'error',
-      // Error on useMemo without a return value
-      // (problematic for the React Compiler)
+      // Error on useMemo without a return value (problematic for
+      // the React Compiler)
       // https://react.dev/reference/eslint-plugin-react-hooks/lints/use-memo
       'react-hooks/use-memo': 'error',
       // Error on usage of dangerouslySetInnerHTML with children
