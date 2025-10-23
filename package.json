@@ -37,21 +37,21 @@
   "dependencies": {
     "@babel/eslint-parser": "7.28.4",
     "@eslint/compat": "1.4.0",
-    "@next/eslint-plugin-next": "15.5.4",
+    "@next/eslint-plugin-next": "15.5.5",
     "@stylistic/eslint-plugin": "5.4.0",
-    "@typescript-eslint/eslint-plugin": "8.46.0",
-    "@typescript-eslint/parser": "8.46.0",
+    "@typescript-eslint/eslint-plugin": "8.46.1",
+    "@typescript-eslint/parser": "8.46.1",
     "eslint-config-flat-gitignore": "2.1.0",
     "eslint-import-resolver-typescript": "4.4.4",
     "eslint-plugin-import-x": "4.16.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-react-dom": "2.0.6",
+    "eslint-plugin-react-dom": "2.2.2",
     "eslint-plugin-react-hooks": "6.1.1",
-    "eslint-plugin-react-naming-convention": "2.0.6",
-    "eslint-plugin-react-x": "2.0.6",
+    "eslint-plugin-react-naming-convention": "2.2.2",
+    "eslint-plugin-react-x": "2.2.2",
     "eslint-plugin-security": "3.0.1",
     "eslint-plugin-sonarjs": "3.0.5",
-    "eslint-plugin-testing-library": "7.13.1",
+    "eslint-plugin-testing-library": "7.13.3",
     "eslint-plugin-unicorn": "61.0.2",
     "eslint-plugin-upleveled": "2.1.14",
     "is-plain-obj": "4.1.0",
@@ -61,7 +61,7 @@
     "yaml": "^2.8.1"
   },
   "devDependencies": {
-    "@typescript-eslint/utils": "8.46.0",
+    "@typescript-eslint/utils": "8.46.1",
     "eslint-config-upleveled": "9.4.2",
     "prettier": "3.6.2",
     "prettier-plugin-embed": "0.5.0",
@@ -70,14 +70,14 @@
     "typescript": "5.9.3"
   },
   "peerDependencies": {
-    "@types/node": ">=24.7.1",
+    "@types/node": ">=24.8.0",
     "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.1",
+    "@types/react-dom": "^19.2.2",
     "eslint": "^9.37.0",
     "globals": "^16.4.0",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.18.2+sha512.9fb969fa749b3ade6035e0f109f0b8a60b5d08a1a87fdf72e337da90dcc93336e2280ca4e44f2358a649b83c17959e9993e777c2080879f3801e6f0d999ad3dd",
+  "packageManager": "pnpm@10.18.3+sha512.bbd16e6d7286fd7e01f6b3c0b3c932cda2965c06a908328f74663f10a9aea51f1129eea615134bf992831b009eabe167ecb7008b597f40ff9bc75946aadfb08d",
   "engines": {
     "node": ">=20.9.0"
   }
