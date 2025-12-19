@@ -1,3 +1,8 @@
+# Block transitive dependencies from using git repositories or
+# direct tarball URLs
+# - https://pnpm.io/settings#blockexoticsubdeps
+blockExoticSubdeps: true
+
 # Prevents installation of packages newer than 7 days
 # to mitigate supply chain security risks
 # - https://pnpm.io/settings#minimumreleaseage
@@ -15,3 +20,7 @@ onlyBuiltDependencies:
 # Fail on pnpm ignored build scripts
 # - https://pnpm.io/settings#strictdepbuilds
 strictDepBuilds: true
+
+# Prevent trust level decreases with new versions of dependencies
+# - https://pnpm.io/settings#trustpolicy
+trustPolicy: 'no-downgrade'
