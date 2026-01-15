@@ -78,8 +78,8 @@ importers:
         specifier: 2.1.14
         version: 2.1.14(eslint@9.39.2)
       globals:
-        specifier: ^16.5.0
-        version: 16.5.0
+        specifier: ^17.0.0
+        version: 17.0.0
       is-plain-obj:
         specifier: 4.1.0
         version: 4.1.0
@@ -101,7 +101,7 @@ importers:
         version: 8.52.0(eslint@9.39.2)(typescript@5.9.3)
       eslint-config-upleveled:
         specifier: 9.4.2
-        version: 9.4.2(@babel/core@7.28.4)(@types/node@25.0.3)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(@typescript-eslint/utils@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2)(globals@16.5.0)(typescript@5.9.3)
+        version: 9.4.2(@babel/core@7.28.4)(@types/node@25.0.3)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(@typescript-eslint/utils@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2)(globals@17.0.0)(typescript@5.9.3)
       prettier:
         specifier: 3.7.4
         version: 3.7.4
@@ -1393,6 +1393,10 @@ packages:
 
   globals@16.5.0:
     resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
+    engines: {node: '>=18'}
+
+  globals@17.0.0:
+    resolution: {integrity: sha512-gv5BeD2EssA793rlFWVPMMCqefTlpusw6/2TbAVMy0FzcG8wKJn4O+NqJ4+XWmmwrayJgw5TzrmWjFgmz1XPqw==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -3380,7 +3384,7 @@ snapshots:
       '@eslint/compat': 1.4.1(eslint@9.39.2)
       eslint: 9.39.2
 
-  eslint-config-upleveled@9.4.2(@babel/core@7.28.4)(@types/node@25.0.3)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(@typescript-eslint/utils@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2)(globals@16.5.0)(typescript@5.9.3):
+  eslint-config-upleveled@9.4.2(@babel/core@7.28.4)(@types/node@25.0.3)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(@typescript-eslint/utils@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2)(globals@17.0.0)(typescript@5.9.3):
     dependencies:
       '@babel/eslint-parser': 7.28.4(@babel/core@7.28.4)(eslint@9.39.2)
       '@eslint/compat': 1.4.0(eslint@9.39.2)
@@ -3405,7 +3409,7 @@ snapshots:
       eslint-plugin-testing-library: 7.12.0(eslint@9.39.2)(typescript@5.9.3)
       eslint-plugin-unicorn: 61.0.2(eslint@9.39.2)
       eslint-plugin-upleveled: 2.1.14(eslint@9.39.2)
-      globals: 16.5.0
+      globals: 17.0.0
       is-plain-obj: 4.1.0
       sort-package-json: 3.4.0
       strip-json-comments: 5.0.3
@@ -3918,6 +3922,8 @@ snapshots:
   globals@14.0.0: {}
 
   globals@16.5.0: {}
+
+  globals@17.0.0: {}
 
   globalthis@1.0.4:
     dependencies:
