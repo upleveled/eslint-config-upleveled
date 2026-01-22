@@ -35,20 +35,20 @@
     "postpublish": "cd __tests__ && pnpm update-config-version"
   },
   "dependencies": {
-    "@babel/eslint-parser": "7.28.5",
-    "@eslint/compat": "2.0.0",
+    "@babel/eslint-parser": "7.28.6",
+    "@eslint/compat": "2.0.1",
     "@next/eslint-plugin-next": "15.5.5",
-    "@stylistic/eslint-plugin": "5.6.1",
-    "@typescript-eslint/eslint-plugin": "8.52.0",
-    "@typescript-eslint/parser": "8.52.0",
+    "@stylistic/eslint-plugin": "5.7.0",
+    "@typescript-eslint/eslint-plugin": "8.53.0",
+    "@typescript-eslint/parser": "8.53.0",
     "eslint-config-flat-gitignore": "2.1.0",
     "eslint-import-resolver-typescript": "4.4.4",
     "eslint-plugin-import-x": "4.16.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-react-dom": "2.5.1",
+    "eslint-plugin-react-dom": "2.6.4",
     "eslint-plugin-react-hooks": "7.0.1",
-    "eslint-plugin-react-naming-convention": "2.5.1",
-    "eslint-plugin-react-x": "2.5.1",
+    "eslint-plugin-react-naming-convention": "2.6.4",
+    "eslint-plugin-react-x": "2.6.4",
     "eslint-plugin-security": "3.0.1",
     "eslint-plugin-sonarjs": "3.0.5",
     "eslint-plugin-testing-library": "7.15.4",
@@ -61,23 +61,23 @@
     "yaml": "^2.8.1"
   },
   "devDependencies": {
-    "@typescript-eslint/utils": "8.52.0",
+    "@typescript-eslint/utils": "8.53.0",
     "eslint-config-upleveled": "9.4.2",
-    "prettier": "3.7.4",
+    "prettier": "3.8.0",
     "prettier-plugin-embed": "0.5.1",
     "prettier-plugin-sql": "0.19.2",
     "stylelint": "16.26.1",
     "typescript": "5.9.3"
   },
   "peerDependencies": {
-    "@types/node": ">=25.0.3",
-    "@types/react": "^19.2.7",
+    "@types/node": ">=25.0.9",
+    "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.2",
     "globals": "^17.0.0",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.27.0+sha512.72d699da16b1179c14ba9e64dc71c9a40988cbdc65c264cb0e489db7de917f20dcf4d64d8723625f2969ba52d4b7e2a1170682d9ac2a5dcaeaab732b7e16f04a",
+  "packageManager": "pnpm@10.28.0+sha512.05df71d1421f21399e053fde567cea34d446fa02c76571441bfc1c7956e98e363088982d940465fd34480d4d90a0668bc12362f8aa88000a64e83d0b0e47be48",
   "engines": {
     "node": ">=20.9.0"
   }
