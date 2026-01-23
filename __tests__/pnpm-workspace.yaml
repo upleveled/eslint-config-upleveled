@@ -12,3 +12,10 @@ minimumReleaseAgeExclude:
 # Fail on pnpm ignored build scripts
 # - https://pnpm.io/settings#strictdepbuilds
 strictDepBuilds: true
+
+# Prevent trust level decreases with new versions of dependencies
+# - https://pnpm.io/settings#trustpolicy
+trustPolicy: 'no-downgrade'
+trustPolicyExclude:
+  # first version with provenance: semver@7.5.1
+  - semver@6.3.1
