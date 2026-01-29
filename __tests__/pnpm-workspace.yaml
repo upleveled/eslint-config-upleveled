@@ -9,8 +9,6 @@ minimumReleaseAgeExclude:
   - "@upleveled/*"
   - eslint-config-upleveled
   - stylelint-config-upleveled
-  # Renovate security update: next@16.1.5
-  - next@16.1.5
 # Fail on pnpm ignored build scripts
 # - https://pnpm.io/settings#strictdepbuilds
 strictDepBuilds: true
