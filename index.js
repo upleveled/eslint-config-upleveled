@@ -565,9 +565,7 @@ const configArray = [
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
-        project: './tsconfig.json',
-        // typescript-eslint specific options
-        warnOnUnsupportedTypeScriptVersion: true,
+        projectService: true,
       },
       globals: {
         ...globals.browser,
