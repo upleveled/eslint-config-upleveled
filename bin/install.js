@@ -352,7 +352,7 @@ for (const {
         filePathInProject,
         `${stringify(templateTsConfig, null, 2)}\n`,
       );
-      console.log('✅ Done merging default tsconfig.json');
+      console.log('✅ Done merging tsconfig.json config');
       continue;
     }
 
