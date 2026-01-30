@@ -333,23 +333,21 @@ for (const {
       if (
         isPlainObject(projectTsConfig) &&
         isPlainObject(templateTsConfig) &&
-        isPlainObject(projectTsConfig.compilerOptions)
+        isPlainObject(projectTsConfig.compilerOptions) &&
+        isPlainObject(projectTsConfig.compilerOptions.paths)
       ) {
-        const newTemplateTsConfigCompilerOptionsPaths = assign(
-          {},
-          projectTsConfig.compilerOptions.paths,
+        if (!('compilerOptions' in templateTsConfig)) {
+          templateTsConfig.compilerOptions = {};
+        }
+
+        const compilerOptions = /** @type {Record<string, any>} */ (
+          templateTsConfig.compilerOptions
         );
 
-        // Merge any compilerOptions.paths from the template
-        if (
-          isPlainObject(templateTsConfig.compilerOptions) &&
-          isPlainObject(templateTsConfig.compilerOptions.paths)
-        ) {
-          templateTsConfig.compilerOptions.paths = assign(
-            newTemplateTsConfigCompilerOptionsPaths,
-            templateTsConfig.compilerOptions.paths,
-          );
-        }
+        compilerOptions.paths = assign(
+          projectTsConfig.compilerOptions.paths,
+          isPlainObject(compilerOptions.paths) ? compilerOptions.paths : {},
+        );
       }
 
       writeFileSync(
