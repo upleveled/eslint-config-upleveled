@@ -213,22 +213,35 @@ for (const {
       const projectTsConfig = parse(readFileSync(filePathInProject, 'utf-8'));
       const templateTsConfig = parse(readFileSync(templateFilePath, 'utf-8'));
 
+// At the top of bin/install.js
+import isPlainObj from 'is-plain-obj';
+
+// ... in the tsconfig.json handling block ...
+
       if (
-        projectTsConfig &&
-        templateTsConfig &&
-        typeof projectTsConfig === 'object' &&
-        !Array.isArray(projectTsConfig) &&
-        projectTsConfig.compilerOptions &&
-        typeof projectTsConfig.compilerOptions === 'object' &&
-        !Array.isArray(projectTsConfig.compilerOptions) &&
-        projectTsConfig.compilerOptions.paths &&
-        typeof projectTsConfig.compilerOptions.paths === 'object' &&
-        typeof templateTsConfig === 'object' &&
-        !Array.isArray(templateTsConfig) &&
-        templateTsConfig.compilerOptions &&
-        typeof templateTsConfig.compilerOptions === 'object' &&
-        !Array.isArray(templateTsConfig.compilerOptions) &&
-        !templateTsConfig.compilerOptions.paths
+        isPlainObj(projectTsConfig) &&
+        isPlainObj(projectTsConfig.compilerOptions) &&
+        isPlainObj(projectTsConfig.compilerOptions.paths) &&
+        isPlainObj(templateTsConfig) &&
+        isPlainObj(templateTsConfig.compilerOptions)
+      ) {
+        const { assign } = await import('comment-json');
+
+        if (isPlainObj(templateTsConfig.compilerOptions.paths)) {
+          // Template has paths — merge with project paths (template takes precedence)
+          templateTsConfig.compilerOptions.paths = assign(
+            {},
+            projectTsConfig.compilerOptions.paths,
+            templateTsConfig.compilerOptions.paths
+          );
+        } else {
+          // Template has no paths — preserve project paths
+          templateTsConfig.compilerOptions.paths = assign(
+            {},
+            projectTsConfig.compilerOptions.paths
+          );
+        }
+      }
       ) {
         templateTsConfig.compilerOptions.paths =
           projectTsConfig.compilerOptions.paths;
