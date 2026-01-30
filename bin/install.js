@@ -12,6 +12,7 @@ import {
 } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assign, parse, stringify } from 'comment-json';
 import isPlainObject from 'is-plain-obj';
 import sortPackageJson from 'sort-package-json';
 import { parseDocument } from 'yaml';
@@ -291,6 +292,70 @@ for (const {
     // Always overwrite tsconfig.json
     if (templateFileName === 'tsconfig.json') {
       overwriteExistingFile = true;
+
+      // Use a type to make TypeScript narrow to non-arrays with
+      // `isPlainObject(<value from comment-json parse()>)`,
+      // because:
+      //
+      // 1. `comment-json` parses to a CommentJSONValue union
+      //    (object | array | primitive)
+      // 2. `is-plain-obj` narrows to Record<PropertyKey, any>,
+      //    but arrays are still structurally compatible with
+      //    that type, so TS won't narrow away CommentArray
+      //
+      // Stricter function return types like those below also
+      // work and exclude array values, but they have downsides:
+      //
+      // ```
+      // // Downside: Properties of objects stay as `any`
+      // export default function isPlainObject<T, Value = any>(
+      //   value: T,
+      // ): value is Exclude<T, readonly any[]> & Record<PropertyKey, Value>;
+      // ```
+      //
+      // ```
+      // // Downside: Turns into `never` with objects with `length` property
+      // export default function isPlainObject<T, Value = any>(
+      //   value: T,
+      // ): value is Record<PropertyKey, Value> & { length?: never };
+      // ```
+      /**
+       * @typedef {{ compilerOptions?: { paths?: Record<string,
+       *   unknown> } } | unknown} PartialTsConfig
+       */
+      const projectTsConfig = /** @type {PartialTsConfig} */ (
+        parse(readFileSync(filePathInProject, 'utf-8'))
+      );
+      const templateTsConfig = /** @type {PartialTsConfig} */ (
+        parse(readFileSync(templateFilePath, 'utf-8'))
+      );
+
+      if (
+        isPlainObject(projectTsConfig) &&
+        isPlainObject(templateTsConfig) &&
+        isPlainObject(projectTsConfig.compilerOptions) &&
+        isPlainObject(projectTsConfig.compilerOptions.paths)
+      ) {
+        if (!('compilerOptions' in templateTsConfig)) {
+          templateTsConfig.compilerOptions = {};
+        }
+
+        const compilerOptions = /** @type {Record<string, any>} */ (
+          templateTsConfig.compilerOptions
+        );
+
+        compilerOptions.paths = assign(
+          projectTsConfig.compilerOptions.paths,
+          isPlainObject(compilerOptions.paths) ? compilerOptions.paths : {},
+        );
+      }
+
+      writeFileSync(
+        filePathInProject,
+        `${stringify(templateTsConfig, null, 2)}\n`,
+      );
+      console.log('✅ Done merging default tsconfig.json');
+      continue;
     }
 
     if (!overwriteExistingFile) {
