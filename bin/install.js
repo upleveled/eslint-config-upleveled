@@ -291,8 +291,6 @@ for (const {
 
     // Always overwrite tsconfig.json
     if (templateFileName === 'tsconfig.json') {
-      overwriteExistingFile = true;
-
       // Use a type to make TypeScript narrow to non-arrays with
       // `isPlainObject(<value from comment-json parse()>)`,
       // because:
