@@ -13,26 +13,36 @@ import {
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse, stringify } from 'comment-json';
+import isPlainObject from 'is-plain-obj';
 import sortPackageJson from 'sort-package-json';
+import { parseDocument } from 'yaml';
 
 const projectPackageJsonPath = join(process.cwd(), 'package.json');
 const projectPackageJson = JSON.parse(
   readFileSync(projectPackageJsonPath, 'utf-8'),
 );
 
+if (!isPlainObject(projectPackageJson)) {
+  throw new Error('package.json contains non-object');
+}
+
+/** @type {Record<string, string>} */
 const projectDependencies = projectPackageJson.dependencies || {};
+/** @type {Record<string, string>} */
 const projectDevDependencies = projectPackageJson.devDependencies || {};
 
 const [projectType, projectTypeTitle] =
-  'postgres' in projectDependencies
+  'postgres' in projectDependencies && 'next' in projectDependencies
     ? ['next-js-postgresql', 'Next.js with PostgreSQL']
-    : 'next' in projectDependencies
-      ? ['next-js', 'Next.js']
-      : '@upleveled/react-scripts' in projectDependencies
-        ? ['create-react-app', 'Create React App']
+    : 'postgres' in projectDependencies && 'expo' in projectDependencies
+      ? ['expo-postgresql', 'Expo with PostgreSQL']
+      : 'next' in projectDependencies
+        ? ['next-js', 'Next.js']
         : 'expo' in projectDependencies
           ? ['expo', 'Expo (React Native)']
-          : ['node-js', 'Node.js'];
+          : '@upleveled/react-scripts' in projectDependencies
+            ? ['create-react-app', 'Create React App']
+            : ['node-js', 'Node.js'];
 
 console.log(`Detected project type: ${projectTypeTitle}`);
 
@@ -77,6 +87,75 @@ const newDevDependenciesToInstall = [
   // `node:process`
   // https://typescript-eslint.io/rules/restrict-template-expressions/
   '@types/node',
+
+  // Install `eslint` at top level to avoid pnpm "Conflicting
+  // peer dependencies" error with mismatching transitive
+  // dependencies on `eslint`, eg:
+  //
+  // ```
+  // mkdir abc
+  // cd abc
+  // pnpm init
+  // ...
+  // pnpm add --save-dev @ts-safeql/eslint-plugin eslint-config-upleveled
+  // ...
+  // devDependencies:
+  // + @ts-safeql/eslint-plugin 3.4.1
+  // + eslint-config-upleveled 8.6.16
+  //
+  //  WARN  Issues with peer dependencies found
+  // .
+  // ├─┬ eslint-plugin-import-x 4.1.1
+  // │ ├── ✕ missing peer eslint@"^8.57.0 || ^9.0.0"
+  // │ └─┬ @typescript-eslint/utils 8.4.0
+  // │   ├── ✕ missing peer eslint@"^8.57.0 || ^9.0.0"
+  // │   └─┬ @eslint-community/eslint-utils 4.4.0
+  // │     └── ✕ missing peer eslint@"^6.0.0 || ^7.0.0 || >=8.0.0"
+  // ├─┬ @typescript-eslint/parser 8.3.0
+  // │ └── ✕ missing peer eslint@"^8.57.0 || ^9.0.0"
+  // ├─┬ @ts-safeql/eslint-plugin 3.4.1
+  // │ └─┬ @typescript-eslint/utils 7.18.0
+  // │   └── ✕ missing peer eslint@^8.56.0
+  // └─┬ eslint-config-upleveled 8.6.16
+  //   ├── ✕ missing peer eslint@^9.9.1
+  //   ├─┬ eslint-import-resolver-typescript 3.6.3
+  //   │ ├── ✕ missing peer eslint@"*"
+  //   │ └─┬ eslint-module-utils 2.11.0
+  //   │   └── ✕ missing peer eslint@"*"
+  //   ├─┬ @babel/eslint-parser 7.25.1
+  //   │ └── ✕ missing peer eslint@"^7.5.0 || ^8.0.0 || ^9.0.0"
+  //   ├─┬ eslint-config-flat-gitignore 0.3.0
+  //   │ └── ✕ missing peer eslint@^9.5.0
+  //   ├─┬ eslint-plugin-react 7.35.0
+  //   │ └── ✕ missing peer eslint@"^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7"
+  //   ├─┬ eslint-plugin-jsx-a11y 6.9.0
+  //   │ └── ✕ missing peer eslint@"^3 || ^4 || ^5 || ^6 || ^7 || ^8"
+  //   ├─┬ eslint-plugin-sonarjs 1.0.4
+  //   │ └── ✕ missing peer eslint@"^8.0.0 || ^9.0.0"
+  //   ├─┬ eslint-plugin-testing-library 6.3.0
+  //   │ ├── ✕ missing peer eslint@"^7.5.0 || ^8.0.0"
+  //   │ └─┬ @typescript-eslint/utils 5.62.0
+  //   │   └── ✕ missing peer eslint@"^6.0.0 || ^7.0.0 || ^8.0.0"
+  //   ├─┬ eslint-plugin-unicorn 55.0.0
+  //   │ └── ✕ missing peer eslint@>=8.56.0
+  //   ├─┬ eslint-plugin-upleveled 2.1.12
+  //   │ └── ✕ missing peer eslint@^9.3.0
+  //   ├─┬ eslint-plugin-react-hooks 4.6.2
+  //   │ └── ✕ missing peer eslint@"^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0"
+  //   └─┬ @typescript-eslint/eslint-plugin 8.3.0
+  //     ├── ✕ missing peer eslint@"^8.57.0 || ^9.0.0"
+  //     └─┬ @typescript-eslint/utils 8.3.0
+  //       └── ✕ missing peer eslint@"^8.57.0 || ^9.0.0"
+  // ✕ Conflicting peer dependencies:
+  //   eslint
+  //
+  // Done in 26.4s
+  // ```
+  //
+  // - https://github.com/upleveled/eslint-config-upleveled/pull/421
+  // - https://github.com/ts-safeql/safeql/issues/258
+  'eslint',
+
   // The VS Code Prettier extension uses Prettier v2 internally,
   // but Preflight uses the latest Prettier version, which causes
   // crashes and formatting conflicts:
@@ -84,6 +163,7 @@ const newDevDependenciesToInstall = [
   // https://github.com/prettier/prettier-vscode/issues/3298
   // https://github.com/upleveled/preflight/issues/429
   'prettier',
+
   // pnpm v8+ automatically installs peer dependencies
   // (auto-install-peers=true is default) and `typescript` is a
   // peer dependency of eslint-config-upleveled, but the
@@ -99,7 +179,7 @@ const newDevDependenciesToInstall = [
 
 // Install Prettier and SafeQL dependencies in Postgres.js
 // projects
-if (projectType === 'next-js-postgresql') {
+if (projectType === 'next-js-postgresql' || projectType === 'expo-postgresql') {
   newDevDependenciesToInstall.push(
     '@ts-safeql/eslint-plugin',
     'libpg-query',
@@ -130,11 +210,13 @@ for (const projectDevDependency of Object.keys(projectDevDependencies)) {
   }
 }
 
-console.log(
-  `Installing ${newDevDependenciesToInstall.length} ESLint config ${
-    newDevDependenciesToInstall.length === 1 ? 'dependency' : 'dependencies'
-  }...`,
-);
+if (newDevDependenciesToInstall.length > 0) {
+  console.log(
+    `Installing ${newDevDependenciesToInstall.length} ESLint config ${
+      newDevDependenciesToInstall.length === 1 ? 'dependency' : 'dependencies'
+    }: ${newDevDependenciesToInstall.join(', ')}`,
+  );
+}
 
 execSync(
   newDevDependenciesToInstall.length > 0
@@ -201,7 +283,8 @@ for (const {
     // projects
     if (
       templateFileName === 'prettier.config.js' &&
-      projectType === 'next-js-postgresql'
+      (projectType === 'next-js-postgresql' ||
+        projectType === 'expo-postgresql')
     ) {
       overwriteExistingFile = true;
     }
@@ -213,21 +296,17 @@ for (const {
       const projectTsConfig = parse(readFileSync(filePathInProject, 'utf-8'));
       const templateTsConfig = parse(readFileSync(templateFilePath, 'utf-8'));
 
-// At the top of bin/install.js
-import isPlainObj from 'is-plain-obj';
-
-// ... in the tsconfig.json handling block ...
 
       if (
-        isPlainObj(projectTsConfig) &&
-        isPlainObj(projectTsConfig.compilerOptions) &&
-        isPlainObj(projectTsConfig.compilerOptions.paths) &&
-        isPlainObj(templateTsConfig) &&
-        isPlainObj(templateTsConfig.compilerOptions)
+        isPlainObject(projectTsConfig) &&
+        isPlainObject(projectTsConfig.compilerOptions) &&
+        isPlainObject(projectTsConfig.compilerOptions.paths) &&
+        isPlainObject(templateTsConfig) &&
+        isPlainObject(templateTsConfig.compilerOptions)
       ) {
         const { assign } = await import('comment-json');
 
-        if (isPlainObj(templateTsConfig.compilerOptions.paths)) {
+        if (isPlainObject(templateTsConfig.compilerOptions.paths)) {
           // Template has paths — merge with project paths (template takes precedence)
           templateTsConfig.compilerOptions.paths = assign(
             {},
@@ -241,15 +320,6 @@ import isPlainObj from 'is-plain-obj';
             projectTsConfig.compilerOptions.paths
           );
         }
-      }
-      ) {
-        templateTsConfig.compilerOptions.paths =
-          projectTsConfig.compilerOptions.paths;
-
-        templateTsConfig.compilerOptions.paths = {
-          ...projectTsConfig.compilerOptions.paths,
-          ...templateTsConfig.compilerOptions.paths,
-        };
       }
 
       writeFileSync(
@@ -299,8 +369,6 @@ try {
   // Swallow error if jsconfig.json file does not exist
 }
 
-console.log('Updating .gitignore...');
-
 const gitignorePath = join(process.cwd(), '.gitignore');
 
 /** @type {string[]} */
@@ -312,22 +380,68 @@ try {
   // Swallow error in case .gitignore doesn't exist yet
 }
 
+let gitignoreChanged = false;
+
 for (const ignorePath of ['.eslintcache', '*.tsbuildinfo']) {
   if (gitignoreContentLines.includes(ignorePath)) {
     continue;
   }
 
   gitignoreContentLines.push(ignorePath);
+  gitignoreChanged = true;
 }
 
-writeFileSync(
-  gitignorePath,
-  gitignoreContentLines.join('\n') +
-    // Add trailing newline if last line is not empty
-    (gitignoreContentLines.at(-1) === '' ? '' : '\n'),
+if (gitignoreChanged) {
+  console.log('Updating .gitignore...');
+  writeFileSync(
+    gitignorePath,
+    gitignoreContentLines.join('\n') +
+      // Add trailing newline if last line is not empty
+      (gitignoreContentLines.at(-1) === '' ? '' : '\n'),
+  );
+  console.log('✅ Done updating .gitignore');
+}
+
+const pnpmWorkspaceYamlPath = join(process.cwd(), 'pnpm-workspace.yaml');
+
+/** @type {string} */
+let pnpmWorkspaceYamlContent = '';
+
+try {
+  pnpmWorkspaceYamlContent = readFileSync(pnpmWorkspaceYamlPath, 'utf8');
+} catch {
+  // Swallow error in case pnpm-workspace.yaml doesn't exist yet
+}
+
+const doc = parseDocument(pnpmWorkspaceYamlContent);
+
+const minimumReleaseAgeKey = doc.createNode('minimumReleaseAge');
+minimumReleaseAgeKey.commentBefore =
+  `# Prevents installation of packages newer than 7 days
+# to mitigate supply chain risks
+# - https://pnpm.io/settings#minimumreleaseage`.replaceAll(/^#/gm, '');
+
+doc.setIn([minimumReleaseAgeKey], doc.createNode(10080));
+doc.setIn(
+  ['minimumReleaseAgeExclude'],
+  doc.createNode([
+    '@upleveled/*',
+    'eslint-config-upleveled',
+    'stylelint-config-upleveled',
+  ]),
 );
 
-console.log('✅ Done updating .gitignore');
+const strictDepBuildsKey = doc.createNode('strictDepBuilds');
+strictDepBuildsKey.commentBefore = `# Fail on pnpm ignored build scripts
+# - https://pnpm.io/settings#strictdepbuilds`.replaceAll(/^#/gm, '');
+doc.setIn([strictDepBuildsKey], doc.createNode(true));
+
+const updatedPnpmWorkspaceYamlContent = String(doc);
+if (updatedPnpmWorkspaceYamlContent !== pnpmWorkspaceYamlContent) {
+  console.log('Updating pnpm-workspace.yaml...');
+  writeFileSync(pnpmWorkspaceYamlPath, updatedPnpmWorkspaceYamlContent, 'utf8');
+  console.log('✅ Done updating pnpm-workspace.yaml');
+}
 
 // Commented out in case we need to patch Next.js again in the
 // future

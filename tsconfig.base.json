@@ -1,25 +1,35 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "UpLeveled Node + React TSConfig",
+  // Inspired by Total TypeScript TSConfig Cheat Sheet
+  // https://www.totaltypescript.com/tsconfig-cheat-sheet
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "target": "ES2015",
+    // Module system, module resolution
     "module": "Preserve",
     "moduleDetection": "force",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
     "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "downlevelIteration": true,
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+
+    // Standard library
+    "lib": ["ES2024", "DOM", "DOM.Iterable"],
+
+    // Output
+    "target": "ES2022",
     "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
+
+    // Strictness
     "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+
+    // Performance
+    "skipLibCheck": true,
     "incremental": true,
-    "noUncheckedIndexedAccess": true
+
+    // React
+    "jsx": "react-jsx"
   },
-  "exclude": ["../../node_modules", "../../build"]
+  "exclude": ["${configDir}/node_modules", "${configDir}/build"]
 }
