@@ -11,6 +11,8 @@ minimumReleaseAgeExclude:
   - '@upleveled/*'
   - eslint-config-upleveled
   - stylelint-config-upleveled
+  # - https://github.com/advisories/GHSA-7h2j-956f-4vf2
+  - '@isaacs/brace-expansion@5.0.1'
 
 # Allow build scripts for trusted dependencies
 # - https://pnpm.io/settings#onlybuiltdependencies

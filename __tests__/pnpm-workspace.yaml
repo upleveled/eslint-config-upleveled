@@ -6,9 +6,12 @@ onlyBuiltDependencies:
 # - https://pnpm.io/settings#minimumreleaseage
 minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
-  - "@upleveled/*"
+  - '@upleveled/*'
   - eslint-config-upleveled
   - stylelint-config-upleveled
+  # - https://github.com/advisories/GHSA-7h2j-956f-4vf2
+  - '@isaacs/brace-expansion@5.0.1'
+
 # Fail on pnpm ignored build scripts
 # - https://pnpm.io/settings#strictdepbuilds
 strictDepBuilds: true
