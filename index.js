@@ -1264,11 +1264,11 @@ const configArray = [
         // Enforce unambiguous exported database function
         // patterns (require either accepting a session token
         // "sessionToken" as the first parameter or having a name
-        // ending with "Insecure")
+        // ending with "Insecure", "Unauthenticated" or "Public")
         {
           selector:
-            "ExportNamedDeclaration > VariableDeclaration[declarations.0.init.callee.name='cache'][declarations.0.id.name!=/Insecure$/][declarations.0.init.arguments.0.params.0.name!='sessionToken']",
-          message: `Ambiguous authentication of exported database query function - either pass \`sessionToken\` as the first parameter or destructured property in first parameter or name the function ending with \`Insecure\`:
+            "ExportNamedDeclaration > VariableDeclaration[declarations.0.init.callee.name='cache'][declarations.0.id.name!=/(Insecure|Unauthenticated|Public)$/][declarations.0.init.arguments.0.params.0.name!='sessionToken']",
+          message: `Ambiguous authentication of exported database query function - either pass \`sessionToken\` as the first parameter or destructured property in first parameter or name the function ending with \`Insecure\`, \`Unauthenticated\` or \`Public\`:
 
 const getUser = cache(async (sessionToken: string, userId: number) =>
 
@@ -1278,8 +1278,8 @@ const getArticleCategoriesInsecure = cache(async () =>
         },
         {
           selector:
-            "ExportNamedDeclaration > VariableDeclaration[declarations.0.init.type='ArrowFunctionExpression'][declarations.0.id.name!=/Insecure$/][declarations.0.init.params.0.name!='sessionToken']",
-          message: `Ambiguous authentication of exported database query function - either pass \`sessionToken\` as the first parameter or destructured property in first parameter or name the function ending with \`Insecure\`:
+            "ExportNamedDeclaration > VariableDeclaration[declarations.0.init.type='ArrowFunctionExpression'][declarations.0.id.name!=/(Insecure|Unauthenticated|Public)$/][declarations.0.init.params.0.name!='sessionToken']",
+          message: `Ambiguous authentication of exported database query function - either pass \`sessionToken\` as the first parameter or destructured property in first parameter or name the function ending with \`Insecure\`, \`Unauthenticated\` or \`Public\`:
 
 const getUser = async (sessionToken: string, userId: number) =>
 
