@@ -25,7 +25,7 @@ importers:
         specifier: ^9.10.0
         version: 9.39.2
       eslint-config-upleveled:
-        specifier: ^9.4.6
+        specifier: ^9.4.7
         version: 9.4.7(@babel/core@7.29.0)(@types/node@25.3.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(@typescript-eslint/utils@8.55.0(eslint@9.39.2)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.55.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2))(eslint@9.39.2)(globals@16.5.0)(typescript@5.9.3)
       postcss-styled-syntax:
         specifier: ^0.7.0
