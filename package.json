@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-upleveled",
-  "version": "10.0.0-rc.0",
+  "version": "10.0.0",
   "description": "UpLeveled ESLint defaults for programming in JavaScript, TypeScript, React, Next.js, Node.js, Postgres.js",
   "keywords": [
     "eslint",
