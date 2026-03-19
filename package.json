@@ -36,22 +36,22 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "7.28.6",
-    "@eslint/compat": "2.0.2",
+    "@eslint/compat": "2.0.3",
     "@next/eslint-plugin-next": "16.1.6",
-    "@stylistic/eslint-plugin": "5.9.0",
-    "@typescript-eslint/eslint-plugin": "8.56.1",
-    "@typescript-eslint/parser": "8.56.1",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "@typescript-eslint/eslint-plugin": "8.57.0",
+    "@typescript-eslint/parser": "8.57.0",
     "comment-json": "4.6.2",
     "eslint-config-flat-gitignore": "2.2.1",
     "eslint-import-resolver-typescript": "4.4.4",
-    "eslint-plugin-import-x": "4.16.1",
+    "eslint-plugin-import-x": "4.16.2",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react-dom": "2.13.0",
     "eslint-plugin-react-hooks": "7.0.1",
     "eslint-plugin-react-naming-convention": "2.13.0",
     "eslint-plugin-react-x": "2.13.0",
     "eslint-plugin-security": "4.0.0",
-    "eslint-plugin-sonarjs": "4.0.0",
+    "eslint-plugin-sonarjs": "4.0.2",
     "eslint-plugin-testing-library": "7.16.0",
     "eslint-plugin-unicorn": "63.0.0",
     "eslint-plugin-upleveled": "2.1.15",
@@ -62,7 +62,7 @@
     "yaml": "^2.8.1"
   },
   "devDependencies": {
-    "@typescript-eslint/utils": "8.56.1",
+    "@typescript-eslint/utils": "8.57.0",
     "eslint-config-upleveled": "9.4.8",
     "prettier": "3.8.1",
     "prettier-plugin-embed": "0.5.1",
@@ -71,14 +71,14 @@
     "typescript": "5.9.3"
   },
   "peerDependencies": {
-    "@types/node": ">=25.3.3",
+    "@types/node": ">=25.5.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.2",
     "globals": "^17.4.0",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.30.3+sha512.c961d1e0a2d8e354ecaa5166b822516668b7f44cb5bd95122d590dd81922f606f5473b6d23ec4a5be05e7fcd18e8488d47d978bbe981872f1145d06e9a740017",
+  "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be",
   "engines": {
     "node": ">=20.9.0"
   }
