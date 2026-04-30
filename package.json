@@ -39,15 +39,15 @@
     "@eslint/compat": "2.0.5",
     "@next/eslint-plugin-next": "16.2.4",
     "@stylistic/eslint-plugin": "5.10.0",
-    "@typescript-eslint/eslint-plugin": "8.58.2",
-    "@typescript-eslint/parser": "8.58.2",
+    "@typescript-eslint/eslint-plugin": "8.59.0",
+    "@typescript-eslint/parser": "8.59.0",
     "comment-json": "4.6.2",
     "eslint-config-flat-gitignore": "2.3.0",
     "eslint-import-resolver-typescript": "4.4.4",
     "eslint-plugin-import-x": "4.16.2",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react-dom": "2.13.0",
-    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-react-hooks": "7.1.1",
     "eslint-plugin-react-naming-convention": "2.13.0",
     "eslint-plugin-react-x": "2.13.0",
     "eslint-plugin-security": "4.0.0",
@@ -62,13 +62,13 @@
     "yaml": "^2.8.1"
   },
   "devDependencies": {
-    "@typescript-eslint/utils": "8.58.2",
+    "@typescript-eslint/utils": "8.59.0",
     "eslint-config-upleveled": "10.0.0",
     "prettier": "3.8.3",
     "prettier-plugin-embed": "0.5.1",
     "prettier-plugin-sql": "0.20.0",
-    "stylelint": "17.8.0",
-    "typescript": "6.0.2"
+    "stylelint": "17.9.0",
+    "typescript": "6.0.3"
   },
   "peerDependencies": {
     "@types/node": ">=25.6.0",
@@ -76,9 +76,9 @@
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.2",
     "globals": "^17.5.0",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   },
-  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
+  "packageManager": "pnpm@10.33.2+sha512.a90faf6feeab71ad6c6e57f94e0fe1a12f5dcc22cd754db40ae9593eb6a3e0b6b12e3540218bb37ae083404b1f2ce6db2a4121e979829b4aff94b99f49da1cf8",
   "engines": {
     "node": ">=20.9.0"
   }
