@@ -36,8 +36,8 @@ importers:
         specifier: 8.59.0
         version: 8.59.0(eslint@9.39.2)(typescript@6.0.3)
       comment-json:
-        specifier: 4.6.2
-        version: 4.6.2
+        specifier: 5.0.0
+        version: 5.0.0
       eslint:
         specifier: ^9.39.2
         version: 9.39.2
@@ -855,8 +855,8 @@ packages:
     resolution: {integrity: sha512-taEtr3ozUmOB7it68Jll7s0Pwm+aoiHyXKrEC8SEodL4rNpdfDLqa7PfBlrgFoCNNdR8ImL+muti5IGvktJAAg==}
     engines: {node: '>= 6'}
 
-  comment-json@4.6.2:
-    resolution: {integrity: sha512-R2rze/hDX30uul4NZoIZ76ImSJLFxn/1/ZxtKC1L77y2X1k+yYu1joKbAtMA2Fg3hZrTOiw0I5mwVMo0cf250w==}
+  comment-json@5.0.0:
+    resolution: {integrity: sha512-uiqLcOiVDJtBP8WGkZHEP+FZIhTzP1dxvn59EfoYUi9gqupjrBWVQkO2atDrbnKPwLeotFYDsuNb26uBMqB+hw==}
     engines: {node: '>= 6'}
 
   comment-parser@1.4.1:
@@ -3079,7 +3079,7 @@ snapshots:
       core-util-is: 1.0.3
       esprima: 4.0.1
 
-  comment-json@4.6.2:
+  comment-json@5.0.0:
     dependencies:
       array-timsort: 1.0.3
       esprima: 4.0.1
