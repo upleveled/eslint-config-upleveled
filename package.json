@@ -35,7 +35,7 @@
     "postpublish": "cd __tests__ && pnpm update-config-version"
   },
   "dependencies": {
-    "@babel/eslint-parser": "7.29.7",
+    "@babel/eslint-parser": "8.0.1",
     "@eslint/compat": "2.1.0",
     "@next/eslint-plugin-next": "16.2.9",
     "@stylistic/eslint-plugin": "5.10.0",
