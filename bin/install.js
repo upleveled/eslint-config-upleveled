@@ -218,6 +218,8 @@ if (newDevDependenciesToInstall.length > 0) {
   );
 }
 
+updatePnpmWorkspaceYaml();
+
 execSync(
   newDevDependenciesToInstall.length > 0
     ? `pnpm add --save-dev ${newDevDependenciesToInstall.join(' ')}`
@@ -428,45 +430,60 @@ if (gitignoreChanged) {
   console.log('✅ Done updating .gitignore');
 }
 
-const pnpmWorkspaceYamlPath = join(process.cwd(), 'pnpm-workspace.yaml');
+function updatePnpmWorkspaceYaml() {
+  const pnpmWorkspaceYamlPath = join(process.cwd(), 'pnpm-workspace.yaml');
 
-/** @type {string} */
-let pnpmWorkspaceYamlContent = '';
+  /** @type {string} */
+  let pnpmWorkspaceYamlContent = '';
 
-try {
-  pnpmWorkspaceYamlContent = readFileSync(pnpmWorkspaceYamlPath, 'utf8');
-} catch {
-  // Swallow error in case pnpm-workspace.yaml doesn't exist yet
-}
+  try {
+    pnpmWorkspaceYamlContent = readFileSync(pnpmWorkspaceYamlPath, 'utf8');
+  } catch {
+    // Swallow error in case pnpm-workspace.yaml doesn't exist
+    // yet
+  }
 
-const doc = parseDocument(pnpmWorkspaceYamlContent);
+  const doc = parseDocument(pnpmWorkspaceYamlContent);
 
-const minimumReleaseAgeKey = doc.createNode('minimumReleaseAge');
-minimumReleaseAgeKey.commentBefore =
-  `# Prevents installation of packages newer than 7 days
+  // Work around `--allow-build` bug by programmatically setting
+  // `allowBuild` in `pnpm-workspace.yaml`
+  // - https://github.com/pnpm/pnpm/issues/13872#issuecomment-5281712949
+  doc.setIn(['allowBuilds', 'unrs-resolver'], true);
+  if (newDevDependenciesToInstall.includes('@ts-safeql/eslint-plugin')) {
+    doc.setIn(['allowBuilds', 'esbuild'], true);
+  }
+
+  const minimumReleaseAgeKey = doc.createNode('minimumReleaseAge');
+  minimumReleaseAgeKey.commentBefore =
+    `# Prevents installation of packages newer than 7 days
 # to mitigate supply chain risks
 # - https://pnpm.io/settings#minimumreleaseage`.replaceAll(/^#/gm, '');
 
-doc.setIn([minimumReleaseAgeKey], doc.createNode(10080));
-doc.setIn(
-  ['minimumReleaseAgeExclude'],
-  doc.createNode([
-    '@upleveled/*',
-    'eslint-config-upleveled',
-    'stylelint-config-upleveled',
-  ]),
-);
+  doc.setIn([minimumReleaseAgeKey], doc.createNode(10080));
+  doc.setIn(
+    ['minimumReleaseAgeExclude'],
+    doc.createNode([
+      '@upleveled/*',
+      'eslint-config-upleveled',
+      'stylelint-config-upleveled',
+    ]),
+  );
 
-const strictDepBuildsKey = doc.createNode('strictDepBuilds');
-strictDepBuildsKey.commentBefore = `# Fail on pnpm ignored build scripts
+  const strictDepBuildsKey = doc.createNode('strictDepBuilds');
+  strictDepBuildsKey.commentBefore = `# Fail on pnpm ignored build scripts
 # - https://pnpm.io/settings#strictdepbuilds`.replaceAll(/^#/gm, '');
-doc.setIn([strictDepBuildsKey], doc.createNode(true));
+  doc.setIn([strictDepBuildsKey], doc.createNode(true));
 
-const updatedPnpmWorkspaceYamlContent = String(doc);
-if (updatedPnpmWorkspaceYamlContent !== pnpmWorkspaceYamlContent) {
-  console.log('Updating pnpm-workspace.yaml...');
-  writeFileSync(pnpmWorkspaceYamlPath, updatedPnpmWorkspaceYamlContent, 'utf8');
-  console.log('✅ Done updating pnpm-workspace.yaml');
+  const updatedPnpmWorkspaceYamlContent = String(doc);
+  if (updatedPnpmWorkspaceYamlContent !== pnpmWorkspaceYamlContent) {
+    console.log('Updating pnpm-workspace.yaml...');
+    writeFileSync(
+      pnpmWorkspaceYamlPath,
+      updatedPnpmWorkspaceYamlContent,
+      'utf8',
+    );
+    console.log('✅ Done updating pnpm-workspace.yaml');
+  }
 }
 
 // Commented out in case we need to patch Next.js again in the
