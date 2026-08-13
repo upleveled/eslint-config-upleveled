@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+reviews:
+  # Add summary to walkthrough instead of PR description
+  high_level_summary_in_walkthrough: true
+  # Disable useless fortune
+  in_progress_fortune: false
+  # Disable useless poem
+  poem: false
+
+chat:
+  # Disable useless ASCII art or emojis in chat responses
+  art: false
