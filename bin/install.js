@@ -448,10 +448,10 @@ function updatePnpmWorkspaceYaml() {
   // Work around `--allow-build` bug by programmatically setting
   // `allowBuild` in `pnpm-workspace.yaml`
   // - https://github.com/pnpm/pnpm/issues/13872#issuecomment-5281712949
-  doc.setIn(['allowBuilds', 'unrs-resolver'], true);
   if (newDevDependenciesToInstall.includes('@ts-safeql/eslint-plugin')) {
     doc.setIn(['allowBuilds', 'esbuild'], true);
   }
+  doc.setIn(['allowBuilds', 'unrs-resolver'], true);
 
   const minimumReleaseAgeKey = doc.createNode('minimumReleaseAge');
   minimumReleaseAgeKey.commentBefore =
