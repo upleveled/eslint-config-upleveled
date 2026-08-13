@@ -174,7 +174,9 @@ const newDevDependenciesToInstall = [
   // Similar issue with `stylelint` here:
   // https://github.com/stylelint/stylelint/issues/6781#issuecomment-1506751686
   // https://github.com/pnpm/pnpm/issues/6392
-  'typescript',
+  //
+  // FIXME: Remove the @6 version once TypeScript 7 is supported
+  'typescript@6',
 ];
 
 // Install Prettier and SafeQL dependencies in Postgres.js
