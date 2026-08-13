@@ -210,6 +210,8 @@ for (const projectDevDependency of Object.keys(projectDevDependencies)) {
   }
 }
 
+updatePnpmWorkspaceYaml();
+
 if (newDevDependenciesToInstall.length > 0) {
   console.log(
     `Installing ${newDevDependenciesToInstall.length} ESLint config ${
@@ -217,8 +219,6 @@ if (newDevDependenciesToInstall.length > 0) {
     }: ${newDevDependenciesToInstall.join(', ')}`,
   );
 }
-
-updatePnpmWorkspaceYaml();
 
 execSync(
   newDevDependenciesToInstall.length > 0
