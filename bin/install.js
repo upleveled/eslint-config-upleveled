@@ -78,7 +78,8 @@ if (projectPackageJson.type !== 'module') {
   );
 }
 
-const newDevDependenciesToInstall = [
+/** @type {Record<string, string>} */
+const newDevDependenciesToInstall = {
   // Add types for any usage of Node.js built-in modules
   //
   // To avoid confusing problems like eg.
@@ -86,7 +87,7 @@ const newDevDependenciesToInstall = [
   // Node.js projects with `any` type of `argv` imported from
   // `node:process`
   // https://typescript-eslint.io/rules/restrict-template-expressions/
-  '@types/node',
+  '@types/node': 'latest',
 
   // Install `eslint` at top level to avoid pnpm "Conflicting
   // peer dependencies" error with mismatching transitive
@@ -154,7 +155,7 @@ const newDevDependenciesToInstall = [
   //
   // - https://github.com/upleveled/eslint-config-upleveled/pull/421
   // - https://github.com/ts-safeql/safeql/issues/258
-  'eslint',
+  eslint: 'latest',
 
   // The VS Code Prettier extension uses Prettier v2 internally,
   // but Preflight uses the latest Prettier version, which causes
@@ -162,7 +163,7 @@ const newDevDependenciesToInstall = [
   // https://github.com/prettier/prettier-vscode/pull/3069#issuecomment-1817589047
   // https://github.com/prettier/prettier-vscode/issues/3298
   // https://github.com/upleveled/preflight/issues/429
-  'prettier',
+  prettier: 'latest',
 
   // pnpm v8+ automatically installs peer dependencies
   // (auto-install-peers=true is default) and `typescript` is a
@@ -175,19 +176,18 @@ const newDevDependenciesToInstall = [
   // https://github.com/stylelint/stylelint/issues/6781#issuecomment-1506751686
   // https://github.com/pnpm/pnpm/issues/6392
   //
-  // FIXME: Remove the @6 version once TypeScript 7 is supported
-  'typescript@6',
-];
+  // FIXME: Remove the @6.0.3 version once TypeScript 7 is
+  // supported in eslint-config-upleveled
+  typescript: '6.0.3',
+};
 
 // Install Prettier and SafeQL dependencies in Postgres.js
 // projects
 if (projectType === 'next-js-postgresql' || projectType === 'expo-postgresql') {
-  newDevDependenciesToInstall.push(
-    '@ts-safeql/eslint-plugin',
-    'libpg-query',
-    'prettier-plugin-embed',
-    'prettier-plugin-sql',
-  );
+  newDevDependenciesToInstall['@ts-safeql/eslint-plugin'] = 'latest';
+  newDevDependenciesToInstall['libpg-query'] = 'latest';
+  newDevDependenciesToInstall['prettier-plugin-embed'] = 'latest';
+  newDevDependenciesToInstall['prettier-plugin-sql'] = 'latest';
 }
 
 if (
@@ -195,36 +195,42 @@ if (
   projectType === 'next-js' ||
   projectType === 'next-js-postgresql'
 ) {
-  newDevDependenciesToInstall.push(
-    '@types/react',
-    '@types/react-dom',
-    'stylelint',
-    'stylelint-config-upleveled',
-  );
+  newDevDependenciesToInstall['@types/react'] = 'latest';
+  newDevDependenciesToInstall['@types/react-dom'] = 'latest';
+  newDevDependenciesToInstall['stylelint'] = 'latest';
+  newDevDependenciesToInstall['stylelint-config-upleveled'] = 'latest';
 }
 
 for (const projectDevDependency of Object.keys(projectDevDependencies)) {
-  if (newDevDependenciesToInstall.includes(projectDevDependency)) {
-    newDevDependenciesToInstall.splice(
-      newDevDependenciesToInstall.indexOf(projectDevDependency),
-      1,
-    );
+  if (projectDevDependency in newDevDependenciesToInstall) {
+    delete newDevDependenciesToInstall[projectDevDependency];
   }
 }
 
+const newDevDependenciesToInstallKeys = Object.keys(
+  newDevDependenciesToInstall,
+);
+const newDevDependenciesToInstallPackageSpecs = Object.entries(
+  newDevDependenciesToInstall,
+).map(([packageName, version]) =>
+  version === 'latest' ? packageName : `${packageName}@${version}`,
+);
+
 updatePnpmWorkspaceYaml();
 
-if (newDevDependenciesToInstall.length > 0) {
+if (newDevDependenciesToInstallKeys.length > 0) {
   console.log(
-    `Installing ${newDevDependenciesToInstall.length} ESLint config ${
-      newDevDependenciesToInstall.length === 1 ? 'dependency' : 'dependencies'
-    }: ${newDevDependenciesToInstall.join(', ')}`,
+    `Installing ${newDevDependenciesToInstallKeys.length} ESLint config ${
+      newDevDependenciesToInstallKeys.length === 1
+        ? 'dependency'
+        : 'dependencies'
+    }: ${newDevDependenciesToInstallPackageSpecs.join(', ')}`,
   );
 }
 
 execSync(
-  newDevDependenciesToInstall.length > 0
-    ? `pnpm add --save-dev ${newDevDependenciesToInstall.join(' ')}`
+  newDevDependenciesToInstallKeys.length > 0
+    ? `pnpm add --save-dev ${newDevDependenciesToInstallPackageSpecs.join(' ')}`
     : 'pnpm install',
   { stdio: 'inherit' },
 );
@@ -450,7 +456,7 @@ function updatePnpmWorkspaceYaml() {
   // Work around `--allow-build` bug by programmatically setting
   // `allowBuild` in `pnpm-workspace.yaml`
   // - https://github.com/pnpm/pnpm/issues/13872#issuecomment-5281712949
-  if (newDevDependenciesToInstall.includes('@ts-safeql/eslint-plugin')) {
+  if (newDevDependenciesToInstallKeys.includes('@ts-safeql/eslint-plugin')) {
     doc.setIn(['allowBuilds', 'esbuild'], true);
   }
   doc.setIn(['allowBuilds', 'unrs-resolver'], true);
