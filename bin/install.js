@@ -234,7 +234,7 @@ if (newDevDependenciesToInstallKeys.length > 0) {
       newDevDependenciesToInstallKeys.length === 1
         ? 'dependency'
         : 'dependencies'
-    }: ${newDevDependenciesToInstallPackageSpecs.join(', ')}`,
+    }: ${newDevDependenciesToInstallPackageSpecs.join(', ')}...`,
   );
 }
 
