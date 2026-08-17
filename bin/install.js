@@ -211,9 +211,9 @@ for (const projectDevDependency of Object.keys(projectDevDependencies)) {
   //
   // Remove dependency if project dependency uses ^ or ~ version
   // ranges ending in the exact version specified in
-  // newDevDependenciesToInstall, because pnpm will not install
-  // the exact version if a range is already installed, even with
-  // --save-exact:
+  // newDevDependenciesToInstall, because `pnpm add` will not
+  // replace the range in `package.json` with an exact version,
+  // even with `--save-exact`:
   //
   // - https://github.com/pnpm/pnpm/issues/6398#issuecomment-5314388945
   // - https://github.com/pnpm/pnpm/issues/8300
