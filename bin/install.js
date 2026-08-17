@@ -384,16 +384,12 @@ for (const {
     }
   }
 
-  try {
-    cpSync(templateFilePath, filePathInProject);
-    console.log(
-      `Copied ${templateFileName}${
-        overwriteExistingFile ? ' (existing file overwritten)' : ''
-      }`,
-    );
-  } catch (err) {
-    console.error('err', err);
-  }
+  cpSync(templateFilePath, filePathInProject);
+  console.log(
+    `Copied ${templateFileName}${
+      overwriteExistingFile ? ' (existing file overwritten)' : ''
+    }`,
+  );
 }
 
 console.log('✅ Done copying config files');
