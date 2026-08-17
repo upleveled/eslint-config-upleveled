@@ -203,9 +203,9 @@ if (
 
 // Skip installation if the project dependencies already include:
 // 1. the new dependency's package name
-// 2. the new dependency's exact version, if an exact version is
-//    specified in newDevDependenciesToInstall ('latest' skips
-//    for any version)
+// 2. if an exact version is specified in
+//    newDevDependenciesToInstall: the new dependency's exact
+//    version ('latest' skips for any version)
 for (const projectDevDependency of Object.keys(projectDevDependencies)) {
   // Work around pnpm bug:
   //
