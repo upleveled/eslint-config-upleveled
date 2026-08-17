@@ -176,7 +176,7 @@ const newDevDependenciesToInstall = {
   // https://github.com/stylelint/stylelint/issues/6781#issuecomment-1506751686
   // https://github.com/pnpm/pnpm/issues/6392
   //
-  // FIXME: Remove the @6.0.3 version once TypeScript 7 is
+  // FIXME: Remove the 6.0.3 version once TypeScript 7 is
   // supported in eslint-config-upleveled
   typescript: '6.0.3',
 };
