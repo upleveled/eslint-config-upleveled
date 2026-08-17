@@ -207,6 +207,29 @@ if (
 //    specified in newDevDependenciesToInstall ('latest' skips
 //    for any version)
 for (const projectDevDependency of Object.keys(projectDevDependencies)) {
+  // Work around pnpm bug:
+  //
+  // Remove dependency if project dependency uses ^ or ~ version
+  // ranges ending in the exact version specified in
+  // newDevDependenciesToInstall, because pnpm will not install
+  // the exact version if a range is already installed, even with
+  // --save-exact:
+  //
+  // - https://github.com/pnpm/pnpm/issues/6398#issuecomment-5314388945
+  // - https://github.com/pnpm/pnpm/issues/8300
+  if (
+    projectDevDependency in newDevDependenciesToInstall &&
+    newDevDependenciesToInstall[projectDevDependency] !==
+      projectDevDependencies[projectDevDependency] &&
+    newDevDependenciesToInstall[projectDevDependency] ===
+      projectDevDependencies[projectDevDependency]?.replace(/^[\^~]/, '')
+  ) {
+    console.log(
+      `Removing ${projectDevDependency}@${projectDevDependencies[projectDevDependency]} to install exact version ${newDevDependenciesToInstall[projectDevDependency]}...`,
+    );
+    execSync(`pnpm remove ${projectDevDependency}`, { stdio: 'inherit' });
+  }
+
   if (
     projectDevDependency in newDevDependenciesToInstall &&
     (newDevDependenciesToInstall[projectDevDependency] === 'latest' ||
