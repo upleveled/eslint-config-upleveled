@@ -201,8 +201,18 @@ if (
   newDevDependenciesToInstall['stylelint-config-upleveled'] = 'latest';
 }
 
+// Skip installation if the project dependencies already include:
+// 1. the new dependency's package name
+// 2. the new dependency's exact version, if an exact version is
+//    specified in newDevDependenciesToInstall ('latest' skips
+//    for any version)
 for (const projectDevDependency of Object.keys(projectDevDependencies)) {
-  if (projectDevDependency in newDevDependenciesToInstall) {
+  if (
+    projectDevDependency in newDevDependenciesToInstall &&
+    (newDevDependenciesToInstall[projectDevDependency] === 'latest' ||
+      newDevDependenciesToInstall[projectDevDependency] ===
+        projectDevDependencies[projectDevDependency])
+  ) {
     delete newDevDependenciesToInstall[projectDevDependency];
   }
 }
