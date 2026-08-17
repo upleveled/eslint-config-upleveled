@@ -236,14 +236,16 @@ if (newDevDependenciesToInstallKeys.length > 0) {
         : 'dependencies'
     }: ${newDevDependenciesToInstallPackageSpecs.join(', ')}...`,
   );
+  execSync(
+    `pnpm add --save-dev ${newDevDependenciesToInstallPackageSpecs.join(' ')}`,
+    { stdio: 'inherit' },
+  );
+} else {
+  console.log(
+    'Installing to apply pnpm settings changes in pnpm-workspace.yaml...',
+  );
+  execSync('pnpm install', { stdio: 'inherit' });
 }
-
-execSync(
-  newDevDependenciesToInstallKeys.length > 0
-    ? `pnpm add --save-dev ${newDevDependenciesToInstallPackageSpecs.join(' ')}`
-    : 'pnpm install',
-  { stdio: 'inherit' },
-);
 
 console.log('✅ Done installing dependencies');
 
