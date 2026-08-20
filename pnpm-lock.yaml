@@ -75,8 +75,8 @@ importers:
         specifier: 7.16.2
         version: 7.16.2(eslint@9.39.2)(typescript@6.0.3)
       eslint-plugin-unicorn:
-        specifier: 72.0.0
-        version: 72.0.0(eslint@9.39.2)
+        specifier: 73.0.0
+        version: 73.0.0(eslint@9.39.2)
       eslint-plugin-upleveled:
         specifier: 2.1.15
         version: 2.1.15(eslint@9.39.2)
@@ -1099,6 +1099,12 @@ packages:
 
   eslint-plugin-unicorn@72.0.0:
     resolution: {integrity: sha512-hqO6ksoOHO+ZhdseTuKRVQbx9U7PRO/cv8qAR1mctwzdVO2hYud8uS9luAhp43RJgziYgHAph8eHyipT8GL0ng==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      eslint: '>=10.4'
+
+  eslint-plugin-unicorn@73.0.0:
+    resolution: {integrity: sha512-V0YatLe9nkGhXEXKe2Qljb1EY0sJHwDV0HUF1NKFwtsHh/fU7qGHDgv+6fchzZcgU2/7noHo2gdjnmo0P2uDPw==}
     engines: {node: '>=22'}
     peerDependencies:
       eslint: '>=10.4'
@@ -3420,6 +3426,30 @@ snapshots:
       - typescript
 
   eslint-plugin-unicorn@72.0.0(eslint@9.39.2):
+    dependencies:
+      '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.2)
+      '@eslint/css-tree': 4.0.4
+      browserslist: 4.28.6
+      change-case: 5.4.4
+      ci-info: 4.4.0
+      core-js-compat: 3.49.0
+      detect-indent: 7.0.2
+      entities: 4.5.0
+      eslint: 9.39.2
+      find-up-simple: 1.0.1
+      globals: 17.11.0
+      indent-string: 5.0.0
+      is-builtin-module: 5.0.0
+      is-identifier: 1.1.0
+      pluralize: 8.0.0
+      quote-js-string: 0.1.0
+      regjsparser: 0.13.2
+      reserved-identifiers: 1.2.0
+      semver: 7.8.5
+      strip-indent: 4.1.1
+      yaml: 2.9.0
+
+  eslint-plugin-unicorn@73.0.0(eslint@9.39.2):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.2)
       '@eslint/css-tree': 4.0.4
