@@ -14,19 +14,19 @@ importers:
     devDependencies:
       '@types/node':
         specifier: ^26.0.0
-        version: 26.2.0
+        version: 26.4.0
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.0.0
-        version: 19.2.4(@types/react@19.2.18)
+        version: 19.2.5(@types/react@19.2.18)
       eslint:
         specifier: ^9.10.0
         version: 9.39.2(supports-color@10.2.2)
       eslint-config-upleveled:
         specifier: ^10.0.1
-        version: 10.0.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.2.0)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(@typescript-eslint/utils@8.67.0(eslint@9.39.2(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.2(supports-color@10.2.2))(globals@17.11.0)(supports-color@10.2.2)(typescript@6.0.3)
+        version: 10.0.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.4.0)(@types/react-dom@19.2.5(@types/react@19.2.18))(@types/react@19.2.18)(@typescript-eslint/utils@8.67.0(eslint@9.39.2(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.2(supports-color@10.2.2))(globals@17.11.0)(supports-color@10.2.2)(typescript@6.0.3)
       postcss-styled-syntax:
         specifier: ^0.7.0
         version: 0.7.2(postcss@8.5.22)
@@ -570,11 +570,11 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@26.2.0':
-    resolution: {integrity: sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg==}
+  '@types/node@26.4.0':
+    resolution: {integrity: sha512-faiGnoIrLH/V8cibOMEAZ8pMw6oXqSukl29ra4mN8GdaB2ZewzeaLj+INpV5N+Z1eKWzY+IzaIZH2EIR6YZRNQ==}
 
-  '@types/react-dom@19.2.4':
-    resolution: {integrity: sha512-Bsc+QHgp+P/F02XDzNCY9jnZNCUuLki36KT7VKrTXXLdHf+vHMNZnW1rVu5DNW/rCK+fya3DATySbLM4yhtKUw==}
+  '@types/react-dom@19.2.5':
+    resolution: {integrity: sha512-fMPwH9v7r/pp43yUd2/Mbiex5KouJwwR3dzHkhLREUC6764VyDsqxhAxv6OFEYR1RhjOyD1naqba8ECDBe7ZQg==}
     peerDependencies:
       '@types/react': ^19.2.0
 
@@ -1275,6 +1275,7 @@ packages:
   eslint@9.39.2:
     resolution: {integrity: sha512-LEyamqS7W5HB3ujJyvi0HQK/dtVINZvd5mAAp9eT5S/ujByGjiZLCzPcHVzuXbpJDJF/cxwHlfceVUDZ2lnSTw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -2945,11 +2946,11 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@26.2.0':
+  '@types/node@26.4.0':
     dependencies:
       undici-types: 8.3.0
 
-  '@types/react-dom@19.2.4(@types/react@19.2.18)':
+  '@types/react-dom@19.2.5(@types/react@19.2.18)':
     dependencies:
       '@types/react': 19.2.18
 
@@ -3563,15 +3564,15 @@ snapshots:
       '@eslint/compat': 2.1.0(eslint@9.39.2(supports-color@10.2.2))
       eslint: 9.39.2(supports-color@10.2.2)
 
-  eslint-config-upleveled@10.0.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.2.0)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(@typescript-eslint/utils@8.67.0(eslint@9.39.2(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.2(supports-color@10.2.2))(globals@17.11.0)(supports-color@10.2.2)(typescript@6.0.3):
+  eslint-config-upleveled@10.0.2(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.4.0)(@types/react-dom@19.2.5(@types/react@19.2.18))(@types/react@19.2.18)(@typescript-eslint/utils@8.67.0(eslint@9.39.2(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.2(supports-color@10.2.2))(globals@17.11.0)(supports-color@10.2.2)(typescript@6.0.3):
     dependencies:
       '@babel/eslint-parser': 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(eslint@9.39.2(supports-color@10.2.2))
       '@eslint/compat': 2.1.0(eslint@9.39.2(supports-color@10.2.2))
       '@next/eslint-plugin-next': 16.3.0(eslint@9.39.2(supports-color@10.2.2))
       '@stylistic/eslint-plugin': 5.10.0(eslint@9.39.2(supports-color@10.2.2))
-      '@types/node': 26.2.0
+      '@types/node': 26.4.0
       '@types/react': 19.2.18
-      '@types/react-dom': 19.2.4(@types/react@19.2.18)
+      '@types/react-dom': 19.2.5(@types/react@19.2.18)
       '@typescript-eslint/eslint-plugin': 8.66.0(@typescript-eslint/parser@8.66.0(eslint@9.39.2(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.2(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
       '@typescript-eslint/parser': 8.66.0(eslint@9.39.2(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
       comment-json: 5.0.0
