@@ -14,7 +14,7 @@
     "update-config-version": "pnpm add --save-dev eslint-config-upleveled@latest --allow-build=unrs-resolver && pnpm upleveled-eslint-install"
   },
   "dependencies": {
-    "next": "^16.0.0"
+    "next": "16.3.3"
   },
   "devDependencies": {
     "@types/node": "^26.0.0",
