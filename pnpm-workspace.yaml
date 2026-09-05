@@ -1,3 +1,8 @@
+# Allow build scripts for trusted dependencies
+# - https://pnpm.io/settings#allowbuilds
+allowBuilds:
+  unrs-resolver: false
+
 # Block transitive dependencies from using git repositories or
 # direct tarball URLs
 # - https://pnpm.io/settings#blockexoticsubdeps
@@ -15,15 +20,6 @@ minimumReleaseAgeExclude:
   - '@isaacs/brace-expansion@5.0.1'
   # Renovate security update: yaml@2.8.3
   - yaml@2.8.3
-
-# Allow build scripts for trusted dependencies
-# - https://pnpm.io/settings#onlybuiltdependencies
-onlyBuiltDependencies:
-  - unrs-resolver
-
-# Fail on pnpm ignored build scripts
-# - https://pnpm.io/settings#strictdepbuilds
-strictDepBuilds: true
 
 # Prevent trust level decreases with new versions of dependencies
 # - https://pnpm.io/settings#trustpolicy

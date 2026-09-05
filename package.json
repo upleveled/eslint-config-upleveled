@@ -75,8 +75,14 @@
     "globals": "^17.11.0",
     "typescript": "^6.0.3"
   },
-  "packageManager": "pnpm@11.25.0",
   "engines": {
     "node": ">=20.9.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.25.0",
+      "onFail": "download"
+    }
   }
 }
