@@ -65,7 +65,7 @@
     "prettier-plugin-embed": "0.5.1",
     "prettier-plugin-sql": "0.20.0",
     "stylelint": "17.14.1",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   },
   "peerDependencies": {
     "@types/node": ">=26.4.0",
@@ -73,7 +73,7 @@
     "@types/react-dom": "^19.2.5",
     "eslint": "^9.39.2",
     "globals": "^17.11.0",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   },
   "engines": {
     "node": ">=20.9.0"
