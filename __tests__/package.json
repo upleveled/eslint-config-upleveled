@@ -26,6 +26,6 @@
     "prettier": "^3.2.5",
     "stylelint": "^17.0.0",
     "stylelint-config-upleveled": "^2.0.0",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.0"
   }
 }
