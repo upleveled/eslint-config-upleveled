@@ -32,7 +32,7 @@
     "tsconfig.base.json"
   ],
   "scripts": {
-    "postpublish": "./scripts/wait-for-npm-availability.ts && cd __tests__ && pnpm update-config-version"
+    "postpublish": "./scripts/waitForNpmPublish.ts && cd __tests__ && pnpm update-config-version"
   },
   "dependencies": {
     "@eslint/compat": "2.1.0",
