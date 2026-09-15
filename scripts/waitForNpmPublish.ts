@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+// Wait for npm publish of package.json version, delayed by malware scanning
+// - https://github.blog/changelog/2026-07-28-npm-publish-time-malware-scanning-and-dual-use-metadata/
+
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { setTimeout } from 'node:timers/promises';
+
+const packageJson = JSON.parse(
+  readFileSync(join(import.meta.dirname, '..', 'package.json'), 'utf-8'),
+) as { name: string; version: string };
+
+const url = `https://registry.npmjs.org/${packageJson.name}`;
+
+let latest;
+
+while (latest !== packageJson.version) {
+  console.log(`Waiting for ${packageJson.name}@${packageJson.version}`);
+  await setTimeout(5000);
+
+  let response;
+
+  try {
+    response = await fetch(url, {
+      signal: AbortSignal.timeout(10000),
+      headers: {
+        // Abbreviated packument, which pnpm resolves installs from
+        accept: 'application/vnd.npm.install-v1+json',
+        'cache-control': 'no-cache',
+      },
+    });
+  } catch (error) {
+    console.log(`npm registry request failed for ${url}`, error);
+    continue;
+  }
+
+  if (!response.ok) {
+    console.log(`npm registry returned ${response.status} for ${url}`);
+    continue;
+  }
+
+  latest = ((await response.json()) as { 'dist-tags': { latest: string } })[
+    'dist-tags'
+  ].latest;
+}
