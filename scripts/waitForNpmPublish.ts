@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// Wait for npm publish, delayed by malware scanning
+// Wait for npm publish of package.json version, delayed by malware scanning
 // - https://github.blog/changelog/2026-07-28-npm-publish-time-malware-scanning-and-dual-use-metadata/
 
 import { readFileSync } from 'node:fs';
