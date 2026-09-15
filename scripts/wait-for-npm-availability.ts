@@ -13,7 +13,12 @@ const packageJson = JSON.parse(
 
 const url = `https://registry.npmjs.org/${packageJson.name}`;
 
-async function fetchLatest() {
+let latest;
+
+while (latest !== packageJson.version) {
+  console.log(`Waiting for ${packageJson.name}@${packageJson.version}`);
+  await setTimeout(5000);
+
   const response = await fetch(url, {
     headers: {
       // Abbreviated packument, which pnpm resolves installs from
@@ -23,15 +28,11 @@ async function fetchLatest() {
   });
 
   if (!response.ok) {
-    throw new Error(`npm registry returned ${response.status} for ${url}`);
+    console.log(`npm registry returned ${response.status} for ${url}`);
+    continue;
   }
 
-  return ((await response.json()) as { 'dist-tags': { latest: string } })[
+  latest = ((await response.json()) as { 'dist-tags': { latest: string } })[
     'dist-tags'
   ].latest;
-}
-
-while ((await fetchLatest()) !== packageJson.version) {
-  console.log(`Waiting for ${packageJson.name}@${packageJson.version}`);
-  await setTimeout(15000);
 }
