@@ -19,13 +19,21 @@ while (latest !== packageJson.version) {
   console.log(`Waiting for ${packageJson.name}@${packageJson.version}`);
   await setTimeout(5000);
 
-  const response = await fetch(url, {
-    headers: {
-      // Abbreviated packument, which pnpm resolves installs from
-      accept: 'application/vnd.npm.install-v1+json',
-      'cache-control': 'no-cache',
-    },
-  });
+  let response;
+
+  try {
+    response = await fetch(url, {
+      signal: AbortSignal.timeout(10000),
+      headers: {
+        // Abbreviated packument, which pnpm resolves installs from
+        accept: 'application/vnd.npm.install-v1+json',
+        'cache-control': 'no-cache',
+      },
+    });
+  } catch (error) {
+    console.log(`npm registry request failed for ${url}`, error);
+    continue;
+  }
 
   if (!response.ok) {
     console.log(`npm registry returned ${response.status} for ${url}`);
