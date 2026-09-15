@@ -21,11 +21,11 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.10.0",
-    "eslint-config-upleveled": "^10.0.3",
+    "eslint-config-upleveled": "^10.0.4",
     "postcss-styled-syntax": "^0.7.0",
     "prettier": "^3.2.5",
     "stylelint": "^17.0.0",
     "stylelint-config-upleveled": "^2.0.0",
-    "typescript": "^6.0.3"
+    "typescript": "6.0.3"
   }
 }
