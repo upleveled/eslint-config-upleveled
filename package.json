@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@eslint/compat": "2.1.1",
-    "@next/eslint-plugin-next": "16.3.4",
+    "@next/eslint-plugin-next": "16.3.5",
     "@stylistic/eslint-plugin": "5.10.0",
     "@typescript-eslint/eslint-plugin": "8.70.0",
     "@typescript-eslint/parser": "8.70.0",
@@ -50,7 +50,7 @@
     "eslint-plugin-react-naming-convention": "2.13.0",
     "eslint-plugin-react-x": "2.13.0",
     "eslint-plugin-security": "4.0.1",
-    "eslint-plugin-sonarjs": "4.2.0",
+    "eslint-plugin-sonarjs": "4.2.1",
     "eslint-plugin-unicorn": "74.0.0",
     "eslint-plugin-upleveled": "2.1.15",
     "is-plain-obj": "4.1.0",
@@ -61,14 +61,14 @@
   "devDependencies": {
     "@typescript-eslint/utils": "8.70.0",
     "eslint-config-upleveled": "10.0.4",
-    "prettier": "3.9.6",
+    "prettier": "3.9.8",
     "prettier-plugin-embed": "0.5.1",
     "prettier-plugin-sql": "0.20.0",
     "stylelint": "17.15.0",
     "typescript": "6.0.3"
   },
   "peerDependencies": {
-    "@types/node": ">=26.5.1",
+    "@types/node": ">=26.6.1",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.2",
