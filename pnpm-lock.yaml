@@ -203,6 +203,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  eslint-plugin-jsx-a11y-x@0.2.0: d84e2fae898af74dac6a00a04a3ede9eea1f82ea5d6938f9d2aeffb82e46350c
+
 importers:
 
   .:
@@ -246,9 +249,9 @@ importers:
       eslint-plugin-import-x:
         specifier: 4.17.1
         version: 4.17.1(@typescript-eslint/utils@8.70.0(eslint@9.39.2(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.2(supports-color@10.2.2))(supports-color@10.2.2)
-      eslint-plugin-jsx-a11y:
-        specifier: 6.10.2
-        version: 6.10.2(eslint@9.39.2(supports-color@10.2.2))
+      eslint-plugin-jsx-a11y-x:
+        specifier: 0.2.0
+        version: 0.2.0(patch_hash=d84e2fae898af74dac6a00a04a3ede9eea1f82ea5d6938f9d2aeffb82e46350c)(eslint@9.39.2(supports-color@10.2.2))
       eslint-plugin-react-dom:
         specifier: 2.13.0
         version: 2.13.0(eslint@9.39.2(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
@@ -1241,6 +1244,12 @@ packages:
         optional: true
       eslint-import-resolver-node:
         optional: true
+
+  eslint-plugin-jsx-a11y-x@0.2.0:
+    resolution: {integrity: sha512-O/VpKt2G38VCMlBgGCH8eJGWXM05z892zGKeuPfPATMPLDZOWeVtKS8SBt98ElaeFRKcJEv2bELub+Llo3m9zw==}
+    engines: {node: ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^9.0.0 || ^10.0.0
 
   eslint-plugin-jsx-a11y@6.10.2:
     resolution: {integrity: sha512-scB3nz4WmG75pV8+3eRUQOHZlNSUhFNq37xnpgRkCCELU3XMvXAxLk1eqWWyE22Ki4Q01Fnsw9BA3cJHDPgn2Q==}
@@ -3489,6 +3498,17 @@ snapshots:
       '@typescript-eslint/utils': 8.70.0(eslint@9.39.2(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
     transitivePeerDependencies:
       - supports-color
+
+  eslint-plugin-jsx-a11y-x@0.2.0(patch_hash=d84e2fae898af74dac6a00a04a3ede9eea1f82ea5d6938f9d2aeffb82e46350c)(eslint@9.39.2(supports-color@10.2.2)):
+    dependencies:
+      aria-query: 5.3.2
+      axe-core: 4.10.3
+      axobject-query: 4.1.0
+      damerau-levenshtein: 1.0.8
+      eslint: 9.39.2(supports-color@10.2.2)
+      jsx-ast-utils-x: 0.1.0
+      language-tags: 1.0.9
+      minimatch: 10.2.6
 
   eslint-plugin-jsx-a11y@6.10.2(eslint@9.39.2(supports-color@10.2.2)):
     dependencies:

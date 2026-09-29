@@ -1,0 +1,14 @@
+diff --git a/lib/index.d.ts b/lib/index.d.ts
+index 81ac71e00f20e53fa331e737372e87379247dfd1..2e3bfa6ce1aee6a84816dd1cc7513922dc7faf84 100644
+--- a/lib/index.d.ts
++++ b/lib/index.d.ts
+@@ -1,6 +1,9 @@
+ export default jsxA11y;
+ declare namespace jsxA11y {
+     export { configs };
++    // https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/106
++    export let meta: { name: string; version: string };
++    export let rules: Record<string, import("eslint").Rule.RuleModule>;
+ }
+ declare namespace configs {
+     let recommended: {

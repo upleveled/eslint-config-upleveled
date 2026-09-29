@@ -21,6 +21,11 @@ minimumReleaseAgeExclude:
   # Renovate security update: yaml@2.8.3
   - yaml@2.8.3
 
+patchedDependencies:
+  # Add missing `meta` and `rules` to bundled default export types, causing TS2559 with FlatConfig.Plugin
+  # - https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/106
+  eslint-plugin-jsx-a11y-x@0.2.0: patches/eslint-plugin-jsx-a11y-x@0.2.0.patch
+
 # Prevent trust level decreases with new versions of dependencies
 # - https://pnpm.io/settings#trustpolicy
 trustPolicy: 'no-downgrade'

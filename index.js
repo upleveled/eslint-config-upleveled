@@ -8,7 +8,7 @@ import typescriptParser from '@typescript-eslint/parser';
 import gitignore from 'eslint-config-flat-gitignore';
 import * as tsResolver from 'eslint-import-resolver-typescript';
 import eslintImportX from 'eslint-plugin-import-x';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
+import jsxA11y from 'eslint-plugin-jsx-a11y-x';
 import reactDom from 'eslint-plugin-react-dom';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactNamingConvention from 'eslint-plugin-react-naming-convention';
@@ -513,23 +513,23 @@ const eslintConfigReactAppRules = {
   // ],
   // ```
 
-  // - https://github.com/evcohen/eslint-plugin-jsx-a11y/tree/master/docs/rules
-  'jsx-a11y/alt-text': 'warn',
-  'jsx-a11y/anchor-has-content': 'warn',
-  'jsx-a11y/aria-activedescendant-has-tabindex': 'warn',
-  'jsx-a11y/aria-props': 'warn',
-  'jsx-a11y/aria-proptypes': 'warn',
-  'jsx-a11y/aria-role': ['warn', { ignoreNonDOM: true }],
-  'jsx-a11y/aria-unsupported-elements': 'warn',
-  'jsx-a11y/heading-has-content': 'warn',
-  'jsx-a11y/iframe-has-title': 'warn',
-  'jsx-a11y/img-redundant-alt': 'warn',
-  'jsx-a11y/no-access-key': 'warn',
-  'jsx-a11y/no-distracting-elements': 'warn',
-  'jsx-a11y/no-redundant-roles': 'warn',
-  'jsx-a11y/role-has-required-aria-props': 'warn',
-  'jsx-a11y/role-supports-aria-props': 'warn',
-  'jsx-a11y/scope': 'warn',
+  // - https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/main/docs/rules
+  'jsx-a11y-x/alt-text': 'warn',
+  'jsx-a11y-x/anchor-has-content': 'warn',
+  'jsx-a11y-x/aria-activedescendant-has-tabindex': 'warn',
+  'jsx-a11y-x/aria-props': 'warn',
+  'jsx-a11y-x/aria-proptypes': 'warn',
+  'jsx-a11y-x/aria-role': ['warn', { ignoreNonDOM: true }],
+  'jsx-a11y-x/aria-unsupported-elements': 'warn',
+  'jsx-a11y-x/heading-has-content': 'warn',
+  'jsx-a11y-x/iframe-has-title': 'warn',
+  'jsx-a11y-x/img-redundant-alt': 'warn',
+  'jsx-a11y-x/no-access-key': 'warn',
+  'jsx-a11y-x/no-distracting-elements': 'warn',
+  'jsx-a11y-x/no-redundant-roles': 'warn',
+  'jsx-a11y-x/role-has-required-aria-props': 'warn',
+  'jsx-a11y-x/role-supports-aria-props': 'warn',
+  'jsx-a11y-x/scope': 'warn',
 
   // - https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks
   'react-hooks/rules-of-hooks': 'error',
@@ -573,7 +573,7 @@ const configArray = [
         rules: eslintTypescript.rules,
       },
       'import-x': eslintImportX,
-      'jsx-a11y': jsxA11y,
+      'jsx-a11y-x': jsxA11y,
       'react-dom': reactDom,
       'react-hooks': reactHooks,
       'react-naming-convention': reactNamingConvention,
@@ -929,7 +929,7 @@ const configArray = [
       //
       // Fix:
       // - https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402#issuecomment-368305051
-      'jsx-a11y/anchor-is-valid': [
+      'jsx-a11y-x/anchor-is-valid': [
         'error',
         {
           components: ['Link'],
@@ -937,9 +937,6 @@ const configArray = [
           aspects: ['invalidHref', 'preferButton'],
         },
       ],
-      // Disable obsolete rule
-      // - https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-728976688
-      'jsx-a11y/no-onchange': 'off',
       // Warn on async promise executor function
       // - https://github.com/eslint/eslint/blob/main/docs/src/rules/no-async-promise-executor.md
       'no-async-promise-executor': 'warn',
