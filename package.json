@@ -35,6 +35,7 @@
     "postpublish": "./scripts/waitForNpmPublish.ts && cd __tests__ && pnpm update-config-version"
   },
   "dependencies": {
+    "@eslint-react/kit": "5.20.5",
     "@eslint/compat": "2.1.1",
     "@next/eslint-plugin-next": "16.3.5",
     "@stylistic/eslint-plugin": "5.10.0",
@@ -45,10 +46,10 @@
     "eslint-import-resolver-typescript": "4.4.5",
     "eslint-plugin-import-x": "4.17.1",
     "eslint-plugin-jsx-a11y-x": "0.2.0",
-    "eslint-plugin-react-dom": "2.13.0",
+    "eslint-plugin-react-dom": "5.20.5",
     "eslint-plugin-react-hooks": "7.1.1",
-    "eslint-plugin-react-naming-convention": "2.13.0",
-    "eslint-plugin-react-x": "2.13.0",
+    "eslint-plugin-react-jsx": "5.20.5",
+    "eslint-plugin-react-x": "5.20.5",
     "eslint-plugin-security": "4.0.1",
     "eslint-plugin-sonarjs": "4.2.1",
     "eslint-plugin-unicorn": "75.0.0",

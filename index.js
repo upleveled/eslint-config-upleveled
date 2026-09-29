@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
+import eslintReactKit from '@eslint-react/kit';
 import { fixupPluginRules } from '@eslint/compat';
 import next from '@next/eslint-plugin-next';
 import stylistic from '@stylistic/eslint-plugin';
@@ -11,7 +12,7 @@ import eslintImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y-x';
 import reactDom from 'eslint-plugin-react-dom';
 import reactHooks from 'eslint-plugin-react-hooks';
-import reactNamingConvention from 'eslint-plugin-react-naming-convention';
+import reactJsx from 'eslint-plugin-react-jsx';
 import reactX from 'eslint-plugin-react-x';
 import security from 'eslint-plugin-security';
 import sonarjs from 'eslint-plugin-sonarjs';
@@ -20,6 +21,56 @@ import upleveled from 'eslint-plugin-upleveled';
 import globals from 'globals';
 import isPlainObject from 'is-plain-obj';
 import stripJsonComments from 'strip-json-comments';
+
+// @eslint-react/kit recipe for rule removed in eslint-plugin-react-x v5,
+// still needed in JavaScript / JSX files without TypeScript checks
+// - https://github.com/Rel1cx/eslint-react/blob/ef05956cc860dcf32c1a78dedf1581ebebb910c3/.pkgs/samples/src/jsxNoDuplicateProps.ts
+/** @returns {import('@eslint-react/kit').RuleFunction} */
+function jsxNoDuplicateProps() {
+  return (context) => ({
+    JSXOpeningElement(node) {
+      const seen = new Set();
+
+      for (const attr of node.attributes) {
+        if (attr.type !== 'JSXAttribute') continue;
+        if (attr.name.type !== 'JSXIdentifier') continue;
+
+        if (seen.has(attr.name.name)) {
+          context.report({
+            message: `Duplicate prop "${attr.name.name}" found.`,
+            node: attr,
+          });
+        } else {
+          seen.add(attr.name.name);
+        }
+      }
+    },
+  });
+}
+
+// @eslint-react/kit recipe for rule removed in eslint-plugin-react-x v5,
+// still needed in JavaScript / JSX files without TypeScript checks
+// - https://github.com/Rel1cx/eslint-react/blob/ef05956cc860dcf32c1a78dedf1581ebebb910c3/.pkgs/samples/src/noStringRefs.ts
+/** @returns {import('@eslint-react/kit').RuleFunction} */
+function noStringRefs() {
+  return (context) => ({
+    JSXAttribute(node) {
+      if (node.name.type !== 'JSXIdentifier' || node.name.name !== 'ref') {
+        return;
+      }
+
+      if (
+        node.value?.type === 'Literal' &&
+        typeof node.value.value === 'string'
+      ) {
+        context.report({
+          message: `String refs are deprecated and should not be used. Use React.useRef() instead.`,
+          node,
+        });
+      }
+    },
+  });
+}
 
 /** @type
  * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.RuleLevelAndOptions}
@@ -576,7 +627,11 @@ const configArray = [
       'jsx-a11y-x': jsxA11y,
       'react-dom': reactDom,
       'react-hooks': reactHooks,
-      'react-naming-convention': reactNamingConvention,
+      'react-jsx': reactJsx,
+      'react-kit': eslintReactKit()
+        .use(jsxNoDuplicateProps)
+        .use(noStringRefs)
+        .getPlugin(),
       'react-x': reactX,
       security,
       sonarjs: {
@@ -1051,22 +1106,15 @@ const configArray = [
       // Error on passing children to void elements
       // - https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
       'react-dom/no-void-elements-with-children': 'error',
-      // Warn about state variable and setter names which are not
-      // destructured or symmetrically named
-      // - https://eslint-react.xyz/docs/rules/naming-convention-use-state
-      'react-naming-convention/use-state': 'warn',
-      // Warn on duplicate props in JSX
-      // - https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
-      'react-x/jsx-no-duplicate-props': 'warn',
-      // Disallow React being marked as unused
-      // - https://eslint-react.xyz/docs/rules/jsx-uses-react
-      'react-x/jsx-uses-react': 'warn',
+      // Error on comment textnodes in JSX
+      // - https://eslint-react.xyz/docs/rules/jsx-no-comment-textnodes
+      'react-jsx/no-comment-textnodes': 'warn',
+      // Error on useless React fragments
+      // - https://eslint-react.xyz/docs/rules/jsx-no-useless-fragment
+      'react-jsx/no-useless-fragment': 'warn',
       // Warn if a `key` is set to an `index`
       // - https://eslint-react.xyz/docs/rules/no-array-index-key
       'react-x/no-array-index-key': 'error',
-      // Error on comment textnodes in JSX
-      // - https://eslint-react.xyz/docs/rules/no-comment-textnodes
-      'react-x/jsx-no-comment-textnodes': 'warn',
       // Warn on usage of componentWillMount lifecycle method
       // - https://eslint-react.xyz/docs/rules/no-component-will-mount
       'react-x/no-component-will-mount': 'warn',
@@ -1093,9 +1141,6 @@ const configArray = [
       // Error on creating components within components
       // - https://eslint-react.xyz/docs/rules/no-nested-component-definitions
       'react-x/no-nested-component-definitions': 'error',
-      // Warn on usage of string refs
-      // - https://eslint-react.xyz/docs/rules/no-string-refs
-      'react-x/no-string-refs': 'warn',
       // Warn on usage of UNSAFE_componentWillMount lifecycle
       // method
       // - https://eslint-react.xyz/docs/rules/no-unsafe-component-will-mount
@@ -1111,9 +1156,10 @@ const configArray = [
       // Warn on unused props
       // - https://github.com/Rel1cx/eslint-react/blob/2.0.0-beta/packages/plugins/eslint-plugin-react-x/src/rules/no-unused-props.md
       'react-x/no-unused-props': 'warn',
-      // Error on useless React fragments
-      // - https://eslint-react.xyz/docs/rules/no-useless-fragment
-      'react-x/no-useless-fragment': 'warn',
+      // Warn about state variable and setter names which are not
+      // destructured or symmetrically named
+      // - https://eslint-react.xyz/docs/rules/use-state
+      'react-x/use-state': 'warn',
       // Error on trojan source code attacks using bidirectional
       // characters
       // - https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-bidi-characters.md
@@ -1184,6 +1230,16 @@ const configArray = [
       //    - https://github.com/jsx-eslint/eslint-plugin-react/issues/3423
       //    - https://github.com/Rel1cx/eslint-react/issues/846
       'react-dom/no-unknown-property': ['warn', { ignore: ['css'] }],
+      // Warn on duplicate props in JSX
+      //
+      // Enable only in JavaScript / JSX files because TypeScript
+      // reports duplicate props (TS17001)
+      'react-kit/jsx-no-duplicate-props': 'warn',
+      // Warn on usage of string refs
+      //
+      // Enable only in JavaScript / JSX files because TypeScript
+      // reports string refs with @types/react 19 (TS2322)
+      'react-kit/no-string-refs': 'warn',
     },
   },
   {
