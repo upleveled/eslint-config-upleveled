@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
+import eslintReactKit from '@eslint-react/kit';
 import { fixupPluginRules } from '@eslint/compat';
 import next from '@next/eslint-plugin-next';
 import stylistic from '@stylistic/eslint-plugin';
@@ -20,6 +21,56 @@ import upleveled from 'eslint-plugin-upleveled';
 import globals from 'globals';
 import isPlainObject from 'is-plain-obj';
 import stripJsonComments from 'strip-json-comments';
+
+// @eslint-react/kit recipe for rule removed in eslint-plugin-react-x v5,
+// still needed in JavaScript / JSX files without TypeScript checks
+// - https://github.com/Rel1cx/eslint-react/blob/ef05956cc860dcf32c1a78dedf1581ebebb910c3/.pkgs/samples/src/jsxNoDuplicateProps.ts
+/** @returns {import('@eslint-react/kit').RuleFunction} */
+function jsxNoDuplicateProps() {
+  return (context) => ({
+    JSXOpeningElement(node) {
+      const seen = new Set();
+
+      for (const attr of node.attributes) {
+        if (attr.type !== 'JSXAttribute') continue;
+        if (attr.name.type !== 'JSXIdentifier') continue;
+
+        if (seen.has(attr.name.name)) {
+          context.report({
+            message: `Duplicate prop "${attr.name.name}" found.`,
+            node: attr,
+          });
+        } else {
+          seen.add(attr.name.name);
+        }
+      }
+    },
+  });
+}
+
+// @eslint-react/kit recipe for rule removed in eslint-plugin-react-x v5,
+// still needed in JavaScript / JSX files without TypeScript checks
+// - https://github.com/Rel1cx/eslint-react/blob/ef05956cc860dcf32c1a78dedf1581ebebb910c3/.pkgs/samples/src/noStringRefs.ts
+/** @returns {import('@eslint-react/kit').RuleFunction} */
+function noStringRefs() {
+  return (context) => ({
+    JSXAttribute(node) {
+      if (node.name.type !== 'JSXIdentifier' || node.name.name !== 'ref') {
+        return;
+      }
+
+      if (
+        node.value?.type === 'Literal' &&
+        typeof node.value.value === 'string'
+      ) {
+        context.report({
+          message: `String refs are deprecated and should not be used. Use React.useRef() instead.`,
+          node,
+        });
+      }
+    },
+  });
+}
 
 /** @type
  * {import('@typescript-eslint/utils/ts-eslint').FlatConfig.RuleLevelAndOptions}
@@ -577,6 +628,10 @@ const configArray = [
       'react-dom': reactDom,
       'react-hooks': reactHooks,
       'react-jsx': reactJsx,
+      'react-kit': eslintReactKit()
+        .use(jsxNoDuplicateProps)
+        .use(noStringRefs)
+        .getPlugin(),
       'react-x': reactX,
       security,
       sonarjs: {
@@ -1175,6 +1230,16 @@ const configArray = [
       //    - https://github.com/jsx-eslint/eslint-plugin-react/issues/3423
       //    - https://github.com/Rel1cx/eslint-react/issues/846
       'react-dom/no-unknown-property': ['warn', { ignore: ['css'] }],
+      // Warn on duplicate props in JSX
+      //
+      // Enable only in JavaScript / JSX files because TypeScript
+      // reports duplicate props (TS17001)
+      'react-kit/jsx-no-duplicate-props': 'warn',
+      // Warn on usage of string refs
+      //
+      // Enable only in JavaScript / JSX files because TypeScript
+      // reports string refs with @types/react 19 (TS2322)
+      'react-kit/no-string-refs': 'warn',
     },
   },
   {
