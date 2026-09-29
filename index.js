@@ -11,7 +11,7 @@ import eslintImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y-x';
 import reactDom from 'eslint-plugin-react-dom';
 import reactHooks from 'eslint-plugin-react-hooks';
-import reactNamingConvention from 'eslint-plugin-react-naming-convention';
+import reactJsx from 'eslint-plugin-react-jsx';
 import reactX from 'eslint-plugin-react-x';
 import security from 'eslint-plugin-security';
 import sonarjs from 'eslint-plugin-sonarjs';
@@ -576,7 +576,7 @@ const configArray = [
       'jsx-a11y-x': jsxA11y,
       'react-dom': reactDom,
       'react-hooks': reactHooks,
-      'react-naming-convention': reactNamingConvention,
+      'react-jsx': reactJsx,
       'react-x': reactX,
       security,
       sonarjs: {
@@ -1053,20 +1053,14 @@ const configArray = [
       'react-dom/no-void-elements-with-children': 'error',
       // Warn about state variable and setter names which are not
       // destructured or symmetrically named
-      // - https://eslint-react.xyz/docs/rules/naming-convention-use-state
-      'react-naming-convention/use-state': 'warn',
-      // Warn on duplicate props in JSX
-      // - https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
-      'react-x/jsx-no-duplicate-props': 'warn',
-      // Disallow React being marked as unused
-      // - https://eslint-react.xyz/docs/rules/jsx-uses-react
-      'react-x/jsx-uses-react': 'warn',
+      // - https://eslint-react.xyz/docs/rules/use-state
+      'react-x/use-state': 'warn',
       // Warn if a `key` is set to an `index`
       // - https://eslint-react.xyz/docs/rules/no-array-index-key
       'react-x/no-array-index-key': 'error',
       // Error on comment textnodes in JSX
-      // - https://eslint-react.xyz/docs/rules/no-comment-textnodes
-      'react-x/jsx-no-comment-textnodes': 'warn',
+      // - https://eslint-react.xyz/docs/rules/jsx-no-comment-textnodes
+      'react-jsx/no-comment-textnodes': 'warn',
       // Warn on usage of componentWillMount lifecycle method
       // - https://eslint-react.xyz/docs/rules/no-component-will-mount
       'react-x/no-component-will-mount': 'warn',
@@ -1093,9 +1087,6 @@ const configArray = [
       // Error on creating components within components
       // - https://eslint-react.xyz/docs/rules/no-nested-component-definitions
       'react-x/no-nested-component-definitions': 'error',
-      // Warn on usage of string refs
-      // - https://eslint-react.xyz/docs/rules/no-string-refs
-      'react-x/no-string-refs': 'warn',
       // Warn on usage of UNSAFE_componentWillMount lifecycle
       // method
       // - https://eslint-react.xyz/docs/rules/no-unsafe-component-will-mount
@@ -1112,8 +1103,8 @@ const configArray = [
       // - https://github.com/Rel1cx/eslint-react/blob/2.0.0-beta/packages/plugins/eslint-plugin-react-x/src/rules/no-unused-props.md
       'react-x/no-unused-props': 'warn',
       // Error on useless React fragments
-      // - https://eslint-react.xyz/docs/rules/no-useless-fragment
-      'react-x/no-useless-fragment': 'warn',
+      // - https://eslint-react.xyz/docs/rules/jsx-no-useless-fragment
+      'react-jsx/no-useless-fragment': 'warn',
       // Error on trojan source code attacks using bidirectional
       // characters
       // - https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-bidi-characters.md
