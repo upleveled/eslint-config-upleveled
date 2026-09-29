@@ -11,6 +11,7 @@ minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
   - "@upleveled/*"
   - eslint-config-upleveled
+  - eslint-plugin-upleveled
   - stylelint-config-upleveled
 
 # Prevent trust level decreases with new versions of dependencies
