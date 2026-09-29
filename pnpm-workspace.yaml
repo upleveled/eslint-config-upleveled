@@ -15,6 +15,7 @@ minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
   - '@upleveled/*'
   - eslint-config-upleveled
+  - eslint-plugin-upleveled
   - stylelint-config-upleveled
   # - https://github.com/advisories/GHSA-7h2j-956f-4vf2
   - '@isaacs/brace-expansion@5.0.1'

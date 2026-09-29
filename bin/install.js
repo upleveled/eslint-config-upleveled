@@ -504,6 +504,7 @@ function updatePnpmWorkspaceYaml() {
     doc.createNode([
       '@upleveled/*',
       'eslint-config-upleveled',
+      'eslint-plugin-upleveled',
       'stylelint-config-upleveled',
     ]),
   );
