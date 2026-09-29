@@ -274,8 +274,8 @@ importers:
         specifier: 75.0.0
         version: 75.0.0(eslint@10.11.0(supports-color@10.2.2))
       eslint-plugin-upleveled:
-        specifier: 2.1.15
-        version: 2.1.15(eslint@10.11.0(supports-color@10.2.2))
+        specifier: 3.0.0
+        version: 3.0.0(eslint@10.11.0(supports-color@10.2.2))
       globals:
         specifier: ^17.12.0
         version: 17.12.0
@@ -1302,6 +1302,12 @@ packages:
     engines: {node: '>=18.0.0'}
     peerDependencies:
       eslint: ^9.39.2
+
+  eslint-plugin-upleveled@3.0.0:
+    resolution: {integrity: sha512-M1CMf158sMX+dMz4aqgD1NixmdfcpaVwG7tKv0H9J6gGOXaTduWSXl2AqXIp0EAoS1pjks0m7fKlGJLfiALIKg==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=24}
+    peerDependencies:
+      eslint: ^10.10.0
 
   eslint-scope@9.1.2:
     resolution: {integrity: sha512-xS90H51cKw0jltxmvmHy2Iai1LIqrfbw57b79w/J7MfvDfkIkFZ+kj6zC3BjtUwh150HsSSdxXZcsuv72miDFQ==}
@@ -3621,6 +3627,10 @@ snapshots:
       yaml: 2.9.1
 
   eslint-plugin-upleveled@2.1.15(eslint@10.11.0(supports-color@10.2.2)):
+    dependencies:
+      eslint: 10.11.0(supports-color@10.2.2)
+
+  eslint-plugin-upleveled@3.0.0(eslint@10.11.0(supports-color@10.2.2)):
     dependencies:
       eslint: 10.11.0(supports-color@10.2.2)
 
