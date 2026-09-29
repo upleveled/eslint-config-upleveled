@@ -1106,16 +1106,15 @@ const configArray = [
       // Error on passing children to void elements
       // - https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
       'react-dom/no-void-elements-with-children': 'error',
-      // Warn about state variable and setter names which are not
-      // destructured or symmetrically named
-      // - https://eslint-react.xyz/docs/rules/use-state
-      'react-x/use-state': 'warn',
-      // Warn if a `key` is set to an `index`
-      // - https://eslint-react.xyz/docs/rules/no-array-index-key
-      'react-x/no-array-index-key': 'error',
       // Error on comment textnodes in JSX
       // - https://eslint-react.xyz/docs/rules/jsx-no-comment-textnodes
       'react-jsx/no-comment-textnodes': 'warn',
+      // Error on useless React fragments
+      // - https://eslint-react.xyz/docs/rules/jsx-no-useless-fragment
+      'react-jsx/no-useless-fragment': 'warn',
+      // Warn if a `key` is set to an `index`
+      // - https://eslint-react.xyz/docs/rules/no-array-index-key
+      'react-x/no-array-index-key': 'error',
       // Warn on usage of componentWillMount lifecycle method
       // - https://eslint-react.xyz/docs/rules/no-component-will-mount
       'react-x/no-component-will-mount': 'warn',
@@ -1157,9 +1156,10 @@ const configArray = [
       // Warn on unused props
       // - https://github.com/Rel1cx/eslint-react/blob/2.0.0-beta/packages/plugins/eslint-plugin-react-x/src/rules/no-unused-props.md
       'react-x/no-unused-props': 'warn',
-      // Error on useless React fragments
-      // - https://eslint-react.xyz/docs/rules/jsx-no-useless-fragment
-      'react-jsx/no-useless-fragment': 'warn',
+      // Warn about state variable and setter names which are not
+      // destructured or symmetrically named
+      // - https://eslint-react.xyz/docs/rules/use-state
+      'react-x/use-state': 'warn',
       // Error on trojan source code attacks using bidirectional
       // characters
       // - https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-bidi-characters.md
