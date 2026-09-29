@@ -6,7 +6,7 @@ const config = [
   {
     ignores: [
       // Tests
-      '__tests__/**/*',
+      '__tests__/',
     ],
   },
 ];
