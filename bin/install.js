@@ -504,7 +504,7 @@ function updatePnpmWorkspaceYaml() {
 # - https://pnpm.io/settings#minimumreleaseage`.replaceAll(/^#/gm, '');
 
   if (!doc.has('minimumReleaseAge')) {
-    doc.setIn([minimumReleaseAgeKey], doc.createNode(10080));
+    doc.setIn([minimumReleaseAgeKey], doc.createNode(7 * 24 * 60));
   }
 
   if (!doc.has('minimumReleaseAgeExclude')) {
