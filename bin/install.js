@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 import { assign, parse, stringify } from 'comment-json';
 import isPlainObject from 'is-plain-obj';
 import sortPackageJson from 'sort-package-json';
-import { parseDocument } from 'yaml';
+import { isSeq, parseDocument } from 'yaml';
 
 const projectPackageJsonPath = join(process.cwd(), 'package.json');
 const projectPackageJson = JSON.parse(
@@ -487,10 +487,15 @@ function updatePnpmWorkspaceYaml() {
   // Work around `--allow-build` bug by programmatically setting
   // `allowBuild` in `pnpm-workspace.yaml`
   // - https://github.com/pnpm/pnpm/issues/13872#issuecomment-5281712949
-  if (newDevDependenciesToInstallKeys.includes('@ts-safeql/eslint-plugin')) {
+  if (
+    newDevDependenciesToInstallKeys.includes('@ts-safeql/eslint-plugin') &&
+    !doc.hasIn(['allowBuilds', 'esbuild'])
+  ) {
     doc.setIn(['allowBuilds', 'esbuild'], true);
   }
-  doc.setIn(['allowBuilds', 'unrs-resolver'], true);
+  if (!doc.hasIn(['allowBuilds', 'unrs-resolver'])) {
+    doc.setIn(['allowBuilds', 'unrs-resolver'], true);
+  }
 
   const minimumReleaseAgeKey = doc.createNode('minimumReleaseAge');
   minimumReleaseAgeKey.commentBefore =
@@ -498,21 +503,34 @@ function updatePnpmWorkspaceYaml() {
 # to mitigate supply chain risks
 # - https://pnpm.io/settings#minimumreleaseage`.replaceAll(/^#/gm, '');
 
-  doc.setIn([minimumReleaseAgeKey], doc.createNode(10080));
-  doc.setIn(
-    ['minimumReleaseAgeExclude'],
-    doc.createNode([
-      '@upleveled/*',
-      'eslint-config-upleveled',
-      'eslint-plugin-upleveled',
-      'stylelint-config-upleveled',
-    ]),
-  );
+  if (!doc.has('minimumReleaseAge')) {
+    doc.setIn([minimumReleaseAgeKey], doc.createNode(10080));
+  }
+
+  if (!doc.has('minimumReleaseAgeExclude')) {
+    doc.set('minimumReleaseAgeExclude', doc.createNode([]));
+  }
+  const minimumReleaseAgeExclude = doc.get('minimumReleaseAgeExclude');
+  if (!isSeq(minimumReleaseAgeExclude)) {
+    throw new Error('minimumReleaseAgeExclude must be a YAML sequence');
+  }
+  for (const packageName of [
+    '@upleveled/*',
+    'eslint-config-upleveled',
+    'eslint-plugin-upleveled',
+    'stylelint-config-upleveled',
+  ]) {
+    if (!minimumReleaseAgeExclude.toJSON().includes(packageName)) {
+      minimumReleaseAgeExclude.add(packageName);
+    }
+  }
 
   const strictDepBuildsKey = doc.createNode('strictDepBuilds');
   strictDepBuildsKey.commentBefore = `# Fail on pnpm ignored build scripts
 # - https://pnpm.io/settings#strictdepbuilds`.replaceAll(/^#/gm, '');
-  doc.setIn([strictDepBuildsKey], doc.createNode(true));
+  if (!doc.has('strictDepBuilds')) {
+    doc.setIn([strictDepBuildsKey], doc.createNode(true));
+  }
 
   const updatedPnpmWorkspaceYamlContent = String(doc);
   if (updatedPnpmWorkspaceYamlContent !== pnpmWorkspaceYamlContent) {
