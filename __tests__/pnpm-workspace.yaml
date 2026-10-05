@@ -20,6 +20,3 @@ trustPolicy: 'no-downgrade'
 trustPolicyExclude:
   # first version with provenance: semver@7.5.1
   - semver@6.3.1
-# Fail on pnpm ignored build scripts
-# - https://pnpm.io/settings#strictdepbuilds
-strictDepBuilds: true

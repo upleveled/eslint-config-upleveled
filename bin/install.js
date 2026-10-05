@@ -525,13 +525,6 @@ function updatePnpmWorkspaceYaml() {
     }
   }
 
-  const strictDepBuildsKey = doc.createNode('strictDepBuilds');
-  strictDepBuildsKey.commentBefore = `# Fail on pnpm ignored build scripts
-# - https://pnpm.io/settings#strictdepbuilds`.replaceAll(/^#/gm, '');
-  if (!doc.has('strictDepBuilds')) {
-    doc.setIn([strictDepBuildsKey], doc.createNode(true));
-  }
-
   const updatedPnpmWorkspaceYamlContent = String(doc);
   if (updatedPnpmWorkspaceYamlContent !== pnpmWorkspaceYamlContent) {
     console.log('Updating pnpm-workspace.yaml...');
