@@ -52,7 +52,7 @@
     "eslint-plugin-react-x": "5.24.9",
     "eslint-plugin-security": "4.2.0",
     "eslint-plugin-sonarjs": "4.2.2",
-    "eslint-plugin-unicorn": "76.0.0",
+    "eslint-plugin-unicorn": "77.0.0",
     "eslint-plugin-upleveled": "3.0.0",
     "is-plain-obj": "4.1.0",
     "sort-package-json": "4.0.0",
