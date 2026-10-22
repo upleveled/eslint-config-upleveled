@@ -13,6 +13,8 @@ minimumReleaseAgeExclude:
   - eslint-config-upleveled
   - eslint-plugin-upleveled
   - stylelint-config-upleveled
+  # Renovate security update: next@16.4.1
+  - next@16.4.1
 
 # Prevent trust level decreases with new versions of dependencies
 # - https://pnpm.io/settings#trustpolicy
