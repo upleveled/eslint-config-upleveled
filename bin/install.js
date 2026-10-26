@@ -484,17 +484,18 @@ function updatePnpmWorkspaceYaml() {
 
   const doc = parseDocument(pnpmWorkspaceYamlContent);
 
-  // FIXME: Switch build settings to --allow-build flags once
-  // all students use pnpm >=12.4.0, and change the initial
-  // install command in readme.md and __tests__/package.json to:
-  // pnpm add --save-dev eslint-config-upleveled@latest --allow-build='!unrs-resolver'
-  // - https://github.com/pnpm/pnpm/releases/tag/v12.4.0
   if (
     newDevDependenciesToInstallKeys.includes('@ts-safeql/eslint-plugin') &&
     !doc.hasIn(['allowBuilds', 'esbuild'])
   ) {
     doc.setIn(['allowBuilds', 'esbuild'], true);
   }
+
+  // FIXME: Replace this unrs-resolver setting with --allow-build
+  // once all students use pnpm >=12.4.0, and change the initial
+  // install command in readme.md and __tests__/package.json to:
+  // pnpm add --save-dev eslint-config-upleveled@latest --allow-build='!unrs-resolver'
+  // - https://github.com/pnpm/pnpm/releases/tag/v12.4.0
   doc.setIn(['allowBuilds', 'unrs-resolver'], false);
 
   const minimumReleaseAgeKey = doc.createNode('minimumReleaseAge');
