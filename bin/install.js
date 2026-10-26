@@ -496,10 +496,7 @@ function updatePnpmWorkspaceYaml() {
   // install command in readme.md and __tests__/package.json to:
   // pnpm add --save-dev eslint-config-upleveled@latest --allow-build='!unrs-resolver'
   // - https://github.com/pnpm/pnpm/releases/tag/v12.4.0
-  if (
-    !doc.hasIn(['allowBuilds', 'unrs-resolver']) ||
-    doc.getIn(['allowBuilds', 'unrs-resolver']) === 'set this to true or false'
-  ) {
+  if (typeof doc.getIn(['allowBuilds', 'unrs-resolver']) !== 'boolean') {
     doc.setIn(['allowBuilds', 'unrs-resolver'], false);
   }
 
