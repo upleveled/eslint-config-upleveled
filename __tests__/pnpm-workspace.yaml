@@ -2,7 +2,7 @@
 # - https://pnpm.io/settings#allowbuilds
 allowBuilds:
   sharp: true
-  unrs-resolver: true
+  unrs-resolver: false
 
 # Prevents installation of packages newer than 7 days
 # to mitigate supply chain security risks
