@@ -491,11 +491,13 @@ function updatePnpmWorkspaceYaml() {
     doc.setIn(['allowBuilds', 'esbuild'], true);
   }
 
-  // FIXME: Replace this unrs-resolver setting with --allow-build
-  // once all students use pnpm >=12.4.0, and change the initial
-  // install command in readme.md and __tests__/package.json to:
+  // FIXME: Replace this block and --ignore-scripts in
+  // readme.md and __tests__/package.json once all students use
+  // pnpm >=12.4.0, which added build rejection:
+  // ```sh
   // pnpm add --save-dev eslint-config-upleveled@latest --allow-build='!unrs-resolver'
-  // - https://github.com/pnpm/pnpm/releases/tag/v12.4.0
+  // ```
+  // Source: https://github.com/pnpm/pnpm/releases/tag/v12.4.0
   if (
     // pnpm can write 'set this to true or false' after a failed install
     typeof doc.getIn(['allowBuilds', 'unrs-resolver']) !== 'boolean'
