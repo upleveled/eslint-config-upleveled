@@ -491,7 +491,7 @@ function updatePnpmWorkspaceYaml() {
     doc.setIn(['allowBuilds', 'esbuild'], true);
   }
 
-  // FIXME: Replace this block and --ignore-scripts in
+  // FIXME: Remove this block and replace --ignore-scripts in
   // readme.md and __tests__/package.json once all students use
   // pnpm >=12.4.0, which added build rejection:
   // ```sh
