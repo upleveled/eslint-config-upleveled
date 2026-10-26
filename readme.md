@@ -9,7 +9,7 @@ UpLeveled ESLint defaults for programming in JavaScript, TypeScript, React, Next
 To add ESLint configuration to a project, install the dependencies and add the config files:
 
 ```sh
-pnpm add --save-dev eslint-config-upleveled@latest
+pnpm add --save-dev eslint-config-upleveled@latest --ignore-scripts
 node node_modules/eslint-config-upleveled/bin/install.js
 ```
 

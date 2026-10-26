@@ -484,17 +484,25 @@ function updatePnpmWorkspaceYaml() {
 
   const doc = parseDocument(pnpmWorkspaceYamlContent);
 
-  // Work around `--allow-build` bug by programmatically setting
-  // `allowBuild` in `pnpm-workspace.yaml`
-  // - https://github.com/pnpm/pnpm/issues/13872#issuecomment-5281712949
   if (
     newDevDependenciesToInstallKeys.includes('@ts-safeql/eslint-plugin') &&
     !doc.hasIn(['allowBuilds', 'esbuild'])
   ) {
     doc.setIn(['allowBuilds', 'esbuild'], true);
   }
-  if (!doc.hasIn(['allowBuilds', 'unrs-resolver'])) {
-    doc.setIn(['allowBuilds', 'unrs-resolver'], true);
+
+  // FIXME: Remove this block and replace --ignore-scripts in
+  // readme.md and __tests__/package.json once all students use
+  // pnpm >=12.4.0, which added build rejection:
+  // ```sh
+  // pnpm add --save-dev eslint-config-upleveled@latest --allow-build='!unrs-resolver'
+  // ```
+  // Source: https://github.com/pnpm/pnpm/releases/tag/v12.4.0
+  if (
+    // pnpm can write 'set this to true or false' after a failed install
+    typeof doc.getIn(['allowBuilds', 'unrs-resolver']) !== 'boolean'
+  ) {
+    doc.setIn(['allowBuilds', 'unrs-resolver'], false);
   }
 
   const minimumReleaseAgeKey = doc.createNode('minimumReleaseAge');
