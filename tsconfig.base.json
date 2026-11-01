@@ -15,6 +15,9 @@
     // Standard library
     "lib": ["ES2024", "DOM", "DOM.Iterable"],
 
+    // Global types
+    "types": ["node"],
+
     // Output
     "target": "ES2022",
     "noEmit": true,
